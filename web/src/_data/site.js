@@ -80,7 +80,20 @@ module.exports = {
     note: "RSVP online below. Prefer texting? Once our number is live you'll be able to RSVP by SMS too."
   },
 
-  // photo-forward hero: swap this to the couple's engagement photo when we have it.
-  // until then the layered coastal-Maine SVG scene is used (see CSS --hero-photo).
-  heroPhoto: null
+  // photo-forward hero: real Lookout Point (Harpswell) sunset for now; swap to the
+  // couple's engagement photo by replacing --hero-photo in style.css (or this asset).
+  heroPhoto: "/assets/img/hero-lookout-point.jpg",
+
+  // Attribution for the coastal-Maine background photos (Wikimedia Commons).
+  photoCredits: [
+    { title: "Sunset at Lookout Point, Harpswell, Maine", author: "Paul VanDerWerf",
+      license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+      source: "https://commons.wikimedia.org/wiki/File:Sunset_at_Lookout_Point_in_Harpswell,_Maine,_2017-9.jpg" },
+    { title: "South Harpswell, Maine — panoramic view", author: "Daderot",
+      license: "Public domain", licenseUrl: "",
+      source: "https://commons.wikimedia.org/wiki/File:South_Harpswell,_Maine_-_panoramic_view.jpg" },
+    { title: "Casco Bay, Maine", author: "Dougtone",
+      license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+      source: "https://commons.wikimedia.org/wiki/File:Casco_Bay_092108_140.jpg" }
+  ]
 };

@@ -19,10 +19,13 @@
   --pad-section: clamp(64px, 10vh, 132px);
   --radius:10px;
 
-  /* default coastal-Maine scenes (swap to photos later) */
-  --hero-photo: url('/assets/svg/scene-cove.svg');
-  --scene-harbor: url('/assets/svg/scene-harbor.svg');
-  --scene-lighthouse: url('/assets/svg/scene-lighthouse.svg');
+  /* coastal-Maine PHOTO backgrounds (license-clean — see assets/img/CREDITS.md).
+     Hero = Lookout Point, Harpswell at sunset — the venue's own road.
+     Swap --hero-photo to the couple's engagement photo when we have it.
+     The /assets/svg/scene-*.svg illustrations stay in the repo as alternates. */
+  --hero-photo: url('/assets/img/hero-lookout-point.jpg');
+  --scene-harbor: url('/assets/img/south-harpswell-pano.jpg');
+  --scene-lighthouse: url('/assets/img/casco-bay.jpg');
 }
 
 *,*::before,*::after{ box-sizing:border-box; }

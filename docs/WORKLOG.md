@@ -140,3 +140,22 @@ photo + real details; then wire RSVP→API and provision the CTs.
 
 **Note:** actual DNS record + HAProxy route happen at CT-provision time (approval-gated).
 Nothing on live infra was touched this turn.
+
+### 2026-06-29 (photos) — real coastal-Maine backgrounds + repo sanitization
+
+**Did:**
+- Swapped the SVG scene backgrounds for **license-clean real photos** (Wikimedia
+  Commons), found via the searches "coastal maine harpswell inn" / "harpswell maine
+  coast" scoped to free sources. Hero = **sunset at Lookout Point, Harpswell** —
+  literally the venue's road (108 Lookout Point Rd). Plus South Harpswell panoramic
+  (PD) and Casco Bay (CC BY-SA). Downscaled + recompressed for web. Attribution in
+  `web/src/assets/img/CREDITS.md` + a `/credits/` page + footer link. Hero still swaps
+  to the couple's engagement photo via one CSS var. SVG scenes kept as alternates.
+- **Security remediation (this same turn earlier):** caught that the prior push had
+  leaked internal infra detail (a management IP, VLAN names, router model, a private
+  project name) into the *public* repo via the docs. Sanitized the whole tree
+  (placeholders only), **rewrote history into one clean commit, and force-pushed**.
+  Residual: GitHub may retain the old commit by SHA until GC (low-risk, RFC1918/
+  non-secret) — offered delete+recreate for a fully clean slate.
+
+**Open / next:** decide push vs delete+recreate; then wire RSVP→API / fill real content.

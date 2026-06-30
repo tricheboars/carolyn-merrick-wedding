@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+title: Photo Credits
+permalink: /credits/
+---
+<section class="section section--olive">
+  <div class="wrap center stack">
+    <span class="label eyebrow">With thanks</span>
+    <h2>Photography credits</h2>
+    <p class="lead">The coastal-Maine backgrounds, with gratitude to their photographers.</p>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="wrap" style="max-width:720px">
+    <ul style="list-style:none; padding:0; margin:0">
+      {% for c in site.photoCredits %}
+      <li class="card" style="margin-bottom:14px">
+        <strong style="font-family:var(--font-serif); font-size:1.15rem">{{ c.title }}</strong><br>
+        by {{ c.author }} —
+        {% if c.licenseUrl %}<a href="{{ c.licenseUrl }}">{{ c.license }}</a>{% else %}{{ c.license }}{% endif %}
+        &middot; <a href="{{ c.source }}">source</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="note" style="margin-top:18px">Placeholders for the prototype — these will be joined or replaced by the couple's own engagement and venue photos.</p>
+  </div>
+</section>
