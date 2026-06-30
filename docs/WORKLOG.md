@@ -260,3 +260,19 @@ Then CF records: apex `CNAME → moorelab.cloud` (proxied/flattened), `www CNAME
 merrolyn.com` (proxied), SSL mode **Full**. **No new cert** (CF Full + the origin's
 moorelab wildcard). I'll auto-add the CF records once the zone exists + a scoped token
 is available. `merrolyn.moorelab.cloud` keeps serving until then.
+
+### 2026-06-29 (dev/prod + copy) — environment split
+
+**Did:**
+- **Dev/prod split** off the one container (no new infra): `merrolyn.moorelab.cloud` =
+  **dev/staging** → `/var/www/merrolyn-dev` (marked `noindex`), `merrolyn.com` (+ www) =
+  **prod** → `/var/www/merrolyn-prod`. nginx splits by `Host`; both share the Fastify
+  API. Each env built self-canonical via `SITE_DOMAIN`. Updated
+  `deploy/nginx-carolyn-merrick.conf` + `deploy/README.md` to match.
+- **Copy:** welcome heading already de-duped last turn ("We're getting married!");
+  swapped **"lighthouses" → "craft beer"** in the "weekend by the water" line (more
+  enticing for a cooler crowd). Built + **deployed to both dev and prod**.
+
+**Verified:** dev live (canonical=merrolyn.moorelab.cloud, noindex header, craft beer);
+prod root (canonical=merrolyn.com, craft beer). merrolyn.com goes live once the
+Cloudflare zone + GoDaddy nameservers are pointed.

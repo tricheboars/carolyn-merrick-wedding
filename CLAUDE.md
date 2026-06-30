@@ -84,7 +84,8 @@ Full diagram, deploy mapping, and open decisions → [`docs/02-architecture.md`]
   `github.com/tricheboars/carolyn-merrick-wedding`.
 - **Domain:** primary **`merrolyn.com`** (Patrick's own, GoDaddy registrar) → DNS via
   Cloudflare → HAProxy (CF "Full"; origin presents the moorelab wildcard, so no new
-  cert). Alias `merrolyn.moorelab.cloud` still works. One source: `web/src/_data/site.js`
+  cert). **Environments (host-split on one container):** `merrolyn.moorelab.cloud` =
+  **dev/staging** (noindex), `merrolyn.com` = **prod**. One source: `web/src/_data/site.js`
   (`SITE_DOMAIN=` override). Add-a-domain steps in `deploy/dns.md` + `deploy/haproxy.md`.
 - **Tooling here:** git 2.54, node 26, npm 11, python 3.14. No docker.
 
