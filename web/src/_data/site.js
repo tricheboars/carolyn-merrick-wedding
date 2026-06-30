@@ -1,5 +1,5 @@
 // Single source of truth for all editable site content (house pattern: render from data).
-// Anything marked TODO is a placeholder awaiting the couple/Patrick.
+// Placeholders read "coming soon"/"to be announced" until the couple/Patrick send finals.
 
 // Hostname is the ONE place the domain is defined. Override at build time with
 // SITE_DOMAIN=... — e.g. `SITE_DOMAIN=carolynandmerrick.com npm run build` — if the
@@ -20,7 +20,7 @@ module.exports = {
     town: "Harpswell, Maine",
     mapsQuery: "The+Harpswell+Inn,+108+Lookout+Point+Rd,+Harpswell,+ME+04079"
   },
-  domain: domain,                 // current: merrolyn.moorelab.cloud (Patrick's wildcard)
+  domain: domain,                 // current: merrolyn.com (prod) / merrolyn.moorelab.cloud (dev)
   url: `https://${domain}`,       // used for canonical + og:url
   tagline: "We can't wait to celebrate with you on the coast of Maine.",
 
@@ -37,16 +37,15 @@ module.exports = {
 
   story: {
     lead: "How Carolyn and Merrick found their way to a tent in the woods and a wedding on the coast.",
-    body: "TODO — the couple's story. A few warm paragraphs about how they met, the proposal, and why Maine."
+    body: "Our story is coming soon — how Carolyn and Merrick met, the proposal, and why Maine. Check back as we get closer to the day."
   },
 
-  // TODO: real times from the couple
   schedule: [
-    { time: "TODO", title: "Welcome gathering", detail: "Friday evening — casual, all guests welcome.", day: "Fri, Aug 13" },
+    { time: "TBA", title: "Welcome gathering", detail: "Friday evening — casual, all guests welcome.", day: "Fri, Aug 13" },
     { time: "4:00 PM", title: "Ceremony", detail: "The Harpswell Inn, on the point.", day: "Sat, Aug 14" },
     { time: "5:00 PM", title: "Cocktail hour", detail: "Lawn overlooking Middle Bay.", day: "Sat, Aug 14" },
     { time: "6:30 PM", title: "Dinner & dancing", detail: "Reception under the tent.", day: "Sat, Aug 14" },
-    { time: "TODO", title: "Farewell brunch", detail: "Sunday send-off.", day: "Sun, Aug 15" }
+    { time: "TBA", title: "Farewell brunch", detail: "Sunday send-off.", day: "Sun, Aug 15" }
   ],
 
   travel: {
@@ -54,16 +53,15 @@ module.exports = {
     airport: { name: "Portland International Jetport (PWM)", note: "~45 minutes south. Easiest major airport." },
     alt: { name: "Boston Logan (BOS)", note: "~2.25 hours; more flights, longer drive." },
     drive: "From Portland, take I-295 N to Brunswick, then Rt 123 south down the Harpswell peninsula.",
-    parking: "Ample parking at the inn. TODO confirm shuttle plans.",
-    shuttle: "TODO — if we run a shuttle from a host hotel, details land here (great SMS reminder)."
+    parking: "Ample parking at the inn.",
+    shuttle: "If we arrange a shuttle from a host hotel, details will appear here — and we'll text you."
   },
 
-  // TODO: confirmed lodging blocks
   stay: [
     { name: "The Harpswell Inn", note: "Rooms at the venue — book early.", url: "#" },
     { name: "Brunswick hotels (~20 min)", note: "Chain + boutique options near Bowdoin College.", url: "#" },
     { name: "Bailey Island cottages", note: "Down the peninsula, on the water.", url: "#" },
-    { name: "TODO room block", note: "If we secure a block + code, it goes here.", url: "#" }
+    { name: "Group room block — to be announced", note: "If we secure a hotel block, the code will appear here.", url: "#" }
   ],
 
   thingsToDo: [
@@ -76,11 +74,11 @@ module.exports = {
 
   faq: [
     { q: "What's the weather like in August?", a: "Coastal-Maine summer: warm days (mid-70s–80s°F) and cool evenings on the water. Bring a layer for the night." },
-    { q: "What should we wear?", a: "TODO — dress code (likely semi-formal/garden). Comfortable shoes are smart for grass and rocks." },
-    { q: "Is the celebration indoors or outdoors?", a: "TODO — most of the day is expected to be outdoors / tented on the point." },
+    { q: "What should we wear?", a: "Dress code is being finalized — likely semi-formal / garden party. Comfortable shoes are smart for grass and rocks." },
+    { q: "Is the celebration indoors or outdoors?", a: "Most of the day is expected to be outdoors and tented on the point — we'll confirm closer to the date." },
     { q: "Can I bring a plus-one?", a: "Your invitation and RSVP will show who's included. Questions? Just ask." },
-    { q: "Parking / is there a shuttle?", a: "Parking is at the inn. TODO — shuttle details if we run one (we'll text you)." },
-    { q: "Are kids welcome?", a: "TODO — confirm with the couple." },
+    { q: "Parking / is there a shuttle?", a: "Parking is at the inn. If we run a shuttle, we'll share the details (and text you)." },
+    { q: "Are kids welcome?", a: "Your invitation will note who's included — and you're always welcome to ask us." },
     { q: "What about gifts?", a: "Your presence is the gift. If you'd like, there's a house fund on the Registry page." },
     { q: "How do I RSVP?", a: "Right here on the site — and once our number is live, by text too. Note any dietary needs on your RSVP." }
   ],
@@ -103,16 +101,16 @@ module.exports = {
   registry: {
     intro: "Your presence is the gift. If you'd like to help us build our first home together, a contribution to our house fund means the world — no registry, no shipping, just thank-yous from us.",
     methods: [
-      { label: "Venmo", handle: "@TODO", icon: "ti-brand-venmo" },
-      { label: "Zelle", handle: "TODO (email/phone)", icon: "ti-device-mobile" },
-      { label: "PayPal", handle: "TODO", icon: "ti-brand-paypal" },
-      { label: "By mail", handle: "TODO mailing address", icon: "ti-mail" }
+      { label: "Venmo", handle: "Coming soon", icon: "ti-brand-venmo" },
+      { label: "Zelle", handle: "Coming soon", icon: "ti-device-mobile" },
+      { label: "PayPal", handle: "Coming soon", icon: "ti-brand-paypal" },
+      { label: "By mail", handle: "Coming soon", icon: "ti-mail" }
     ],
     note: "Sent something? Let us know below so we can thank you properly."
   },
 
   rsvp: {
-    deadline: "TODO (e.g. July 1, 2027)",
+    deadline: "To be announced",
     note: "RSVP online below. Prefer texting? Once our number is live you'll be able to RSVP by SMS too."
   },
 
