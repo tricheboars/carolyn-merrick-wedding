@@ -29,6 +29,7 @@ module.exports = {
     { label: "Schedule", url: "/schedule/" },
     { label: "Travel", url: "/travel/" },
     { label: "Stay", url: "/stay/" },
+    { label: "Gallery", url: "/gallery/" },
     { label: "Registry", url: "/registry/" },
     { label: "FAQ", url: "/faq/" },
     { label: "RSVP", url: "/rsvp/" }
@@ -84,6 +85,21 @@ module.exports = {
     { q: "How do I RSVP?", a: "Right here on the site — and once our number is live, by text too. Note any dietary needs on your RSVP." }
   ],
 
+  gallery: [
+    { src: "/assets/img/gallery/g01.jpg", alt: "Carolyn & Merrick by the tent in the redwoods" },
+    { src: "/assets/img/gallery/g02.jpg", alt: "Carolyn & Merrick, in black & white" },
+    { src: "/assets/img/gallery/g03.jpg", alt: "Among the redwoods" },
+    { src: "/assets/img/gallery/g04.jpg", alt: "The ring" },
+    { src: "/assets/img/gallery/g05.jpg", alt: "A quiet moment" },
+    { src: "/assets/img/gallery/g06.jpg", alt: "On the foggy coast" },
+    { src: "/assets/img/gallery/g07.jpg", alt: "In the trees" },
+    { src: "/assets/img/gallery/g08.jpg", alt: "Autumn in the forest" },
+    { src: "/assets/img/gallery/g09.jpg", alt: "Carolyn" },
+    { src: "/assets/img/gallery/g10.jpg", alt: "By the sea" },
+    { src: "/assets/img/gallery/g11.jpg", alt: "Together on the beach" },
+    { src: "/assets/img/gallery/g12.jpg", alt: "The two of them" }
+  ],
+
   registry: {
     intro: "Your presence is the gift. If you'd like to help us build our first home together, a contribution to our house fund means the world — no registry, no shipping, just thank-yous from us.",
     methods: [
@@ -117,6 +133,8 @@ module.exports = {
       source: "https://commons.wikimedia.org/wiki/File:Casco_Bay_092108_140.jpg" },
     { title: "Bailey Island (Cribstone) Bridge, Harpswell", author: "Daderot",
       license: "Public domain", licenseUrl: "",
-      source: "https://commons.wikimedia.org/wiki/File:Bailey_Island_Bridge,_Harpswell,_ME_-_panorama.jpg" }
+      source: "https://commons.wikimedia.org/wiki/File:Bailey_Island_Bridge,_Harpswell,_ME_-_panorama.jpg" },
+    { title: "Engagement photos — hero, Our Story, Gallery", author: "Carolyn & Merrick's October 2025 engagement session",
+      license: "", licenseUrl: "", source: "" }
   ]
 };

@@ -1,8 +1,11 @@
 # Image credits
 
-Coastal-Maine background photos used in the site, all license-clean (sourced from
-Wikimedia Commons). These are **prototype placeholders** — to be joined or replaced
-by the couple's own engagement and venue photography.
+**Engagement photos** (the hero, the Our Story header, and the Gallery — `hero-couple.jpg`,
+`story-couple.jpg`, `gallery/g01–g12.jpg`) are **Carolyn & Merrick's own** — from their
+October 2025 engagement session, provided by the couple. Used with permission.
+
+The **coastal-Maine scenery** below is license-clean stock (Wikimedia Commons), kept for
+the *location* pages (Travel, Stay, Schedule, FAQ) to show Harpswell / Casco Bay.
 
 | File | Subject | Author | License | Source |
 |---|---|---|---|---|

@@ -25,9 +25,9 @@
      Hero = Lookout Point, Harpswell at sunset — the venue's own road.
      Swap --hero-photo to the couple's engagement photo when we have it.
      The /assets/svg/scene-*.svg illustrations stay in the repo as alternates. */
-  --hero-photo: url('/assets/img/hero-lookout-point.jpg');
-  --scene-harbor: url('/assets/img/south-harpswell-pano.jpg');
-  --scene-lighthouse: url('/assets/img/cribstone-bridge.jpg');
+  --hero-photo: url('/assets/img/hero-couple.jpg');        /* the couple on the coast */
+  --scene-harbor: url('/assets/img/south-harpswell-pano.jpg');   /* Harpswell (location) */
+  --scene-lighthouse: url('/assets/img/cribstone-bridge.jpg');   /* Harpswell (location) */
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -188,6 +188,13 @@ p{ margin:0 0 1rem; }
 .stack > * + *{ margin-top:1rem; }
 .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
 [x-cloak]{ display:none !important; }
+
+/* ---------- gallery (masonry) ---------- */
+.gallery{ columns:3 260px; column-gap:14px; }
+.gallery a{ display:block; margin:0 0 14px; break-inside:avoid; border-radius:10px; overflow:hidden; box-shadow:0 1px 0 rgba(46,68,86,.12); }
+.gallery img{ width:100%; height:auto; display:block; transition:transform .45s ease, filter .45s ease; filter:saturate(.96); }
+.gallery a:hover img{ transform:scale(1.03); filter:saturate(1.06); }
+@media (max-width:560px){ .gallery{ columns:2 150px; } }
 
 @media (max-width:680px){
   .nav{ flex-direction:column; gap:10px; }

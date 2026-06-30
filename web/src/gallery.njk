@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+title: Gallery
+permalink: /gallery/
+---
+<section class="section section--scene" style="--scene:url('/assets/img/story-couple.jpg')">
+  <div class="wrap center stack">
+    <span class="label eyebrow">Carolyn &amp; Merrick</span>
+    <h2>Gallery</h2>
+    <p class="lead">A few of our favorite moments.</p>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="gallery">
+      {% for p in site.gallery %}
+      <a href="{{ p.src }}" aria-label="{{ p.alt }}"><img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy"></a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

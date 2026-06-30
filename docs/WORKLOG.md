@@ -225,3 +225,21 @@ photo; accounts + SMS.
 
 **Note:** all internal IPs/CT details are kept in private session memory, never this
 public repo. **Open / next:** couple-specific content + engagement photo; accounts + SMS.
+
+### 2026-06-29 (real photos) — engagement photos in + Gallery, live
+
+**Did:**
+- Pulled the couple's **23 engagement photos** (Oct 2025) from the two Google Drive
+  albums (`gdown`), curated from a contact sheet, and optimized the keepers (originals
+  were 5–24 MB each → web sizes).
+- **Hero** and **Our Story** header are now couple coastal shots (the foggy-coast set
+  matches the slate palette beautifully). New **Gallery** page — masonry grid of 12,
+  lazy-loaded — plus a nav link. Kept the Harpswell stock photos for the *location*
+  pages (Travel/Stay/Schedule/FAQ). Credits updated (couple's own photos).
+- Added **cache-busting** on `style.css` (build timestamp) so Cloudflare's edge cache
+  never serves a stale stylesheet after a redeploy.
+- Rebuilt + **redeployed to the live container**; verified the couple hero + Gallery
+  are live at merrolyn.moorelab.cloud (origin and via Cloudflare).
+
+**Open / next:** couple-specific copy (times, dress code, lodging, story, Venmo/Zelle);
+accounts + SMS; a one-command redeploy script.

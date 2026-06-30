@@ -17,9 +17,7 @@ permalink: /credits/
       {% for c in site.photoCredits %}
       <li class="card" style="margin-bottom:14px">
         <strong style="font-family:var(--font-serif); font-size:1.15rem">{{ c.title }}</strong><br>
-        by {{ c.author }} —
-        {% if c.licenseUrl %}<a href="{{ c.licenseUrl }}">{{ c.license }}</a>{% else %}{{ c.license }}{% endif %}
-        &middot; <a href="{{ c.source }}">source</a>
+        by {{ c.author }}{% if c.license %} — {% if c.licenseUrl %}<a href="{{ c.licenseUrl }}">{{ c.license }}</a>{% else %}{{ c.license }}{% endif %}{% endif %}{% if c.source %} &middot; <a href="{{ c.source }}">source</a>{% endif %}
       </li>
       {% endfor %}
     </ul>
