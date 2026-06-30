@@ -305,3 +305,22 @@ Cloudflare zone + GoDaddy nameservers are pointed.
 **Verified at origin:** dev → dev CT (canonical moorelab, noindex header, API up),
 prod → prod CT (canonical merrolyn.com, API up, clean DB). Internal IPs/CT IDs stay in
 private memory. Updated `deploy/README.md` + `deploy/nginx-carolyn-merrick.conf`.
+
+### 2026-06-30 — merrolyn.com PUBLIC + 12-agent audit
+
+**merrolyn.com is LIVE.** Patrick created a merrolyn.com-scoped Cloudflare token; with it
+I fixed the apex via API: **deleted the two GoDaddy builder `A` records** (the apex was
+proxying to GoDaddy's Website Builder), **added apex `CNAME → moorelab.cloud` (proxied)**;
+`www` was already `CNAME → merrolyn.com`. Added a **`www → apex` 301** and a **`/health`
+edge route** on the prod container. Verified globally: `https://merrolyn.com` serves our
+site + live API (CF anycast at every public resolver), `www` 301s to apex, dev unaffected,
+`moorelab`/`fast` intact. Email untouched (no MX; DMARC/_domainconnect left as-is). SSL
+mode must stay **Full** (origin cert is `*.moorelab.cloud`, doesn't cover the apex —
+Full-strict would break it).
+
+**Multi-agent audit (12 agents, read-only).** Verdict: deployment **healthy**, dev/prod
+isolation **real** (prod DB confirmed empty), HAProxy split correct, public repo **clean**
+of IPs/secrets in tree + history, full RSVP→CSV API path works, all pages/images load.
+Findings fixed: `/health` edge route (above). **Open item:** `/registry/` still renders
+literal `@TODO` payment placeholders — now public, needs real handles. Audit also left a
+couple test rows in the **dev** DB; purged afterward (prod never written).

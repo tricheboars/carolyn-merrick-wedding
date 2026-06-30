@@ -11,16 +11,14 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ## STATUS (2026-06-29) — single source of truth
 
-- **Phase 2 — LIVE (prod cutover in progress).** Coastal **slate/harbor-blue** theme;
-  site + working API live. **Engagement photos** in (couple hero + Our Story + a
-  **Gallery** page; Harpswell stock kept for location pages). **Environments:**
-  `merrolyn.moorelab.cloud` = **dev** (live, `noindex`), `merrolyn.com` = **prod**
-  (Patrick's own GoDaddy domain). merrolyn.com state: nameservers → Cloudflare ✅,
-  Universal SSL issued ✅ (mode Full), HAProxy answers it ✅ — **BUT the Cloudflare
-  apex record still points at GoDaddy's Website Builder, not our origin** (CF
-  auto-imported GoDaddy's `A` record on Add-Site); fix = apex → `CNAME moorelab.cloud`
-  (proxied) + `www → merrolyn.com`. **Splitting dev/prod into separate containers
-  (own infra each) this session.** Deploy specifics (CT/IPs) live in private memory.
+- **Phase 2 — LIVE on the real domain.** Coastal **slate/harbor-blue** theme; site +
+  working API live. **Engagement photos** in (couple hero + Our Story + a **Gallery**
+  page; Harpswell stock kept for location pages). **merrolyn.com is now LIVE** —
+  nameservers → Cloudflare ✅, Universal SSL ✅ (mode **Full**, keep non-strict), apex
+  `CNAME → moorelab.cloud` (proxied) ✅, `www` 301→apex ✅; serves our prod site + live
+  API globally via Cloudflare. **dev/prod are now SEPARATE containers** (own nginx +
+  Fastify API + SQLite DB each): `merrolyn.moorelab.cloud` = **dev** (`noindex`),
+  `merrolyn.com` = **prod** (clean DB). Deploy specifics (CT/IPs/CF zone) in private memory.
 - **Wedding facts:** **Carolyn Moore** (bride, Patrick's sister) + **Merrick Harris**
   (groom). **August 14, 2027** at **The Harpswell Inn**, 108 Lookout Point Rd,
   Harpswell, ME 04079 (coastal). **Registry = cash / house fund** (not item registry).
@@ -39,11 +37,13 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   persist, admin list/CSV, verified end-to-end incl. CORS). Real **coastal-Maine photo
   backgrounds** (Lookout Point hero + South Harpswell + Casco Bay + Cribstone Bridge,
   license-clean, `/credits/`). Added **FAQ** + **Things to do** pages/content.
-- **NEXT:** (1) **fix the CF apex record** → `CNAME moorelab.cloud` (proxied) so
-  merrolyn.com serves our site, not GoDaddy's builder — Patrick's CF dashboard, or give
-  a merrolyn.com-scoped CF token and I'll do it; (2) **dev/prod → separate containers**
-  (in progress this session); (3) couple-specific content + Venmo/Zelle handles;
-  (4) accounts + SMS layer; (5) optional `www → apex` + `dev → prod` redirects.
+- **NEXT:** (1) **registry handles** — `/registry/` still shows `@TODO` for Venmo/Zelle/
+  PayPal/mail and the site is now PUBLIC + indexable; fill real handles in
+  `web/src/_data/site.js` ASAP; (2) couple-specific content (exact times, dress code,
+  lodging block, their story); (3) accounts + SMS layer; (4) optional `dev → prod`
+  redirect; (5) optional: add merrolyn.com to the origin cert if you ever want CF SSL
+  "Full (strict)". **Audited 2026-06-30** (12-agent pass): deployment healthy, repo
+  clean of secrets, dev/prod isolation real — only open content gap is the registry handles.
 - **NEEDS PATRICK:** guest count; Twilio go-ahead; the engagement photo + real
   schedule/lodging/registry details; the printed Save-the-Dates can now carry
   `merrolyn.moorelab.cloud` (or the couple's domain if they buy one). (API building in
