@@ -43,11 +43,13 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   license-clean, `/credits/`). Added **FAQ** + **Things to do** pages/content.
 - **NEXT:** (1) **registry handles** — `/registry/` now shows **"Coming soon"**; drop in
   real Venmo/Zelle/PayPal/mail in `web/src/_data/site.js` + redeploy (build per env,
-  see `deploy/README.md`); (2) couple-specific content (exact times, dress code, lodging
-  block, their story); (3) accounts + SMS layer; (4) optional `dev → prod` redirect;
-  (5) optional: add merrolyn.com to the origin cert if you ever want CF SSL "Full
-  (strict)". **Audited 2026-06-30** (12-agent pass): deployment healthy, repo clean of
-  secrets, dev/prod isolation real — only open content gap is the real registry handles.
+  see `deploy/README.md`); (2) **mobile site** — audit + polish the responsive layout on
+  phones (guests will mostly browse/RSVP on mobile): check the hero, nav, schedule, RSVP
+  form, and gallery at small widths, tap targets, and image sizes; (3) couple-specific
+  content (exact times, dress code, lodging block, their story); (4) accounts + SMS layer;
+  (5) optional `dev → prod` redirect; (6) optional: add merrolyn.com to the origin cert if
+  you ever want CF SSL "Full (strict)". **Audited 2026-06-30** (12-agent pass): deployment
+  healthy, repo clean of secrets, dev/prod isolation real — open content gap is registry handles.
 - **NEEDS PATRICK:** **rotate the Cloudflare merrolyn.com DNS token** (it was pasted in
   chat during the cutover — roll/delete it in CF → Profile → API Tokens; the DNS change is
   already saved, so revoking changes nothing live); guest count; Twilio go-ahead; the real
