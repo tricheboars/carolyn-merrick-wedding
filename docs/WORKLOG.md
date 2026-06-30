@@ -243,3 +243,20 @@ public repo. **Open / next:** couple-specific content + engagement photo; accoun
 
 **Open / next:** couple-specific copy (times, dress code, lodging, story, Venmo/Zelle);
 accounts + SMS; a one-command redeploy script.
+
+### 2026-06-29 (own domain) — merrolyn.com
+
+**Did:**
+- Patrick bought **merrolyn.com** (GoDaddy). Flipped the site canonical to merrolyn.com
+  (one line — exactly the flexible `SITE_DOMAIN` we built for) and **extended the
+  HAProxy host route** to also answer `merrolyn.com` + `www.merrolyn.com` (backup +
+  `haproxy -c` + regression-passed; existing routes intact). Verified via Host header
+  that the firewall already serves the site for merrolyn.com.
+- Fixed the welcome heading to not repeat "on the coast of Maine." Rebuilt + redeployed.
+
+**Pending (Patrick's dashboards — my token has no account access):** add merrolyn.com
+to Cloudflare (Add Site, Free plan) + repoint GoDaddy nameservers to the CF ones.
+Then CF records: apex `CNAME → moorelab.cloud` (proxied/flattened), `www CNAME →
+merrolyn.com` (proxied), SSL mode **Full**. **No new cert** (CF Full + the origin's
+moorelab wildcard). I'll auto-add the CF records once the zone exists + a scoped token
+is available. `merrolyn.moorelab.cloud` keeps serving until then.

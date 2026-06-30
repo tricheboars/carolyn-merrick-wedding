@@ -4,7 +4,7 @@
 // Hostname is the ONE place the domain is defined. Override at build time with
 // SITE_DOMAIN=... — e.g. `SITE_DOMAIN=carolynandmerrick.com npm run build` — if the
 // couple buy their own domain later. No code change needed; everything derives from it.
-const domain = process.env.SITE_DOMAIN || "merrolyn.moorelab.cloud";
+const domain = process.env.SITE_DOMAIN || "merrolyn.com";
 
 module.exports = {
   couple: {

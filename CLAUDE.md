@@ -11,10 +11,12 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ## STATUS (2026-06-29) — single source of truth
 
-- **Phase 2 — LIVE.** Coastal **slate/harbor-blue** theme; the site + working API are
-  **deployed and live at https://merrolyn.moorelab.cloud** (Cloudflare → HAProxy →
-  homelab container; LAN via split-DNS). All existing homelab routes verified intact.
-  Deploy specifics (CT/IPs) live in private session memory, not this repo.
+- **Phase 2 — LIVE.** Coastal **slate/harbor-blue** theme; site + working API **live**
+  (Cloudflare → HAProxy → homelab container; LAN via split-DNS). **Primary domain is
+  now `merrolyn.com`** (Patrick's own, GoDaddy) — site canonical + HAProxy route
+  already switched; **pending** the Cloudflare zone-add + GoDaddy nameserver repoint
+  to serve there. `merrolyn.moorelab.cloud` keeps serving meanwhile. Deploy specifics
+  (CT/IPs) live in private session memory, not this repo.
 - **Wedding facts:** **Carolyn Moore** (bride, Patrick's sister) + **Merrick Harris**
   (groom). **August 14, 2027** at **The Harpswell Inn**, 108 Lookout Point Rd,
   Harpswell, ME 04079 (coastal). **Registry = cash / house fund** (not item registry).
@@ -80,9 +82,10 @@ Full diagram, deploy mapping, and open decisions → [`docs/02-architecture.md`]
 - **Git/GitHub:** authed as `tricheboars`. Commit identity: Patrick Moore
   `<36495234+tricheboars@users.noreply.github.com>`. Repo (public):
   `github.com/tricheboars/carolyn-merrick-wedding`.
-- **Domain:** `merrolyn.moorelab.cloud` (subdomain of `moorelab.cloud`; GoDaddy
-  registrar, Cloudflare DNS, LE wildcard at HAProxy). One source: `web/src/_data/site.js`
-  (`SITE_DOMAIN=` override). Subdomain-add steps in `deploy/dns.md` + `deploy/haproxy.md`.
+- **Domain:** primary **`merrolyn.com`** (Patrick's own, GoDaddy registrar) → DNS via
+  Cloudflare → HAProxy (CF "Full"; origin presents the moorelab wildcard, so no new
+  cert). Alias `merrolyn.moorelab.cloud` still works. One source: `web/src/_data/site.js`
+  (`SITE_DOMAIN=` override). Add-a-domain steps in `deploy/dns.md` + `deploy/haproxy.md`.
 - **Tooling here:** git 2.54, node 26, npm 11, python 3.14. No docker.
 
 ## Working agreements
