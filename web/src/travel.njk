@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: Travel
+permalink: /travel/
+---
+<section class="section section--scene" style="--scene:var(--scene-harbor)">
+  <div class="wrap center stack">
+    <span class="label eyebrow">Getting here</span>
+    <h2>Getting to Harpswell</h2>
+    <p class="lead">{{ site.travel.intro }}</p>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="grid grid--2">
+      <div class="card">
+        <h3>Fly</h3>
+        <p><strong>{{ site.travel.airport.name }}</strong> — {{ site.travel.airport.note }}</p>
+        <p class="note">Alternate: {{ site.travel.alt.name }} — {{ site.travel.alt.note }}</p>
+      </div>
+      <div class="card">
+        <h3>Drive</h3>
+        <p>{{ site.travel.drive }}</p>
+        <p class="note">Parking: {{ site.travel.parking }}</p>
+      </div>
+      <div class="card">
+        <h3>Shuttle</h3>
+        <p>{{ site.travel.shuttle }}</p>
+      </div>
+      <div class="card">
+        <h3>The venue</h3>
+        <p>{{ site.venue.name }}<br>{{ site.venue.address }}</p>
+        <p><a href="https://www.google.com/maps/search/?api=1&query={{ site.venue.mapsQuery }}">Open in Maps →</a></p>
+      </div>
+    </div>
+  </div>
+</section>

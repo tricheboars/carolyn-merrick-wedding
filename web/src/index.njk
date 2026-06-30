@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+title: Home
+permalink: /
+---
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__mono">{% include "partials/monogram.njk" %}</div>
+    <span class="label hero__label">Save the date for</span>
+    <h1 class="hero__names">{{ site.couple.short }}</h1>
+    <div class="hero__meta">{{ site.date.display }}</div>
+    <div class="hero__place">{{ site.venue.name }} &middot; {{ site.venue.town }}</div>
+    <div class="btn-row">
+      <a class="btn" href="/rsvp/">RSVP</a>
+      <a class="btn btn--ghost" href="/travel/">Plan your trip</a>
+    </div>
+  </div>
+</header>
+
+<section class="section section--cream center">
+  <div class="wrap stack">
+    <span class="label eyebrow">Welcome</span>
+    <h2>We're getting married on the coast of Maine</h2>
+    <p class="lead">{{ site.tagline }}</p>
+    <div class="divider"><img src="/assets/svg/coupes.svg" alt="" width="78" height="54"></div>
+    <p>Join us {{ site.date.display }} at {{ site.venue.name }} in {{ site.venue.town }}.
+      This little site has everything you need — our story, the schedule, how to get to
+      Harpswell, where to stay, and how to RSVP.</p>
+  </div>
+</section>
+
+<section class="section section--scene" style="--scene:var(--scene-harbor)">
+  <div class="wrap center stack">
+    <span class="label eyebrow">Casco Bay</span>
+    <h2>A weekend by the water</h2>
+    <p class="lead">Lobster rolls, lighthouses, and long summer evenings on the bay.</p>
+    <div class="btn-row">
+      <a class="btn btn--ghost" href="/schedule/">See the schedule</a>
+      <a class="btn btn--ghost" href="/stay/">Find a place to stay</a>
+    </div>
+  </div>
+</section>

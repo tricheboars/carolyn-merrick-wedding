@@ -1,0 +1,26 @@
+# dependencies / build output
+node_modules/
+web/_site/
+.cache/
+
+# env / secrets / guest data (NEVER commit)
+.env
+*.env
+!*.env.example
+.secrets/
+*.db
+*.sqlite
+*.sqlite3
+api/data/
+
+# os / editors
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# logs
+*.log
+npm-debug.log*

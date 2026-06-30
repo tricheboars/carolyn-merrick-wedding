@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+title: RSVP
+permalink: /rsvp/
+---
+<section class="section section--olive">
+  <div class="wrap center stack">
+    <span class="label eyebrow">Kindly reply</span>
+    <h2>RSVP</h2>
+    <p class="lead">By {{ site.rsvp.deadline }}. {{ site.rsvp.note }}</p>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="wrap" style="max-width:620px">
+    <form class="form" x-data="{ attending:'', party:1, sent:false }" @submit.prevent="sent=true">
+      <div x-show="!sent">
+        <div class="field">
+          <label for="name">Full name(s)</label>
+          <input id="name" name="name" type="text" placeholder="Jane &amp; John Smith" required>
+        </div>
+
+        <div class="field">
+          <label for="contact">Email or mobile</label>
+          <input id="contact" name="contact" type="text" placeholder="So we can send updates" required>
+        </div>
+
+        <div class="field">
+          <label>Will you join us?</label>
+          <label class="choice"><input type="radio" name="attending" value="yes" x-model="attending"> Joyfully accepts</label>
+          <label class="choice"><input type="radio" name="attending" value="no" x-model="attending"> Regretfully declines</label>
+        </div>
+
+        <template x-if="attending === 'yes'">
+          <div>
+            <div class="field">
+              <label for="party">Number in your party</label>
+              <input id="party" name="party" type="number" min="1" max="10" x-model="party">
+            </div>
+            <div class="field">
+              <label for="meal">Meal preference</label>
+              <select id="meal" name="meal">
+                <option value="">Select…</option>
+                <option>Catch of the day</option>
+                <option>Farm vegetable</option>
+                <option>Chicken</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="diet">Dietary needs / allergies</label>
+              <input id="diet" name="diet" type="text" placeholder="Optional">
+            </div>
+            <div class="field">
+              <label for="song">A song to get you dancing</label>
+              <input id="song" name="song" type="text" placeholder="Optional">
+            </div>
+          </div>
+        </template>
+
+        <div class="field">
+          <label for="msg">A note for the couple</label>
+          <textarea id="msg" name="message" rows="3" placeholder="Optional"></textarea>
+        </div>
+
+        <button class="btn btn--ink" type="submit">Send RSVP</button>
+        <p class="note" style="margin-top:14px">Prototype — this form isn't wired to the API yet. Submitting just shows a preview message.</p>
+      </div>
+
+      <div x-show="sent" x-cloak class="center stack">
+        <div class="divider"><img src="/assets/svg/coupes.svg" alt="" width="78" height="54"></div>
+        <h3 x-text="attending === 'no' ? 'We\'ll miss you!' : 'Thank you — we can\'t wait!'"></h3>
+        <p class="note">Your reply was captured by the prototype (not yet saved). The real RSVP will land in our guest list and trigger a confirmation text.</p>
+      </div>
+    </form>
+  </div>
+</section>

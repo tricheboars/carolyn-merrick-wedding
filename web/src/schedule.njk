@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+title: Schedule
+permalink: /schedule/
+---
+<section class="section section--scene" style="--scene:var(--scene-lighthouse)">
+  <div class="wrap center stack">
+    <span class="label eyebrow">{{ site.date.display }}</span>
+    <h2>Schedule of Events</h2>
+    <p class="lead">Here's how the weekend comes together.</p>
+  </div>
+</section>
+
+<section class="section section--olive">
+  <div class="wrap" style="display:flex; justify-content:center">
+    <ol class="timeline">
+      {% for e in site.schedule %}
+      <li>
+        <div>
+          <div class="t">{{ e.time }}</div>
+          <div class="d">{{ e.day }}</div>
+        </div>
+        <div>
+          <h3>{{ e.title }}</h3>
+          <p style="margin:0">{{ e.detail }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section section--cream center">
+  <div class="wrap">
+    <p class="note">Times marked “TODO” are still being finalized — we'll text you any updates.</p>
+  </div>
+</section>

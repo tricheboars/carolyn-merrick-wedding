@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Sailboats in a quiet Maine harbor">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D5D7B8"/>
+      <stop offset="1" stop-color="#AEB374"/>
+    </linearGradient>
+    <linearGradient id="water2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#94A063"/>
+      <stop offset="1" stop-color="#667145"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="450" fill="url(#sky2)"/>
+  <path d="M0,440 L0,398 L300,378 L640,402 L980,382 L1300,404 L1600,386 L1600,440 Z" fill="#8E9456" opacity="0.5"/>
+  <path d="M0,452 L90,410 L180,452 L270,408 L360,452 L450,412 L540,452 L630,408 L720,452 L810,412 L900,452 L990,408 L1080,452 L1170,412 L1260,452 L1350,408 L1440,452 L1530,412 L1600,452 L1600,470 L0,470 Z" fill="#4F5A2E" opacity="0.82"/>
+  <rect y="460" width="1600" height="540" fill="url(#water2)"/>
+  <rect y="460" width="1600" height="6" fill="#FBF8EC" opacity="0.32"/>
+  <g transform="translate(560,648)">
+    <path d="M-34,0 L34,0 L24,12 L-24,12 Z" fill="#3A4321"/>
+    <rect x="-1.2" y="-50" width="2.6" height="50" fill="#3A4321"/>
+    <path d="M2,-48 L2,-4 L32,-4 Z" fill="#FBF8EC" opacity="0.92"/>
+    <path d="M-2,-42 L-2,-6 L-26,-6 Z" fill="#F2EEDC" opacity="0.9"/>
+    <rect x="-30" y="14" width="60" height="3" fill="#FBF8EC" opacity="0.2"/>
+  </g>
+  <g transform="translate(1040,604) scale(0.78)">
+    <path d="M-34,0 L34,0 L24,12 L-24,12 Z" fill="#3A4321"/>
+    <rect x="-1.2" y="-50" width="2.6" height="50" fill="#3A4321"/>
+    <path d="M2,-48 L2,-4 L32,-4 Z" fill="#FBF8EC" opacity="0.9"/>
+    <path d="M-2,-42 L-2,-6 L-26,-6 Z" fill="#F2EEDC" opacity="0.88"/>
+  </g>
+  <g fill="#3A4321">
+    <rect x="60" y="800" width="470" height="16"/>
+    <rect x="98" y="816" width="13" height="150"/>
+    <rect x="286" y="816" width="13" height="170"/>
+    <rect x="478" y="816" width="13" height="184"/>
+  </g>
+  <path d="M1180,1000 L1180,852 L1300,792 L1420,852 L1540,800 L1600,840 L1600,1000 Z" fill="#3A4321"/>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Misty pine cove on the Maine coast">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D2D5B4"/>
+      <stop offset="0.6" stop-color="#B8BE8A"/>
+      <stop offset="1" stop-color="#A8AC6A"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9AA567"/>
+      <stop offset="1" stop-color="#6B7748"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="560" fill="url(#sky)"/>
+  <ellipse cx="1120" cy="250" rx="150" ry="150" fill="#FBF8EC" opacity="0.22"/>
+  <path d="M0,520 L0,468 L240,446 L470,470 L700,450 L930,472 L1180,448 L1400,470 L1600,452 L1600,520 Z" fill="#8E9456" opacity="0.55"/>
+  <rect y="498" width="1600" height="46" fill="#FBF8EC" opacity="0.20"/>
+  <path d="M0,545 L80,503 L160,545 L240,499 L320,545 L400,505 L480,545 L560,501 L640,545 L720,503 L800,545 L880,499 L960,545 L1040,505 L1120,545 L1200,501 L1280,545 L1360,503 L1440,545 L1520,501 L1600,545 L1600,566 L0,566 Z" fill="#4F5A2E" opacity="0.82"/>
+  <rect y="556" width="1600" height="320" fill="url(#water)"/>
+  <rect y="556" width="1600" height="6" fill="#FBF8EC" opacity="0.35"/>
+  <g transform="translate(900,604)">
+    <path d="M0,42 L20,-4 L40,42 Z" fill="#FBF8EC" opacity="0.9"/>
+    <rect x="18" y="42" width="4" height="3" fill="#3A4321"/>
+    <rect y="60" width="60" height="3" x="-10" fill="#FBF8EC" opacity="0.25"/>
+  </g>
+  <path d="M0,1000 L0,812 L130,734 L255,812 L380,716 L505,812 L630,742 L755,812 L880,724 L1005,812 L1130,742 L1255,812 L1380,720 L1505,812 L1600,762 L1600,1000 Z" fill="#3A4321"/>
+</svg>

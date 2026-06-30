@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A lighthouse on a pine headland over the water">
+  <defs>
+    <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D8D9BC"/>
+      <stop offset="1" stop-color="#AEB374"/>
+    </linearGradient>
+    <linearGradient id="water3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#93A062"/>
+      <stop offset="1" stop-color="#647044"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="520" fill="url(#sky3)"/>
+  <ellipse cx="430" cy="240" rx="120" ry="120" fill="#FBF8EC" opacity="0.18"/>
+  <path d="M820,512 L900,470 L980,512 L1060,468 L1140,512 L1220,470 L1300,512 L1380,470 L1460,512 L1540,472 L1600,512 L1600,532 L820,532 Z" fill="#4F5A2E" opacity="0.78"/>
+  <rect y="512" width="1600" height="488" fill="url(#water3)"/>
+  <rect y="512" width="1600" height="6" fill="#FBF8EC" opacity="0.32"/>
+  <path d="M0,1000 L0,548 Q140,524 250,548 Q372,576 470,632 L520,1000 Z" fill="#3A4321"/>
+  <g transform="translate(250,392)">
+    <rect x="-30" y="150" width="60" height="46" fill="#3A4321"/>
+    <path d="M-16,150 L-11,0 L11,0 L16,150 Z" fill="#FBF8EC"/>
+    <rect x="-13" y="42" width="26" height="20" fill="#B26A3C"/>
+    <rect x="-10" y="-24" width="20" height="24" fill="#8E2F2A"/>
+    <path d="M-13,-24 L0,-40 L13,-24 Z" fill="#3A4321"/>
+    <circle cx="0" cy="-12" r="4.5" fill="#FBF8EC"/>
+    <path d="M9,-12 L120,-44 M9,-12 L120,22" stroke="#FBF8EC" stroke-width="3" opacity="0.30"/>
+  </g>
+  <path d="M1040,1000 L1040,840 L1160,778 L1280,840 L1400,786 L1520,840 L1600,800 L1600,1000 Z" fill="#3A4321"/>
+</svg>

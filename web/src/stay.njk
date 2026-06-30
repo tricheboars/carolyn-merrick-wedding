@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+title: Stay
+permalink: /stay/
+---
+<section class="section section--olive">
+  <div class="wrap center stack">
+    <span class="label eyebrow">Where to Stay</span>
+    <h2>A place to rest your head</h2>
+    <p class="lead">A few options near the inn, from the water's edge to nearby Brunswick.</p>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="grid grid--2">
+      {% for s in site.stay %}
+      <div class="card">
+        <h3>{{ s.name }}</h3>
+        <p>{{ s.note }}</p>
+        {% if s.url and s.url != '#' %}<p><a href="{{ s.url }}">Details →</a></p>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <p class="note center" style="margin-top:24px">Booking details and any room blocks will be confirmed here soon.</p>
+  </div>
+</section>

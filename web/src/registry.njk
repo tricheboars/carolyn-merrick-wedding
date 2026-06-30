@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+title: Registry
+permalink: /registry/
+---
+<section class="section section--scene" style="--scene:var(--hero-photo)">
+  <div class="wrap center stack">
+    <span class="label eyebrow">With gratitude</span>
+    <h2>Registry</h2>
+    <p class="lead">Toward our first home together.</p>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="wrap" style="max-width:760px">
+    <p class="center" style="font-family:var(--font-serif); font-size:1.2rem">{{ site.registry.intro }}</p>
+
+    <div class="methods">
+      {% for m in site.registry.methods %}
+      <div class="method">
+        <i class="ti {{ m.icon }}" aria-hidden="true"></i>
+        <div><b>{{ m.label }}</b><span>{{ m.handle }}</span></div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="divider" style="margin-top:32px"><img src="/assets/svg/coupes.svg" alt="" width="78" height="54"></div>
+
+    <div class="card" x-data="{sent:false}">
+      <h3>{{ site.registry.note }}</h3>
+      <form class="form" @submit.prevent="sent=true" x-show="!sent">
+        <div class="field">
+          <label for="r-name">Your name</label>
+          <input id="r-name" name="name" type="text" placeholder="Jane &amp; John Smith" required>
+        </div>
+        <div class="field">
+          <label for="r-msg">A note (optional)</label>
+          <textarea id="r-msg" name="message" rows="3" placeholder="So we can thank you properly"></textarea>
+        </div>
+        <button class="btn btn--ink" type="submit">Let them know</button>
+      </form>
+      <p x-show="sent" x-cloak class="note">Thank you so much — we'll be in touch! <em>(Prototype: not yet wired to the API.)</em></p>
+    </div>
+  </div>
+</section>

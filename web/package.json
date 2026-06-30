@@ -1,0 +1,14 @@
+{
+  "name": "carolyn-merrick-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Guest-facing wedding site for Carolyn & Merrick — Aug 14 2027, Harpswell ME",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
