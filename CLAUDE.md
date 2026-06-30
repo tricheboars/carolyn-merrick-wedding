@@ -11,11 +11,10 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ## STATUS (2026-06-29) — single source of truth
 
-- **Phase 2 — Deployed (internal).** Coastal **slate/harbor-blue** theme; site +
-  working API **provisioned on a homelab LXC and serving** (verified HTTP 200 with the
-  prod Host header). Remaining to go public: HAProxy host route + Cloudflare CNAME
-  (gated — human/GUI on the production firewall). Deploy specifics live in private
-  session memory, not this repo.
+- **Phase 2 — LIVE.** Coastal **slate/harbor-blue** theme; the site + working API are
+  **deployed and live at https://merrolyn.moorelab.cloud** (Cloudflare → HAProxy →
+  homelab container; LAN via split-DNS). All existing homelab routes verified intact.
+  Deploy specifics (CT/IPs) live in private session memory, not this repo.
 - **Wedding facts:** **Carolyn Moore** (bride, Patrick's sister) + **Merrick Harris**
   (groom). **August 14, 2027** at **The Harpswell Inn**, 108 Lookout Point Rd,
   Harpswell, ME 04079 (coastal). **Registry = cash / house fund** (not item registry).

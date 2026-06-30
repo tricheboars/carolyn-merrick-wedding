@@ -209,3 +209,19 @@ IPs/CT IDs are kept in private session memory, never in this public repo.
 
 **Open / next:** finish the 2 routing steps to go public; couple content + engagement
 photo; accounts + SMS.
+
+### 2026-06-29 (LIVE) — site published at merrolyn.moorelab.cloud
+
+**Did (with explicit approval to touch the production firewall):**
+- Added the **HAProxy host route** on the production OPNsense (backend → the wedding
+  container, host ACL on the shared `moorelab-https` frontend), the **Cloudflare CNAME**
+  (proxied, via API), and **pi-hole split DNS** on both resolvers.
+- Did it safely: backed up the firewall config first, mirrored the existing pattern,
+  validated with `haproxy -c`, regression-tested that all existing routes stayed up,
+  with auto-rollback wired in. Hit (and fixed) a case-sensitivity gotcha in the
+  reload tooling along the way; the safety gate correctly prevented any breakage.
+- **Verified LIVE:** `https://merrolyn.moorelab.cloud` → 200 publicly and on LAN; the
+  API responds; moorelab.cloud / fast / ollama / openclaw all unaffected.
+
+**Note:** all internal IPs/CT details are kept in private session memory, never this
+public repo. **Open / next:** couple-specific content + engagement photo; accounts + SMS.
