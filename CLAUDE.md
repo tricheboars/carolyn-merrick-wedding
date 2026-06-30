@@ -11,9 +11,11 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ## STATUS (2026-06-29) — single source of truth
 
-- **Phase 1 — Prototype.** Repo live; site builds + screenshots verified; API
-  skeleton + deploy runbooks in. Live LXC provisioning is the remaining
-  (approval-gated) step.
+- **Phase 2 — Deployed (internal).** Coastal **slate/harbor-blue** theme; site +
+  working API **provisioned on a homelab LXC and serving** (verified HTTP 200 with the
+  prod Host header). Remaining to go public: HAProxy host route + Cloudflare CNAME
+  (gated — human/GUI on the production firewall). Deploy specifics live in private
+  session memory, not this repo.
 - **Wedding facts:** **Carolyn Moore** (bride, Patrick's sister) + **Merrick Harris**
   (groom). **August 14, 2027** at **The Harpswell Inn**, 108 Lookout Point Rd,
   Harpswell, ME 04079 (coastal). **Registry = cash / house fund** (not item registry).

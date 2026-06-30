@@ -187,3 +187,25 @@ won't auto-run prod changes — needs his explicit per-step go.
 
 **Open / next:** couple-specific content + engagement photo; accounts + SMS; then the
 gated provisioning.
+
+### 2026-06-29 (coastal re-skin + deploy) — provisioned, serving internally
+
+**Did:**
+- **Re-skinned olive → coastal slate/harbor-blue** (Patrick disliked the green).
+  Repointed the palette + every hardcoded green (overlays, nav/footer, borders,
+  favicon, coupe motif, theme-color). Cream + terracotta stay. **Diverges from the
+  couple's olive Save-the-Date** — noted in `07` (flag for the couple).
+- **Provisioned the site on a homelab LXC** (one container: nginx serves the static
+  build + reverse-proxies `/api/*` to the Fastify service running under systemd on
+  Node's `node:sqlite`). Deployed the current build + API. **Verified it serves —
+  HTTP 200 with the production Host header, `/api/*` proxying correctly.** Snapshotted
+  the OPNsense config first (rollback point).
+
+**Deliberately NOT auto-run (gated):** the production-firewall routing — the HAProxy
+host route + the Cloudflare CNAME. That HAProxy frontend serves *all* of moorelab.cloud;
+per the standing "OPNsense changes are hard-gated, never auto-executed" rule, those two
+~5-min steps are left for human/GUI execution (or an explicit "script it"). Internal
+IPs/CT IDs are kept in private session memory, never in this public repo.
+
+**Open / next:** finish the 2 routing steps to go public; couple content + engagement
+photo; accounts + SMS.
