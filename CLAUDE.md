@@ -9,7 +9,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ---
 
-## STATUS (2026-06-29) — single source of truth
+## STATUS (2026-06-30) — single source of truth
 
 - **Phase 2 — LIVE on the real domain.** Coastal **slate/harbor-blue** theme; site +
   working API live. **Engagement photos** in (couple hero + Our Story + a **Gallery**
@@ -19,6 +19,10 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   API globally via Cloudflare. **dev/prod are now SEPARATE containers** (own nginx +
   Fastify API + SQLite DB each): `merrolyn.moorelab.cloud` = **dev** (`noindex`),
   `merrolyn.com` = **prod** (clean DB). Deploy specifics (CT/IPs/CF zone) in private memory.
+  All public `TODO`s **softened to "Coming soon"/"TBA"** (real values pending). **Gotcha
+  (resolved):** the LAN Pi-holes had cached GoDaddy's old apex IP from before the CF
+  cutover → both flushed; if merrolyn.com ever shows GoDaddy's "coming soon" page again,
+  it's a stale client/DNS cache (hard-refresh / flush DNS), not the server.
 - **Wedding facts:** **Carolyn Moore** (bride, Patrick's sister) + **Merrick Harris**
   (groom). **August 14, 2027** at **The Harpswell Inn**, 108 Lookout Point Rd,
   Harpswell, ME 04079 (coastal). **Registry = cash / house fund** (not item registry).
@@ -37,17 +41,18 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   persist, admin list/CSV, verified end-to-end incl. CORS). Real **coastal-Maine photo
   backgrounds** (Lookout Point hero + South Harpswell + Casco Bay + Cribstone Bridge,
   license-clean, `/credits/`). Added **FAQ** + **Things to do** pages/content.
-- **NEXT:** (1) **registry handles** — `/registry/` still shows `@TODO` for Venmo/Zelle/
-  PayPal/mail and the site is now PUBLIC + indexable; fill real handles in
-  `web/src/_data/site.js` ASAP; (2) couple-specific content (exact times, dress code,
-  lodging block, their story); (3) accounts + SMS layer; (4) optional `dev → prod`
-  redirect; (5) optional: add merrolyn.com to the origin cert if you ever want CF SSL
-  "Full (strict)". **Audited 2026-06-30** (12-agent pass): deployment healthy, repo
-  clean of secrets, dev/prod isolation real — only open content gap is the registry handles.
-- **NEEDS PATRICK:** guest count; Twilio go-ahead; the engagement photo + real
-  schedule/lodging/registry details; the printed Save-the-Dates can now carry
-  `merrolyn.moorelab.cloud` (or the couple's domain if they buy one). (API building in
-  Node by default; Python still a one-word override.)
+- **NEXT:** (1) **registry handles** — `/registry/` now shows **"Coming soon"**; drop in
+  real Venmo/Zelle/PayPal/mail in `web/src/_data/site.js` + redeploy (build per env,
+  see `deploy/README.md`); (2) couple-specific content (exact times, dress code, lodging
+  block, their story); (3) accounts + SMS layer; (4) optional `dev → prod` redirect;
+  (5) optional: add merrolyn.com to the origin cert if you ever want CF SSL "Full
+  (strict)". **Audited 2026-06-30** (12-agent pass): deployment healthy, repo clean of
+  secrets, dev/prod isolation real — only open content gap is the real registry handles.
+- **NEEDS PATRICK:** **rotate the Cloudflare merrolyn.com DNS token** (it was pasted in
+  chat during the cutover — roll/delete it in CF → Profile → API Tokens; the DNS change is
+  already saved, so revoking changes nothing live); guest count; Twilio go-ahead; the real
+  schedule/lodging/registry details; printed Save-the-Dates can now carry **merrolyn.com**.
+  (API building in Node by default; Python still a one-word override.)
 
 ## Aesthetic direction (the north star)
 

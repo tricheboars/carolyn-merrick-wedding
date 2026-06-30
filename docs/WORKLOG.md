@@ -324,3 +324,22 @@ of IPs/secrets in tree + history, full RSVP→CSV API path works, all pages/imag
 Findings fixed: `/health` edge route (above). **Open item:** `/registry/` still renders
 literal `@TODO` payment placeholders — now public, needs real handles. Audit also left a
 couple test rows in the **dev** DB; purged afterward (prod never written).
+
+### 2026-06-30 (late) — placeholder sweep + the Pi-hole gotcha; called it for the night
+
+- **Softened every public `TODO`** to graceful copy (registry handles → "Coming soon",
+  schedule unknown times → "TBA", story/travel/lodging/FAQ/RSVP-deadline → "coming soon /
+  to be announced") in `web/src/_data/site.js` (+ fixed a stale "TODO" note in
+  `schedule.njk`). Rebuilt **both** envs, redeployed (atomic swap), verified **0** `TODO`
+  on the live prod pages. Real values still pending from the couple.
+- **Pi-hole stale-cache gotcha (RESOLVED).** Patrick saw merrolyn.com still showing
+  GoDaddy's parked "coming soon" page. Root cause: the LAN **Pi-holes had cached GoDaddy's
+  old apex A record** (`76.223.105.230`) from before the Cloudflare nameserver cutover, so
+  every LAN device was being sent straight to GoDaddy. Cloudflare itself was serving our
+  site fine (`cf-cache-status: DYNAMIC`, no page rules). Fix: `pihole restartdns reload` on
+  **both** pi-holes (`pihole`/`pihole2`) + local resolver flush → they now return the CF
+  anycast IPs and serve our site. Remaining client-side: browser HTTP/DNS cache → hard
+  refresh / incognito / cellular confirms. **Lesson:** after any registrar→Cloudflare
+  cutover, flush the lab Pi-holes or expect a stale-cache period on the LAN.
+- **End-of-night state:** merrolyn.com LIVE + correct on LAN and public; dev isolated;
+  repo pushed (`8e84a2e`). Open: real registry handles; rotate the pasted CF DNS token.
