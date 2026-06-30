@@ -26,20 +26,24 @@ permalink: /registry/
 
     <div class="divider" style="margin-top:32px"><img src="/assets/svg/coupes.svg" alt="" width="78" height="54"></div>
 
-    <div class="card" x-data="{sent:false}">
+    <div class="card" x-data="{ sent:false, busy:false,
+      async submit(e){ this.busy=true;
+        const fd=Object.fromEntries(new FormData(e.target).entries());
+        try{ await fetch((window.CM_API||'')+'/api/registry/ack',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(fd)}); }catch(_){}
+        this.sent=true; this.busy=false; } }">
       <h3>{{ site.registry.note }}</h3>
-      <form class="form" @submit.prevent="sent=true" x-show="!sent">
+      <form class="form" @submit.prevent="submit($event)" x-show="!sent">
         <div class="field">
           <label for="r-name">Your name</label>
           <input id="r-name" name="name" type="text" placeholder="Jane &amp; John Smith" required>
         </div>
         <div class="field">
           <label for="r-msg">A note (optional)</label>
-          <textarea id="r-msg" name="message" rows="3" placeholder="So we can thank you properly"></textarea>
+          <textarea id="r-msg" name="note" rows="3" placeholder="So we can thank you properly"></textarea>
         </div>
-        <button class="btn btn--ink" type="submit">Let them know</button>
+        <button class="btn btn--ink" type="submit" x-bind:disabled="busy" x-text="busy ? 'Sending…' : 'Let them know'">Let them know</button>
       </form>
-      <p x-show="sent" x-cloak class="note">Thank you so much — we'll be in touch! <em>(Prototype: not yet wired to the API.)</em></p>
+      <p x-show="sent" x-cloak class="note">Thank you so much — we'll be in touch!</p>
     </div>
   </div>
 </section>

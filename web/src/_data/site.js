@@ -30,6 +30,7 @@ module.exports = {
     { label: "Travel", url: "/travel/" },
     { label: "Stay", url: "/stay/" },
     { label: "Registry", url: "/registry/" },
+    { label: "FAQ", url: "/faq/" },
     { label: "RSVP", url: "/rsvp/" }
   ],
 
@@ -64,6 +65,25 @@ module.exports = {
     { name: "TODO room block", note: "If we secure a block + code, it goes here.", url: "#" }
   ],
 
+  thingsToDo: [
+    { name: "Cribstone Bridge & Land's End", note: "Drive out Bailey Island to the world's only granite cribstone bridge, and on to the views at Land's End." },
+    { name: "Mackerel Cove", note: "A postcard working lobster harbor on Bailey Island." },
+    { name: "Lobster on the water", note: "Cook's Lobster & Ale House and Dolphin Marina & Restaurant are local institutions." },
+    { name: "Giant Stairs", note: "A short, rocky coastal trail with open ocean views on Bailey Island." },
+    { name: "Brunswick & Portland", note: "Bowdoin College and Maine Street are ~20 min; Portland's Old Port and Portland Head Light ~45 min." }
+  ],
+
+  faq: [
+    { q: "What's the weather like in August?", a: "Coastal-Maine summer: warm days (mid-70s–80s°F) and cool evenings on the water. Bring a layer for the night." },
+    { q: "What should we wear?", a: "TODO — dress code (likely semi-formal/garden). Comfortable shoes are smart for grass and rocks." },
+    { q: "Is the celebration indoors or outdoors?", a: "TODO — most of the day is expected to be outdoors / tented on the point." },
+    { q: "Can I bring a plus-one?", a: "Your invitation and RSVP will show who's included. Questions? Just ask." },
+    { q: "Parking / is there a shuttle?", a: "Parking is at the inn. TODO — shuttle details if we run one (we'll text you)." },
+    { q: "Are kids welcome?", a: "TODO — confirm with the couple." },
+    { q: "What about gifts?", a: "Your presence is the gift. If you'd like, there's a house fund on the Registry page." },
+    { q: "How do I RSVP?", a: "Right here on the site — and once our number is live, by text too. Note any dietary needs on your RSVP." }
+  ],
+
   registry: {
     intro: "Your presence is the gift. If you'd like to help us build our first home together, a contribution to our house fund means the world — no registry, no shipping, just thank-yous from us.",
     methods: [
@@ -94,6 +114,9 @@ module.exports = {
       source: "https://commons.wikimedia.org/wiki/File:South_Harpswell,_Maine_-_panoramic_view.jpg" },
     { title: "Casco Bay, Maine", author: "Dougtone",
       license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
-      source: "https://commons.wikimedia.org/wiki/File:Casco_Bay_092108_140.jpg" }
+      source: "https://commons.wikimedia.org/wiki/File:Casco_Bay_092108_140.jpg" },
+    { title: "Bailey Island (Cribstone) Bridge, Harpswell", author: "Daderot",
+      license: "Public domain", licenseUrl: "",
+      source: "https://commons.wikimedia.org/wiki/File:Bailey_Island_Bridge,_Harpswell,_ME_-_panorama.jpg" }
   ]
 };

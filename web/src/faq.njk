@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+title: FAQ
+permalink: /faq/
+---
+<section class="section section--scene" style="--scene:url('/assets/img/casco-bay.jpg')">
+  <div class="wrap center stack">
+    <span class="label eyebrow">Good to know</span>
+    <h2>Questions &amp; Answers</h2>
+    <p class="lead">The things guests ask us most.</p>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="wrap" style="max-width:760px">
+    {% for item in site.faq %}
+    <div style="padding:18px 0; border-bottom:1px solid rgba(79,90,46,.18)">
+      <h3 style="margin:0 0 6px">{{ item.q }}</h3>
+      <p style="margin:0">{{ item.a }}</p>
+    </div>
+    {% endfor %}
+    <p class="note center" style="margin-top:22px">Still have a question? Soon you'll be able to just text us.</p>
+  </div>
+</section>

@@ -25,7 +25,7 @@
      The /assets/svg/scene-*.svg illustrations stay in the repo as alternates. */
   --hero-photo: url('/assets/img/hero-lookout-point.jpg');
   --scene-harbor: url('/assets/img/south-harpswell-pano.jpg');
-  --scene-lighthouse: url('/assets/img/casco-bay.jpg');
+  --scene-lighthouse: url('/assets/img/cribstone-bridge.jpg');
 }
 
 *,*::before,*::after{ box-sizing:border-box; }

@@ -36,3 +36,20 @@ permalink: /travel/
     </div>
   </div>
 </section>
+
+<section class="section section--olive">
+  <div class="wrap stack">
+    <div class="center stack" style="margin-bottom:8px">
+      <span class="label eyebrow">While you're here</span>
+      <h2>Things to do around Harpswell</h2>
+    </div>
+    <div class="grid grid--2">
+      {% for t in site.thingsToDo %}
+      <div class="card card--olive">
+        <h3>{{ t.name }}</h3>
+        <p style="margin:0">{{ t.note }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

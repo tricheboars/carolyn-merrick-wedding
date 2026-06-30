@@ -28,9 +28,14 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   system, layered SVG scene backgrounds, C&M monogram + favicon, Alpine RSVP form),
   Fastify+SQLite `api/` skeleton, `deploy/` runbooks. Builds clean (11ty v3.1.6),
   Chromium screenshots verified.
-- **NEXT:** wire RSVP → API; fill real content (times, lodging, story, registry
-  handles); swap the hero scene for the couple's engagement photo; then provision the
-  two LXC CTs (approval-gated; runbooks in `deploy/`).
+- **DONE+:** RSVP **wired to a working API** (Fastify + `node:sqlite`; RSVP + registry
+  persist, admin list/CSV, verified end-to-end incl. CORS). Real **coastal-Maine photo
+  backgrounds** (Lookout Point hero + South Harpswell + Casco Bay + Cribstone Bridge,
+  license-clean, `/credits/`). Added **FAQ** + **Things to do** pages/content.
+- **NEXT:** fill couple-specific content (exact times, dress code, lodging block,
+  their story, Venmo/Zelle handles — all in `web/src/_data/site.js`); swap hero for the
+  couple's engagement photo; build accounts/SMS; then provision the two LXC CTs
+  (approval-gated; runbooks in `deploy/`).
 - **Domain SET:** **`merrolyn.moorelab.cloud`** (Patrick's wildcard `*.moorelab.cloud`,
   Cloudflare DNS — no new cert). Flexible: one source in `web/src/_data/site.js`,
   `SITE_DOMAIN=...` override if the couple buy their own domain. DNS+HAProxy runbooks

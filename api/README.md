@@ -1,34 +1,42 @@
-# api/ — services (skeleton)
+# api/ — services
 
-Node + Fastify + SQLite. Runs as a `systemd` service on the **App LXC**, behind
-HAProxy at `/api/*` and `/sms-webhook`. Guest data and secrets stay on the box and
-are never committed (`.gitignore`).
+Node + Fastify + **SQLite via Node's built-in `node:sqlite`** (no native build).
+Runs as a `systemd` service on the **App LXC**, behind HAProxy at `/api/*` and
+`/sms-webhook`. Guest data + secrets stay on the box, never committed (`.gitignore`).
 
 ## Status
 
-Skeleton. Live today: `GET /health`, `GET /api/info`. Stubbed (501): `POST
-/api/rsvp`, `POST /api/registry/ack`, `POST /sms/webhook`. The schema
-(`schema.sql`) is the real target data model.
+Functional. Live endpoints:
+
+| Method + path | Does |
+|---|---|
+| `GET /health` | liveness |
+| `GET /api/info` | couple/date/venue |
+| `POST /api/rsvp` | persist an RSVP (household + guest + rsvp), validated |
+| `POST /api/registry/ack` | record a cash-fund "I sent a gift" note |
+| `GET /api/admin/rsvps` | list + headcount (token or localhost) |
+| `GET /api/admin/rsvps.csv` | CSV export (token or localhost) |
+| `POST /sms/webhook` | Twilio inbound — **stubbed** until the number is live |
+
+Admin routes require header `x-admin-token: $ADMIN_TOKEN`; if no token is set they
+fall back to localhost-only.
 
 ## Run
 
 ```bash
-npm install            # fastify + better-sqlite3 (native build) + dotenv
-cp .env.example .env
+npm install            # fastify + dotenv (pure JS — no compiler needed)
+cp .env.example .env   # set ADMIN_TOKEN + Twilio creds when ready
 npm run dev            # http://localhost:3000/health
 ```
 
-`better-sqlite3` is optional at boot — if it isn't installed, the server still
-starts in "skeleton mode" (no DB) so `/health` works.
+DB auto-creates at `data/app.db` from `schema.sql` on boot (gitignored).
 
-## Roadmap (build order)
+## Next
 
-1. Accounts — per-household `invite_code` → signed session cookie (+ magic-link).
-2. RSVP — persist to `rsvps`, link to household, fire a confirmation SMS.
-3. Registry — record cash-fund acknowledgements for thank-yous.
-4. Admin — guest list, headcount, dietary rollup, CSV export.
-5. SMS — Twilio send helpers + audience filters (RSVP status) + inbound webhook
-   with STOP/HELP consent handling.
+1. Accounts — per-household `invite_code` → signed session (gate RSVPs).
+2. Admin UI page (read the JSON/CSV behind auth).
+3. SMS — Twilio send helpers + audience filters (by RSVP status) + the inbound
+   webhook with STOP/HELP consent. See [`../docs/05-sms-cost.md`](../docs/05-sms-cost.md).
 
-See [`../docs/02-architecture.md`](../docs/02-architecture.md) and
+Schema + rationale: [`schema.sql`](schema.sql),
 [`../docs/06-stack-decision.md`](../docs/06-stack-decision.md).

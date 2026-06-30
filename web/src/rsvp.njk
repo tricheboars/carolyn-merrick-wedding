@@ -13,7 +13,12 @@ permalink: /rsvp/
 
 <section class="section section--cream">
   <div class="wrap" style="max-width:620px">
-    <form class="form" x-data="{ attending:'', party:1, sent:false }" @submit.prevent="sent=true">
+    <form class="form" @submit.prevent="submit($event)" x-data="{ attending:'', party:1, sent:false, error:false, busy:false,
+      async submit(e){ this.busy=true; this.error=false;
+        const fd=Object.fromEntries(new FormData(e.target).entries());
+        try{ const r=await fetch((window.CM_API||'')+'/api/rsvp',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(fd)}); if(!r.ok) throw 0; this.sent=true; }
+        catch(_){ this.error=true; }
+        finally{ this.busy=false; } } }">
       <div x-show="!sent">
         <div class="field">
           <label for="name">Full name(s)</label>
@@ -62,8 +67,9 @@ permalink: /rsvp/
           <textarea id="msg" name="message" rows="3" placeholder="Optional"></textarea>
         </div>
 
-        <button class="btn btn--ink" type="submit">Send RSVP</button>
-        <p class="note" style="margin-top:14px">Prototype — this form isn't wired to the API yet. Submitting just shows a preview message.</p>
+        <p x-show="error" x-cloak class="note" style="color:var(--brick)">Hmm — we couldn't reach the server just now. Please try again, or text us once our number is live.</p>
+        <button class="btn btn--ink" type="submit" x-bind:disabled="busy" x-text="busy ? 'Sending…' : 'Send RSVP'">Send RSVP</button>
+        <p class="note" style="margin-top:14px">Your reply goes straight to the couple's guest list. (Viewing the static preview without the server running? Submitting won't save.)</p>
       </div>
 
       <div x-show="sent" x-cloak class="center stack">

@@ -159,3 +159,31 @@ Nothing on live infra was touched this turn.
   non-secret) — offered delete+recreate for a fully clean slate.
 
 **Open / next:** decide push vs delete+recreate; then wire RSVP→API / fill real content.
+
+### 2026-06-29 ("do it all") — API wired, content, more imagery
+
+**Did:**
+- **API now functional** (`api/`, Fastify + Node built-in `node:sqlite` — no native
+  build). `POST /api/rsvp` persists household+guest+rsvp (validated); `POST
+  /api/registry/ack` records cash-fund notes; `GET /api/admin/rsvps[.csv]` (token or
+  localhost) gives list + headcount + CSV; SMS webhook still stubbed. Verified
+  end-to-end incl. CORS preflight + cross-origin POST + DB rows.
+- **Wired the RSVP + registry forms** to the API via Alpine fetch (graceful offline
+  fallback; busy/disabled states). API base auto-detects localhost vs same-origin.
+- **Content:** added **FAQ** page (data-driven, weather/dress/parking/gifts…; couple-
+  specifics marked TODO) and a **"Things to do around Harpswell"** section (Cribstone
+  Bridge, Mackerel Cove, lobster spots, Giant Stairs, Brunswick/Portland) — all real,
+  helpful, public facts. Nav gains FAQ.
+- **More imagery:** added the **Bailey Island Cribstone Bridge** panorama (PD) for the
+  story/schedule headers; credits updated (`/credits/` + CREDITS.md). 4 photos total.
+
+**Verified:** 11ty builds clean (10 pages); Chromium screenshots of story/faq/travel
+look right; API smoke tests green.
+
+**Did NOT do (gated):** provision live LXC CTs / touch OPNsense HAProxy / Cloudflare.
+I CAN reach opnsense-primary + proxmox2 by key from here, but per Patrick's standing
+"agents read-only on live infra; OPNsense changes hard-gated + snapshot-first" rule, I
+won't auto-run prod changes — needs his explicit per-step go.
+
+**Open / next:** couple-specific content + engagement photo; accounts + SMS; then the
+gated provisioning.
