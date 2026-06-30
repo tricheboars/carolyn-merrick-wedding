@@ -16,21 +16,22 @@ Two small Debian LXC containers:
 - **Web CT** — nginx serving `web/_site` at `/var/www/carolyn-merrick/`.
 - **App CT** — Node + Fastify (`api/`) as a `systemd` service + SQLite + Twilio.
 
-## Environments (dev / prod, one container, host-split)
+## Environments (dev / prod — separate containers)
 
-| Env | Host | Webroot | Notes |
-|---|---|---|---|
-| **dev** | `merrolyn.moorelab.cloud` | `/var/www/merrolyn-dev` | staging; `noindex` |
-| **prod** | `merrolyn.com` (+ `www`) | `/var/www/merrolyn-prod` | the real site |
+| Env | Host | Container | Webroot | Notes |
+|---|---|---|---|---|
+| **dev** | `merrolyn.moorelab.cloud` | dev web CT | `/var/www/merrolyn-dev` | staging; `noindex`; own API + DB (test data) |
+| **prod** | `merrolyn.com` (+ `www`) | prod web CT | `/var/www/merrolyn` | the real site; own API + **clean** DB + own admin token |
 
-nginx splits by `Host` (see `nginx-carolyn-merrick.conf`); both share the one Fastify
-API on `:3000`. Each env is built self-canonical via the one domain source in
-`web/src/_data/site.js`:
+Each environment is its **own LXC container** (own nginx + Fastify API + SQLite) so dev
+traffic/data never touches prod. HAProxy routes by `Host` to the right container (see
+`nginx-carolyn-merrick.conf` for the per-container server blocks). Each env is built
+self-canonical via the one domain source in `web/src/_data/site.js`:
 
 ```bash
 cd web
-SITE_DOMAIN=merrolyn.moorelab.cloud npx @11ty/eleventy   # -> deploy to merrolyn-dev
-SITE_DOMAIN=merrolyn.com            npx @11ty/eleventy   # -> deploy to merrolyn-prod
+SITE_DOMAIN=merrolyn.moorelab.cloud npx @11ty/eleventy   # -> deploy to the DEV CT  (/var/www/merrolyn-dev)
+SITE_DOMAIN=merrolyn.com            npx @11ty/eleventy   # -> deploy to the PROD CT (/var/www/merrolyn)
 ```
 
 prod = `merrolyn.com` rides Cloudflare proxy (Full SSL) onto the same origin as

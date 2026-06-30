@@ -11,12 +11,16 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ## STATUS (2026-06-29) — single source of truth
 
-- **Phase 2 — LIVE.** Coastal **slate/harbor-blue** theme; site + working API **live**
-  (Cloudflare → HAProxy → homelab container; LAN via split-DNS). **Primary domain is
-  now `merrolyn.com`** (Patrick's own, GoDaddy) — site canonical + HAProxy route
-  already switched; **pending** the Cloudflare zone-add + GoDaddy nameserver repoint
-  to serve there. `merrolyn.moorelab.cloud` keeps serving meanwhile. Deploy specifics
-  (CT/IPs) live in private session memory, not this repo.
+- **Phase 2 — LIVE (prod cutover in progress).** Coastal **slate/harbor-blue** theme;
+  site + working API live. **Engagement photos** in (couple hero + Our Story + a
+  **Gallery** page; Harpswell stock kept for location pages). **Environments:**
+  `merrolyn.moorelab.cloud` = **dev** (live, `noindex`), `merrolyn.com` = **prod**
+  (Patrick's own GoDaddy domain). merrolyn.com state: nameservers → Cloudflare ✅,
+  Universal SSL issued ✅ (mode Full), HAProxy answers it ✅ — **BUT the Cloudflare
+  apex record still points at GoDaddy's Website Builder, not our origin** (CF
+  auto-imported GoDaddy's `A` record on Add-Site); fix = apex → `CNAME moorelab.cloud`
+  (proxied) + `www → merrolyn.com`. **Splitting dev/prod into separate containers
+  (own infra each) this session.** Deploy specifics (CT/IPs) live in private memory.
 - **Wedding facts:** **Carolyn Moore** (bride, Patrick's sister) + **Merrick Harris**
   (groom). **August 14, 2027** at **The Harpswell Inn**, 108 Lookout Point Rd,
   Harpswell, ME 04079 (coastal). **Registry = cash / house fund** (not item registry).
@@ -35,14 +39,11 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   persist, admin list/CSV, verified end-to-end incl. CORS). Real **coastal-Maine photo
   backgrounds** (Lookout Point hero + South Harpswell + Casco Bay + Cribstone Bridge,
   license-clean, `/credits/`). Added **FAQ** + **Things to do** pages/content.
-- **NEXT:** fill couple-specific content (exact times, dress code, lodging block,
-  their story, Venmo/Zelle handles — all in `web/src/_data/site.js`); swap hero for the
-  couple's engagement photo; build accounts/SMS; then provision the two LXC CTs
-  (approval-gated; runbooks in `deploy/`).
-- **Domain SET:** **`merrolyn.moorelab.cloud`** (Patrick's wildcard `*.moorelab.cloud`,
-  Cloudflare DNS — no new cert). Flexible: one source in `web/src/_data/site.js`,
-  `SITE_DOMAIN=...` override if the couple buy their own domain. DNS+HAProxy runbooks
-  in `deploy/dns.md` + `deploy/haproxy.md` (done at CT-provision time).
+- **NEXT:** (1) **fix the CF apex record** → `CNAME moorelab.cloud` (proxied) so
+  merrolyn.com serves our site, not GoDaddy's builder — Patrick's CF dashboard, or give
+  a merrolyn.com-scoped CF token and I'll do it; (2) **dev/prod → separate containers**
+  (in progress this session); (3) couple-specific content + Venmo/Zelle handles;
+  (4) accounts + SMS layer; (5) optional `www → apex` + `dev → prod` redirects.
 - **NEEDS PATRICK:** guest count; Twilio go-ahead; the engagement photo + real
   schedule/lodging/registry details; the printed Save-the-Dates can now carry
   `merrolyn.moorelab.cloud` (or the couple's domain if they buy one). (API building in

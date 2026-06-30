@@ -276,3 +276,32 @@ is available. `merrolyn.moorelab.cloud` keeps serving until then.
 **Verified:** dev live (canonical=merrolyn.moorelab.cloud, noindex header, craft beer);
 prod root (canonical=merrolyn.com, craft beer). merrolyn.com goes live once the
 Cloudflare zone + GoDaddy nameservers are pointed.
+
+### 2026-06-29 (merrolyn.com DNS) — nameservers + SSL up; apex still points at GoDaddy
+
+- Patrick switched GoDaddy nameservers to **Cloudflare** (`dayana`/`trey.ns.cloudflare.com`)
+  and Cloudflare issued **Universal SSL** (mode **Full**). Verified externally: NS
+  correct, apex + www resolve to CF, the edge cert is valid for `merrolyn.com`.
+- **Snag:** `https://merrolyn.com` serves **GoDaddy's Website Builder** page, not our
+  site. Cause: when you Add-Site, Cloudflare **auto-imports the registrar's existing
+  records** — so the apex `A` still points at GoDaddy's IPs and CF proxies there.
+  **Fix (in CF DNS for merrolyn.com):** set apex `@` → `CNAME moorelab.cloud`
+  (proxied), `www` → `CNAME merrolyn.com` (proxied), and delete the GoDaddy `A`
+  records. My CF token is scoped to moorelab.cloud only, so this needs Patrick's
+  dashboard OR a merrolyn.com-scoped `Zone:DNS:Edit` token dropped on the firewall
+  (exact path kept in private notes). HAProxy already answers merrolyn.com + www.
+
+### 2026-06-29 (infra) — dev/prod split onto separate containers
+
+**Did:** moved from one host-split container to **separate infra per environment**:
+- **DEV** → the existing web CT (`merrolyn.moorelab.cloud`): own nginx + Fastify API +
+  DB (keeps the test data), `noindex`.
+- **PROD** → a **new** web CT (`merrolyn.com` + `www`): own nginx + Fastify API +
+  **fresh clean DB** + its **own** admin token. Node 24.
+- **HAProxy:** narrowed the dev ACL to `merrolyn.moorelab.cloud` → dev backend; added a
+  **prod** server/backend/ACL (`merrolyn.com www.merrolyn.com`) → prod backend. Same
+  safety gate (backup + `haproxy -c` + regression), zero downtime, moorelab/fast intact.
+
+**Verified at origin:** dev → dev CT (canonical moorelab, noindex header, API up),
+prod → prod CT (canonical merrolyn.com, API up, clean DB). Internal IPs/CT IDs stay in
+private memory. Updated `deploy/README.md` + `deploy/nginx-carolyn-merrick.conf`.
