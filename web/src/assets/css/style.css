@@ -7,8 +7,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@300;400;500;600&family=Sacramento&display=swap');
 
 :root {
-  --olive:#A8AC6A; --olive-deep:#8E9456; --cream:#FBF8EC; --cream-2:#F2EEDC;
-  --forest:#4F5A2E; --forest-deep:#3A4321; --ink:#2F3320;
+  /* Coastal palette: slate/harbor blue + cream + warm terracotta. NOTE: the var
+     names --olive/--forest are legacy (first olive theme); they now hold blues. */
+  --olive:#6E8FA3; --olive-deep:#587688; --cream:#FBF8EC; --cream-2:#F2EEDC;
+  --forest:#2C4456; --forest-deep:#1E3340; --ink:#22323C;
   --terracotta:#B26A3C; --brick:#8E2F2A; --amber:#C9963F;
 
   --font-script:'Sacramento', cursive;
@@ -64,7 +66,7 @@ p{ margin:0 0 1rem; }
 }
 .section--scene::before{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(58,67,33,.62), rgba(47,51,32,.72));
+  background:linear-gradient(180deg, rgba(30,51,64,.62), rgba(20,38,48,.72));
 }
 .section--scene .wrap{ position:relative; }
 .section--scene h2{ color:var(--cream); }
@@ -79,7 +81,7 @@ p{ margin:0 0 1rem; }
   position:sticky; top:0; z-index:30;
   display:flex; align-items:center; justify-content:space-between; gap:16px;
   padding:12px clamp(20px,5vw,40px);
-  background:rgba(58,67,33,.92); backdrop-filter:saturate(1.1) blur(4px);
+  background:rgba(30,51,64,.92); backdrop-filter:saturate(1.1) blur(4px);
   color:var(--cream);
 }
 .nav__mark{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--cream); }
@@ -105,7 +107,7 @@ p{ margin:0 0 1rem; }
 }
 .hero::before{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(47,51,32,.30), rgba(47,51,32,.66));
+  background:linear-gradient(180deg, rgba(20,38,48,.30), rgba(20,38,48,.66));
 }
 .hero__inner{ position:relative; margin:0 auto; padding:48px 20px; max-width:760px; }
 .hero__mono{ width:108px; height:108px; margin:0 auto 14px; }
@@ -134,7 +136,7 @@ p{ margin:0 0 1rem; }
 .grid--2{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
 .grid--3{ grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
 .card{
-  background:var(--cream); border:1px solid rgba(79,90,46,.18); border-radius:12px;
+  background:var(--cream); border:1px solid rgba(46,68,86,.18); border-radius:12px;
   padding:22px 24px;
 }
 .card h3{ color:var(--forest); }
@@ -150,7 +152,7 @@ p{ margin:0 0 1rem; }
 
 /* ---------- registry methods ---------- */
 .methods{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); margin-top:8px; }
-.method{ display:flex; align-items:center; gap:12px; background:var(--cream); border:1px solid rgba(79,90,46,.2); border-radius:12px; padding:16px 18px; }
+.method{ display:flex; align-items:center; gap:12px; background:var(--cream); border:1px solid rgba(46,68,86,.2); border-radius:12px; padding:16px 18px; }
 .method i{ font-size:24px; color:var(--terracotta); }
 .method b{ display:block; font-family:var(--font-serif); font-size:1.05rem; }
 .method span{ font-size:.9rem; color:var(--forest); }
@@ -161,7 +163,7 @@ p{ margin:0 0 1rem; }
 .field label{ display:block; font-family:var(--font-serif); letter-spacing:.04em; margin-bottom:6px; }
 .field input:not([type=radio]):not([type=checkbox]),.field select,.field textarea{
   width:100%; font-family:var(--font-sans); font-size:1rem; color:var(--ink);
-  padding:12px 14px; border:1px solid rgba(79,90,46,.35); border-radius:var(--radius);
+  padding:12px 14px; border:1px solid rgba(46,68,86,.35); border-radius:var(--radius);
   background:#fff;
 }
 .field input:focus,.field select:focus,.field textarea:focus{ outline:2px solid var(--olive); border-color:var(--olive); }

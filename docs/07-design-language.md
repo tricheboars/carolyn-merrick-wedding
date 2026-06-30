@@ -1,4 +1,4 @@
-# 07 — Design Language (coastal-Maine whimsy, olive edition)
+# 07 — Design Language (coastal-Maine whimsy)
 
 > **Source of truth: the couple's actual Save-the-Date** (received 2026-06-29).
 > This OVERRIDES the earlier "pastel fog-blue / sea-glass" guess in `00-vision.md`.
@@ -15,17 +15,24 @@ coastal-Maine warmth — olive green + cream + a champagne/terracotta glow, hand
 single-line illustrations, lots of negative space. Hand-touched, not cluttered.
 "Pastel whimsy" reads here as **muted/earthy whimsy**, not baby pastels.
 
-## Palette (pulled from the Save-the-Date)
+## Palette — coastal (current)
+
+> **Changed 2026-06-29:** Patrick swapped the olive/citron green for a **coastal
+> slate / harbor-blue** palette (he disliked the green). This **diverges from the
+> couple's Save-the-Date olive** — worth flagging to the couple if they want a say.
+> Cream + warm terracotta accents stay (blue + the warm sunset photos is a classic
+> coastal pairing). The CSS var names `--olive`/`--forest` are now legacy and hold blues.
 
 | Token | Hex | Role |
 |---|---|---|
-| `--olive` | `#A8AC6A` | Primary background (the STD green) |
-| `--olive-deep` | `#8E9456` | Hover/contrast olive, subtle fills |
-| `--cream` | `#FBF8EC` | Script + text on olive; alt section background |
-| `--forest` | `#4F5A2E` | Hand-drawn line art, footer, deep accents |
-| `--ink` | `#2F3320` | Warm near-black — body text on cream sections |
-| `--terracotta` | `#B26A3C` | Warm accent (from the photo's jacket tones) |
-| `--brick` | `#8E2F2A` | Rare pop (the red sweater) — use *very* sparingly |
+| `--olive` (sea) | `#6E8FA3` | Primary slate-blue surface (sections, cards) |
+| `--olive-deep` | `#587688` | Deeper slate |
+| `--cream` | `#FBF8EC` | Script + text on blue; alt section background |
+| `--forest` (navy) | `#2C4456` | Headings, line art, ink button, deep accents |
+| `--forest-deep` | `#1E3340` | Footer / nav / photo-overlay base |
+| `--ink` | `#22323C` | Navy near-black — body text on cream sections |
+| `--terracotta` | `#B26A3C` | Warm accent (complements the blue) |
+| `--brick` | `#8E2F2A` | Rare pop — use *very* sparingly |
 | `--amber` | `#C9963F` | Soft highlight / link underline |
 
 **Contrast rule (a11y):** cream-on-olive is gorgeous but **low contrast** — reserve
