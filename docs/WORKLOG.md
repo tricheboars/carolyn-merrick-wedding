@@ -413,3 +413,19 @@ full AA needs a darker band, design call); the cribstone header stays granite-te
 `web/_site` → proxmox2 → `pct exec 205`, extract to `/var/www/merrolyn-dev.new`, swap.
 **Next:** Patrick eyeballs dev on his phone → same build with
 `SITE_DOMAIN=merrolyn.com` → CT 206 `/var/www/merrolyn` to promote to prod.
+
+### 2026-07-02 (later) — PROMOTED TO PROD; 27/27 read-only verification
+
+Patrick approved dev → built `SITE_DOMAIN=merrolyn.com`, atomic-swapped onto CT 206.
+**Live prod verified 27/27 by a 5-agent read-only pass** (no form submissions — prod DB
+untouched): CSS/nav/timeline/radio fixes all measured live; phones fetch only mobile
+image variants through Cloudflare while 1280px still gets originals; gallery serves
+-400s (~0.56MB); all 10 pages clean at 390+1280 with zero horizontal overflow at 320
+and zero console errors; RSVP markup correct ("not yet saved" gone); prod has **no
+noindex** while dev keeps it (split intact); canonicals/og/HSTS fine; `/health` 200;
+`www` 301s. Informational finds for later: the **unversioned** `/assets/css/style.css`
+URL is edge-cached stale until ~Jul 9 (harmless — pages link the `?v=` URL; current CF
+token lacks cache-purge perm); no `og:image` yet (roadmap item 5); `/credits/` copy
+still says "prototype" (catch in the copy pass); CF auto-injects its analytics beacon
+(LAN blocks it; disable in CF zone settings if unwanted). **The mobile-audit cycle is
+closed: found → fixed → dev-verified → promoted → prod-verified.**
