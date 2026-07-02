@@ -83,25 +83,27 @@ module.exports = {
     { q: "How do I RSVP?", a: "Right here on the site — and once our number is live, by text too. Note any dietary needs on your RSVP." }
   ],
 
+  // w/h are the intrinsic pixel dims (verified with `identify`) so the masonry can
+  // reserve correct boxes before lazy images load; -400/-800 variants feed srcset.
   gallery: [
-    { src: "/assets/img/gallery/g01.jpg", alt: "Carolyn & Merrick by the tent in the redwoods" },
-    { src: "/assets/img/gallery/g02.jpg", alt: "Carolyn & Merrick, in black & white" },
-    { src: "/assets/img/gallery/g03.jpg", alt: "Among the redwoods" },
-    { src: "/assets/img/gallery/g04.jpg", alt: "The ring" },
-    { src: "/assets/img/gallery/g05.jpg", alt: "A quiet moment" },
-    { src: "/assets/img/gallery/g06.jpg", alt: "On the foggy coast" },
-    { src: "/assets/img/gallery/g07.jpg", alt: "In the trees" },
-    { src: "/assets/img/gallery/g08.jpg", alt: "Autumn in the forest" },
-    { src: "/assets/img/gallery/g09.jpg", alt: "Carolyn" },
-    { src: "/assets/img/gallery/g10.jpg", alt: "By the sea" },
-    { src: "/assets/img/gallery/g11.jpg", alt: "Together on the beach" },
-    { src: "/assets/img/gallery/g12.jpg", alt: "The two of them" }
+    { src: "/assets/img/gallery/g01.jpg", w: 1500, h: 995,  alt: "Carolyn & Merrick by the tent in the redwoods" },
+    { src: "/assets/img/gallery/g02.jpg", w: 1200, h: 1500, alt: "Carolyn & Merrick, in black & white" },
+    { src: "/assets/img/gallery/g03.jpg", w: 995,  h: 1500, alt: "Among the redwoods" },
+    { src: "/assets/img/gallery/g04.jpg", w: 1500, h: 995,  alt: "The ring" },
+    { src: "/assets/img/gallery/g05.jpg", w: 995,  h: 1500, alt: "A quiet moment" },
+    { src: "/assets/img/gallery/g06.jpg", w: 995,  h: 1500, alt: "On the foggy coast" },
+    { src: "/assets/img/gallery/g07.jpg", w: 1000, h: 1500, alt: "In the trees" },
+    { src: "/assets/img/gallery/g08.jpg", w: 1000, h: 1500, alt: "Autumn in the forest" },
+    { src: "/assets/img/gallery/g09.jpg", w: 1000, h: 1500, alt: "Carolyn" },
+    { src: "/assets/img/gallery/g10.jpg", w: 1000, h: 1500, alt: "By the sea" },
+    { src: "/assets/img/gallery/g11.jpg", w: 1000, h: 1500, alt: "Together on the beach" },
+    { src: "/assets/img/gallery/g12.jpg", w: 1000, h: 1500, alt: "The two of them" }
   ],
 
   registry: {
     intro: "Your presence is the gift. If you'd like to help us build our first home together, a contribution to our house fund means the world — no registry, no shipping, just thank-yous from us.",
     methods: [
-      { label: "Venmo", handle: "Coming soon", icon: "ti-brand-venmo" },
+      { label: "Venmo", handle: "Coming soon", icon: "ti-cash" }, // ti-brand-venmo doesn't exist in Tabler v3
       { label: "Zelle", handle: "Coming soon", icon: "ti-device-mobile" },
       { label: "PayPal", handle: "Coming soon", icon: "ti-brand-paypal" },
       { label: "By mail", handle: "Coming soon", icon: "ti-mail" }
@@ -110,7 +112,7 @@ module.exports = {
   },
 
   rsvp: {
-    deadline: "To be announced",
+    deadline: "a date we'll announce soon",   // becomes e.g. "June 1, 2027" — page reads "By {deadline}."
     note: "RSVP online below. Prefer texting? Once our number is live you'll be able to RSVP by SMS too."
   },
 

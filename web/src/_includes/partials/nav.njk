@@ -4,7 +4,7 @@
   </a>
   <ul class="nav__links">
     {% for item in site.nav %}
-      <li><a href="{{ item.url }}"{% if item.url == '/rsvp/' %} class="nav__cta"{% endif %}>{{ item.label }}</a></li>
+      <li><a href="{{ item.url }}"{% if item.url == '/rsvp/' %} class="nav__cta"{% endif %}{% if item.url == page.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
     {% endfor %}
   </ul>
 </nav>

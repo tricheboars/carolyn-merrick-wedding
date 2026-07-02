@@ -14,9 +14,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
+  {% if page.url == '/' %}
+  <link rel="preload" as="image" href="/assets/img/hero-couple-mobile.jpg" media="(max-width:680px)">
+  <link rel="preload" as="image" href="/assets/img/hero-couple.jpg" media="(min-width:680.1px)">
+  {% endif %}
   <link rel="stylesheet" href="/assets/css/style.css?v={{ build.time }}">
   <script>window.CM_API=(['localhost','127.0.0.1'].includes(location.hostname))?'http://localhost:3000':'';</script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+  <script defer src="/assets/js/alpine.min.js?v={{ build.time }}"></script>
 </head>
 <body>
   <a href="#main" class="sr-only">Skip to content</a>

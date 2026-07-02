@@ -43,11 +43,11 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   license-clean, `/credits/`). Added **FAQ** + **Things to do** pages/content.
 - **NEXT:** (1) **registry handles** — `/registry/` now shows **"Coming soon"**; drop in
   real Venmo/Zelle/PayPal/mail in `web/src/_data/site.js` + redeploy (build per env,
-  see `deploy/README.md`); (2) **mobile site** — audit DONE 2026-07-01 (50-agent
-  screenshot audit at 320/390px, adversarially verified: 34 confirmed findings, 0
-  refuted) → apply the punch list in
-  [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md) + redeploy;
-  **P1 = RSVP copy bug: live prod success message says "not yet saved" (it does save)**; (3) **guest-experience roadmap** (concert calendar,
+  see `deploy/README.md`); (2) **mobile site** — audit DONE, **all fixes implemented + 43/43
+  re-verified on DEV (2026-07-02)** ([`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md)
+  has the punch list; WORKLOG has the verification): **prod still serves the old build**
+  incl. the "not yet saved" RSVP copy bug → Patrick reviews dev on his phone, then
+  promote (build `SITE_DOMAIN=merrolyn.com` → CT 206); (3) **guest-experience roadmap** (concert calendar,
   restaurant guide, guest calendars, icons/OG image, rideshare info, accuracy+linking
   pass, human-voice copy pass, privacy posture) →
   [`docs/08-guest-experience-roadmap.md`](docs/08-guest-experience-roadmap.md);

@@ -13,27 +13,29 @@ permalink: /rsvp/
 
 <section class="section section--cream">
   <div class="wrap" style="max-width:620px">
-    <form class="form" @submit.prevent="submit($event)" x-data="{ attending:'', party:1, sent:false, error:false, busy:false,
-      async submit(e){ this.busy=true; this.error=false;
+    <form class="form" onsubmit="return false" @submit.prevent="submit($event)" x-data="{ attending:'', party:1, sent:false, error:'', busy:false,
+      async submit(e){ this.busy=true; this.error='';
         const fd=Object.fromEntries(new FormData(e.target).entries());
-        try{ const r=await fetch((window.CM_API||'')+'/api/rsvp',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(fd)}); if(!r.ok) throw 0; this.sent=true; }
-        catch(_){ this.error=true; }
+        try{ const r=await fetch((window.CM_API||'')+'/api/rsvp',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(fd)});
+          if(r.ok){ this.sent=true; this.$nextTick(()=>e.target.scrollIntoView({behavior:'smooth',block:'center'})); }
+          else{ this.error='form'; } }
+        catch(_){ this.error='network'; }
         finally{ this.busy=false; } } }">
       <div x-show="!sent">
         <div class="field">
           <label for="name">Full name(s)</label>
-          <input id="name" name="name" type="text" placeholder="Jane &amp; John Smith" required>
+          <input id="name" name="name" type="text" placeholder="Jane &amp; John Smith" autocomplete="name" required>
         </div>
 
         <div class="field">
           <label for="contact">Email or mobile</label>
-          <input id="contact" name="contact" type="text" placeholder="So we can send updates" required>
+          <input id="contact" name="contact" type="text" placeholder="So we can send updates" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false" required>
         </div>
 
         <div class="field">
           <label>Will you join us?</label>
-          <label class="choice"><input type="radio" name="attending" value="yes" x-model="attending"> Joyfully accepts</label>
-          <label class="choice"><input type="radio" name="attending" value="no" x-model="attending"> Regretfully declines</label>
+          <label class="choice"><input type="radio" name="attending" value="yes" x-model="attending" required> Joyfully accepts</label>
+          <label class="choice"><input type="radio" name="attending" value="no" x-model="attending" required> Regretfully declines</label>
         </div>
 
         <template x-if="attending === 'yes'">
@@ -67,15 +69,15 @@ permalink: /rsvp/
           <textarea id="msg" name="message" rows="3" placeholder="Optional"></textarea>
         </div>
 
-        <p x-show="error" x-cloak class="note" style="color:var(--brick)">Hmm — we couldn't reach the server just now. Please try again, or text us once our number is live.</p>
+        <p x-show="error" x-cloak class="note" style="color:var(--brick)" x-text="error === 'form' ? 'Something in the form needs another look. Please check your answers and send it again.' : 'We couldn\'t reach the server just now. Please try again in a minute.'"></p>
         <button class="btn btn--ink" type="submit" x-bind:disabled="busy" x-text="busy ? 'Sending…' : 'Send RSVP'">Send RSVP</button>
-        <p class="note" style="margin-top:14px">Your reply goes straight to the couple's guest list. (Viewing the static preview without the server running? Submitting won't save.)</p>
+        <p class="note" style="margin-top:14px">Your reply goes straight to the couple's guest list.</p>
       </div>
 
       <div x-show="sent" x-cloak class="center stack">
         <div class="divider"><img src="/assets/svg/coupes.svg" alt="" width="78" height="54"></div>
-        <h3 x-text="attending === 'no' ? 'We\'ll miss you!' : 'Thank you — we can\'t wait!'"></h3>
-        <p class="note">Your reply was captured by the prototype (not yet saved). The real RSVP will land in our guest list and trigger a confirmation text.</p>
+        <h3 x-text="attending === 'no' ? 'We\'ll miss you!' : 'Thank you! We can\'t wait to see you.'"></h3>
+        <p class="note">Your RSVP is saved on the couple's guest list. Need to change anything later? Just send the form again with your update.</p>
       </div>
     </form>
   </div>

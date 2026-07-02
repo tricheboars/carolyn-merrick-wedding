@@ -28,6 +28,7 @@
   --hero-photo: url('/assets/img/hero-couple.jpg');        /* the couple on the coast */
   --scene-harbor: url('/assets/img/south-harpswell-pano.jpg');   /* Harpswell (location) */
   --scene-lighthouse: url('/assets/img/cribstone-bridge.jpg');   /* Harpswell (location) */
+  --scene-story: url('/assets/img/story-couple.jpg');            /* engagement session */
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -94,9 +95,10 @@ p{ margin:0 0 1rem; }
   border-bottom:1.5px solid transparent;
 }
 .nav__links a:hover{ border-color:var(--cream); opacity:1; }
-.nav__cta{
+.nav__links a[aria-current="page"]{ border-color:var(--cream); opacity:1; }
+.nav__links a.nav__cta{
   border:1.5px solid var(--cream); border-radius:var(--radius);
-  padding:7px 16px !important; border-bottom-width:1.5px !important;
+  padding:7px 16px;
 }
 
 /* ---------- hero (photo-forward, card-back style) ---------- */
@@ -147,7 +149,7 @@ p{ margin:0 0 1rem; }
 .timeline{ list-style:none; margin:0; padding:0; max-width:680px; }
 .timeline li{ display:grid; grid-template-columns:120px 1fr; gap:18px; padding:18px 0; border-bottom:1px solid rgba(255,255,255,.22); }
 .timeline .t{ font-family:var(--font-serif); font-size:1.15rem; letter-spacing:.04em; }
-.timeline .d{ font-size:.78rem; text-transform:uppercase; letter-spacing:.16em; opacity:.8; }
+.timeline .d{ font-size:.9rem; text-transform:uppercase; letter-spacing:.08em; }
 .timeline h3{ margin:.1em 0; }
 
 /* ---------- registry methods ---------- */
@@ -167,9 +169,9 @@ p{ margin:0 0 1rem; }
   background:#fff;
 }
 .field input:focus,.field select:focus,.field textarea:focus{ outline:2px solid var(--olive); border-color:var(--olive); }
-.field label.choice{ display:flex; align-items:center; gap:10px; font-weight:400; margin:8px 0; cursor:pointer; }
-.field label.choice input{ width:auto; accent-color:var(--forest); }
-.note{ font-size:.92rem; color:var(--forest); }
+.field label.choice{ display:flex; align-items:center; gap:10px; font-weight:400; padding:8px 0; margin:0; min-height:44px; cursor:pointer; }
+.field label.choice input{ width:20px; height:20px; accent-color:var(--forest); }
+.note{ font-size:1rem; color:var(--forest); }
 
 /* ---------- coupe motif divider ---------- */
 .divider{ display:flex; justify-content:center; padding:8px 0; }
@@ -185,6 +187,7 @@ p{ margin:0 0 1rem; }
 /* ---------- misc ---------- */
 .eyebrow{ margin-bottom:10px; color:var(--terracotta); }
 .section--scene .eyebrow{ color:var(--cream); opacity:.85; }
+.section--olive .eyebrow{ color:var(--cream); }
 .stack > * + *{ margin-top:1rem; }
 .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
 [x-cloak]{ display:none !important; }
@@ -196,7 +199,23 @@ p{ margin:0 0 1rem; }
 .gallery a:hover img{ transform:scale(1.03); filter:saturate(1.06); }
 @media (max-width:560px){ .gallery{ columns:2 150px; } }
 
+/* below ~768px the single-row nav can't fit anyway: stack it and let it scroll away
+   instead of pinning 140-180px of header over small screens */
+@media (max-width:767px){
+  .nav{ position:static; flex-direction:column; gap:10px; }
+  .nav__links{ justify-content:center; gap:2px 8px; }
+  .nav__links a{ display:inline-block; padding:10px 8px; font-size:.9rem; }
+  .nav__links a.nav__cta{ padding:10px 16px; }
+}
+
 @media (max-width:680px){
-  .nav{ flex-direction:column; gap:10px; }
-  .timeline li{ grid-template-columns:90px 1fr; }
+  .timeline li{ grid-template-columns:104px 1fr; }
+  .timeline .d{ white-space:nowrap; }
+  /* phones get right-sized photo variants (CSS backgrounds can't use srcset) */
+  :root{
+    --hero-photo:url('/assets/img/hero-couple-mobile.jpg');
+    --scene-harbor:url('/assets/img/south-harpswell-pano-m.jpg');
+    --scene-lighthouse:url('/assets/img/cribstone-bridge-m.jpg');
+    --scene-story:url('/assets/img/story-couple-900.jpg');
+  }
 }

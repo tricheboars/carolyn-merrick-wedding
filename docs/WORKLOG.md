@@ -379,3 +379,37 @@ token. Care goes into what's next: gate the guest-added calendar behind accounts
 (never public "who's away when"), set Venmo private before publishing handles, decide
 public-vs-passcode for schedule/gallery **before invitations print**, rate-limit the
 RSVP POST, purge the DB after the wedding. Full write-up in doc 08 §10.
+
+### 2026-07-02 — ALL audit fixes implemented + deployed to DEV + re-verified (43/43)
+
+**Every punch-list item from doc 09 is now live on dev** (`merrolyn.moorelab.cloud`);
+**prod untouched, awaiting Patrick's review.** Highlights: RSVP prototype copy replaced
+(success now says the RSVP is saved; error copy split into form-vs-network; all
+human-voice, no em dashes), `required` on attending, Alpine **self-hosted** at
+`/assets/js/alpine.min.js` (+`onsubmit="return false"` guard), success scrolls into
+view, autocomplete/autocapitalize on name+contact. CSS: cream eyebrows on olive bands,
+nav static + ~45px tap targets + `aria-current` underline + fixed CTA pill (no more
+`!important`), timeline `.9rem`/nowrap/104px column, 44px radio rows w/ 20px controls,
+`.note` 1rem, Maps link → `btn--ink`, Venmo icon → `ti-cash`. Images: ImageMagick
+variants (hero 604→137KB square crop — couple framing verified; story 457→85KB; pano
+385→75KB; cribstone 437→76KB water-side crop — NOTE the original is all granite
+foundation, no scenic crop exists) wired via `@media (max-width:680px)` `:root`
+overrides (inline `--scene` urls moved to vars first — inline style beats stylesheet);
+hero preloads on `/` only; gallery srcset 400/800 + true `{w}w` descriptors + real
+width/height attrs (2x phone: ~3.2MB → ~583KB measured). Nav breakpoint split to
+**767px** (fixes the pre-existing 681–767px sticky-wrap band); images/timeline stay 680.
+
+**Verified by a 9-agent adversarial pass against dev: 43/43 checks passed, 0 failed.**
+Includes a CDP-driven functional test: empty-attending blocked natively (no request),
+happy path lands confirmation on-screen, busy state real; net-log proof phones fetch
+only the mobile variants (~211KB total on `/` vs ~990KB) and desktop still gets
+originals; 0 horizontal overflow on all 10 pages at 320px; noindex + canonicals intact;
+deployed assets byte-identical to source. The one test RSVP row ("TEST Claude verify
+2026-07-02 ignore") was **purged from the dev DB** (rsvps=0, guests=0). Known accepted
+limits: eyebrow contrast tops out at 3.23:1 on the #6E8FA3 band (AA-large only —
+full AA needs a darker band, design call); the cribstone header stays granite-textured.
+
+**Deploy note:** dev deploys = build with `SITE_DOMAIN=merrolyn.moorelab.cloud`, tar
+`web/_site` → proxmox2 → `pct exec 205`, extract to `/var/www/merrolyn-dev.new`, swap.
+**Next:** Patrick eyeballs dev on his phone → same build with
+`SITE_DOMAIN=merrolyn.com` → CT 206 `/var/www/merrolyn` to promote to prod.
