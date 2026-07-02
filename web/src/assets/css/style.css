@@ -131,6 +131,8 @@ p{ margin:0 0 1rem; }
 .btn--ghost:hover{ background:var(--cream); color:var(--forest-deep); }
 .btn--ink{ border-color:var(--forest); background:var(--forest); color:var(--cream); }
 .btn--ink:hover{ background:transparent; color:var(--forest); }
+.btn--ghost-ink{ background:transparent; color:var(--forest); border-color:var(--forest); }
+.btn--ghost-ink:hover{ background:var(--forest); color:var(--cream); }
 .btn-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:22px; }
 
 /* ---------- cards / grids ---------- */
@@ -191,6 +193,29 @@ p{ margin:0 0 1rem; }
 .stack > * + *{ margin-top:1rem; }
 .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
 [x-cloak]{ display:none !important; }
+
+/* ---------- music calendar ---------- */
+.cal{ background:var(--cream); border:1px solid rgba(46,68,86,.18); border-radius:12px; overflow:hidden; }
+.cal__head{ display:grid; grid-template-columns:repeat(7,1fr); background:var(--forest); color:var(--cream); }
+.cal__head div{ padding:9px 4px; text-align:center; font-family:var(--font-serif); text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; }
+.cal__grid{ display:grid; grid-template-columns:repeat(7,1fr); }
+.cal__cell{ min-height:78px; padding:6px 7px; border-top:1px solid rgba(46,68,86,.12); border-left:1px solid rgba(46,68,86,.12); }
+.cal__grid .cal__cell:nth-child(7n+1){ border-left:none; }
+.cal__num{ font-family:var(--font-serif); font-size:.95rem; }
+.cal__cell--out{ background:rgba(46,68,86,.05); }
+.cal__cell--out .cal__num{ opacity:.45; }
+.cal__cell--wedding{ background:var(--forest); color:var(--cream); }
+.cal__tag{ display:block; margin-top:4px; font-family:var(--font-serif); text-transform:uppercase; letter-spacing:.1em; font-size:.62rem; line-height:1.4; }
+.cal__evt{ display:block; margin-top:4px; padding:3px 6px; background:var(--cream-2); border-radius:6px; font-size:.72rem; line-height:1.35; text-decoration:none; }
+.cal__evt:hover{ background:var(--olive); color:var(--cream); }
+.evtlist{ list-style:none; margin:0; padding:0; max-width:680px; }
+.evtlist li{ display:grid; grid-template-columns:104px 1fr; gap:18px; padding:16px 0; border-bottom:1px solid rgba(46,68,86,.18); }
+.evtlist .d{ font-family:var(--font-serif); font-size:1.05rem; }
+@media (max-width:680px){
+  .cal__cell{ min-height:58px; padding:4px 5px; }
+  .cal__tag{ font-size:.5rem; letter-spacing:.04em; }
+  .cal__evt{ padding:2px 4px; font-size:.62rem; }
+}
 
 /* ---------- gallery (masonry) ---------- */
 .gallery{ columns:3 260px; column-gap:14px; }

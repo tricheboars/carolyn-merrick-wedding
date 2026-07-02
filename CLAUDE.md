@@ -47,10 +47,15 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   (dev-verified 43/43, prod-verified 27/27 read-only; punch list in
   [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md), verification in
   WORKLOG). Leftovers folded into the roadmap: `og:image`, "prototype" wording on
-  `/credits/`, full copy pass; (3) **guest-experience roadmap** (concert calendar,
-  restaurant guide, guest calendars, icons/OG image, rideshare info, accuracy+linking
-  pass, human-voice copy pass, privacy posture) →
-  [`docs/08-guest-experience-roadmap.md`](docs/08-guest-experience-roadmap.md);
+  `/credits/`, full copy pass; (3) **guest-experience roadmap** →
+  [`docs/08-guest-experience-roadmap.md`](docs/08-guest-experience-roadmap.md):
+  **mostly BUILT on dev 2026-07-02** (verified 32/33; awaiting Patrick's review → prod):
+  `/eat/` (21 verified restaurants) + `/music/` (Aug-2027 calendar; listings sweep due
+  spring 2027) + travel "Getting around" (rideshare truth + taxi tap-to-call) + stay
+  real booking links + og:image/icons/manifest/sitemap + em-dash-free copy; research
+  backed in `docs/data-*.md` (5 files). Still open: guest-added calendar (needs
+  accounts), couple's restaurant picks, spring-2027 concert sweep. ⚠️ never link
+  `harpswellinn.com` (hijacked); real venue site = `theharpswellinn.com`;
   (4) couple-specific content (exact times, dress code, lodging block, their story);
   (5) accounts + SMS layer; (6) optional `dev → prod` redirect; (7) optional: add
   merrolyn.com to the origin cert if you ever want CF SSL "Full (strict)".
@@ -58,11 +63,14 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   dev/prod isolation real — open content gap is registry handles.
 - **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
   filler and **no em dashes** in guest-facing text.
-- **NEEDS PATRICK:** **rotate the Cloudflare merrolyn.com DNS token** (it was pasted in
-  chat during the cutover — roll/delete it in CF → Profile → API Tokens; the DNS change is
-  already saved, so revoking changes nothing live); guest count; Twilio go-ahead; the real
-  schedule/lodging/registry details; printed Save-the-Dates can now carry **merrolyn.com**.
-  (API building in Node by default; Python still a one-word override.)
+- **NEEDS PATRICK:** **review dev on your phone → say go for the prod promotion**
+  (Eat/Music/travel/stay/icons batch); **rotate the Cloudflare merrolyn.com DNS token**
+  (pasted in chat during the cutover — roll it in CF → Profile → API Tokens); guest
+  count; Twilio go-ahead; the real schedule/lodging/registry details. **For the couple
+  (from research, see WORKLOG 07-02):** chartered-shuttle decision (prior wedding at
+  this venue ran one; the ride home is what fails on the peninsula), room block
+  (Fairfield = natural shuttle anchor), their restaurant picks for "couple's pick"
+  badges. Printed Save-the-Dates can carry **merrolyn.com**.
 
 ## Aesthetic direction (the north star)
 

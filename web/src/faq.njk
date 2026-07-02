@@ -16,7 +16,7 @@ permalink: /faq/
     {% for item in site.faq %}
     <div style="padding:18px 0; border-bottom:1px solid rgba(46,68,86,.18)">
       <h3 style="margin:0 0 6px">{{ item.q }}</h3>
-      <p style="margin:0">{{ item.a }}</p>
+      <p style="margin:0">{{ item.a | safe }}</p>
     </div>
     {% endfor %}
     <p class="note center" style="margin-top:22px">Still have a question? Soon you'll be able to just text us.</p>

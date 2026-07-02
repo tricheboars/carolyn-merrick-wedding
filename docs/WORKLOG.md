@@ -414,6 +414,50 @@ full AA needs a darker band, design call); the cribstone header stays granite-te
 **Next:** Patrick eyeballs dev on his phone → same build with
 `SITE_DOMAIN=merrolyn.com` → CT 206 `/var/www/merrolyn` to promote to prod.
 
+### 2026-07-02 (evening) — guest-experience build-out: Eat + Music pages, verified research, icons/OG, copy sweep (DEV)
+
+Worked the roadmap (doc 08) hard; everything below is **live on dev only** (32/33
+verified by a 6-agent pass; the 1 fail, an orphan `/assets/img/CREDITS/` page 11ty
+templated from the assets markdown, was fixed via `eleventyConfig.ignores` + verified).
+
+- **Research: 8-agent web sweep, everything verified against primary sources** →
+  five new data files: [`data-restaurants.md`](data-restaurants.md) (16 Brunswick/
+  Portland spots + 5 Harpswell; 3 closed places caught and excluded),
+  [`data-transport.md`](data-transport.md) (rideshare reality: fine in Portland, thin
+  in Brunswick after dark, ~nonexistent on the peninsula — a prior wedding at this
+  venue warned guests off Uber/Lyft and ran a shuttle; Brunswick Taxi + Maine Limo +
+  Downeaster verified), [`data-attractions.md`](data-attractions.md) (11 site claims
+  audited: 7 correct, 4 tweaked — "Giant's Stairs", hedged cribstone claim, 15-min
+  Brunswick, 1-hour Head Light), [`data-lodging.md`](data-lodging.md) (**lookalike
+  domain harpswellinn.com is HIJACKED — never link it**; real = theharpswellinn.com),
+  [`data-music-venues.md`](data-music-venues.md) (Aug 2027: zero events announced
+  anywhere yet, expected; sweep plan = Apr-May + late-Jun 2027; Thompson's Point is
+  the wedding-day traffic risk).
+- **New pages:** `/eat/` (21 verified restaurant cards in 3 areas; Morse's food
+  trailer is a 1-minute walk from the inn) and `/music/` (real August 2027 calendar,
+  month grid + list toggle, wedding week highlighted, Aug 14 = "Our wedding ♥", venue
+  cards with live-checked calendar links). Both in nav (now 10 links; 768-1150px wrap
+  verified graceful). Travel gained **Getting around** (honest rideshare copy +
+  tap-to-call taxi buttons); things-to-do cards got official links + corrected facts;
+  Stay went from `#` placeholders to 6 verified booking links.
+- **Icons/unfurls:** og:image (1200x630 couple crop) + twitter card + og:type/site_name,
+  apple-touch-icon/PNG favicons/webmanifest from the monogram on cream, `/sitemap.xml`.
+  Link previews in Slack/WhatsApp/iMessage now show the couple.
+- **Copy sweep:** zero em dashes in guest-facing output (checked in the built HTML);
+  "prototype" wording gone from /credits/; FAQ gained a linked "what should we do in
+  Maine" entry. All 23 outbound links checked (3 bot-blocker 403s verified
+  browser-fine).
+- **Link-safety catch:** during research, agents found the hijacked lookalike inn
+  domain (gambling page) and a dead taxi-company domain — both documented, neither
+  linked. Unverified operators (Ship City Taxi, Maine Street Taxi) are docs-only.
+
+**FOR THE COUPLE / PATRICK (new, from research):** (1) seriously consider a
+**chartered shuttle** Brunswick hotel block ↔ inn for the reception end (the previous
+couple at this venue did exactly this; Maine Limousine does group charters); (2) room
+block: the Fairfield is the natural shuttle anchor; (3) mark your own restaurant
+favorites in `docs/data-restaurants.md` for "couple's pick" badges; (4) re-verify cab
+phone numbers ~July 2027.
+
 ### 2026-07-02 (later) — PROMOTED TO PROD; 27/27 read-only verification
 
 Patrick approved dev → built `SITE_DOMAIN=merrolyn.com`, atomic-swapped onto CT 206.
