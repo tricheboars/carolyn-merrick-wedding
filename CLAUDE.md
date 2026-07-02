@@ -9,7 +9,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ---
 
-## STATUS (2026-06-30) — single source of truth
+## STATUS (2026-07-02) — single source of truth
 
 - **Phase 2 — LIVE on the real domain.** Coastal **slate/harbor-blue** theme; site +
   working API live. **Engagement photos** in (couple hero + Our Story + a **Gallery**
@@ -43,13 +43,21 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   license-clean, `/credits/`). Added **FAQ** + **Things to do** pages/content.
 - **NEXT:** (1) **registry handles** — `/registry/` now shows **"Coming soon"**; drop in
   real Venmo/Zelle/PayPal/mail in `web/src/_data/site.js` + redeploy (build per env,
-  see `deploy/README.md`); (2) **mobile site** — audit + polish the responsive layout on
-  phones (guests will mostly browse/RSVP on mobile): check the hero, nav, schedule, RSVP
-  form, and gallery at small widths, tap targets, and image sizes; (3) couple-specific
-  content (exact times, dress code, lodging block, their story); (4) accounts + SMS layer;
-  (5) optional `dev → prod` redirect; (6) optional: add merrolyn.com to the origin cert if
-  you ever want CF SSL "Full (strict)". **Audited 2026-06-30** (12-agent pass): deployment
-  healthy, repo clean of secrets, dev/prod isolation real — open content gap is registry handles.
+  see `deploy/README.md`); (2) **mobile site** — audit DONE 2026-07-01 (50-agent
+  screenshot audit at 320/390px, adversarially verified: 34 confirmed findings, 0
+  refuted) → apply the punch list in
+  [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md) + redeploy;
+  **P1 = RSVP copy bug: live prod success message says "not yet saved" (it does save)**; (3) **guest-experience roadmap** (concert calendar,
+  restaurant guide, guest calendars, icons/OG image, rideshare info, accuracy+linking
+  pass, human-voice copy pass, privacy posture) →
+  [`docs/08-guest-experience-roadmap.md`](docs/08-guest-experience-roadmap.md);
+  (4) couple-specific content (exact times, dress code, lodging block, their story);
+  (5) accounts + SMS layer; (6) optional `dev → prod` redirect; (7) optional: add
+  merrolyn.com to the origin cert if you ever want CF SSL "Full (strict)".
+  **Audited 2026-06-30** (12-agent pass): deployment healthy, repo clean of secrets,
+  dev/prod isolation real — open content gap is registry handles.
+- **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
+  filler and **no em dashes** in guest-facing text.
 - **NEEDS PATRICK:** **rotate the Cloudflare merrolyn.com DNS token** (it was pasted in
   chat during the cutover — roll/delete it in CF → Profile → API Tokens; the DNS change is
   already saved, so revoking changes nothing live); guest count; Twilio go-ahead; the real
@@ -127,4 +135,10 @@ Full diagram, deploy mapping, and open decisions → [`docs/02-architecture.md`]
   manage** (11ty + Alpine / Fastify + SQLite / Twilio), with rationale.
 - [`docs/07-design-language.md`](docs/07-design-language.md) — palette, type, and
   motifs from the couple's Save-the-Date (olive/cream, script + serif, line art).
+- [`docs/08-guest-experience-roadmap.md`](docs/08-guest-experience-roadmap.md) — the
+  post-audit guest-experience to-dos (concert calendar, restaurants, guest calendars,
+  icons/unfurls, rideshare, data-in-docs convention, copy pass, privacy assessment).
+- [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md) — the verified
+  mobile-audit punch list (34 findings + validated fixes: RSVP copy/guards, CSS
+  papercuts, image diet), ordered P1/P2/P3.
 - [`docs/WORKLOG.md`](docs/WORKLOG.md) — dated build narrative + decisions.

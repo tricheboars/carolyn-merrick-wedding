@@ -343,3 +343,39 @@ couple test rows in the **dev** DB; purged afterward (prod never written).
   cutover, flush the lab Pi-holes or expect a stale-cache period on the LAN.
 - **End-of-night state:** merrolyn.com LIVE + correct on LAN and public; dev isolated;
   repo pushed (`8e84a2e`). Open: real registry handles; rotate the pasted CF DNS token.
+
+### 2026-07-01 → 02 — Mobile audit (50 agents, verified) + guest-experience roadmap + privacy answer
+
+**Mobile/responsive audit COMPLETE** → full punch list with validated fixes in
+[`09-mobile-audit-2026-07.md`](09-mobile-audit-2026-07.md). Method: 14 auditors
+(10 pages at 320/390px, live-prod Chromium screenshots, + nav/CSS/image/form
+specialists), then one adversarial verifier per finding reproducing every number
+independently. **35 raw → 34 confirmed, 1 plausible, 0 refuted.** Read-only; nothing
+deployed, prod DB untouched. Run was interrupted twice by session usage limits and
+resumed from the workflow journal both times (cached agents replayed free).
+Headlines: **live prod RSVP success copy still says "captured by the prototype (not
+yet saved)"** (it does save — stale prototype text, fix first); attending radios
+missing `required` (misleading network-error message on 400); Alpine is CDN-only (a
+failed load silently discards an RSVP on submit); terracotta eyebrow labels compute
+to **1.22:1 contrast** on five pages (one-line cream fix); sticky stacked nav eats
+21-31% of small phones; schedule day labels faint + orphan-wrapped; gallery ships
+~3.2MB into 168px cells; every hero/scene photo is desktop-res (home ~990KB eager).
+Verifiers corrected four fixes that would not have worked as written (inline-style
+custom properties beat stylesheet overrides; `image-set()` picks by DPR not width;
+plain padding on `display:inline` nav anchors; cream `.btn` invisible on cream cards).
+
+**Roadmap captured** from Patrick's idea list →
+[`08-guest-experience-roadmap.md`](08-guest-experience-roadmap.md): concert calendar
+for Aug 7–21 2027 (nothing on the 14th; research lands spring 2027 when venues
+announce), couple's restaurant guide (Brunswick Maine St + Portland), guest-addable
+calendar views (behind auth, per privacy), icons + `og:image` (og tags exist but no
+image; no apple-touch-icon), Uber/Lyft-in-Maine honesty page, accuracy + direct-link
+pass, research data backed as md in `docs/`, and a **copy rule: no AI-sounding
+language, no em dashes in guest-facing copy** (also in CLAUDE.md + memory).
+
+**Privacy (Carolyn's question), short version:** current exposure = what the printed
+save-the-dates already broadcast; guest PII already server-side behind the admin
+token. Care goes into what's next: gate the guest-added calendar behind accounts
+(never public "who's away when"), set Venmo private before publishing handles, decide
+public-vs-passcode for schedule/gallery **before invitations print**, rate-limit the
+RSVP POST, purge the DB after the wedding. Full write-up in doc 08 §10.
