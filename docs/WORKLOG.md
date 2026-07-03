@@ -458,6 +458,25 @@ block: the Fairfield is the natural shuttle anchor; (3) mark your own restaurant
 favorites in `docs/data-restaurants.md` for "couple's pick" badges; (4) re-verify cab
 phone numbers ~July 2027.
 
+### 2026-07-03 — guest-experience batch PROMOTED TO PROD (20/20) + README + PR #1 merged
+
+- **PR [#1](https://github.com/tricheboars/carolyn-merrick-wedding/pull/1) merged**
+  (mobile-audit fixes + guest build-out); local `main` fast-forwarded to `10811f3`,
+  feature branch deleted.
+- **Promoted the guest-experience batch to prod.** Built `SITE_DOMAIN=merrolyn.com`,
+  atomic-swapped onto CT 206. Eat/Music/travel-getting-around/stay-links/icons/OG/
+  sitemap are now **live on merrolyn.com**. **Verified 20/20 by a 4-agent read-only
+  pass** (no form submits): both new pages render + toggle, tel: links dial clean,
+  og:image is the couple at 1200x630, manifest+icons all 200, sitemap = exactly 12
+  merrolyn.com urls (no orphan/asset entries), **no link anywhere to the hijacked
+  `harpswellinn.com`**, prod has no noindex while dev keeps it, previous mobile fixes
+  intact, 0 horizontal overflow on all 12 pages. Only "console error" is Cloudflare's
+  analytics beacon sinkholed by the LAN Pi-hole (environmental, guests unaffected).
+- **README rewritten** from prototype-phase to live: what guests get, the
+  verify-everything + human-voice + mobile-first house rules, current stack/status.
+- **Prod == dev == main** now (all three carry the same build). Dev/prod isolation
+  intact (separate containers, own DBs, dev still noindexed).
+
 ### 2026-07-02 (later) — PROMOTED TO PROD; 27/27 read-only verification
 
 Patrick approved dev → built `SITE_DOMAIN=merrolyn.com`, atomic-swapped onto CT 206.

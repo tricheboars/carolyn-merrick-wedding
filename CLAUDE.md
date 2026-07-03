@@ -9,7 +9,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ---
 
-## STATUS (2026-07-02) — single source of truth
+## STATUS (2026-07-03) — single source of truth
 
 - **Phase 2 — LIVE on the real domain.** Coastal **slate/harbor-blue** theme; site +
   working API live. **Engagement photos** in (couple hero + Our Story + a **Gallery**
@@ -49,12 +49,13 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   WORKLOG). Leftovers folded into the roadmap: `og:image`, "prototype" wording on
   `/credits/`, full copy pass; (3) **guest-experience roadmap** →
   [`docs/08-guest-experience-roadmap.md`](docs/08-guest-experience-roadmap.md):
-  **mostly BUILT on dev 2026-07-02** (verified 32/33; awaiting Patrick's review → prod):
-  `/eat/` (21 verified restaurants) + `/music/` (Aug-2027 calendar; listings sweep due
-  spring 2027) + travel "Getting around" (rideshare truth + taxi tap-to-call) + stay
-  real booking links + og:image/icons/manifest/sitemap + em-dash-free copy; research
-  backed in `docs/data-*.md` (5 files). Still open: guest-added calendar (needs
-  accounts), couple's restaurant picks, spring-2027 concert sweep. ⚠️ never link
+  **LIVE ON PROD 2026-07-03** (built on dev, verified 32/33; promoted + re-verified
+  20/20 read-only on merrolyn.com): `/eat/` (21 verified restaurants) + `/music/`
+  (Aug-2027 calendar; listings sweep due spring 2027) + travel "Getting around"
+  (rideshare truth + taxi tap-to-call) + stay real booking links +
+  og:image/icons/manifest/sitemap + em-dash-free copy; research backed in
+  `docs/data-*.md` (5 files). Still open: guest-added calendar (needs accounts),
+  couple's restaurant picks, spring-2027 concert sweep. ⚠️ never link
   `harpswellinn.com` (hijacked); real venue site = `theharpswellinn.com`;
   (4) couple-specific content (exact times, dress code, lodging block, their story);
   (5) accounts + SMS layer; (6) optional `dev → prod` redirect; (7) optional: add
