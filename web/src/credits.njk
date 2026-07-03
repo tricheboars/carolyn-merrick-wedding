@@ -17,10 +17,10 @@ permalink: /credits/
       {% for c in site.photoCredits %}
       <li class="card" style="margin-bottom:14px">
         <strong style="font-family:var(--font-serif); font-size:1.15rem">{{ c.title }}</strong><br>
-        by {{ c.author }}{% if c.license %} — {% if c.licenseUrl %}<a href="{{ c.licenseUrl }}">{{ c.license }}</a>{% else %}{{ c.license }}{% endif %}{% endif %}{% if c.source %} &middot; <a href="{{ c.source }}">source</a>{% endif %}
+        by {{ c.author }}{% if c.license %} &middot; {% if c.licenseUrl %}<a href="{{ c.licenseUrl }}">{{ c.license }}</a>{% else %}{{ c.license }}{% endif %}{% endif %}{% if c.source %} &middot; <a href="{{ c.source }}">source</a>{% endif %}
       </li>
       {% endfor %}
     </ul>
-    <p class="note" style="margin-top:18px">Placeholders for the prototype — these will be joined or replaced by the couple's own engagement and venue photos.</p>
+    <p class="note" style="margin-top:18px">More photos from the couple and from the venue will join these as we get closer to the day.</p>
   </div>
 </section>

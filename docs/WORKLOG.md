@@ -343,3 +343,133 @@ couple test rows in the **dev** DB; purged afterward (prod never written).
   cutover, flush the lab Pi-holes or expect a stale-cache period on the LAN.
 - **End-of-night state:** merrolyn.com LIVE + correct on LAN and public; dev isolated;
   repo pushed (`8e84a2e`). Open: real registry handles; rotate the pasted CF DNS token.
+
+### 2026-07-01 → 02 — Mobile audit (50 agents, verified) + guest-experience roadmap + privacy answer
+
+**Mobile/responsive audit COMPLETE** → full punch list with validated fixes in
+[`09-mobile-audit-2026-07.md`](09-mobile-audit-2026-07.md). Method: 14 auditors
+(10 pages at 320/390px, live-prod Chromium screenshots, + nav/CSS/image/form
+specialists), then one adversarial verifier per finding reproducing every number
+independently. **35 raw → 34 confirmed, 1 plausible, 0 refuted.** Read-only; nothing
+deployed, prod DB untouched. Run was interrupted twice by session usage limits and
+resumed from the workflow journal both times (cached agents replayed free).
+Headlines: **live prod RSVP success copy still says "captured by the prototype (not
+yet saved)"** (it does save — stale prototype text, fix first); attending radios
+missing `required` (misleading network-error message on 400); Alpine is CDN-only (a
+failed load silently discards an RSVP on submit); terracotta eyebrow labels compute
+to **1.22:1 contrast** on five pages (one-line cream fix); sticky stacked nav eats
+21-31% of small phones; schedule day labels faint + orphan-wrapped; gallery ships
+~3.2MB into 168px cells; every hero/scene photo is desktop-res (home ~990KB eager).
+Verifiers corrected four fixes that would not have worked as written (inline-style
+custom properties beat stylesheet overrides; `image-set()` picks by DPR not width;
+plain padding on `display:inline` nav anchors; cream `.btn` invisible on cream cards).
+
+**Roadmap captured** from Patrick's idea list →
+[`08-guest-experience-roadmap.md`](08-guest-experience-roadmap.md): concert calendar
+for Aug 7–21 2027 (nothing on the 14th; research lands spring 2027 when venues
+announce), couple's restaurant guide (Brunswick Maine St + Portland), guest-addable
+calendar views (behind auth, per privacy), icons + `og:image` (og tags exist but no
+image; no apple-touch-icon), Uber/Lyft-in-Maine honesty page, accuracy + direct-link
+pass, research data backed as md in `docs/`, and a **copy rule: no AI-sounding
+language, no em dashes in guest-facing copy** (also in CLAUDE.md + memory).
+
+**Privacy (Carolyn's question), short version:** current exposure = what the printed
+save-the-dates already broadcast; guest PII already server-side behind the admin
+token. Care goes into what's next: gate the guest-added calendar behind accounts
+(never public "who's away when"), set Venmo private before publishing handles, decide
+public-vs-passcode for schedule/gallery **before invitations print**, rate-limit the
+RSVP POST, purge the DB after the wedding. Full write-up in doc 08 §10.
+
+### 2026-07-02 — ALL audit fixes implemented + deployed to DEV + re-verified (43/43)
+
+**Every punch-list item from doc 09 is now live on dev** (`merrolyn.moorelab.cloud`);
+**prod untouched, awaiting Patrick's review.** Highlights: RSVP prototype copy replaced
+(success now says the RSVP is saved; error copy split into form-vs-network; all
+human-voice, no em dashes), `required` on attending, Alpine **self-hosted** at
+`/assets/js/alpine.min.js` (+`onsubmit="return false"` guard), success scrolls into
+view, autocomplete/autocapitalize on name+contact. CSS: cream eyebrows on olive bands,
+nav static + ~45px tap targets + `aria-current` underline + fixed CTA pill (no more
+`!important`), timeline `.9rem`/nowrap/104px column, 44px radio rows w/ 20px controls,
+`.note` 1rem, Maps link → `btn--ink`, Venmo icon → `ti-cash`. Images: ImageMagick
+variants (hero 604→137KB square crop — couple framing verified; story 457→85KB; pano
+385→75KB; cribstone 437→76KB water-side crop — NOTE the original is all granite
+foundation, no scenic crop exists) wired via `@media (max-width:680px)` `:root`
+overrides (inline `--scene` urls moved to vars first — inline style beats stylesheet);
+hero preloads on `/` only; gallery srcset 400/800 + true `{w}w` descriptors + real
+width/height attrs (2x phone: ~3.2MB → ~583KB measured). Nav breakpoint split to
+**767px** (fixes the pre-existing 681–767px sticky-wrap band); images/timeline stay 680.
+
+**Verified by a 9-agent adversarial pass against dev: 43/43 checks passed, 0 failed.**
+Includes a CDP-driven functional test: empty-attending blocked natively (no request),
+happy path lands confirmation on-screen, busy state real; net-log proof phones fetch
+only the mobile variants (~211KB total on `/` vs ~990KB) and desktop still gets
+originals; 0 horizontal overflow on all 10 pages at 320px; noindex + canonicals intact;
+deployed assets byte-identical to source. The one test RSVP row ("TEST Claude verify
+2026-07-02 ignore") was **purged from the dev DB** (rsvps=0, guests=0). Known accepted
+limits: eyebrow contrast tops out at 3.23:1 on the #6E8FA3 band (AA-large only —
+full AA needs a darker band, design call); the cribstone header stays granite-textured.
+
+**Deploy note:** dev deploys = build with `SITE_DOMAIN=merrolyn.moorelab.cloud`, tar
+`web/_site` → proxmox2 → `pct exec 205`, extract to `/var/www/merrolyn-dev.new`, swap.
+**Next:** Patrick eyeballs dev on his phone → same build with
+`SITE_DOMAIN=merrolyn.com` → CT 206 `/var/www/merrolyn` to promote to prod.
+
+### 2026-07-02 (evening) — guest-experience build-out: Eat + Music pages, verified research, icons/OG, copy sweep (DEV)
+
+Worked the roadmap (doc 08) hard; everything below is **live on dev only** (32/33
+verified by a 6-agent pass; the 1 fail, an orphan `/assets/img/CREDITS/` page 11ty
+templated from the assets markdown, was fixed via `eleventyConfig.ignores` + verified).
+
+- **Research: 8-agent web sweep, everything verified against primary sources** →
+  five new data files: [`data-restaurants.md`](data-restaurants.md) (16 Brunswick/
+  Portland spots + 5 Harpswell; 3 closed places caught and excluded),
+  [`data-transport.md`](data-transport.md) (rideshare reality: fine in Portland, thin
+  in Brunswick after dark, ~nonexistent on the peninsula — a prior wedding at this
+  venue warned guests off Uber/Lyft and ran a shuttle; Brunswick Taxi + Maine Limo +
+  Downeaster verified), [`data-attractions.md`](data-attractions.md) (11 site claims
+  audited: 7 correct, 4 tweaked — "Giant's Stairs", hedged cribstone claim, 15-min
+  Brunswick, 1-hour Head Light), [`data-lodging.md`](data-lodging.md) (**lookalike
+  domain harpswellinn.com is HIJACKED — never link it**; real = theharpswellinn.com),
+  [`data-music-venues.md`](data-music-venues.md) (Aug 2027: zero events announced
+  anywhere yet, expected; sweep plan = Apr-May + late-Jun 2027; Thompson's Point is
+  the wedding-day traffic risk).
+- **New pages:** `/eat/` (21 verified restaurant cards in 3 areas; Morse's food
+  trailer is a 1-minute walk from the inn) and `/music/` (real August 2027 calendar,
+  month grid + list toggle, wedding week highlighted, Aug 14 = "Our wedding ♥", venue
+  cards with live-checked calendar links). Both in nav (now 10 links; 768-1150px wrap
+  verified graceful). Travel gained **Getting around** (honest rideshare copy +
+  tap-to-call taxi buttons); things-to-do cards got official links + corrected facts;
+  Stay went from `#` placeholders to 6 verified booking links.
+- **Icons/unfurls:** og:image (1200x630 couple crop) + twitter card + og:type/site_name,
+  apple-touch-icon/PNG favicons/webmanifest from the monogram on cream, `/sitemap.xml`.
+  Link previews in Slack/WhatsApp/iMessage now show the couple.
+- **Copy sweep:** zero em dashes in guest-facing output (checked in the built HTML);
+  "prototype" wording gone from /credits/; FAQ gained a linked "what should we do in
+  Maine" entry. All 23 outbound links checked (3 bot-blocker 403s verified
+  browser-fine).
+- **Link-safety catch:** during research, agents found the hijacked lookalike inn
+  domain (gambling page) and a dead taxi-company domain — both documented, neither
+  linked. Unverified operators (Ship City Taxi, Maine Street Taxi) are docs-only.
+
+**FOR THE COUPLE / PATRICK (new, from research):** (1) seriously consider a
+**chartered shuttle** Brunswick hotel block ↔ inn for the reception end (the previous
+couple at this venue did exactly this; Maine Limousine does group charters); (2) room
+block: the Fairfield is the natural shuttle anchor; (3) mark your own restaurant
+favorites in `docs/data-restaurants.md` for "couple's pick" badges; (4) re-verify cab
+phone numbers ~July 2027.
+
+### 2026-07-02 (later) — PROMOTED TO PROD; 27/27 read-only verification
+
+Patrick approved dev → built `SITE_DOMAIN=merrolyn.com`, atomic-swapped onto CT 206.
+**Live prod verified 27/27 by a 5-agent read-only pass** (no form submissions — prod DB
+untouched): CSS/nav/timeline/radio fixes all measured live; phones fetch only mobile
+image variants through Cloudflare while 1280px still gets originals; gallery serves
+-400s (~0.56MB); all 10 pages clean at 390+1280 with zero horizontal overflow at 320
+and zero console errors; RSVP markup correct ("not yet saved" gone); prod has **no
+noindex** while dev keeps it (split intact); canonicals/og/HSTS fine; `/health` 200;
+`www` 301s. Informational finds for later: the **unversioned** `/assets/css/style.css`
+URL is edge-cached stale until ~Jul 9 (harmless — pages link the `?v=` URL; current CF
+token lacks cache-purge perm); no `og:image` yet (roadmap item 5); `/credits/` copy
+still says "prototype" (catch in the copy pass); CF auto-injects its analytics beacon
+(LAN blocks it; disable in CF zone settings if unwanted). **The mobile-audit cycle is
+closed: found → fixed → dev-verified → promoted → prod-verified.**

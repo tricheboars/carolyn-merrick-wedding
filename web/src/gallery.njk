@@ -3,7 +3,7 @@ layout: layouts/base.njk
 title: Gallery
 permalink: /gallery/
 ---
-<section class="section section--scene" style="--scene:url('/assets/img/story-couple.jpg')">
+<section class="section section--scene" style="--scene:var(--scene-story)">
   <div class="wrap center stack">
     <span class="label eyebrow">Carolyn &amp; Merrick</span>
     <h2>Gallery</h2>
@@ -15,7 +15,11 @@ permalink: /gallery/
   <div class="wrap">
     <div class="gallery">
       {% for p in site.gallery %}
-      <a href="{{ p.src }}" aria-label="{{ p.alt }}"><img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy"></a>
+      <a href="{{ p.src }}" aria-label="{{ p.alt }}"><img
+        src="{{ p.src | replace('.jpg', '-800.jpg') }}"
+        srcset="{{ p.src | replace('.jpg', '-400.jpg') }} 400w, {{ p.src | replace('.jpg', '-800.jpg') }} 800w, {{ p.src }} {{ p.w }}w"
+        sizes="(max-width:355px) 92vw, (max-width:560px) 45vw, 260px"
+        width="{{ p.w }}" height="{{ p.h }}" alt="{{ p.alt }}" loading="lazy"></a>
       {% endfor %}
     </div>
   </div>

@@ -16,3 +16,8 @@ the *location* pages (Travel, Stay, Schedule, FAQ) to show Harpswell / Casco Bay
 
 Images were downscaled and recompressed for web. Attribution is also surfaced
 on the site at `/credits/`.
+
+**Derived variants** (same credits as their originals): `hero-couple-mobile.jpg`,
+`story-couple-900.jpg`, `south-harpswell-pano-m.jpg`, `cribstone-bridge-m.jpg`, and
+`gallery/gNN-400.jpg` / `gallery/gNN-800.jpg` are mobile/srcset resizes generated with
+ImageMagick from the files above (2026-07, mobile audit fixes).

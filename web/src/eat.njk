@@ -1,0 +1,62 @@
+---
+layout: layouts/base.njk
+title: Eat & Drink
+description: Where to eat around Harpswell, Brunswick, and Portland. Every spot checked and linked.
+permalink: /eat/
+---
+<section class="section section--scene" style="--scene:var(--scene-harbor)">
+  <div class="wrap center stack">
+    <span class="label eyebrow">Lobster rolls &amp; more</span>
+    <h2>Where to eat</h2>
+    <p class="lead">{{ site.eat.intro }}</p>
+  </div>
+</section>
+
+{% for area in site.eat.areas %}
+{% if loop.index0 % 2 == 0 %}
+<section class="section section--cream">
+  <div class="wrap stack">
+    <div class="center stack" style="margin-bottom:8px">
+      <h2>{{ area.name }}</h2>
+      <p class="lead">{{ area.blurb }}</p>
+    </div>
+    <div class="grid grid--2">
+      {% for p in area.places %}
+      <div class="card">
+        <h3>{{ p.name }}{% if p.couplesPick %} <span class="label" style="font-size:.6rem; color:var(--terracotta)">couple's pick</span>{% endif %}</h3>
+        <p class="note" style="margin-bottom:8px">{{ p.where }}</p>
+        <p>{{ p.note }}</p>
+        <p style="margin:0"><a href="{{ p.url }}">Their site &rarr;</a></p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="section section--olive">
+  <div class="wrap stack">
+    <div class="center stack" style="margin-bottom:8px">
+      <h2>{{ area.name }}</h2>
+      <p class="lead">{{ area.blurb }}</p>
+    </div>
+    <div class="grid grid--2">
+      {% for p in area.places %}
+      <div class="card card--olive">
+        <h3>{{ p.name }}{% if p.couplesPick %} <span class="label" style="font-size:.6rem">couple's pick</span>{% endif %}</h3>
+        <p style="margin:0 0 6px; opacity:.85; font-size:.9rem">{{ p.where }}</p>
+        <p>{{ p.note }}</p>
+        <p style="margin:0"><a href="{{ p.url }}">Their site &rarr;</a></p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+<section class="section section--cream center">
+  <div class="wrap" style="max-width:640px">
+    <p class="note">{{ site.eat.note }}</p>
+    <p class="note">Every listing was checked against the restaurant's own site. Spot something closed or changed? Tell us and we'll fix it.</p>
+  </div>
+</section>

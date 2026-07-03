@@ -3,7 +3,7 @@ layout: layouts/base.njk
 title: Our Story
 permalink: /story/
 ---
-<section class="section section--scene" style="--scene:url('/assets/img/story-couple.jpg')">
+<section class="section section--scene" style="--scene:var(--scene-story)">
   <div class="wrap center stack">
     <span class="label eyebrow">Carolyn &amp; Merrick</span>
     <h2>Our Story</h2>
@@ -15,6 +15,6 @@ permalink: /story/
   <div class="wrap" style="max-width:720px">
     <p>{{ site.story.body }}</p>
     <div class="divider"><img src="/assets/svg/coupes.svg" alt="" width="78" height="54"></div>
-    <p class="note center">More of our story — and photos — coming soon.</p>
+    <p class="note center">More of our story, and more photos, coming soon.</p>
   </div>
 </section>

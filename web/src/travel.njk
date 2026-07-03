@@ -16,8 +16,8 @@ permalink: /travel/
     <div class="grid grid--2">
       <div class="card">
         <h3>Fly</h3>
-        <p><strong>{{ site.travel.airport.name }}</strong> — {{ site.travel.airport.note }}</p>
-        <p class="note">Alternate: {{ site.travel.alt.name }} — {{ site.travel.alt.note }}</p>
+        <p><strong>{{ site.travel.airport.name }}</strong>: {{ site.travel.airport.note }}</p>
+        <p class="note">Alternate: {{ site.travel.alt.name }}, {{ site.travel.alt.note }}</p>
       </div>
       <div class="card">
         <h3>Drive</h3>
@@ -31,8 +31,25 @@ permalink: /travel/
       <div class="card">
         <h3>The venue</h3>
         <p>{{ site.venue.name }}<br>{{ site.venue.address }}</p>
-        <p><a href="https://www.google.com/maps/search/?api=1&query={{ site.venue.mapsQuery }}">Open in Maps →</a></p>
+        <p><a class="btn btn--ink" href="https://www.google.com/maps/search/?api=1&query={{ site.venue.mapsQuery }}">Open in Maps →</a></p>
       </div>
+    </div>
+
+    <div class="divider" style="margin-top:34px"><img src="/assets/svg/coupes.svg" alt="" width="78" height="54"></div>
+
+    <div class="center stack" style="margin-bottom:8px">
+      <h2>Getting around</h2>
+      <p class="lead" style="max-width:720px; margin-left:auto; margin-right:auto">{{ site.gettingAround.intro }}</p>
+    </div>
+    <div class="grid grid--3">
+      {% for o in site.gettingAround.options %}
+      <div class="card">
+        <h3>{{ o.name }}</h3>
+        <p>{{ o.note }}</p>
+        {% if o.phone %}<p style="margin:0 0 8px"><a class="btn btn--ink" href="tel:{{ o.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">Call {{ o.phone }}</a></p>{% endif %}
+        <p style="margin:0"><a href="{{ o.url }}">More info &rarr;</a></p>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -47,7 +64,8 @@ permalink: /travel/
       {% for t in site.thingsToDo %}
       <div class="card card--olive">
         <h3>{{ t.name }}</h3>
-        <p style="margin:0">{{ t.note }}</p>
+        <p style="margin:0{% if t.url %} 0 8px{% endif %}">{{ t.note }}</p>
+        {% if t.url %}<p style="margin:0"><a href="{{ t.url }}">More &rarr;</a></p>{% endif %}
       </div>
       {% endfor %}
     </div>
