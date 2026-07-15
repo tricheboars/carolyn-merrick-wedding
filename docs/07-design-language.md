@@ -1,5 +1,11 @@
 # 07 — Design Language (coastal-Maine whimsy)
 
+> ⚠️ **SUPERSEDED 2026-07-14** by [`10-redesign-2026-07.md`](10-redesign-2026-07.md):
+> Carolyn shared her actual reception design (Milanote + Pinterest boards) and asked
+> for the site to be restyled around it — plate cobalt + poppy on linen cream. The
+> type system and motif *approach* below survive; the palette does not (olive lives
+> on only as the `--stem` line-art green). Kept for the record.
+
 > **Source of truth: the couple's actual Save-the-Date** (received 2026-06-29).
 > This OVERRIDES the earlier "pastel fog-blue / sea-glass" guess in `00-vision.md`.
 > The real direction is warmer and earthier: **olive/citron + cream + champagne**,

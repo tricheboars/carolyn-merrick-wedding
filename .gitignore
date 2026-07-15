@@ -7,6 +7,8 @@ web/_site/
 # registry.local.json holds the couple's real payment handles + mailing address —
 # rendered on the site, but kept out of this public repo's history
 web/src/_data/registry.local.json
+# raw photo/asset drops from the couple (never commit originals)
+assets-inbox/
 .env
 *.env
 !*.env.example

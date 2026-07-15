@@ -40,9 +40,9 @@ module.exports = {
   tagline: "We can't wait to celebrate with you on the coast of Maine.",
 
   // Stay + Music unpublished 2026-07-14 per Carolyn (Stay returns once lodging can be
-  // shown per-guest behind sign-in; Music cut from the site). Pages now redirect home.
+  // shown per-guest behind sign-in; Music cut). Our Story unpublished 2026-07-14 per
+  // Patrick. Unpublished pages redirect home; their data stays warm below.
   nav: [
-    { label: "Our Story", url: "/story/" },
     { label: "Schedule", url: "/schedule/" },
     { label: "Travel", url: "/travel/" },
     { label: "Eat", url: "/eat/" },
@@ -52,6 +52,8 @@ module.exports = {
     { label: "RSVP", url: "/rsvp/" }
   ],
 
+  // NOTE: the /story/ page is UNPUBLISHED (2026-07-14, Patrick's call). Copy kept for
+  // when the couple write their real story.
   story: {
     lead: "How Carolyn and Merrick found their way to a tent in the woods and a wedding on the coast.",
     body: "Our story is coming soon: how Carolyn and Merrick met, the proposal, and why Maine. Check back as we get closer to the day."

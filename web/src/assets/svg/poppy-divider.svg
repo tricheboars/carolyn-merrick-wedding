@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 64" fill="none" aria-hidden="true">
+  <!-- looping stem, drawn in the same monoline hand as the C&M monogram -->
+  <path d="M6 52 C22 56 32 50 40 50 C50 50 52 57 46 59 C40 61 38 53 46 48 C58 41 74 46 88 38"
+        stroke="#96A24E" stroke-width="1.7" stroke-linecap="round"/>
+  <!-- leaf flicks -->
+  <path d="M24 52 C28 46 28 40 24 36" stroke="#96A24E" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M24 52 C20 47 15 45 10 46" stroke="#96A24E" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- slim nodding bud on a branch -->
+  <path d="M62 45 C60 38 62 32 60 27" stroke="#96A24E" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M60 27 C56 21 61 15 64 19 C67 22 65 27 61 28" stroke="#8E2F2A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- open poppy cup: rounded bowl, wavy petal mouth, stamens -->
+  <path d="M88 38 C90 38 92 37 94 36" stroke="#96A24E" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M89 18 C87 30 93 36 100 36 C107 36 113 30 111 18"
+        stroke="#E8681F" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M94 21 C93 28 96 32 100 32" stroke="#E8681F" stroke-width="1.1" stroke-linecap="round"/>
+  <path d="M96 18 L95 12 M100 18 L100 10 M104 18 L105 12" stroke="#8E2F2A" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- fallen petal, in blush -->
+  <path d="M112 50 C115 46 119 48 117 52 C115 55 111 54 112 50 Z" stroke="#E2989B" stroke-width="1.4" stroke-linejoin="round"/>
+</svg>

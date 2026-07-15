@@ -41,8 +41,19 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   persist, admin list/CSV, verified end-to-end incl. CORS). Real **coastal-Maine photo
   backgrounds** (Lookout Point hero + South Harpswell + Casco Bay + Cribstone Bridge,
   license-clean, `/credits/`). Added **FAQ** + **Things to do** pages/content.
-- **DONE 2026-07-14 (Carolyn's notes, round 1) — built + verified locally, NOT yet
-  deployed (dev push awaits Patrick's go):** **registry handles are real**
+- **DONE 2026-07-14 (evening) — THE RECEPTION RESKIN + Our Story unpublished, LIVE
+  ON DEV.** Carolyn shared her real reception design (Milanote board + 3 Pinterest
+  boards + 4 vibe photos in `assets-inbox/`); a 10-agent analyze→synthesize→verify
+  workflow produced the new design language → [`docs/10-redesign-2026-07.md`](docs/10-redesign-2026-07.md):
+  **plate cobalt (#2F2C8E) + poppy on linen cream**, burnt-poppy accents grounded in
+  oxblood, marigold/stem/blush garnish, three signatures (scallop plate-edge seams,
+  plate-rim double-ring buttons, monoline poppy divider). 13/13 WCAG pairs verified;
+  docs/07 marked superseded (olive survives only as `--stem`). `/story/` now a
+  redirect stub like stay/music (nav is 7 items, sitemap 9 URLs). Awaiting
+  Patrick/Carolyn reaction on dev before prod.
+- **DONE 2026-07-14 (Carolyn's notes, round 1) — LIVE ON DEV** (Patrick said go;
+  deployed to the dev CT + verified over HTTPS: stubs redirect, registry
+  real, 5×TBA; prod promotion awaits his phone review): **registry handles are real**
   (Venmo/Zelle/mail; values live ONLY in gitignored `web/src/_data/registry.local.json`
   on this box — public repo keeps a "Coming soon" fallback + `.example`); **Stay +
   Music unpublished** (noindex redirect stubs overwrite the old pages on deploy; data
@@ -73,9 +84,8 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   dev/prod isolation real — open content gap is registry handles.
 - **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
   filler and **no em dashes** in guest-facing text.
-- **NEEDS PATRICK:** **say go for the dev deploy of the 07-14 batch** (build is ready;
-  `SITE_DOMAIN=merrolyn.moorelab.cloud` build → tar to CT205 `/var/www/merrolyn-dev`),
-  then review on your phone → prod promotion; **get from Carolyn:** the photo she wants
+- **NEEDS PATRICK:** **review dev on your phone → say go for prod promotion** of the
+  07-14 content batch; **get from Carolyn:** the photo she wants
   on the main page + the real logo/Save-the-Date art (a logo swap also touches
   favicon/apple-touch/icon-192/512/og); **decide the Stay/IAM approach** (her ask =
   show lodging to the right people: full per-invitation magic-link accounts (roadmap

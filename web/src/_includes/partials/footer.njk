@@ -1,6 +1,8 @@
 <footer class="footer">
   <div class="footer__mono">{% include "partials/monogram.njk" %}</div>
   <div class="footer__names">{{ site.couple.short }}</div>
+  {#- the champagne coupes, retired from the section dividers to one toast down here -#}
+  <div style="padding:6px 0"><img src="/assets/svg/coupes.svg" alt="" width="64" height="44" style="display:inline-block; opacity:.85"></div>
   <div class="footer__meta">{{ site.date.display }} &middot; {{ site.venue.town }}</div>
   <div class="footer__small">
     {{ site.venue.name }} &middot; {{ site.venue.address }}<br>

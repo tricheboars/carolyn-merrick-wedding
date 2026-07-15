@@ -539,3 +539,35 @@ needs Patrick to say go**, permission gate).
   API DB; plan = per-invitation magic links (no passwords), lodging page rendered
   per guest group. Interim option if wanted sooner: a single shared guest code.
 - Deploy to dev pending Patrick's go, then his phone review, then prod promotion.
+
+### 2026-07-14 (evening) — Our Story unpublished; THE RECEPTION RESKIN, live on dev
+
+Patrick sent Carolyn's design sources and said go on dev deploys.
+
+**Did:**
+- **Round-1 batch + Our Story removal deployed to dev and verified** (nav 7 items,
+  /story/ /stay/ /music/ all redirect stubs, registry real, sitemap 9 URLs).
+- **Fetched all of Carolyn's design references.** The pin.it links were entire
+  Pinterest boards (decor 15 / florals 15 / food 14 pins via invite links); the
+  Milanote link was her "Wedding Reception" board (29 images of the actual purchased
+  reception design). Technique: headless Chromium renders both (dump-dom + tall
+  screenshot; Pinterest pin JSON is embedded in board HTML). Four vibe photos landed
+  in `assets-inbox/` (gitignored): the flash-film ring photo, two vintage wallpapers,
+  a sea-fairy illustration; they validated the direction.
+- **Ran a 10-agent redesign workflow** (5 image analysts + site-token reader →
+  synthesis → contrast verifier + fidelity skeptic + web-craft skeptic). 13/13 WCAG
+  pairs pass; both skeptics' fixes adopted (oxblood kept, blush added, one cobalt not
+  two, blue-as-edge-not-field, desaturated photo overlays, no poppy script on photos,
+  per-surface link colors, 3-stop plate-rim shadow, no hover-only signals).
+- **Implemented the reskin** → `docs/10-redesign-2026-07.md` (palette table + the
+  three signatures: scallop seam, plate-rim ring, poppy line-art divider). New SVGs
+  `poppy-divider` + `scallop-seam`; favicon/coupes recolored; coupes retired to the
+  footer; wax-seal timeline dots; marigold wedding-day calendar cell; clementine
+  aria-current nav dot. `07-design-language.md` marked superseded.
+- **Screenshot-verified 7 pages** (390px + 1280px): no purple cast on the coastal
+  photos, plate-rim buttons render, seams tile cleanly. **Deployed to dev.**
+
+**Needs Patrick/Carolyn:** react to the look on dev (merrolyn.moorelab.cloud) +
+the design-brief artifact; the corrected main-page photo + real logo art are still
+the open aesthetic asks (film ring photo would make a great Registry header, note
+sent). Prod promotion of everything awaits the phone review.

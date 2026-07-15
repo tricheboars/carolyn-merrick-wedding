@@ -1,20 +1,22 @@
 ---
-layout: layouts/base.njk
-title: Our Story
 permalink: /story/
+eleventyExcludeFromCollections: true
 ---
-<section class="section section--scene" style="--scene:var(--scene-story)">
-  <div class="wrap center stack">
-    <span class="label eyebrow">Carolyn &amp; Merrick</span>
-    <h2>Our Story</h2>
-    <p class="lead">{{ site.story.lead }}</p>
-  </div>
-</section>
-
-<section class="section section--cream">
-  <div class="wrap" style="max-width:720px">
-    <p>{{ site.story.body }}</p>
-    <div class="divider"><img src="/assets/svg/coupes.svg" alt="" width="78" height="54"></div>
-    <p class="note center">More of our story, and more photos, coming soon.</p>
-  </div>
-</section>
+{#- Unpublished 2026-07-14 (Patrick's call). The story copy waits in _data/site.js
+    (site.story) for when the couple write the real thing; the engagement photos are
+    still on the Gallery page. This stub overwrites the old /story/ page on deploy
+    (tar overlays, no delete) and sends visitors home. -#}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carolyn &amp; Merrick</title>
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url=/">
+  <link rel="canonical" href="{{ site.url }}/">
+</head>
+<body>
+  <p>This page is resting for now. <a href="/">Back to the homepage</a>.</p>
+</body>
+</html>
