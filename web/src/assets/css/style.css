@@ -172,7 +172,6 @@ p{ margin:0 0 1rem; }
 .hero__inner{ position:relative; margin:0 auto; padding:48px 20px; max-width:640px; }
 .hero__mono{ width:104px; margin:0 auto 16px; }
 .hero__mono svg,.hero__mono img{ width:100%; height:auto; }
-.hero__label{ display:block; color:var(--cream); opacity:.92; margin-bottom:6px; }
 .hero__names{ margin:0; }
 .hero__wordmark{ width:min(72vw,400px); height:auto; display:block; margin:6px auto 0; }
 .hero__meta{ font-family:var(--font-sans); font-size:1.3rem; margin-top:10px; letter-spacing:.04em; }
