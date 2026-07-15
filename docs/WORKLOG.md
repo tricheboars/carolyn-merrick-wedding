@@ -607,3 +607,13 @@ footer meta, registry/credits inline overrides removed); **Cormorant survives on
 h1/h2/h3** as the display face; the couple's names exist only as the hand-lettered
 wordmark. Verified 1 serif rule left in the stylesheet, rebuilt, deployed to dev.
 Rule recorded in docs/10 + a CSS comment so it doesn't regress.
+
+### 2026-07-14 (later still) — split hero: the wordmark never covers the couple
+
+Patrick: with the real wordmark in, the names overlaid the couple's likeness in the
+hero. Tried sky-anchoring first — dead end (at laptop ratios the wide crop eats the
+sky and centers the couple). Real fix: **split hero, exactly like the save-the-date
+card itself** — lettering on a plate-cobalt field (monogram, "save the date for",
+wordmark, date, venue, buttons), the photo untouched beside it (desktop) or below it
+(phone). Zero overlay at any viewport, and any future hero photo drops in with no
+text-collision risk. Screenshot-verified at 1440x900 + 390px, deployed to dev.
