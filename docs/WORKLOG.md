@@ -571,3 +571,29 @@ Patrick sent Carolyn's design sources and said go on dev deploys.
 the design-brief artifact; the corrected main-page photo + real logo art are still
 the open aesthetic asks (film ring photo would make a great Registry header, note
 sent). Prod promotion of everything awaits the phone review.
+
+### 2026-07-14 (late) — the REAL logos are in
+
+Patrick dropped the canonical brand assets in `assets/logos/` (main-logo.png = the
+couple's hand-lettered "Carolyn & Merrick" wordmark on the Save-the-Date olive;
+small-logo.png = the true scalloped-heart C&M monogram over a tent photo; LOGOS.md
+documents both). The site's monogram had been our hand-drawn imitation.
+
+**Did:**
+- Cleaned both per LOGOS.md's TODOs (luminance-mask extraction; stray rectangle
+  dropped out for free at 71% bg luminance; the monogram's lamp-glow leaks at 98.7%
+  hand-erased). Produced cream + plate-cobalt colorways with alpha → recipe recorded
+  in LOGOS.md. Derivatives live in `web/src/assets/img/logo-{wordmark,monogram}-{white,cobalt}.png`.
+- **Wired in everywhere:** hero = real monogram + real wordmark (replacing the
+  Sacramento h1 text; alt text keeps the names for a11y/SEO), footer = monogram +
+  wordmark, nav = monogram. Favicon-32 / apple-touch / icon-192 / icon-512 /
+  favicon.svg all regenerated (white mark on plate cobalt); webmanifest theme_color
+  → #202A55.
+- **Sacramento webfont dropped** from the Google Fonts import (no script text left);
+  one less font request.
+- Screenshot-verified home at 390/1280, deployed to dev, assets 200 over HTTPS.
+- Artifact brief updated (logo ask resolved; header shows the real wordmark).
+
+**Open aesthetic ask (last one):** the main-page photo — which picture, or is it the
+crop. The desktop hero currently lays the wordmark over the couple's faces, which
+strengthens the case for a photo/crop decision from Carolyn.

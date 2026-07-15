@@ -85,9 +85,12 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 - **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
   filler and **no em dashes** in guest-facing text.
 - **NEEDS PATRICK:** **review dev on your phone → say go for prod promotion** of the
-  07-14 content batch; **get from Carolyn:** the photo she wants
-  on the main page + the real logo/Save-the-Date art (a logo swap also touches
-  favicon/apple-touch/icon-192/512/og); **decide the Stay/IAM approach** (her ask =
+  full 07-14 stack (content batch + reskin + real logos); **get from Carolyn:** the
+  photo she wants on the main page (~~logo art~~ **DONE 07-14 late**: canonical
+  wordmark + monogram landed in `assets/logos/`, cleaned + wired into
+  hero/nav/footer/favicons, Sacramento webfont dropped; the desktop hero now lays the
+  wordmark over the couple's faces, making the photo decision more pressing);
+  **decide the Stay/IAM approach** (her ask =
   show lodging to the right people: full per-invitation magic-link accounts (roadmap
   item 5, guest registry already in the API) vs a simple shared guest code as interim);
   **rotate the Cloudflare merrolyn.com DNS token** (pasted in chat during the cutover —
