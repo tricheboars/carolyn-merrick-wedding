@@ -597,3 +597,13 @@ documents both). The site's monogram had been our hand-drawn imitation.
 **Open aesthetic ask (last one):** the main-page photo — which picture, or is it the
 crop. The desktop hero currently lays the wordmark over the couple's faces, which
 strengthens the case for a photo/crop decision from Carolyn.
+
+### 2026-07-14 (night) — one text voice
+
+Patrick flagged font inconsistency on the home page (serif lead + labels against the
+sans body paragraph). Fixed site-wide: **Mulish is now the default for all text**
+(nav tabs, leads, eyebrows, buttons, hero date/place, form labels, timeline, calendar,
+footer meta, registry/credits inline overrides removed); **Cormorant survives only on
+h1/h2/h3** as the display face; the couple's names exist only as the hand-lettered
+wordmark. Verified 1 serif rule left in the stylesheet, rebuilt, deployed to dev.
+Rule recorded in docs/10 + a CSS comment so it doesn't regress.
