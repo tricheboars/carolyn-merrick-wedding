@@ -124,10 +124,16 @@ p{ margin:0 0 1rem; }
   position:sticky; top:0; z-index:30;
   display:flex; align-items:center; justify-content:space-between; gap:16px;
   padding:12px clamp(20px,5vw,40px);
-  /* plate cobalt, not the photo-overlay indigo: the bar is brand chrome and should
-     pop against the warm tent hero (Patrick, 2026-07-14) */
-  background:rgba(47,44,142,.96); backdrop-filter:saturate(1.1) blur(4px);
+  /* a Maine sunset on the water (Patrick, 2026-07-14): the glow sits west by the
+     monogram, the sky deepens to indigo behind the links. Every stop is dark enough
+     to hold cream text at AA (brightest stop = burnt poppy, 4.9:1). */
+  background:linear-gradient(105deg, #B84A14 0%, #8E2F2A 24%, #5A2B47 48%, #2F2C8E 78%, #22226B 100%);
   color:var(--cream);
+}
+/* the sun's glint on the water: a marigold horizon line fading east */
+.nav::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
+  background:linear-gradient(90deg, rgba(233,168,59,.85), rgba(233,168,59,0) 72%);
 }
 .nav__mark{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--cream); }
 .nav__mark svg,.nav__mark img{ width:36px; height:auto; }
@@ -309,7 +315,7 @@ p{ margin:0 0 1rem; }
 /* below ~768px the single-row nav can't fit anyway: stack it and let it scroll away
    instead of pinning 140-180px of header over small screens */
 @media (max-width:767px){
-  .nav{ position:static; flex-direction:column; gap:10px; }
+  .nav{ position:relative; flex-direction:column; gap:10px; } /* relative (not static) keeps the ::after horizon line anchored */
   .nav__links{ justify-content:center; gap:2px 8px; }
   .nav__links a{ display:inline-block; padding:10px 8px; font-size:.9rem; }
   .nav__links a.nav__cta{ padding:10px 16px; }
