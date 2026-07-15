@@ -4,6 +4,9 @@ web/_site/
 .cache/
 
 # env / secrets / guest data (NEVER commit)
+# registry.local.json holds the couple's real payment handles + mailing address —
+# rendered on the site, but kept out of this public repo's history
+web/src/_data/registry.local.json
 .env
 *.env
 !*.env.example

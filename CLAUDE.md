@@ -9,7 +9,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ---
 
-## STATUS (2026-07-03) — single source of truth
+## STATUS (2026-07-14) — single source of truth
 
 - **Phase 2 — LIVE on the real domain.** Coastal **slate/harbor-blue** theme; site +
   working API live. **Engagement photos** in (couple hero + Our Story + a **Gallery**
@@ -41,9 +41,17 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   persist, admin list/CSV, verified end-to-end incl. CORS). Real **coastal-Maine photo
   backgrounds** (Lookout Point hero + South Harpswell + Casco Bay + Cribstone Bridge,
   license-clean, `/credits/`). Added **FAQ** + **Things to do** pages/content.
-- **NEXT:** (1) **registry handles** — `/registry/` now shows **"Coming soon"**; drop in
-  real Venmo/Zelle/PayPal/mail in `web/src/_data/site.js` + redeploy (build per env,
-  see `deploy/README.md`); (2) ~~mobile site~~ **DONE 2026-07-02: all 34 audit fixes LIVE ON PROD**
+- **DONE 2026-07-14 (Carolyn's notes, round 1) — built + verified locally, NOT yet
+  deployed (dev push awaits Patrick's go):** **registry handles are real**
+  (Venmo/Zelle/mail; values live ONLY in gitignored `web/src/_data/registry.local.json`
+  on this box — public repo keeps a "Coming soon" fallback + `.example`); **Stay +
+  Music unpublished** (noindex redirect stubs overwrite the old pages on deploy; data
+  kept warm in `site.js` — Stay returns once lodging can be shown per-guest, Music cut);
+  **schedule times all TBA** (the 4:00/5:00/6:30 were placeholder guesses); travel got a
+  **"To & from the airport"** card (Uber works FROM the Jetport; ride back = prebook
+  Brunswick Taxi, tap-to-call) + a **"Shuttle schedule: TBD"** block. Still needed from
+  Carolyn: the corrected main-page photo + the real logo art. → WORKLOG 07-14.
+- **NEXT:** (1) ~~registry handles~~ **DONE 2026-07-14** (see above); (2) ~~mobile site~~ **DONE 2026-07-02: all 34 audit fixes LIVE ON PROD**
   (dev-verified 43/43, prod-verified 27/27 read-only; punch list in
   [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md), verification in
   WORKLOG). Leftovers folded into the roadmap: `og:image`, "prototype" wording on
@@ -55,7 +63,8 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   (rideshare truth + taxi tap-to-call) + stay real booking links +
   og:image/icons/manifest/sitemap + em-dash-free copy; research backed in
   `docs/data-*.md` (5 files). Still open: guest-added calendar (needs accounts),
-  couple's restaurant picks, spring-2027 concert sweep. ⚠️ never link
+  couple's restaurant picks (spring-2027 concert sweep paused: `/music/`
+  unpublished 2026-07-14). ⚠️ never link
   `harpswellinn.com` (hijacked); real venue site = `theharpswellinn.com`;
   (4) couple-specific content (exact times, dress code, lodging block, their story);
   (5) accounts + SMS layer; (6) optional `dev → prod` redirect; (7) optional: add
@@ -64,14 +73,20 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   dev/prod isolation real — open content gap is registry handles.
 - **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
   filler and **no em dashes** in guest-facing text.
-- **NEEDS PATRICK:** **review dev on your phone → say go for the prod promotion**
-  (Eat/Music/travel/stay/icons batch); **rotate the Cloudflare merrolyn.com DNS token**
-  (pasted in chat during the cutover — roll it in CF → Profile → API Tokens); guest
-  count; Twilio go-ahead; the real schedule/lodging/registry details. **For the couple
-  (from research, see WORKLOG 07-02):** chartered-shuttle decision (prior wedding at
-  this venue ran one; the ride home is what fails on the peninsula), room block
-  (Fairfield = natural shuttle anchor), their restaurant picks for "couple's pick"
-  badges. Printed Save-the-Dates can carry **merrolyn.com**.
+- **NEEDS PATRICK:** **say go for the dev deploy of the 07-14 batch** (build is ready;
+  `SITE_DOMAIN=merrolyn.moorelab.cloud` build → tar to CT205 `/var/www/merrolyn-dev`),
+  then review on your phone → prod promotion; **get from Carolyn:** the photo she wants
+  on the main page + the real logo/Save-the-Date art (a logo swap also touches
+  favicon/apple-touch/icon-192/512/og); **decide the Stay/IAM approach** (her ask =
+  show lodging to the right people: full per-invitation magic-link accounts (roadmap
+  item 5, guest registry already in the API) vs a simple shared guest code as interim);
+  **rotate the Cloudflare merrolyn.com DNS token** (pasted in chat during the cutover —
+  roll it in CF → Profile → API Tokens); guest count; Twilio go-ahead; real schedule
+  times. **For the couple (from research, see WORKLOG 07-02):** chartered-shuttle
+  decision (prior wedding at this venue ran one; the ride home is what fails on the
+  peninsula — the site now promises a shuttle schedule), room block (Fairfield =
+  natural shuttle anchor), their restaurant picks for "couple's pick" badges. Printed
+  Save-the-Dates can carry **merrolyn.com**.
 
 ## Aesthetic direction (the north star)
 

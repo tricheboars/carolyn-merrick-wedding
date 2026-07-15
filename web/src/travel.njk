@@ -20,19 +20,26 @@ permalink: /travel/
         <p class="note">Alternate: {{ site.travel.alt.name }}, {{ site.travel.alt.note }}</p>
       </div>
       <div class="card">
+        <h3>To &amp; from the airport</h3>
+        <p>{{ site.travel.transfers.toInn }}</p>
+        <p>{{ site.travel.transfers.toAirport }}</p>
+        <p style="margin:0"><a class="btn btn--ink" href="tel:{{ site.travel.transfers.taxiPhone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">Call {{ site.travel.transfers.taxiName }} {{ site.travel.transfers.taxiPhone }}</a></p>
+      </div>
+      <div class="card">
         <h3>Drive</h3>
         <p>{{ site.travel.drive }}</p>
         <p class="note">Parking: {{ site.travel.parking }}</p>
-      </div>
-      <div class="card">
-        <h3>Shuttle</h3>
-        <p>{{ site.travel.shuttle }}</p>
       </div>
       <div class="card">
         <h3>The venue</h3>
         <p>{{ site.venue.name }}<br>{{ site.venue.address }}</p>
         <p><a class="btn btn--ink" href="https://www.google.com/maps/search/?api=1&query={{ site.venue.mapsQuery }}">Open in Maps →</a></p>
       </div>
+    </div>
+
+    <div class="card" style="margin-top:24px">
+      <h3>Shuttle schedule</h3>
+      <p style="margin:0">{{ site.travel.shuttle }}</p>
     </div>
 
     <div class="divider" style="margin-top:34px"><img src="/assets/svg/coupes.svg" alt="" width="78" height="54"></div>

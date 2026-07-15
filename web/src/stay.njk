@@ -1,27 +1,22 @@
 ---
-layout: layouts/base.njk
-title: Stay
 permalink: /stay/
+eleventyExcludeFromCollections: true
 ---
-<section class="section section--olive">
-  <div class="wrap center stack">
-    <span class="label eyebrow">Where to Stay</span>
-    <h2>A place to rest your head</h2>
-    <p class="lead">A few options near the inn, from the water's edge to nearby Brunswick.</p>
-  </div>
-</section>
-
-<section class="section section--cream">
-  <div class="wrap">
-    <div class="grid grid--2">
-      {% for s in site.stay %}
-      <div class="card">
-        <h3>{{ s.name }}</h3>
-        <p>{{ s.note }}</p>
-        {% if s.url and s.url != '#' %}<p><a href="{{ s.url }}">Details →</a></p>{% endif %}
-      </div>
-      {% endfor %}
-    </div>
-    <p class="note center" style="margin-top:24px">Booking details and any room blocks will be confirmed here soon.</p>
-  </div>
-</section>
+{#- Unpublished 2026-07-14 per Carolyn: lodging guidance returns once guests can sign
+    in and see the options meant for them (room block etc.). This stub overwrites the
+    old /stay/ page on deploy (tar overlays, no delete) and sends visitors home.
+    The lodging data itself is kept warm in _data/site.js (site.stay). -#}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carolyn &amp; Merrick</title>
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url=/">
+  <link rel="canonical" href="{{ site.url }}/">
+</head>
+<body>
+  <p>This page is resting for now. <a href="/">Back to the homepage</a>.</p>
+</body>
+</html>

@@ -1,99 +1,22 @@
 ---
-layout: layouts/base.njk
-title: Live Music
-description: Live music around the midcoast the week before and after the wedding.
 permalink: /music/
+eleventyExcludeFromCollections: true
 ---
-<section class="section section--scene" style="--scene:url('/assets/img/casco-bay.jpg')">
-  <div class="wrap center stack">
-    <span class="label eyebrow">While you're in Maine</span>
-    <h2>Live music, wedding week</h2>
-    <p class="lead">Making a trip of it? Here's what's playing around the midcoast the week before and after the wedding.</p>
-  </div>
-</section>
-
-<section class="section section--cream" x-data="{ view: 'month' }">
-  <div class="wrap" style="max-width:860px">
-    <p class="center">{{ site.music.note }}</p>
-
-    <div class="btn-row" style="margin-bottom:26px">
-      <button class="btn btn--ink" :class="view === 'month' ? '' : 'btn--ghost-ink'" @click="view='month'" x-bind:aria-pressed="view === 'month'">Calendar</button>
-      <button class="btn btn--ink" :class="view === 'list' ? '' : 'btn--ghost-ink'" @click="view='list'" x-bind:aria-pressed="view === 'list'">List</button>
-    </div>
-
-    <div x-show="view === 'month'">
-      <h3 class="center" style="margin-bottom:14px">August 2027</h3>
-      <div class="cal">
-        <div class="cal__head">
-          <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-        </div>
-        <div class="cal__grid">
-          {%- for d in range(1, 32) %}
-          {%- set isWedding = (d == 14) %}
-          {%- set inWindow = (d >= 7 and d <= 21) %}
-          <div class="cal__cell{% if isWedding %} cal__cell--wedding{% elif not inWindow %} cal__cell--out{% endif %}">
-            <span class="cal__num">{{ d }}</span>
-            {%- if isWedding %}
-            <span class="cal__tag">Our wedding &#9829;</span>
-            {%- elif d == 13 %}
-            <span class="cal__tag">Welcome gathering</span>
-            {%- elif d == 15 %}
-            <span class="cal__tag">Farewell brunch</span>
-            {%- endif %}
-            {%- for e in site.music.events %}{% if e.day == d %}
-            <a class="cal__evt" href="{{ e.url }}">{{ e.title }} &middot; {{ e.venue }}</a>
-            {%- endif %}{% endfor %}
-          </div>
-          {%- endfor %}
-          <div class="cal__cell cal__cell--out"></div>
-          <div class="cal__cell cal__cell--out"></div>
-          <div class="cal__cell cal__cell--out"></div>
-          <div class="cal__cell cal__cell--out"></div>
-        </div>
-      </div>
-      <p class="note center" style="margin-top:14px">The highlighted week (Aug 7 to 21) is when most guests will be around. August 14 is spoken for.</p>
-    </div>
-
-    <div x-show="view === 'list'" x-cloak>
-      {%- if site.music.events.length %}
-      <ol class="evtlist">
-        {%- for e in site.music.events %}
-        <li>
-          <div class="d">Aug {{ e.day }}</div>
-          <div>
-            <h3 style="margin:.1em 0">{{ e.title }}</h3>
-            <p style="margin:0">{{ e.venue }}, {{ e.city }}{% if e.time %} &middot; {{ e.time }}{% endif %} &middot; <a href="{{ e.url }}">tickets &amp; info</a></p>
-          </div>
-        </li>
-        {%- endfor %}
-      </ol>
-      {%- else %}
-      <div class="card center" style="max-width:560px; margin:0 auto">
-        <h3>Nothing to list quite yet</h3>
-        <p style="margin:0">Maine venues announce shows a few months out, so August 2027 listings will start appearing in spring 2027. We'll fill this in as they land.</p>
-      </div>
-      {%- endif %}
-    </div>
-  </div>
-</section>
-
-{% if site.music.venues.length %}
-<section class="section section--olive">
-  <div class="wrap stack">
-    <div class="center stack" style="margin-bottom:8px">
-      <span class="label eyebrow">Where we'll be looking</span>
-      <h2>The venues worth watching</h2>
-    </div>
-    <div class="grid grid--2">
-      {%- for v in site.music.venues %}
-      <div class="card card--olive">
-        <h3>{{ v.name }}</h3>
-        <p style="margin:0 0 8px">{{ v.note }}</p>
-        <p style="margin:0"><a href="{{ v.url }}">See their calendar &rarr;</a></p>
-      </div>
-      {%- endfor %}
-    </div>
-    <p class="note center" style="color:var(--cream); opacity:.9; margin-top:10px">Want to plan a group outing to a show? Tell us in your RSVP note and we'll spread the word.</p>
-  </div>
-</section>
-{% endif %}
+{#- Unpublished 2026-07-14, Carolyn's call. The calendar data + venue research stay in
+    _data/site.js (site.music) and docs/data-music-venues.md in case it comes back when
+    real Aug-2027 listings land in spring 2027. This stub overwrites the old /music/
+    page on deploy (tar overlays, no delete) and sends visitors home. -#}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carolyn &amp; Merrick</title>
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url=/">
+  <link rel="canonical" href="{{ site.url }}/">
+</head>
+<body>
+  <p>This page is resting for now. <a href="/">Back to the homepage</a>.</p>
+</body>
+</html>

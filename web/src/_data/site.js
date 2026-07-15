@@ -6,6 +6,21 @@
 // couple buy their own domain later. No code change needed; everything derives from it.
 const domain = process.env.SITE_DOMAIN || "merrolyn.com";
 
+// House-fund payment handles (Venmo/Zelle/mailing address) are kept OUT of this
+// public repo — they load from the gitignored registry.local.json on the build box.
+// Icon note: ti-brand-venmo doesn't exist in Tabler v3, hence ti-cash.
+let registryMethods;
+try {
+  registryMethods = require("./registry.local.json");
+} catch {
+  console.warn("\n[site.js] WARNING: _data/registry.local.json not found — the Registry page will say \"Coming soon\". Copy registry.local.json.example and fill in the real handles.\n");
+  registryMethods = [
+    { label: "Venmo", handle: "Coming soon", icon: "ti-cash" },
+    { label: "Zelle", handle: "Coming soon", icon: "ti-device-mobile" },
+    { label: "By mail", handle: "Coming soon", icon: "ti-mail" }
+  ];
+}
+
 module.exports = {
   couple: {
     bride: "Carolyn Moore",
@@ -24,13 +39,13 @@ module.exports = {
   url: `https://${domain}`,       // used for canonical + og:url
   tagline: "We can't wait to celebrate with you on the coast of Maine.",
 
+  // Stay + Music unpublished 2026-07-14 per Carolyn (Stay returns once lodging can be
+  // shown per-guest behind sign-in; Music cut from the site). Pages now redirect home.
   nav: [
     { label: "Our Story", url: "/story/" },
     { label: "Schedule", url: "/schedule/" },
     { label: "Travel", url: "/travel/" },
-    { label: "Stay", url: "/stay/" },
     { label: "Eat", url: "/eat/" },
-    { label: "Music", url: "/music/" },
     { label: "Gallery", url: "/gallery/" },
     { label: "Registry", url: "/registry/" },
     { label: "FAQ", url: "/faq/" },
@@ -42,11 +57,13 @@ module.exports = {
     body: "Our story is coming soon: how Carolyn and Merrick met, the proposal, and why Maine. Check back as we get closer to the day."
   },
 
+  // All times TBA per Carolyn (2026-07-14) — the old 4:00/5:00/6:30 were placeholder
+  // guesses that read as real. Restore real times only when the couple confirms them.
   schedule: [
     { time: "TBA", title: "Welcome gathering", detail: "Friday evening. Casual, all guests welcome.", day: "Fri, Aug 13" },
-    { time: "4:00 PM", title: "Ceremony", detail: "The Harpswell Inn, on the point.", day: "Sat, Aug 14" },
-    { time: "5:00 PM", title: "Cocktail hour", detail: "Lawn overlooking Middle Bay.", day: "Sat, Aug 14" },
-    { time: "6:30 PM", title: "Dinner & dancing", detail: "Reception under the tent.", day: "Sat, Aug 14" },
+    { time: "TBA", title: "Ceremony", detail: "The Harpswell Inn, on the point.", day: "Sat, Aug 14" },
+    { time: "TBA", title: "Cocktail hour", detail: "Lawn overlooking Middle Bay.", day: "Sat, Aug 14" },
+    { time: "TBA", title: "Dinner & dancing", detail: "Reception under the tent.", day: "Sat, Aug 14" },
     { time: "TBA", title: "Farewell brunch", detail: "Sunday send-off.", day: "Sun, Aug 15" }
   ],
 
@@ -56,7 +73,15 @@ module.exports = {
     alt: { name: "Boston Logan (BOS)", note: "~2.25 hours; more flights, longer drive." },
     drive: "From Portland, take I-295 N to Brunswick, then Rt 123 south down the Harpswell peninsula.",
     parking: "Ample parking at the inn.",
-    shuttle: "If we arrange a shuttle from a host hotel, details will appear here, and we'll text you."
+    // Airport-transfer instructions per Carolyn (2026-07-14): Uber works FROM the
+    // Jetport; the ride back must be prebooked (Brunswick Taxi). Sources: docs/data-transport.md.
+    transfers: {
+      toInn: "Flying into Portland? Uber and Lyft pick up right outside baggage claim at the Jetport, and the ride out to Harpswell takes about 45 minutes.",
+      toAirport: "The trip back is the one to plan ahead. Ride apps are spotty in Brunswick and out on the peninsula, so schedule your airport ride in advance with Brunswick Taxi. A day or two of notice is plenty, and they run to the Jetport around the clock.",
+      taxiName: "Brunswick Taxi",
+      taxiPhone: "(207) 729-3688"
+    },
+    shuttle: "Still TBD. We're working out the details, and the schedule will appear right here as soon as it's set. We'll text you too."
   },
 
   // Verified ground-transport guidance — sources + backups in docs/data-transport.md
@@ -75,6 +100,8 @@ module.exports = {
 
   // Verified 2026-07-02 → docs/data-lodging.md. NEVER link "harpswellinn.com" (no
   // "the"): that lookalike domain is hijacked. The real site is theharpswellinn.com.
+  // NOTE: the /stay/ page is UNPUBLISHED (2026-07-14, Carolyn) until lodging can be
+  // shown per-guest behind sign-in. Data kept current here so it's ready to relight.
   stay: [
     { name: "The Harpswell Inn", note: "The venue itself has eight rooms and three suites, so a lucky few can stay steps from the ceremony. Book directly and book early. These will go first.", url: "https://www.theharpswellinn.com/rooms-suites" },
     { name: "The Brunswick Hotel", note: "A boutique hotel at the edge of the Bowdoin campus, steps from Maine Street's restaurants. About 20 minutes from the inn.", url: "https://thebrunswickhotel.com/" },
@@ -99,9 +126,9 @@ module.exports = {
     { q: "What should we wear?", a: "Dress code is being finalized. Expect semi-formal / garden party. Comfortable shoes are smart for grass and rocks." },
     { q: "Is the celebration indoors or outdoors?", a: "Most of the day is expected to be outdoors and tented on the point. We'll confirm closer to the date." },
     { q: "Can I bring a plus-one?", a: "Your invitation and RSVP will show who's included. Questions? Just ask." },
-    { q: "Parking / is there a shuttle?", a: "Parking is at the inn. If we run a shuttle, we'll share the details (and text you)." },
+    { q: "Parking / is there a shuttle?", a: "Parking is at the inn. A shuttle is in the works, and the schedule will be posted on the <a href='/travel/'>Travel</a> page once it's set. We'll text you too." },
     { q: "Are kids welcome?", a: "Your invitation will note who's included, and you're always welcome to ask us." },
-    { q: "What should we do while we're in Maine?", a: "We made pages for that: things to do on the <a href='/travel/'>Travel</a> page, restaurants worth the trip on the <a href='/eat/'>Eat</a> page, and a live-music calendar for the wedding week on the <a href='/music/'>Music</a> page." },
+    { q: "What should we do while we're in Maine?", a: "We made pages for that: things to do on the <a href='/travel/'>Travel</a> page and restaurants worth the trip on the <a href='/eat/'>Eat</a> page." },
     { q: "What about gifts?", a: "Your presence is the gift. If you'd like, there's a house fund on the Registry page." },
     { q: "How do I RSVP?", a: "Right here on the site. Once our number is live, you'll be able to RSVP by text too. Note any dietary needs on your RSVP." }
   ],
@@ -175,6 +202,8 @@ module.exports = {
   // Live-music calendar for the wedding window (Aug 7-21, 2027; nothing on the 14th).
   // Venues announce 2-6 months out; real sweep planned for spring 2027 → docs/08 item 1.
   // Event shape: { day: 8, title: "...", venue: "...", city: "...", time: "8 PM", url: "https://..." }
+  // NOTE: the /music/ page is UNPUBLISHED (2026-07-14, Carolyn's call). Data kept in
+  // case the couple wants it back once real Aug-2027 listings land in spring 2027.
   music: {
     note: "Maine venues announce shows a few months out, so this calendar fills in starting in spring 2027. Check back when you book your trip. One thing we can promise now: nothing is scheduled for August 14. You're busy that day.",
     events: [],
@@ -192,12 +221,11 @@ module.exports = {
 
   registry: {
     intro: "Your presence is the gift. If you'd like to help us build our first home together, a contribution to our house fund means the world. No registry, no shipping, just thank-yous from us.",
-    methods: [
-      { label: "Venmo", handle: "Coming soon", icon: "ti-cash" }, // ti-brand-venmo doesn't exist in Tabler v3
-      { label: "Zelle", handle: "Coming soon", icon: "ti-device-mobile" },
-      { label: "PayPal", handle: "Coming soon", icon: "ti-brand-paypal" },
-      { label: "By mail", handle: "Coming soon", icon: "ti-mail" }
-    ],
+    // Real house-fund handles are personal contact details, so they live in
+    // _data/registry.local.json (gitignored — this repo is PUBLIC and git history is
+    // forever). They render on the built site as intended; see registry.local.json.example.
+    // If that file is missing at build time we warn loudly and fall back to "Coming soon".
+    methods: registryMethods,
     note: "Sent something? Let us know below so we can thank you properly."
   },
 

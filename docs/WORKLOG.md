@@ -492,3 +492,50 @@ token lacks cache-purge perm); no `og:image` yet (roadmap item 5); `/credits/` c
 still says "prototype" (catch in the copy pass); CF auto-injects its analytics beacon
 (LAN blocks it; disable in CF zone settings if unwanted). **The mobile-audit cycle is
 closed: found → fixed → dev-verified → promoted → prod-verified.**
+
+### 2026-07-14 — Carolyn's feedback round 1: registry handles in, Stay/Music unpublished, airport instructions
+
+Carolyn reviewed the site and sent notes via Patrick. Implemented everything
+actionable in one batch (built + verified locally; **not yet deployed — the dev push
+needs Patrick to say go**, permission gate).
+
+**Did:**
+- **Registry is real.** Carolyn sent the actual Venmo handle, Zelle number, and
+  mailing address; all three are in and rendering. PayPal row dropped (not offered).
+  The handles live in `web/src/_data/registry.local.json` — **gitignored**, because
+  this repo is public and git history is forever; they render on the built site as
+  intended. Committed `registry.local.json.example` as the shape; `site.js` warns
+  loudly at build time and falls back to "Coming soon" if the file is missing.
+  ⚠️ That file exists only on archy-boi — back it up mentally: a fresh clone builds
+  "Coming soon" until recreated.
+- **Travel: airport instructions** (Carolyn's ask): new "To & from the airport" card.
+  Uber/Lyft work FROM the Jetport (~45 min); the ride BACK must be prebooked with
+  Brunswick Taxi (207) 729-3688 (tap-to-call), a day or two ahead. Matches the
+  verified ground-transport research in `docs/data-transport.md`.
+- **Travel: "Shuttle schedule" block added, TBD** — full-width card; copy promises
+  the schedule will be posted + texted when set. FAQ shuttle answer aligned.
+- **Stay unpublished** (per Carolyn: lodging guidance should reach the right people
+  once guests can sign in). `/stay/` is now a noindex meta-refresh redirect to home
+  (stub overwrites the old page on deploy since the tar overlay never deletes).
+  Lodging data kept warm in `site.js`. Nav/home/sitemap references removed.
+- **Music unpublished** (Carolyn's call), same stub treatment; calendar data + venue
+  research kept in `site.js` + `docs/data-music-venues.md` for a possible spring-2027
+  revival.
+- **Schedule: all times now TBA** — the 4:00/5:00/6:30 placeholders read as real
+  facts; Carolyn confirmed the schedule is TBD, so they're gone until real times land.
+- Home page: removed the Stay/Music buttons ("See our photos" fills the row), welcome
+  copy now says "where to eat" instead of "where to stay".
+- Verified the build: nav is 8 items, sitemap has exactly 10 URLs (no /stay/ /music/),
+  stubs are noindex+redirect, zero leftover links to removed pages, registry/travel/
+  home screenshot-checked at 390px.
+
+**Blocked / needs input (in CLAUDE.md NEEDS PATRICK):**
+- **Main-page photo** "needs to be corrected" and **logo** "needs to be updated to
+  the correct one" — need the actual assets/direction from Carolyn (which photo; the
+  real Save-the-Date art for the logo — current monogram is our hand-drawn stand-in,
+  and a logo swap also touches favicon/apple-touch/icon-192/512).
+- **Stay + IAM**: Carolyn wants lodging shown per-guest ("the right people informed").
+  That's the planned accounts layer (roadmap item 5): guest list already lives in the
+  API DB; plan = per-invitation magic links (no passwords), lodging page rendered
+  per guest group. Interim option if wanted sooner: a single shared guest code.
+- Deploy to dev pending Patrick's go, then his phone review, then prod promotion.

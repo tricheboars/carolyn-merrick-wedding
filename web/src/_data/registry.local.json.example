@@ -1,0 +1,5 @@
+[
+  { "label": "Venmo", "handle": "@venmo-handle-here", "icon": "ti-cash" },
+  { "label": "Zelle", "handle": "555-555-5555 (Name)", "icon": "ti-device-mobile" },
+  { "label": "By mail", "handle": "Street address here", "icon": "ti-mail" }
+]
