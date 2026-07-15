@@ -124,7 +124,9 @@ p{ margin:0 0 1rem; }
   position:sticky; top:0; z-index:30;
   display:flex; align-items:center; justify-content:space-between; gap:16px;
   padding:12px clamp(20px,5vw,40px);
-  background:rgba(var(--overlay-rgb),.93); backdrop-filter:saturate(1.1) blur(4px);
+  /* plate cobalt, not the photo-overlay indigo: the bar is brand chrome and should
+     pop against the warm tent hero (Patrick, 2026-07-14) */
+  background:rgba(47,44,142,.96); backdrop-filter:saturate(1.1) blur(4px);
   color:var(--cream);
 }
 .nav__mark{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--cream); }
