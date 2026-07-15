@@ -238,7 +238,7 @@ module.exports = {
 
   // photo-forward hero: real Lookout Point (Harpswell) sunset for now; swap to the
   // couple's engagement photo by replacing --hero-photo in style.css (or this asset).
-  heroPhoto: "/assets/img/hero-lookout-point.jpg",
+  heroPhoto: "/assets/img/gallery/g01.jpg",
 
   // Attribution for the coastal-Maine background photos (Wikimedia Commons).
   photoCredits: [

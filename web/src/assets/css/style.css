@@ -39,7 +39,7 @@
      Hero = Lookout Point, Harpswell at sunset — the venue's own road.
      Swap --hero-photo to the couple's engagement photo when we have it.
      The /assets/svg/scene-*.svg illustrations stay in the repo as alternates. */
-  --hero-photo: url('/assets/img/hero-couple.jpg');        /* the couple on the coast */
+  --hero-photo: url('/assets/img/gallery/g01.jpg');        /* the tent in the redwoods (Patrick's pick) */
   --scene-harbor: url('/assets/img/south-harpswell-pano.jpg');   /* Harpswell (location) */
   --scene-lighthouse: url('/assets/img/cribstone-bridge.jpg');   /* Harpswell (location) */
   --scene-story: url('/assets/img/story-couple.jpg');            /* engagement session */
@@ -148,23 +148,20 @@ p{ margin:0 0 1rem; }
   padding:7px 16px;
 }
 
-/* ---------- hero (split, after the save-the-date card itself) ----------
-   Lettering on a plate-cobalt field, the photo untouched beside/below it. The
-   wordmark must NEVER overlay the couple's likeness (Patrick, 2026-07-14) — this
-   layout guarantees it at every viewport and for any future hero photo. */
+/* ---------- hero (full-bleed tent photo, lettering over the dark forest) ----------
+   g01: the couple stands LEFT by the glowing tent; the lettering sits RIGHT over
+   dark redwoods and must never overlay their likeness (Patrick, 2026-07-14). The
+   scrim strengthens rightward, under the text. */
 .hero{
-  display:grid; grid-template-columns:minmax(400px,44%) 1fr; min-height:86vh;
+  position:relative; min-height:86vh; display:flex; align-items:center; justify-content:flex-end;
   color:var(--cream); text-align:center;
+  background-image:var(--hero-photo); background-size:cover; background-position:30% center;
 }
-.hero__card{
-  background:var(--forest); display:flex; align-items:center; justify-content:center;
-  padding:56px 28px;
+.hero::before{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(var(--overlay-deep-rgb),.08) 42%, rgba(var(--overlay-deep-rgb),.58) 78%);
 }
-.hero__photo{
-  background-image:var(--hero-photo); background-size:cover; background-position:48% 60%;
-  min-height:52vh;
-}
-.hero__inner{ margin:0 auto; max-width:520px; }
+.hero__inner{ position:relative; margin:0; padding:48px clamp(20px,5.5vw,84px) 48px 20px; max-width:560px; }
 .hero__mono{ width:104px; margin:0 auto 16px; }
 .hero__mono svg,.hero__mono img{ width:100%; height:auto; }
 .hero__label{ display:block; color:var(--cream); opacity:.92; margin-bottom:6px; }
@@ -300,12 +297,13 @@ p{ margin:0 0 1rem; }
 .gallery a:hover img{ transform:scale(1.03); filter:saturate(1.06); }
 @media (max-width:560px){ .gallery{ columns:2 150px; } }
 
-/* narrow screens: the split hero stacks — card first (the save-the-date front),
-   then the photo full-width with nothing over it */
+/* narrow screens: the mobile crop keeps the couple at the far left, and the
+   lettering stays right of them, over the scrimmed tent + forest */
 @media (max-width:880px){
-  .hero{ grid-template-columns:1fr; min-height:0; }
-  .hero__card{ padding:48px 20px 52px; }
-  .hero__photo{ min-height:62vh; background-position:center 70%; }
+  .hero{ background-position:center; }
+  .hero::before{ background:linear-gradient(180deg, rgba(var(--overlay-deep-rgb),.40), rgba(var(--overlay-deep-rgb),.52)); }
+  .hero__inner{ margin:0; padding:48px 12px 48px clamp(84px,24vw,150px); }
+  .hero__wordmark{ width:min(62vw,300px); }
 }
 
 /* below ~768px the single-row nav can't fit anyway: stack it and let it scroll away
@@ -322,7 +320,7 @@ p{ margin:0 0 1rem; }
   .timeline .d{ white-space:nowrap; }
   /* phones get right-sized photo variants (CSS backgrounds can't use srcset) */
   :root{
-    --hero-photo:url('/assets/img/hero-couple-mobile.jpg');
+    --hero-photo:url('/assets/img/g01-hero-m.jpg');
     --scene-harbor:url('/assets/img/south-harpswell-pano-m.jpg');
     --scene-lighthouse:url('/assets/img/cribstone-bridge-m.jpg');
     --scene-story:url('/assets/img/story-couple-900.jpg');

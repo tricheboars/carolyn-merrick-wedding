@@ -617,3 +617,14 @@ card itself** — lettering on a plate-cobalt field (monogram, "save the date fo
 wordmark, date, venue, buttons), the photo untouched beside it (desktop) or below it
 (phone). Zero overlay at any viewport, and any future hero photo drops in with no
 text-collision risk. Screenshot-verified at 1440x900 + 390px, deployed to dev.
+
+### 2026-07-14 (last call) — hero settled: the tent photo with the wordmark beside them
+
+Patrick vetoed the split hero ("segregated logo section") and picked the hero image
+himself: g01, the tent in the redwoods. Full-bleed hero restored with the lettering
+overlaid on the DARK FOREST right of the tent (desktop: content right-aligned,
+rightward-strengthening scrim; couple stands left by the firelight, fully clear).
+Mobile: new dedicated crop `g01-hero-m.jpg` (720px, 143KB, window shifted right)
+keeps Carolyn at the far left edge and the lettering over the scrimmed canvas, off
+both faces. site.js heroPhoto + base.njk preloads updated. Deployed to dev.
+The old hero-couple.jpg/-mobile.jpg stay in the repo (gallery/story still used).
