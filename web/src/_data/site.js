@@ -39,12 +39,14 @@ module.exports = {
   url: `https://${domain}`,       // used for canonical + og:url
   tagline: "We can't wait to celebrate with you on the coast of Maine.",
 
-  // Stay + Music unpublished 2026-07-14 per Carolyn (Stay returns once lodging can be
-  // shown per-guest behind sign-in; Music cut). Our Story unpublished 2026-07-14 per
-  // Patrick. Unpublished pages redirect home; their data stays warm below.
+  // Music unpublished 2026-07-14 per Carolyn (cut). Our Story unpublished 2026-07-14
+  // per Patrick. Unpublished pages redirect home; their data stays warm below.
+  // Stay REPUBLISHED 2026-07-16 (Patrick): general lodging info for now; a per-guest
+  // room-block view can layer on once accounts exist.
   nav: [
     { label: "Schedule", url: "/schedule/" },
     { label: "Travel", url: "/travel/" },
+    { label: "Stay", url: "/stay/" },
     { label: "Eat", url: "/eat/" },
     { label: "Gallery", url: "/gallery/" },
     { label: "Registry", url: "/registry/" },
@@ -74,7 +76,7 @@ module.exports = {
     airport: { name: "Portland International Jetport (PWM)", note: "~45 minutes south. Easiest major airport." },
     alt: { name: "Boston Logan (BOS)", note: "~2.25 hours; more flights, longer drive." },
     drive: "From Portland, take I-295 N to Brunswick, then Rt 123 south down the Harpswell peninsula.",
-    parking: "Ample parking at the inn.",
+    parking: "Limited at the inn. If you're staying at the inn, parking details will be posted here shortly before the wedding.",
     // Airport-transfer instructions per Carolyn (2026-07-14): Uber works FROM the
     // Jetport; the ride back must be prebooked (Brunswick Taxi). Sources: docs/data-transport.md.
     transfers: {
@@ -102,10 +104,14 @@ module.exports = {
 
   // Verified 2026-07-02 → docs/data-lodging.md. NEVER link "harpswellinn.com" (no
   // "the"): that lookalike domain is hijacked. The real site is theharpswellinn.com.
-  // NOTE: the /stay/ page is UNPUBLISHED (2026-07-14, Carolyn) until lodging can be
-  // shown per-guest behind sign-in. Data kept current here so it's ready to relight.
+  // NOTE: /stay/ REPUBLISHED 2026-07-16 (Patrick) as general lodging info. It was
+  // pulled 2026-07-14 (Carolyn) pending a per-guest room-block view behind sign-in;
+  // that can still layer on once accounts exist.
   stay: [
     { name: "The Harpswell Inn", note: "The venue itself has eight rooms and three suites, so a lucky few can stay steps from the ceremony. Book directly and book early. These will go first.", url: "https://www.theharpswellinn.com/rooms-suites" },
+    { name: "Bailey Island Motel", note: "A freshly remodeled motel at the water's edge just past the Cribstone Bridge, with a pool, breakfast, and loaner kayaks. About 25 minutes from the inn, and Cook's is a short walk for dinner.", url: "https://www.baileyislandmotel.com/" },
+    { name: "Log Cabin, An Island Inn", note: "Nine rooms on Bailey Island, every one facing the sunset over Casco Bay, some with decks and hot tubs. Breakfast included, and they book by phone: (207) 833-5546.", url: "https://www.logcabin-maine.com/" },
+    { name: "OneSixtyFive, the Inn on Park Row", note: "An 1848 inn on Brunswick's town green, steps from Bowdoin and Maine Street, with sixteen rooms and its own bistro. This is the inn longtime visitors knew as The Brunswick Inn. About 20 minutes from the venue.", url: "https://www.onesixtyfivemaine.com/" },
     { name: "The Brunswick Hotel", note: "A boutique hotel at the edge of the Bowdoin campus, steps from Maine Street's restaurants. About 20 minutes from the inn.", url: "https://thebrunswickhotel.com/" },
     { name: "The Federal", note: "A small boutique hotel and restaurant in the historic Captain Daniel Stone house, near downtown Brunswick.", url: "https://www.thefederalmaine.com/" },
     { name: "Fairfield Inn & Suites Brunswick", note: "The reliable chain option: free breakfast, a pool, and easy parking, about 20 minutes away.", url: "https://www.marriott.com/en-us/hotels/pwmbw-fairfield-inn-and-suites-brunswick-freeport/overview/" },
@@ -128,7 +134,7 @@ module.exports = {
     { q: "What should we wear?", a: "Dress code is being finalized. Expect semi-formal / garden party. Comfortable shoes are smart for grass and rocks." },
     { q: "Is the celebration indoors or outdoors?", a: "Most of the day is expected to be outdoors and tented on the point. We'll confirm closer to the date." },
     { q: "Can I bring a plus-one?", a: "Your invitation and RSVP will show who's included. Questions? Just ask." },
-    { q: "Parking / is there a shuttle?", a: "Parking is at the inn. A shuttle is in the works, and the schedule will be posted on the <a href='/travel/'>Travel</a> page once it's set. We'll text you too." },
+    { q: "Parking / is there a shuttle?", a: "Parking at the inn is limited, and we'll share the parking plan shortly before the wedding. A shuttle is in the works, and the schedule will be posted on the <a href='/travel/'>Travel</a> page once it's set. We'll text you too." },
     { q: "Are kids welcome?", a: "Your invitation will note who's included, and you're always welcome to ask us." },
     { q: "What should we do while we're in Maine?", a: "We made pages for that: things to do on the <a href='/travel/'>Travel</a> page and restaurants worth the trip on the <a href='/eat/'>Eat</a> page." },
     { q: "What about gifts?", a: "Your presence is the gift. If you'd like, there's a house fund on the Registry page." },
