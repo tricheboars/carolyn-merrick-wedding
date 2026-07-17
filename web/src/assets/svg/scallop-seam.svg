@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 14" preserveAspectRatio="none">
   <!-- one plate-edge scallop: cream half-disc dipping down, with a cobalt rim line; tiles with repeat-x -->
   <path d="M0 0 A14 14 0 0 0 28 0 Z" fill="#FBF8EC"/>
-  <path d="M0 0 A14 14 0 0 0 28 0" fill="none" stroke="#2F2C8E" stroke-width="1.4"/>
+  <path d="M0 0 A14 14 0 0 0 28 0" fill="none" stroke="#3F0013" stroke-width="1.4"/>
 </svg>
