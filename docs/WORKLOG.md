@@ -705,3 +705,19 @@ merrolyn.old). Verified over https://merrolyn.com: 10/10 pages 200 (incl. the ne
 link live, robots meta absent (prod indexable), API alive (/api/rsvp preflight
 204; there is no /api/health route, the 404 there is expected). Docs commit + push
 close the session.
+
+**Session close: Cloudflare token — investigated, DEFERRED (Patrick's call).**
+Rotation attempt found no path from this box: no Chrome extension connected (the
+dashboard needs it) and no token-management credential exists locally (by design).
+Groundwork banked for the follow-up session: no automation consumes the leaked
+token (the firewall's DDNS uses its own, differently-scoped one), but a stored
+copy of the merrolyn token DOES exist in the firewall's secrets store (exact
+location in private memory) and must be updated/removed when the token is rolled
+or deleted. A verify-endpoint sweep over this project's 216 session transcripts
+(23 token-shaped candidates, none printed) found zero live CF tokens; the
+original paste likely lives in a homelab-session transcript instead, so treat the
+token as live until the dashboard says otherwise. Finish = roll or delete in CF →
+Profile → API Tokens + clean the firewall copy. CLAUDE.md, docs, and memory
+updated to close the session: aesthetic north star now points at doc 10, docs/07
+marked superseded in the reference list, deploy-state memory carries the exact
+promote recipe.

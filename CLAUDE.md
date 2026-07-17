@@ -72,7 +72,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   with oxblood links (AA); scallop seam extended to cream→photo joints; nav RSVP
   pill = mini plate-rim. Rules + back-pocket ideas in
   [`docs/10-redesign-2026-07.md`](docs/10-redesign-2026-07.md). Deployed to dev CT +
-  HTTPS-verified. Tree still uncommitted (07-14 + 07-16 changes together).
+  HTTPS-verified. (Committed + pushed later that evening with the prod promotion.)
 - **DONE 2026-07-16 (evening) — parking truth + STAY REPUBLISHED, LIVE ON PROD**
   (promoted same evening with the full 07-14/07-16 stack; 10/10 prod pages verified,
   committed as 3 logical commits + docs, pushed).
@@ -116,11 +116,14 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   **Stay/IAM approach** — interim decision made 2026-07-16 (Patrick): /stay/ is
   public general info; still open whether a per-invitation room-block view (magic
   links vs shared guest code) layers on once the block exists;
-  **rotate the Cloudflare merrolyn.com DNS token** (pasted in chat during the cutover —
-  roll or just DELETE it in CF → Profile → API Tokens; verified 2026-07-16: nothing on
-  this box / the repos / OPNsense references it, and a transcript sweep found no live
-  token, so it may already be dead — confirm in the dashboard; the OPNsense DDNS token
-  is a different, moorelab.cloud-scoped one); guest count; Twilio go-ahead; real schedule
+  **rotate the Cloudflare merrolyn.com DNS token — DEFERRED to its own session**
+  (Patrick, 2026-07-16). Prep notes: no *automation* uses it, but a stored copy
+  exists in the firewall's secrets store (location in private memory) — update or
+  remove that copy when rotating. A verify sweep of this project's 216 session
+  transcripts found no live CF token (the paste likely lives in a homelab-session
+  transcript instead). To finish: CF dashboard → My Profile → API Tokens → roll or
+  delete it, clean the firewall copy, or connect the Claude-in-Chrome extension
+  and Claude drives the dashboard; guest count; Twilio go-ahead; real schedule
   times. **For the couple (from research, see WORKLOG 07-02):** chartered-shuttle
   decision (prior wedding at this venue ran one; the ride home is what fails on the
   peninsula — the site now promises a shuttle schedule), room block (Fairfield =
@@ -129,12 +132,16 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ## Aesthetic direction (the north star)
 
-Set by the couple's **Save-the-Date**: a warm **olive/citron green + cream**, a
-looping hand-lettered **script** paired with an elegant **serif** (Cormorant), and
-dark-green **hand-drawn line art** (champagne coupes → a coastal-Maine motif set).
-Earthy, whimsical, editorial — "pastel whimsy" reads here as *muted/earthy* whimsy,
-not baby pastels. Full palette + type + motifs →
-[`docs/07-design-language.md`](docs/07-design-language.md).
+Set by **Carolyn's own palette board + reception boards** (2026-07-14): **grasslands
+olive, grape-fizz wine, terra cotta, sweet cream, lilac** on a linen-cream ground,
+with bluebell surviving only as dusk photo overlays. **Quiet chrome, wine bookends,
+solid colors only — no gradients anywhere** (Patrick, 2026-07-16). Signatures: the
+couple's hand-lettered wordmark + scalloped-heart monogram, scallop plate-edge
+seams, plate-rim double-ring buttons, monoline poppy divider. One text voice
+(Mulish; Cormorant on headings only). Earthy, whimsical, editorial — "pastel
+whimsy" reads here as *muted/earthy* whimsy, not baby pastels. Full rules →
+[`docs/10-redesign-2026-07.md`](docs/10-redesign-2026-07.md) (supersedes the olive
+Save-the-Date language in docs/07, which lives on in the line art + `--stem`).
 
 ## Architecture (summary — full detail in docs)
 
@@ -196,8 +203,8 @@ Full diagram, deploy mapping, and open decisions → [`docs/02-architecture.md`]
   10DLC; ~$60 all-in.
 - [`docs/06-stack-decision.md`](docs/06-stack-decision.md) — **the stack I'll
   manage** (11ty + Alpine / Fastify + SQLite / Twilio), with rationale.
-- [`docs/07-design-language.md`](docs/07-design-language.md) — palette, type, and
-  motifs from the couple's Save-the-Date (olive/cream, script + serif, line art).
+- [`docs/07-design-language.md`](docs/07-design-language.md) — SUPERSEDED by doc 10:
+  the original Save-the-Date language (olive/cream, script + serif, line art).
 - [`docs/08-guest-experience-roadmap.md`](docs/08-guest-experience-roadmap.md) — the
   post-audit guest-experience to-dos (concert calendar, restaurants, guest calendars,
   icons/unfurls, rideshare, data-in-docs convention, copy pass, privacy assessment).
