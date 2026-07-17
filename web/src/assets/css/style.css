@@ -11,22 +11,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@300;400;500;600&display=swap');
 
 :root {
-  /* Reception palette. NOTE: --olive/--forest names are legacy (olive, then slate);
-     both now hold the PLATE COBALT — identical on purpose. Color-field sections wear
-     the same cobalt as buttons/headings; structure comes from cream scallop seams,
-     exactly how the plates themselves work. Contrast verified (WCAG AA) 2026-07-14. */
-  --olive:#2F2C8E; --olive-deep:#2A2C77; --cream:#FBF8EC; --cream-2:#F2EEDC;
-  --forest:#2F2C8E; --forest-deep:#22226B; --ink:#30304B;
-  --terracotta:#B84A14; /* burnt poppy — eyebrows, icons, links on cream (4.9:1) */
-  --brick:#8E2F2A;      /* oxblood — grounds the poppy: bud/flower centers, seals */
+  /* THE WEDDING PALETTE (the couple's own palette board, 2026-07-14): grasslands
+     olive, grape fizz, terracotta, sweet cream, lilac, and exactly ONE quiet blue
+     (bluebell, living only in photo-overlay dusk). Cobalt is retired — the site was
+     "too blue" (Patrick). NOTE: --olive/--forest names are legacy; --olive holds
+     GRASSLANDS (the band color), --forest holds GRAPE FIZZ (headings/buttons).
+     All 14 text pairs verified WCAG AA 2026-07-14. */
+  --olive:#5F5420; --olive-deep:#4E451B; --cream:#FBF8EC; --cream-2:#F5E4D8;
+  --forest:#3F0013; --forest-deep:#30000F; --ink:#3B2A33;
+  --terracotta:#B84A14; /* deep terracotta — eyebrows, icons, links on cream (4.9:1) */
+  --brick:#8E2F2A;      /* oxblood — grounds the warm family: buds, seals */
   --amber:#E9A83B;      /* marigold — wedding-day calendar cell, warm hover glow */
-  --poppy:#E8681F;      /* bright poppy — artwork + display sizes on cream ONLY (3.07:1 large-text) */
-  --stem:#96A24E;       /* stem green — line-art strokes + small chips w/ ink text; never body text */
-  --blush:#E2989B;      /* blush — garnish only (divider petal, gallery hover) */
-  --ink-rgb:48,48,75;           /* --ink as a triplet for rgba() borders/shadows */
-  --overlay-rgb:32,42,85;       /* photo overlays/nav: desaturated navy-indigo (#202A55), NOT the
-                                   raw cobalt — full chroma casts purple on the coastal photos */
-  --overlay-deep-rgb:23,30,64;  /* deeper stop of the same mix (#171E40) */
+  --poppy:#EA785B;      /* board terracotta — ARTWORK/DECOR ONLY, never text (2.4:1) */
+  --stem:#96A24E;       /* stem green — line-art strokes + small chips w/ ink text */
+  --blush:#E3A6D2;      /* lilac-pink — garnish only (divider petal, gallery hover) */
+  --ink-rgb:59,42,51;           /* --ink as a triplet for rgba() borders/shadows */
+  --overlay-rgb:58,63,82;       /* WATER-photo overlays: dusk bluebell (#3A3F52) — the
+                                   palette's only blue. The hero (a warm photo) gets a
+                                   grape-fizz scrim instead; see the temperature rule
+                                   at .hero::before. */
 
   --font-serif:'Cormorant Garamond', Georgia, serif;
   --font-sans:'Mulish', system-ui, sans-serif;
@@ -91,8 +94,12 @@ p{ margin:0 0 1rem; }
 }
 .section--scene::before{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(var(--overlay-rgb),.60), rgba(var(--overlay-deep-rgb),.72));
+  /* one flat bluebell dusk — the palette's single cool note, framed by cream */
+  background:rgba(var(--overlay-rgb),.68);
 }
+/* warm photos (the tent) keep the wine scrim wherever they appear, so the same
+   photo never shows up in two temperatures (registry header reuses the hero) */
+.section--scene-warm::before{ background:rgba(48,0,15,.55); }
 .section--scene .wrap{ position:relative; }
 .section--scene h2{ color:var(--cream); }
 .section--scene .lead{ color:var(--cream); }
@@ -103,10 +110,17 @@ p{ margin:0 0 1rem; }
 /* Cormorant needs the heavier cut to hold on saturated cobalt / photo grounds */
 .section--olive h2,.section--olive h3,.section--scene h2{ font-weight:600; }
 
-/* plate-edge seam: cream scallops with a cobalt rim line wherever cream meets cobalt
-   (and above the footer) — the site-wide signature borrowed from the reception plates */
+/* plate-edge seam: cream scallops with a grape-fizz rim line wherever cream meets a
+   color band (and above the footer) — the site-wide scallop signature */
 .section--cream + .section--olive,.footer{ position:relative; }
 .section--cream + .section--olive::before,.footer::before{
+  content:""; position:absolute; top:-1px; left:0; right:0; height:14px;
+  background:url('/assets/svg/scallop-seam.svg') 0 0/28px 14px repeat-x;
+  pointer-events:none;
+}
+/* cream meeting a photo band gets the same seam — ::after because the scene's
+   ::before already carries the dusk overlay */
+.section--cream + .section--scene::after{
   content:""; position:absolute; top:-1px; left:0; right:0; height:14px;
   background:url('/assets/svg/scallop-seam.svg') 0 0/28px 14px repeat-x;
   pointer-events:none;
@@ -124,16 +138,12 @@ p{ margin:0 0 1rem; }
   position:sticky; top:0; z-index:30;
   display:flex; align-items:center; justify-content:space-between; gap:16px;
   padding:12px clamp(20px,5vw,40px);
-  /* a Maine sunset on the water (Patrick, 2026-07-14): the glow sits west by the
-     monogram, the sky deepens to indigo behind the links. Every stop is dark enough
-     to hold cream text at AA (brightest stop = burnt poppy, 4.9:1). */
-  background:linear-gradient(105deg, #B84A14 0%, #8E2F2A 24%, #5A2B47 48%, #2F2C8E 78%, #22226B 100%);
+  /* quiet chrome (Patrick, 2026-07-16: the sunset fade was jarring): solid grape
+     fizz, same wine as the footer, so every page is bookended in one pigment and
+     the bar reads as furniture. Cream text 16.2:1; the poppy dot is the only color. */
+  background:var(--forest);
+  box-shadow:inset 0 -1px 0 rgba(251,248,236,.18); /* faint plate-rim baseline */
   color:var(--cream);
-}
-/* the sun's glint on the water: a marigold horizon line fading east */
-.nav::after{
-  content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
-  background:linear-gradient(90deg, rgba(233,168,59,.85), rgba(233,168,59,0) 72%);
 }
 .nav__mark{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--cream); }
 .nav__mark svg,.nav__mark img{ width:36px; height:auto; }
@@ -154,6 +164,9 @@ p{ margin:0 0 1rem; }
 .nav__links a.nav__cta{
   border:1.5px solid var(--cream); border-radius:var(--radius);
   padding:7px 16px;
+  /* miniature plate rim: the .btn--ink double ring, scaled for the pill (the wine
+     spacer ring matches the nav ground, so only the inner hairline shows) */
+  box-shadow:inset 0 0 0 2.5px var(--forest), inset 0 0 0 3.5px rgba(251,248,236,.9);
 }
 
 /* ---------- hero (full-bleed tent photo, lettering centered) ----------
@@ -167,7 +180,11 @@ p{ margin:0 0 1rem; }
 }
 .hero::before{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(var(--overlay-deep-rgb),.36), rgba(var(--overlay-deep-rgb),.54));
+  /* flat grape-fizz dusk (temperature rule, 2026-07-16: WARM photos get the wine
+     scrim so the wine nav melts into them; bluebell dusk belongs to WATER photos
+     only, always bordered by cream). Flat, not a gradient — no fades anywhere.
+     Cream lettering holds 5.2:1+ over the brightest tent canvas at this opacity. */
+  background:rgba(48,0,15,.46);
 }
 .hero__inner{ position:relative; margin:0 auto; padding:48px 20px; max-width:640px; }
 .hero__mono{ width:104px; margin:0 auto 16px; }
@@ -207,10 +224,17 @@ p{ margin:0 0 1rem; }
 .grid--2{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
 .grid--3{ grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
 .card{
-  background:var(--cream); border:1px solid rgba(var(--ink-rgb),.16); border-radius:12px;
+  /* Sweet Cream surfaces (the one board swatch the site never showed): cards sit
+     on the cream page as warm linen, edged in an oxblood-tinted hairline */
+  background:var(--cream-2); border:1px solid rgba(142,47,42,.22); border-radius:12px;
   padding:22px 24px;
 }
 .card h3{ color:var(--forest); }
+/* links inside sweet-cream surfaces: terracotta is 4.2:1 there (FAILS AA), oxblood
+   is 6.6:1 — keep this rule below the .section--cream link rule so it wins.
+   card--olive is excluded: it also outranks the .section--olive cream-link rule
+   by source order, and brick on olive-deep is ~1.5:1 (invisible). */
+.card:not(.card--olive) a:not([class]),.method a:not([class]){ color:var(--brick); }
 /* candlelit hover, after the pleated brass lamps — decorative only, desktop only */
 @media (hover:hover){
   .card{ transition:box-shadow .25s ease; }
@@ -233,7 +257,7 @@ p{ margin:0 0 1rem; }
 
 /* ---------- registry methods ---------- */
 .methods{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); margin-top:8px; }
-.method{ display:flex; align-items:center; gap:12px; background:var(--cream); border:1px solid rgba(var(--ink-rgb),.18); border-radius:12px; padding:16px 18px; }
+.method{ display:flex; align-items:center; gap:12px; background:var(--cream-2); border:1px solid rgba(142,47,42,.22); border-radius:12px; padding:16px 18px; }
 .method i{ font-size:24px; color:var(--terracotta); }
 .method b{ display:block; font-family:var(--font-sans); font-weight:600; font-size:1rem; }
 .method span{ font-size:.9rem; color:var(--forest); }
@@ -299,7 +323,7 @@ p{ margin:0 0 1rem; }
 /* ---------- gallery (masonry) ---------- */
 .gallery{ columns:3 260px; column-gap:14px; }
 .gallery a{ display:block; margin:0 0 14px; break-inside:avoid; border-radius:10px; overflow:hidden; box-shadow:0 1px 0 rgba(var(--ink-rgb),.12); }
-@media (hover:hover){ .gallery a:hover{ box-shadow:0 6px 22px rgba(226,152,155,.35); } }
+@media (hover:hover){ .gallery a:hover{ box-shadow:0 6px 22px rgba(227,166,210,.40); } }
 .gallery img{ width:100%; height:auto; display:block; transition:transform .45s ease, filter .45s ease; filter:saturate(.96); }
 .gallery a:hover img{ transform:scale(1.03); filter:saturate(1.06); }
 @media (max-width:560px){ .gallery{ columns:2 150px; } }
@@ -314,7 +338,7 @@ p{ margin:0 0 1rem; }
 /* below ~768px the single-row nav can't fit anyway: stack it and let it scroll away
    instead of pinning 140-180px of header over small screens */
 @media (max-width:767px){
-  .nav{ position:relative; flex-direction:column; gap:10px; } /* relative (not static) keeps the ::after horizon line anchored */
+  .nav{ position:relative; flex-direction:column; gap:10px; }
   .nav__links{ justify-content:center; gap:2px 8px; }
   .nav__links a{ display:inline-block; padding:10px 8px; font-size:.9rem; }
   .nav__links a.nav__cta{ padding:10px 16px; }
