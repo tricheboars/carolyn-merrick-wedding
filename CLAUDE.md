@@ -117,7 +117,10 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   public general info; still open whether a per-invitation room-block view (magic
   links vs shared guest code) layers on once the block exists;
   **rotate the Cloudflare merrolyn.com DNS token** (pasted in chat during the cutover —
-  roll it in CF → Profile → API Tokens); guest count; Twilio go-ahead; real schedule
+  roll or just DELETE it in CF → Profile → API Tokens; verified 2026-07-16: nothing on
+  this box / the repos / OPNsense references it, and a transcript sweep found no live
+  token, so it may already be dead — confirm in the dashboard; the OPNsense DDNS token
+  is a different, moorelab.cloud-scoped one); guest count; Twilio go-ahead; real schedule
   times. **For the couple (from research, see WORKLOG 07-02):** chartered-shuttle
   decision (prior wedding at this venue ran one; the ride home is what fails on the
   peninsula — the site now promises a shuttle schedule), room block (Fairfield =
