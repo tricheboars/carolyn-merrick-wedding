@@ -9,9 +9,10 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ---
 
-## STATUS (2026-07-14) — single source of truth
+## STATUS (2026-07-16) — single source of truth
 
-- **Phase 2 — LIVE on the real domain.** Coastal **slate/harbor-blue** theme; site +
+- **Phase 2 — LIVE on the real domain.** Reception palette (plate wine + poppy on
+  linen, quiet-chrome nav) live on BOTH dev and prod as of 2026-07-16; site +
   working API live. **Engagement photos** in (couple hero + Our Story + a **Gallery**
   page; Harpswell stock kept for location pages). **merrolyn.com is now LIVE** —
   nameservers → Cloudflare ✅, Universal SSL ✅ (mode **Full**, keep non-strict), apex
@@ -62,6 +63,28 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   **"To & from the airport"** card (Uber works FROM the Jetport; ride back = prebook
   Brunswick Taxi, tap-to-call) + a **"Shuttle schedule: TBD"** block. Still needed from
   Carolyn: the corrected main-page photo + the real logo art. → WORKLOG 07-14.
+- **DONE 2026-07-16 — COLOR-FLOW FIX, LIVE ON DEV.** Patrick: palette good, but no
+  "flow of colors" + the sunset top-bar fade "not great". 5-designer/3-judge
+  workflow → **quiet chrome, wine bookends**: nav = solid grape fizz (footer's
+  wine), sunset gradient + marigold glint deleted; hero tent scrim flipped to flat
+  wine (photo reads candlelight; bluebell dusk only on water photos, flat, always
+  cream-bordered); **no gradients anywhere**; cards/registry tiles on sweet-cream
+  with oxblood links (AA); scallop seam extended to cream→photo joints; nav RSVP
+  pill = mini plate-rim. Rules + back-pocket ideas in
+  [`docs/10-redesign-2026-07.md`](docs/10-redesign-2026-07.md). Deployed to dev CT +
+  HTTPS-verified. Tree still uncommitted (07-14 + 07-16 changes together).
+- **DONE 2026-07-16 (evening) — parking truth + STAY REPUBLISHED, LIVE ON PROD**
+  (promoted same evening with the full 07-14/07-16 stack; 10/10 prod pages verified,
+  committed as 3 logical commits + docs, pushed).
+  Parking copy corrected site-wide (limited at the inn; plan posted shortly before
+  the wedding — Travel note + FAQ). **/stay/ is back as general info** (Patrick's
+  call; per-guest room-block view can still layer on later): stub replaced, nav is
+  8 items again, sitemap 10 URLs. Lodging verified by a 3-agent workflow →
+  [`docs/data-lodging.md`](docs/data-lodging.md): 5 existing entries re-verified,
+  added Bailey Island Motel + Log Cabin + **OneSixtyFive, the Inn on Park Row (=
+  the former "Brunswick Inn"**, rebranded 2022; old domain thebrunswickinn.com is
+  parked/dead — NEVER link, same trap as harpswellinn.com). Little Island Motel
+  closed; Captain's Watch dormant — both excluded.
 - **NEXT:** (1) ~~registry handles~~ **DONE 2026-07-14** (see above); (2) ~~mobile site~~ **DONE 2026-07-02: all 34 audit fixes LIVE ON PROD**
   (dev-verified 43/43, prod-verified 27/27 read-only; punch list in
   [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md), verification in
@@ -84,15 +107,15 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   dev/prod isolation real — open content gap is registry handles.
 - **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
   filler and **no em dashes** in guest-facing text.
-- **NEEDS PATRICK:** **review dev on your phone → say go for prod promotion** of the
-  full 07-14 stack (content batch + reskin + real logos); **get from Carolyn:** the
+- **NEEDS PATRICK:** ~~prod promotion~~ **DONE 2026-07-16** (whole stack live on
+  merrolyn.com); **get from Carolyn:** the
   photo she wants on the main page (~~logo art~~ **DONE 07-14 late**: canonical
   wordmark + monogram landed in `assets/logos/`, cleaned + wired into
   hero/nav/footer/favicons, Sacramento webfont dropped; the desktop hero now lays the
   wordmark over the couple's faces, making the photo decision more pressing);
-  **decide the Stay/IAM approach** (her ask =
-  show lodging to the right people: full per-invitation magic-link accounts (roadmap
-  item 5, guest registry already in the API) vs a simple shared guest code as interim);
+  **Stay/IAM approach** — interim decision made 2026-07-16 (Patrick): /stay/ is
+  public general info; still open whether a per-invitation room-block view (magic
+  links vs shared guest code) layers on once the block exists;
   **rotate the Cloudflare merrolyn.com DNS token** (pasted in chat during the cutover —
   roll it in CF → Profile → API Tokens); guest count; Twilio go-ahead; real schedule
   times. **For the couple (from research, see WORKLOG 07-02):** chartered-shuttle

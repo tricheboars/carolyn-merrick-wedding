@@ -628,3 +628,80 @@ Mobile: new dedicated crop `g01-hero-m.jpg` (720px, 143KB, window shifted right)
 keeps Carolyn at the far left edge and the lettering over the scrimmed canvas, off
 both faces. site.js heroPhoto + base.njk preloads updated. Deployed to dev.
 The old hero-couple.jpg/-mobile.jpg stay in the repo (gallery/story still used).
+
+### 2026-07-16 — color-flow fix: quiet chrome, wine bookends (DEV)
+
+Patrick on the 07-14 build: likes Carolyn's palette, but the site has no "flow of
+colors" and the sunset top-bar fade is "not great." Ran a 5-designer / 3-judge
+workflow (8 agents; angles: quiet-chrome, linen-invitation, grasslands-anchor,
+warmth-ramp, plate-and-poppy). **Quiet Chrome: Wine Bookends won** client-fit (8.5)
+and craft (8.5); linen took board-fidelity but both cream-nav proposals died on the
+light-sticky-bar-over-dark-hero value slam. Shipped the winner + judge grafts:
+
+- **Nav:** solid grape fizz `#3F0013` (footer's wine — pages bookend in one
+  pigment), cream text 16.2:1, poppy dot 6.0:1, faint cream inset hairline. The
+  5-stop sunset gradient and marigold glint are deleted. RSVP pill now wears a
+  miniature plate-rim double ring (Set Table graft).
+- **Temperature rule:** hero tent photo scrim flipped from bluebell dusk to FLAT
+  grape-fizz `rgba(48,0,15,.46)` — the wine bar melts into the photo, and the photo
+  reads candlelight instead of cold blue. Bluebell survives only on water photos
+  (flat `.68`, was a .60→.72 gradient), always bordered by cream. Registry header
+  reuses the tent photo → new `.section--scene-warm` (`.55`) keeps it wine.
+  **No gradient survives anywhere** (Patrick rejected fades).
+- **Sweet Cream lands:** `.card`/`.method` on `--cream-2` with oxblood hairline
+  borders + oxblood in-card links (terracotta fails AA on the tint, 4.2:1 vs 6.6:1).
+- **Seam extension:** cream→photo-band junctions get the scallop seam via
+  `::after` (homepage Casco Bay band). `--overlay-deep-rgb` retired.
+
+Verified locally (build + Chromium: index/schedule/registry/rsvp/mobile), then
+deployed to dev CT 205 (`.new` + swap, old dir kept as `merrolyn-dev.old`) and
+re-verified over HTTPS: old gradient absent from served CSS, new rules present,
+screenshots match local. Docs/10 updated with the rules + back-pocket ideas
+(mask-scallop dark-on-dark seams; marigold baseline if the wine bar reads dead).
+**Not committed** (tree already carried the 07-14 wine-icon changes uncommitted).
+**Next:** Patrick eyeballs dev on his phone → prod promotion of the whole 07-14+07-16 stack.
+
+**Same-day follow-up (autonomous check):** post-deploy sweep of the four pages not
+visually verified (gallery/eat/travel/faq) caught one regression the reskin
+introduced: the new in-card oxblood link rule outranked the olive-section cream
+links by source order, turning `card--olive` links (eat/travel Brunswick bands)
+brick-on-olive (~1.5:1, illegible). Fixed with `.card:not(.card--olive)`,
+redeployed to dev, verified in the served CSS + screenshot. Gallery header checked
+against the temperature rule: the engagement shot is coastal, bluebell is correct.
+
+### 2026-07-16 (evening) — parking truth + Stay page republished (DEV)
+
+Two asks from Patrick:
+
+- **Parking copy fixed.** "Ample parking at the inn" was wrong; parking is limited.
+  Travel drive-card note and the FAQ parking answer now say parking at the inn is
+  limited and details/the parking plan will be posted shortly before the wedding.
+- **/stay/ is back** (general info for now; the per-guest room-block view can layer
+  on once accounts exist). Redirect stub replaced with a real page (harbor scene
+  header + sweet-cream cards), Stay re-added to the nav (8 items, between Travel
+  and Eat), back in the sitemap (10 URLs). A 3-agent verification workflow ran
+  before republishing: **all 5 existing entries re-verified live** (Marriott via
+  search-index only — marriott.com bot-walls direct fetches), and 3 additions
+  landed, all fetched from their own domains: **Bailey Island Motel** (remodeled
+  2022, online booking), **Log Cabin, An Island Inn** (phone booking), and
+  **OneSixtyFive, the Inn on Park Row** — which IS Patrick's requested "Brunswick
+  Inn": that name was retired in Apr 2022 when the same owner rebranded at 165 Park
+  Row; the old thebrunswickinn.com domain is parked/dead and must never be linked
+  (same trap class as harpswellinn.com). Also caught: Little Island Motel is
+  CLOSED, Captain's Watch B&B looks dormant (call before ever listing), and a
+  Driftwood Inn lookalike domain rides the search results. Driftwood + Sea Escape
+  verified but benched (page holds 8 listings + the room-block placeholder card,
+  a clean 3x3). All details → docs/data-lodging.md (re-verification section).
+  Deployed to dev CT 205 + HTTPS-verified (page 200, new entries render, parking
+  copy live, nav link present). Tree still uncommitted.
+
+**PROD PROMOTION, same evening (Patrick: "commit it all and lets update prod now").**
+Committed the whole 07-14 + 07-16 stack as three logical commits (brand icon set /
+color-flow reskin / stay + parking), built with SITE_DOMAIN=merrolyn.com (sitemap
+on the real domain, zero moorelab leakage, CSS link version-stamped so Cloudflare
+serves fresh styles) and swapped onto CT 206 (/var/www/merrolyn, old dir kept as
+merrolyn.old). Verified over https://merrolyn.com: 10/10 pages 200 (incl. the new
+/stay/), fresh CSS has the wine nav + no 105deg gradient, parking copy + Stay nav
+link live, robots meta absent (prod indexable), API alive (/api/rsvp preflight
+204; there is no /api/health route, the 404 there is expected). Docs commit + push
+close the session.
