@@ -10,9 +10,14 @@ venue site is **theharpswellinn.com**.
 
 ## Verified entries (all on the site now)
 
+**The Harpswell Inn is intentionally NOT on the Stay page** (Carolyn, 2026-08-02):
+guests staying at the inn will be told directly, so it stays off the public list.
+Its verified data is kept below for that direct outreach; the "room block: coming
+soon" card now leads the Stay grid in its place.
+
 | Name | Link | Notes |
 |---|---|---|
-| The Harpswell Inn | theharpswellinn.com/rooms-suites | 8 rooms + 3 suites (2 carriage-house suites pet-friendly), continental breakfast. 207.815.0419, stay@theharpswellinn.com. Books via direct-book.com engine. |
+| The Harpswell Inn (NOT listed publicly, see above) | theharpswellinn.com/rooms-suites | 8 rooms + 3 suites (2 carriage-house suites pet-friendly), continental breakfast. 207.815.0419, stay@theharpswellinn.com. Books via direct-book.com engine. |
 | The Brunswick Hotel | thebrunswickhotel.com | Boutique, 4 Noble St, 207-837-6565, edge of Bowdoin campus. |
 | The Federal | thefederalmaine.com | Boutique hotel + restaurant (555 North) in the Captain Daniel Stone house, 10 Water St, (207) 481-4066. |
 | Fairfield Inn & Suites Brunswick Freeport | marriott.com (pwmbw) | Chain option, 36 Old Portland Rd, 207-721-0300. The previous venue couple's shuttle hotel. |

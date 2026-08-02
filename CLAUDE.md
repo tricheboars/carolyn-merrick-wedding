@@ -85,6 +85,18 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   the former "Brunswick Inn"**, rebranded 2022; old domain thebrunswickinn.com is
   parked/dead — NEVER link, same trap as harpswellinn.com). Little Island Motel
   closed; Captain's Watch dormant — both excluded.
+- **DONE 2026-08-02 (Carolyn's notes, round 2) — LIVE ON PROD** (promoted same day
+  on Patrick's go; 10/10 prod pages verified, committed + pushed):
+  **"Getting around" wording** now says you can often
+  get a ride out to Brunswick or Harpswell "where you'll be staying" (was "to the
+  inn"); **The Harpswell Inn removed from /stay/** per Carolyn (guests staying there
+  are told directly) — the "Room block: coming soon" card took its top-of-grid slot,
+  page = 7 lodgings + that card, inn data kept in `docs/data-lodging.md` marked
+  not-listed-publicly; **Gallery fixed**: hero crop no longer cuts heads off
+  (`background-position:center 20%` — faces sit in the photo's upper third; verified
+  by screenshot desktop + mobile) and the solo shot of Carolyn (g09) deleted, data +
+  files. **Deploy gotcha:** 11ty keeps stale output — `npm run clean` before any
+  build that removes files, else the tar re-ships them. → WORKLOG 08-02.
 - **NEXT:** (1) ~~registry handles~~ **DONE 2026-07-14** (see above); (2) ~~mobile site~~ **DONE 2026-07-02: all 34 audit fixes LIVE ON PROD**
   (dev-verified 43/43, prod-verified 27/27 read-only; punch list in
   [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md), verification in
@@ -107,8 +119,8 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   dev/prod isolation real — open content gap is registry handles.
 - **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
   filler and **no em dashes** in guest-facing text.
-- **NEEDS PATRICK:** ~~prod promotion~~ **DONE 2026-07-16** (whole stack live on
-  merrolyn.com); **get from Carolyn:** the
+- **NEEDS PATRICK:** ~~prod promotion~~ **DONE 2026-08-02** (Carolyn round 2 live
+  on merrolyn.com); **get from Carolyn:** the
   photo she wants on the main page (~~logo art~~ **DONE 07-14 late**: canonical
   wordmark + monogram landed in `assets/logos/`, cleaned + wired into
   hero/nav/footer/favicons, Sacramento webfont dropped; the desktop hero now lays the

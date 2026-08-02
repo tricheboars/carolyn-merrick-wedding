@@ -721,3 +721,43 @@ Profile → API Tokens + clean the firewall copy. CLAUDE.md, docs, and memory
 updated to close the session: aesthetic north star now points at doc 10, docs/07
 marked superseded in the reference list, deploy-state memory carries the exact
 promote recipe.
+
+### 2026-08-02 — Carolyn's feedback round 2: ride wording, inn off Stay, gallery fixes (DEV)
+
+Carolyn sent three notes via Patrick; all three implemented and live on dev:
+
+1. **Travel / Getting around wording.** The intro said you can often get a ride
+   "out to the inn"; guests are mostly staying in Brunswick or Harpswell proper,
+   so it now reads "…a ride out to Brunswick or Harpswell, where you'll be
+   staying; it's the ride home that never shows." (site.js `gettingAround.intro`.)
+2. **The Harpswell Inn removed from /stay/.** Guests staying at the inn get told
+   directly, so the inn card is off the public list per Carolyn. The "Room block:
+   coming soon" card moved into its slot at the top of the grid (was the last
+   card, retitled from "Group room block: to be announced" with a fuller note —
+   it reads as the lead card now). Page holds 7 lodgings + the room-block card.
+   docs/data-lodging.md updated: inn data kept there for the direct outreach,
+   marked NOT-listed-publicly.
+3. **Gallery: heads no longer cut off + solo shot gone.** The "top pic" was the
+   hero band (story-couple.jpg as a cover background): faces sit in the upper
+   third of that photo and the default centered crop beheaded them in the short
+   band. Fixed with `background-position:center 20%` inline on the gallery hero
+   (verified by screenshot at 1360px and 390px — both faces fully in frame; the
+   same photo stays, no re-crop needed). The solo shot of Carolyn (g09) removed
+   from the gallery data AND its 3 image files deleted from the repo.
+
+**Gotcha caught during deploy:** 11ty doesn't clean stale output — the first tar
+still carried the deleted g09 files because `_site/` kept them from earlier
+builds. `npm run clean` + rebuild + re-swap fixed it; g09 is now 404 at origin
+and through Cloudflare. Rule: **clean before any build that removes files.**
+
+Deployed to dev CT 205 (tar-swap recipe) + HTTPS-verified: 10/10 pages 200, all
+three changes render, no g09 references. Tree uncommitted; prod promotion +
+commit await Patrick's review on dev.
+
+**PROD PROMOTION, same session (Patrick: "commit and promote to merrolyn.com").**
+Site changes committed (fix(site): Carolyn round 2), then a clean prod build
+(SITE_DOMAIN=merrolyn.com: canonical right, zero moorelab leakage, no noindex,
+no g09 in output) swapped onto CT 206 (/var/www/merrolyn, old dir kept as
+rollback). Verified over https://merrolyn.com: 10/10 pages 200, all three
+round-2 changes render, g09 404s, RSVP preflight 204 (API untouched). Docs
+commit + push close the session.
