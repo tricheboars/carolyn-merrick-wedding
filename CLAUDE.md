@@ -97,6 +97,25 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   by screenshot desktop + mobile) and the solo shot of Carolyn (g09) deleted, data +
   files. **Deploy gotcha:** 11ty keeps stale output — `npm run clean` before any
   build that removes files, else the tar re-ships them. → WORKLOG 08-02.
+- **DONE 2026-08-02 (later) — FULL AUDIT + ALL FIXES, LIVE ON DEV ONLY.** Five-agent
+  audit (desktop/mobile UI, code, links+copy, API), every claim hand-verified →
+  [`docs/11-audit-2026-08.md`](docs/11-audit-2026-08.md). Site itself was sound
+  (all links alive, sitemap exact, no em dashes, no overflow); the defects were in
+  the API + forms. **P1: admin auth failed OPEN** — with `ADMIN_TOKEN` unset the
+  IP-allowlist fallback passed every internet request (nginx proxies from localhost
+  on the same CT), so `/api/admin/rsvps.csv` would have served all guest PII;
+  `.env.example` had no ADMIN_TOKEN line while the runbook says `cp .env.example .env`.
+  Now fails closed. Also fixed: RSVP re-submit now UPDATEs (the page tells guests to
+  re-send to change an answer, which was double-counting the headcount), registry
+  thank-you no longer claims success on failure, RSVP no longer blames guests for
+  5xx, CSV formula injection, unbounded party size, write-only registry acks, the
+  `/sms-webhook` path mismatch that would have broken Twilio, rate limiting keyed on
+  CF-Connecting-IP (nginx now APPENDS X-Forwarded-For, else all guests share one
+  bucket), h1 on every page, focus-visible skip link, per-page meta descriptions,
+  print + reduced-motion CSS, branded 404, robots.txt, hero-photo variety, dead
+  CSS/assets out of the build. **⚠️ PROD NOT PROMOTED** — writes to CT 206 were
+  permission-blocked this session; merrolyn.com still runs pre-fix code. Rollback =
+  `server.js.bak` on each CT. → WORKLOG 08-02.
 - **NEXT:** (1) ~~registry handles~~ **DONE 2026-07-14** (see above); (2) ~~mobile site~~ **DONE 2026-07-02: all 34 audit fixes LIVE ON PROD**
   (dev-verified 43/43, prod-verified 27/27 read-only; punch list in
   [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md), verification in
@@ -119,8 +138,10 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   dev/prod isolation real — open content gap is registry handles.
 - **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
   filler and **no em dashes** in guest-facing text.
-- **NEEDS PATRICK:** ~~prod promotion~~ **DONE 2026-08-02** (Carolyn round 2 live
-  on merrolyn.com); **get from Carolyn:** the
+- **NEEDS PATRICK:** **promote the 08-02 audit fixes to prod** (dev-verified; the
+  web build and the API both need copying to CT 206 + the two nginx edits — see
+  docs/11 "Still open"); optionally clear the 24 audit test rows from the DEV DB
+  (prod was never written to); **get from Carolyn:** the
   photo she wants on the main page (~~logo art~~ **DONE 07-14 late**: canonical
   wordmark + monogram landed in `assets/logos/`, cleaned + wired into
   hero/nav/footer/favicons, Sacramento webfont dropped; the desktop hero now lays the

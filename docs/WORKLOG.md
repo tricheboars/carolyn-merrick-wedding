@@ -761,3 +761,67 @@ no g09 in output) swapped onto CT 206 (/var/www/merrolyn, old dir kept as
 rollback). Verified over https://merrolyn.com: 10/10 pages 200, all three
 round-2 changes render, g09 404s, RSVP preflight 204 (API untouched). Docs
 commit + push close the session.
+
+### 2026-08-02 (later) — five-agent audit, then every finding fixed (DEV)
+
+Patrick asked for a bug/UI audit, then "do all the fixes, verify again before
+each action so we dont regress". Five parallel auditors (desktop UI, mobile UI,
+code, links/meta/copy, API behaviour) with mutation testing confined to dev.
+Every claim was re-verified by hand before it entered the punch list →
+[`docs/11-audit-2026-08.md`](11-audit-2026-08.md).
+
+**The audit's headline:** the guest-facing site was structurally sound (64/64
+internal + 45/45 external links alive, both hijacked-domain traps absent,
+sitemap exact, facts consistent in all 28 occurrences, no em dashes, no console
+errors, no horizontal scroll 320px and up). The real defects were in the API and
+the two forms.
+
+**P1 — admin auth failed OPEN.** `adminOK()` fell back to an IP allowlist when
+`ADMIN_TOKEN` was unset, but nginx proxies from 127.0.0.1 on the same container,
+so every request on the internet satisfied it and `/api/admin/rsvps.csv` would
+have served every guest's name, email, phone and private message. Not live (both
+containers have tokens) but `.env.example` had no `ADMIN_TOKEN` line while the
+runbook says `cp .env.example .env` — one rebuild from disaster. Now fails closed
+and logs loudly.
+
+**Guest-visible bugs fixed:** the RSVP page told guests to re-send the form to
+change an answer while the API inserted a second row each time (double-counting
+the headcount the couple caters from) — re-submits now update; the registry
+thank-you claimed success even when the request failed outright; RSVP server
+errors were reported to guests as "check your answers"; the CSV export was
+formula-injectable in the one workflow the couple actually use (opening
+rsvps.csv); party size had no server-side bound; registry acknowledgements were
+write-only with no way to read them.
+
+**Two traps caught while fixing, worth remembering:**
+1. Enabling `trustProxy` alone would have made things *worse*: nginx was
+   overwriting `X-Forwarded-For` with HAProxy's address, so all guests would
+   have shared ONE rate-limit bucket and a single burst could throttle everyone.
+   nginx now appends and the limiter keys on `CF-Connecting-IP`. Verified at the
+   origin: client A 429s at 30 while client B still passes.
+2. The first card-alignment fix pinned *any* trailing paragraph to the card
+   bottom, stranding plain closing text ("Alternate: Boston Logan…") below a
+   wall of white space — worse than the finding. Narrowed to `:has(a)`.
+
+**The gallery hero was my own regression** from earlier the same day: the crop
+fix put the couple's faces back in frame but directly under the centred "Gallery"
+title. Fixed by changing the photo, not the crop — the ring detail shot has
+nothing to collide with at any width, and their faces now lead the grid below.
+
+Also: an h1 on every page (nine had none), a visible skip link on focus, per-page
+meta descriptions (nine shared one line), print and reduced-motion stylesheets, a
+branded 404 replacing the bare nginx page, robots.txt with a sitemap directive,
+three consecutive pages no longer sharing one beach photo, the Tabler webfont
+scoped to the single page that uses it, dead CSS and the dead `heroPhoto` key
+removed, palette literals moved to tokens, and ~770KB of unreferenced images
+moved out of the build path into `web/assets-archive/` (kept in git, not deleted).
+
+**Deployed to DEV + verified:** 10/10 pages 200, branded 404 serves our page,
+robots/sitemap live, admin 401s without a token and 200s with one, per-client
+rate-limit buckets confirmed, and an end-to-end RSVP re-submit updated one row
+instead of creating a second. Three commits: `fix(api)`, `fix(forms)`, `fix(site)`.
+
+**NOT promoted to prod:** writes to CT 206 (both the API and the web root) were
+blocked by a permission prompt this session, so merrolyn.com still runs the
+pre-fix code. Rollback on each container is `server.js.bak`. Dev also still holds
+the audit's test rows (24 labelled records); prod was never written to.
