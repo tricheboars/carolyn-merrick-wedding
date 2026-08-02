@@ -91,7 +91,7 @@ module.exports = {
   // Verified ground-transport guidance — sources + backups in docs/data-transport.md
   // (verified 2026-07-02; re-verify phone numbers ~July 2027 before the wedding).
   gettingAround: {
-    intro: "A quick word about ride apps: Uber and Lyft work well in Portland, but they thin out in Brunswick after dark and are close to nonexistent on the Harpswell peninsula. You can often get a ride out to the inn; it's the ride home that never shows. Rent a car, share one with friends and a designated driver, or book a pickup time in advance.",
+    intro: "A quick word about ride apps: Uber and Lyft work well in Portland, but they thin out in Brunswick after dark and are close to nonexistent on the Harpswell peninsula. You can often get a ride out to Brunswick or Harpswell, where you'll be staying; it's the ride home that never shows. Rent a car, share one with friends and a designated driver, or book a pickup time in advance.",
     options: [
       { name: "Brunswick Taxi", phone: "(207) 729-3688", url: "https://www.yelp.com/biz/brunswick-taxi-brunswick",
         note: "The local go-to, family run since 1990 and about 15 minutes from the inn. They cover Harpswell and run to the Jetport around the clock. Book a day or two ahead; they drive until 1am most nights and 2am on Saturdays." },
@@ -107,16 +107,18 @@ module.exports = {
   // NOTE: /stay/ REPUBLISHED 2026-07-16 (Patrick) as general lodging info. It was
   // pulled 2026-07-14 (Carolyn) pending a per-guest room-block view behind sign-in;
   // that can still layer on once accounts exist.
+  // The Harpswell Inn itself REMOVED from this list 2026-08-02 (Carolyn): guests
+  // staying at the inn will be told directly, so it stays off the public page. The
+  // room-block card took its slot at the top of the grid.
   stay: [
-    { name: "The Harpswell Inn", note: "The venue itself has eight rooms and three suites, so a lucky few can stay steps from the ceremony. Book directly and book early. These will go first.", url: "https://www.theharpswellinn.com/rooms-suites" },
+    { name: "Room block: coming soon", note: "We're working on reserving a block of rooms for wedding guests. Once it's set, the hotel and booking details will appear right here.", url: "#" },
     { name: "Bailey Island Motel", note: "A freshly remodeled motel at the water's edge just past the Cribstone Bridge, with a pool, breakfast, and loaner kayaks. About 25 minutes from the inn, and Cook's is a short walk for dinner.", url: "https://www.baileyislandmotel.com/" },
     { name: "Log Cabin, An Island Inn", note: "Nine rooms on Bailey Island, every one facing the sunset over Casco Bay, some with decks and hot tubs. Breakfast included, and they book by phone: (207) 833-5546.", url: "https://www.logcabin-maine.com/" },
     { name: "OneSixtyFive, the Inn on Park Row", note: "An 1848 inn on Brunswick's town green, steps from Bowdoin and Maine Street, with sixteen rooms and its own bistro. This is the inn longtime visitors knew as The Brunswick Inn. About 20 minutes from the venue.", url: "https://www.onesixtyfivemaine.com/" },
     { name: "The Brunswick Hotel", note: "A boutique hotel at the edge of the Bowdoin campus, steps from Maine Street's restaurants. About 20 minutes from the inn.", url: "https://thebrunswickhotel.com/" },
     { name: "The Federal", note: "A small boutique hotel and restaurant in the historic Captain Daniel Stone house, near downtown Brunswick.", url: "https://www.thefederalmaine.com/" },
     { name: "Fairfield Inn & Suites Brunswick", note: "The reliable chain option: free breakfast, a pool, and easy parking, about 20 minutes away.", url: "https://www.marriott.com/en-us/hotels/pwmbw-fairfield-inn-and-suites-brunswick-freeport/overview/" },
-    { name: "Cottages on Bailey & Orr's Island", note: "On the water about half an hour from the inn, across the famous Cribstone Bridge. Your Island Connection has handled rentals out here since 1982, and Vrbo and Airbnb have plenty too. Book many months ahead for a summer Saturday.", url: "https://www.mainerentals.com/" },
-    { name: "Group room block: to be announced", note: "If we secure a hotel block, the code will appear here.", url: "#" }
+    { name: "Cottages on Bailey & Orr's Island", note: "On the water about half an hour from the inn, across the famous Cribstone Bridge. Your Island Connection has handled rentals out here since 1982, and Vrbo and Airbnb have plenty too. Book many months ahead for a summer Saturday.", url: "https://www.mainerentals.com/" }
   ],
 
   // Facts + links verified 2026-07-02 against town/land-trust/official pages →
@@ -152,7 +154,7 @@ module.exports = {
     { src: "/assets/img/gallery/g06.jpg", w: 995,  h: 1500, alt: "On the foggy coast" },
     { src: "/assets/img/gallery/g07.jpg", w: 1000, h: 1500, alt: "In the trees" },
     { src: "/assets/img/gallery/g08.jpg", w: 1000, h: 1500, alt: "Autumn in the forest" },
-    { src: "/assets/img/gallery/g09.jpg", w: 1000, h: 1500, alt: "Carolyn" },
+    // g09 (solo shot of Carolyn) removed 2026-08-02 per Carolyn; files deleted too.
     { src: "/assets/img/gallery/g10.jpg", w: 1000, h: 1500, alt: "By the sea" },
     { src: "/assets/img/gallery/g11.jpg", w: 1000, h: 1500, alt: "Together on the beach" },
     { src: "/assets/img/gallery/g12.jpg", w: 1000, h: 1500, alt: "The two of them" }

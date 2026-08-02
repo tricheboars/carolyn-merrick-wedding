@@ -3,7 +3,10 @@ layout: layouts/base.njk
 title: Gallery
 permalink: /gallery/
 ---
-<section class="section section--scene" style="--scene:var(--scene-story)">
+{#- background-position lifts the crop toward the top of the photo: the couple's
+    faces sit in the upper third of story-couple.jpg, and the default centered
+    cover crop cut their heads off in this short band (Carolyn, 2026-08-02). -#}
+<section class="section section--scene" style="--scene:var(--scene-story); background-position:center 20%">
   <div class="wrap center stack">
     <span class="label eyebrow">Carolyn &amp; Merrick</span>
     <h2>Gallery</h2>
