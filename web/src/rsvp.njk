@@ -2,41 +2,46 @@
 layout: layouts/base.njk
 title: RSVP
 permalink: /rsvp/
+description: "Reply to Carolyn and Merrick's wedding invitation, with meal choice, dietary needs, and a song to get you dancing."
 ---
 <section class="section section--olive">
   <div class="wrap center stack">
     <span class="label eyebrow">Kindly reply</span>
-    <h2>RSVP</h2>
+    <h1>RSVP</h1>
     <p class="lead">By {{ site.rsvp.deadline }}. {{ site.rsvp.note }}</p>
   </div>
 </section>
 
 <section class="section section--cream">
   <div class="wrap" style="max-width:620px">
-    <form class="form" onsubmit="return false" @submit.prevent="submit($event)" x-data="{ attending:'', party:1, sent:false, error:'', busy:false,
-      async submit(e){ this.busy=true; this.error='';
+    <form class="form" onsubmit="return false" @submit.prevent="submit($event)" x-data="{ attending:'', party:1, sent:false, error:'', detail:'', busy:false,
+      async submit(e){ if(this.busy) return; this.busy=true; this.error=''; this.detail='';
         const fd=Object.fromEntries(new FormData(e.target).entries());
         try{ const r=await fetch((window.CM_API||'')+'/api/rsvp',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(fd)});
           if(r.ok){ this.sent=true; this.$nextTick(()=>e.target.scrollIntoView({behavior:'smooth',block:'center'})); }
-          else{ this.error='form'; } }
+          else if(r.status===429){ this.error='busy'; }
+          else if(r.status>=500){ this.error='server'; }
+          else{ const j=await r.json().catch(()=>({})); this.error='form'; this.detail=j.error||''; } }
         catch(_){ this.error='network'; }
         finally{ this.busy=false; } } }">
       <div x-show="!sent">
+        {#- maxlength on each field mirrors the API's caps (server.js rsvpSchema) so
+            a long answer is caught while typing instead of coming back as a 400. -#}
         <div class="field">
           <label for="name">Full name(s)</label>
-          <input id="name" name="name" type="text" placeholder="Jane &amp; John Smith" autocomplete="name" required>
+          <input id="name" name="name" type="text" maxlength="200" placeholder="Jane &amp; John Smith" autocomplete="name" required>
         </div>
 
         <div class="field">
           <label for="contact">Email or mobile</label>
-          <input id="contact" name="contact" type="text" placeholder="So we can send updates" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+          <input id="contact" name="contact" type="text" maxlength="200" placeholder="So we can send updates" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false" required>
         </div>
 
-        <div class="field">
-          <label>Will you join us?</label>
+        <fieldset class="field">
+          <legend>Will you join us?</legend>
           <label class="choice"><input type="radio" name="attending" value="yes" x-model="attending" required> Joyfully accepts</label>
           <label class="choice"><input type="radio" name="attending" value="no" x-model="attending" required> Regretfully declines</label>
-        </div>
+        </fieldset>
 
         <template x-if="attending === 'yes'">
           <div>
@@ -55,21 +60,29 @@ permalink: /rsvp/
             </div>
             <div class="field">
               <label for="diet">Dietary needs / allergies</label>
-              <input id="diet" name="diet" type="text" placeholder="Optional">
+              <input id="diet" name="diet" type="text" maxlength="500" placeholder="Optional">
             </div>
             <div class="field">
               <label for="song">A song to get you dancing</label>
-              <input id="song" name="song" type="text" placeholder="Optional">
+              <input id="song" name="song" type="text" maxlength="200" placeholder="Optional">
             </div>
           </div>
         </template>
 
         <div class="field">
           <label for="msg">A note for the couple</label>
-          <textarea id="msg" name="message" rows="3" placeholder="Optional"></textarea>
+          <textarea id="msg" name="message" rows="3" maxlength="1000" placeholder="Optional"></textarea>
         </div>
 
-        <p x-show="error" x-cloak class="note" style="color:var(--brick)" x-text="error === 'form' ? 'Something in the form needs another look. Please check your answers and send it again.' : 'We couldn\'t reach the server just now. Please try again in a minute.'"></p>
+        {#- Server faults must never be reported as the guest's mistake: a 500 used
+            to render "check your answers", so guests re-read correct answers while
+            the RSVP was lost. 4xx = their input (with the field detail), 5xx/network
+            = ours. -#}
+        <p x-show="error" x-cloak class="note" style="color:var(--brick)" role="alert" x-text="
+          error === 'form'   ? (detail ? detail.charAt(0).toUpperCase() + detail.slice(1) + '. Please fix that and send it again.' : 'Something in the form needs another look. Please check your answers and send it again.') :
+          error === 'busy'   ? 'That went through a lot of times just now. Please wait a minute and try again.' :
+          error === 'server' ? 'Sorry, that is our fault, not yours. Your answers did not save. Please try again in a minute, and text us if it keeps happening.' :
+                               'We couldn\'t reach the server just now. Please try again in a minute.'"></p>
         <button class="btn btn--ink" type="submit" x-bind:disabled="busy" x-text="busy ? 'Sending…' : 'Send RSVP'">Send RSVP</button>
         <p class="note" style="margin-top:14px">Your reply goes straight to the couple's guest list.</p>
       </div>
