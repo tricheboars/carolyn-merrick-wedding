@@ -4,10 +4,10 @@ title: Eat & Drink
 description: Where to eat around Harpswell, Brunswick, and Portland. Every spot checked and linked.
 permalink: /eat/
 ---
-<section class="section section--scene" style="--scene:var(--scene-harbor)">
+<section class="section section--scene" style="--scene:var(--scene-bay)">
   <div class="wrap center stack">
     <span class="label eyebrow">Lobster rolls &amp; more</span>
-    <h2>Where to eat</h2>
+    <h1>Where to eat</h1>
     <p class="lead">{{ site.eat.intro }}</p>
   </div>
 </section>
@@ -23,7 +23,7 @@ permalink: /eat/
     <div class="grid grid--2">
       {% for p in area.places %}
       <div class="card">
-        <h3>{{ p.name }}{% if p.couplesPick %} <span class="label" style="font-size:.6rem; color:var(--terracotta)">couple's pick</span>{% endif %}</h3>
+        <h3>{{ p.name }}{% if p.couplesPick %} <span class="label" style="font-size:.68rem; color:var(--brick)">couple's pick</span>{% endif %}</h3>
         <p class="note" style="margin-bottom:8px">{{ p.where }}</p>
         <p>{{ p.note }}</p>
         <p style="margin:0"><a href="{{ p.url }}">Their site &rarr;</a></p>

@@ -1,0 +1,10 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{#- Dev (merrolyn.moorelab.cloud) is kept out of search by the X-Robots-Tag header
+    nginx sets there, so this file only ever needs to describe the real site. -#}
+User-agent: *
+Allow: /
+
+Sitemap: {{ site.url }}/sitemap.xml

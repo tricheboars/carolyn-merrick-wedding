@@ -2,11 +2,12 @@
 layout: layouts/base.njk
 title: Travel
 permalink: /travel/
+description: "How to get to Harpswell, Maine: flying into Portland, driving down the peninsula, airport rides, parking, and getting around once you're here."
 ---
 <section class="section section--scene" style="--scene:var(--scene-harbor)">
   <div class="wrap center stack">
     <span class="label eyebrow">Getting here</span>
-    <h2>Getting to Harpswell</h2>
+    <h1>Getting to Harpswell</h1>
     <p class="lead">{{ site.travel.intro }}</p>
   </div>
 </section>
@@ -23,7 +24,9 @@ permalink: /travel/
         <h3>To &amp; from the airport</h3>
         <p>{{ site.travel.transfers.toInn }}</p>
         <p>{{ site.travel.transfers.toAirport }}</p>
-        <p style="margin:0"><a class="btn btn--ink" href="tel:{{ site.travel.transfers.taxiPhone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">Call {{ site.travel.transfers.taxiName }} {{ site.travel.transfers.taxiPhone }}</a></p>
+        {#- nowrap on the number so a narrow screen breaks between the name and the
+            number instead of mid-number ("… (207)" / "729-3688") -#}
+        <p style="margin:0"><a class="btn btn--ink" href="tel:{{ site.travel.transfers.taxiPhone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">Call {{ site.travel.transfers.taxiName }} <span style="white-space:nowrap">{{ site.travel.transfers.taxiPhone }}</span></a></p>
       </div>
       <div class="card">
         <h3>Drive</h3>
@@ -35,11 +38,13 @@ permalink: /travel/
         <p>{{ site.venue.name }}<br>{{ site.venue.address }}</p>
         <p><a class="btn btn--ink" href="https://www.google.com/maps/search/?api=1&query={{ site.venue.mapsQuery }}">Open in Maps →</a></p>
       </div>
-    </div>
-
-    <div class="card" style="margin-top:24px">
-      <h3>Shuttle schedule</h3>
-      <p style="margin:0">{{ site.travel.shuttle }}</p>
+      {#- Shuttle sits inside the grid, not as a full-width card below it: the row is
+          three columns wide, so four cards left "The venue" stranded beside two empty
+          columns. Five fills the second row. -#}
+      <div class="card">
+        <h3>Shuttle schedule</h3>
+        <p style="margin:0">{{ site.travel.shuttle }}</p>
+      </div>
     </div>
 
     <div class="divider" style="margin-top:34px"><img src="/assets/svg/poppy-divider.svg" alt="" width="110" height="59"></div>

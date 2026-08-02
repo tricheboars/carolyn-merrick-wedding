@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+title: Page not found
+permalink: /404.html
+description: "That page doesn't exist on Carolyn and Merrick's wedding site."
+eleventyExcludeFromCollections: true
+---
+{#- Served by nginx's error_page directive (see deploy/nginx-carolyn-merrick.conf).
+    A mistyped URL used to land on the bare nginx "404 Not Found" page with no
+    branding and no way back to the site. -#}
+<meta name="robots" content="noindex">
+<section class="section section--olive">
+  <div class="wrap center stack">
+    <span class="label eyebrow">Well, this is awkward</span>
+    <h1>We can't find that page</h1>
+    <p class="lead">The link may be old, or there may be a typo in the address. Everything about the wedding is still right here.</p>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="wrap center stack">
+    <div class="divider"><img src="/assets/svg/poppy-divider.svg" alt="" width="110" height="59"></div>
+    <p>Try one of these:</p>
+    <div class="btn-row">
+      {#- all btn--ink: the plain .btn carries a cream border for dark grounds and
+          would be invisible on this cream section -#}
+      <a class="btn btn--ink" href="/">Home</a>
+      <a class="btn btn--ink" href="/schedule/">Schedule</a>
+      <a class="btn btn--ink" href="/travel/">Travel</a>
+      <a class="btn btn--ink" href="/rsvp/">RSVP</a>
+    </div>
+  </div>
+</section>

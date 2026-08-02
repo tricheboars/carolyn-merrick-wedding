@@ -113,7 +113,7 @@ module.exports = {
   stay: [
     { name: "Room block: coming soon", note: "We're working on reserving a block of rooms for wedding guests. Once it's set, the hotel and booking details will appear right here.", url: "#" },
     { name: "Bailey Island Motel", note: "A freshly remodeled motel at the water's edge just past the Cribstone Bridge, with a pool, breakfast, and loaner kayaks. About 25 minutes from the inn, and Cook's is a short walk for dinner.", url: "https://www.baileyislandmotel.com/" },
-    { name: "Log Cabin, An Island Inn", note: "Nine rooms on Bailey Island, every one facing the sunset over Casco Bay, some with decks and hot tubs. Breakfast included, and they book by phone: (207) 833-5546.", url: "https://www.logcabin-maine.com/" },
+    { name: "Log Cabin, An Island Inn", note: "Nine rooms on Bailey Island, every one facing the sunset over Casco Bay, some with decks and hot tubs. Breakfast included, and they book by phone.", phone: "(207) 833-5546", url: "https://www.logcabin-maine.com/" },
     { name: "OneSixtyFive, the Inn on Park Row", note: "An 1848 inn on Brunswick's town green, steps from Bowdoin and Maine Street, with sixteen rooms and its own bistro. This is the inn longtime visitors knew as The Brunswick Inn. About 20 minutes from the venue.", url: "https://www.onesixtyfivemaine.com/" },
     { name: "The Brunswick Hotel", note: "A boutique hotel at the edge of the Bowdoin campus, steps from Maine Street's restaurants. About 20 minutes from the inn.", url: "https://thebrunswickhotel.com/" },
     { name: "The Federal", note: "A small boutique hotel and restaurant in the historic Captain Daniel Stone house, near downtown Brunswick.", url: "https://www.thefederalmaine.com/" },
@@ -139,8 +139,8 @@ module.exports = {
     { q: "Parking / is there a shuttle?", a: "Parking at the inn is limited, and we'll share the parking plan shortly before the wedding. A shuttle is in the works, and the schedule will be posted on the <a href='/travel/'>Travel</a> page once it's set. We'll text you too." },
     { q: "Are kids welcome?", a: "Your invitation will note who's included, and you're always welcome to ask us." },
     { q: "What should we do while we're in Maine?", a: "We made pages for that: things to do on the <a href='/travel/'>Travel</a> page and restaurants worth the trip on the <a href='/eat/'>Eat</a> page." },
-    { q: "What about gifts?", a: "Your presence is the gift. If you'd like, there's a house fund on the Registry page." },
-    { q: "How do I RSVP?", a: "Right here on the site. Once our number is live, you'll be able to RSVP by text too. Note any dietary needs on your RSVP." }
+    { q: "What about gifts?", a: "Your presence is the gift. If you'd like, there's a house fund on the <a href='/registry/'>Registry</a> page." },
+    { q: "How do I RSVP?", a: "Right here on the site, on the <a href='/rsvp/'>RSVP</a> page. Once our number is live, you'll be able to RSVP by text too. Note any dietary needs when you reply." }
   ],
 
   // w/h are the intrinsic pixel dims (verified with `identify`) so the masonry can
@@ -244,9 +244,10 @@ module.exports = {
     note: "RSVP online below. Prefer texting? Once our number is live you'll be able to RSVP by SMS too."
   },
 
-  // photo-forward hero: real Lookout Point (Harpswell) sunset for now; swap to the
-  // couple's engagement photo by replacing --hero-photo in style.css (or this asset).
-  heroPhoto: "/assets/img/gallery/g01.jpg",
+  // NOTE: there is deliberately no heroPhoto key here. The hero image is set by the
+  // --hero-photo custom property in assets/css/style.css (and the two <link rel=preload>
+  // tags in _includes/layouts/base.njk). A data key here read like the place to swap
+  // the main-page photo while changing nothing at all, so it was removed 2026-08-02.
 
   // Attribution for the coastal-Maine background photos (Wikimedia Commons).
   photoCredits: [
@@ -262,7 +263,7 @@ module.exports = {
     { title: "Bailey Island (Cribstone) Bridge, Harpswell", author: "Daderot",
       license: "Public domain", licenseUrl: "",
       source: "https://commons.wikimedia.org/wiki/File:Bailey_Island_Bridge,_Harpswell,_ME_-_panorama.jpg" },
-    { title: "Engagement photos: hero, Our Story, Gallery", author: "Carolyn & Merrick's October 2025 engagement session",
+    { title: "Engagement photos: hero and Gallery", author: "Carolyn & Merrick's October 2025 engagement session",
       license: "", licenseUrl: "", source: "" }
   ]
 };

@@ -23,7 +23,12 @@
   <link rel="manifest" href="/assets/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {#- The Tabler webfont is a render-blocking request for 3 icons that appear on the
+      Registry page only; every other page paid for it and used none of it. -#}
+  {% if icons %}
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
+  {% endif %}
   {% if page.url == '/' %}
   <link rel="preload" as="image" href="/assets/img/g01-hero-m.jpg" media="(max-width:680px)">
   <link rel="preload" as="image" href="/assets/img/gallery/g01.jpg" media="(min-width:680.1px)">

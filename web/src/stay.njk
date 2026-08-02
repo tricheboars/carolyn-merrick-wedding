@@ -2,16 +2,17 @@
 layout: layouts/base.njk
 title: Stay
 permalink: /stay/
+description: "Where to stay near the wedding: waterfront motels and inns on Bailey Island, hotels in Brunswick, and cottage rentals around Harpswell."
 ---
 {#- Republished 2026-07-16 (Patrick): general lodging info for now — verified hotels
     around Harpswell and Brunswick. The Harpswell Inn itself is deliberately NOT
     listed (Carolyn, 2026-08-02: guests staying there will be told directly); the
     room-block card leads the grid instead. The per-guest room-block view (sign-in)
     can layer on later; see docs/data-lodging.md for the verified source data. -#}
-<section class="section section--scene" style="--scene:var(--scene-harbor)">
+<section class="section section--scene" style="--scene:var(--scene-lookout)">
   <div class="wrap center stack">
     <span class="label eyebrow">Where to stay</span>
-    <h2>A place to rest your head</h2>
+    <h1>A place to rest your head</h1>
     <p class="lead">A few options near the inn, from the water's edge to nearby Brunswick.</p>
   </div>
 </section>
@@ -23,6 +24,7 @@ permalink: /stay/
       <div class="card">
         <h3>{{ s.name }}</h3>
         <p>{{ s.note }}</p>
+        {% if s.phone %}<p style="margin:0 0 8px"><a class="btn btn--ink" href="tel:{{ s.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">Call {{ s.phone }}</a></p>{% endif %}
         {% if s.url and s.url != '#' %}<p style="margin:0"><a href="{{ s.url }}" rel="noopener">Their site &rarr;</a></p>{% endif %}
       </div>
       {% endfor %}
