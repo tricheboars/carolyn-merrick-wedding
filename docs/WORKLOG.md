@@ -825,3 +825,22 @@ instead of creating a second. Three commits: `fix(api)`, `fix(forms)`, `fix(site
 blocked by a permission prompt this session, so merrolyn.com still runs the
 pre-fix code. Rollback on each container is `server.js.bak`. Dev also still holds
 the audit's test rows (24 labelled records); prod was never written to.
+
+**PROD PROMOTION, same evening.** The first attempt was refused by Claude Code's
+auto-mode permission classifier, not by anything on the box: SSH, `pct exec` into
+CT 206, the docroot and the API unit all checked out healthy, and the identical
+tar-pipe had deployed Carolyn's round-2 changes an hour earlier. The cause is that
+`~/.claude/settings.json` allowlists `Bash(ssh *)` as a prefix, so read-only
+`ssh proxmox2 …` calls pass, while a deploy (`cd … && tar -cf - . | ssh …`) starts
+with `cd`/`tar`, misses the prefix, and falls to the classifier. Patrick turned auto
+mode off and it went straight through.
+
+Shipped to CT 206: web docroot, `server.js`, and the nginx config (append
+`X-Forwarded-For`, `error_page 404`). Verified on merrolyn.com: 10/10 pages 200,
+branded 404, robots+sitemap, h1 on every page, 10 unique descriptions, skip-link and
+print CSS served; admin 401s without a token and 200s with it on all three endpoints
+including the new `/api/admin/registry`; CSV carries its BOM; `/sms-webhook` answers
+200; `/health` queries the DB; a junk contact gets a field-specific 400 with no row
+written; and the rate limiter gives client A a 429 at 30 requests while client B
+still passes. **Real guest data survived the restart** (1 RSVP, headcount 4).
+Rollback: `server.js.bak`, `merrolyn.bak`, `/var/www/merrolyn.old` on CT 206.

@@ -113,9 +113,13 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   CF-Connecting-IP (nginx now APPENDS X-Forwarded-For, else all guests share one
   bucket), h1 on every page, focus-visible skip link, per-page meta descriptions,
   print + reduced-motion CSS, branded 404, robots.txt, hero-photo variety, dead
-  CSS/assets out of the build. **⚠️ PROD NOT PROMOTED** — writes to CT 206 were
-  permission-blocked this session; merrolyn.com still runs pre-fix code. Rollback =
-  `server.js.bak` on each CT. → WORKLOG 08-02.
+  CSS/assets out of the build. **PROMOTED TO PROD the same evening** (web +
+  `server.js` + nginx on CT 206; verified on merrolyn.com incl. fail-closed admin,
+  per-client rate-limit buckets, and real guest data intact). Rollback =
+  `server.js.bak` / `merrolyn.bak` / `merrolyn.old` on CT 206. **Deploy gotcha:** the
+  first attempt was refused by Claude Code's auto-mode classifier, NOT by the box —
+  `Bash(ssh *)` is a prefix allow, so read-only `ssh …` passes but `tar … | ssh …`
+  deploys fall through to the classifier. → WORKLOG 08-02.
 - **NEXT:** (1) ~~registry handles~~ **DONE 2026-07-14** (see above); (2) ~~mobile site~~ **DONE 2026-07-02: all 34 audit fixes LIVE ON PROD**
   (dev-verified 43/43, prod-verified 27/27 read-only; punch list in
   [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md), verification in
@@ -138,10 +142,9 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   dev/prod isolation real — open content gap is registry handles.
 - **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
   filler and **no em dashes** in guest-facing text.
-- **NEEDS PATRICK:** **promote the 08-02 audit fixes to prod** (dev-verified; the
-  web build and the API both need copying to CT 206 + the two nginx edits — see
-  docs/11 "Still open"); optionally clear the 24 audit test rows from the DEV DB
-  (prod was never written to); **get from Carolyn:** the
+- **NEEDS PATRICK:** ~~promote the 08-02 audit fixes~~ **DONE 2026-08-02** (live on
+  merrolyn.com); optionally clear the 24 audit test rows from the DEV DB (prod was
+  never written to); **get from Carolyn:** the
   photo she wants on the main page (~~logo art~~ **DONE 07-14 late**: canonical
   wordmark + monogram landed in `assets/logos/`, cleaned + wired into
   hero/nav/footer/favicons, Sacramento webfont dropped; the desktop hero now lays the
