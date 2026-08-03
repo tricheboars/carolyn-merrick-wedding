@@ -844,3 +844,12 @@ including the new `/api/admin/registry`; CSV carries its BOM; `/sms-webhook` ans
 written; and the rate limiter gives client A a 429 at 30 requests while client B
 still passes. **Real guest data survived the restart** (1 RSVP, headcount 4).
 Rollback: `server.js.bak`, `merrolyn.bak`, `/var/www/merrolyn.old` on CT 206.
+
+**Dev DB cleared (same session).** Removed the audit's test data from CT 205: 21
+rsvps + their guests/households and 4 registry rows. Verified first that every row
+fell inside the audit window (min/max `responded_at` both 2026-08-02) — note two
+rows carried no `AUDIT-` prefix (`12345`, `a`) because the name field itself was the
+payload under test, so a label-only sweep would have missed them. Backup at
+`/opt/merrolyn-api/data/app.db.bak-2026-08-02`; VACUUM took the file from 536 KB
+(the 500 KB oversized-note test) to 36 KB. A throwaway RSVP confirmed writes still
+work against the clean schema, then was deleted. Prod's DB untouched throughout.
