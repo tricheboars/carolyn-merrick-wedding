@@ -1,0 +1,56 @@
+# /etc/systemd/system/merrolyn-api.service — identical on the dev (CT 205) and
+# prod (CT 206) containers.
+#
+# Runs as the unprivileged `merrolyn` system account (2026-08-02; it ran as root
+# until then, with the guest database world-readable inside the container):
+#   useradd --system --no-create-home --shell /usr/sbin/nologin merrolyn
+#   chown -R merrolyn:merrolyn /opt/merrolyn-api/data
+#   chmod 750 /opt/merrolyn-api/data && chmod 640 /opt/merrolyn-api/data/app.db
+#
+# .env stays root:root 0600 ON PURPOSE. systemd reads EnvironmentFile as root
+# before dropping privileges, so the service receives ADMIN_TOKEN while the service
+# account itself can never read the file. The application code is root-owned and
+# read-only to the service, so a compromised process cannot rewrite its own code.
+#
+# ─── Why the mount-based hardening is absent ─────────────────────────────────
+# These are UNPRIVILEGED LXC containers. ProtectSystem=, ProtectHome=,
+# PrivateTmp=, PrivateDevices=, ProtectKernelTunables= and ProtectControlGroups=
+# all need mount operations the container is not permitted to perform, and the
+# service dies at startup with:
+#     Failed to set up mount namespacing: /run/systemd/unit-root/proc: Permission denied
+#     Failed at step NAMESPACE spawning /usr/bin/node: Permission denied  (status=226)
+# Verified on CT 205 on 2026-08-02 — do not re-add them here. The equivalent
+# protection comes from the container boundary itself. What remains below is
+# capability- and seccomp-based, which works fine unprivileged.
+#
+# Also do NOT add MemoryDenyWriteExecute=true — it breaks Node's JIT.
+
+[Unit]
+Description=Merrolyn wedding API (Fastify)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=merrolyn
+Group=merrolyn
+WorkingDirectory=/opt/merrolyn-api
+EnvironmentFile=/opt/merrolyn-api/.env
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=3
+
+# --- hardening that works in an unprivileged container ---
+NoNewPrivileges=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictSUIDSGID=true
+RestrictRealtime=true
+RestrictNamespaces=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+LockPersonality=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

@@ -116,7 +116,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   CSS/assets out of the build. **PROMOTED TO PROD the same evening** (web +
   `server.js` + nginx on CT 206; verified on merrolyn.com incl. fail-closed admin,
   per-client rate-limit buckets, and real guest data intact). Rollback =
-  `server.js.bak` / `merrolyn.bak` / `merrolyn.old` on CT 206. **Deploy gotcha:** the
+  `server.js.bak` / `merrolyn.bak` / `merrolyn.old` on CT 206. **The API also no longer runs as root** on either CT (unprivileged `merrolyn` user, DB 0640, `.env` unreadable to the service; ⚠️ mount-based systemd hardening does NOT work in these unprivileged LXCs — see `deploy/merrolyn-api.service`). **Deploy gotcha:** the
   first attempt was refused by Claude Code's auto-mode classifier, NOT by the box —
   `Bash(ssh *)` is a prefix allow, so read-only `ssh …` passes but `tar … | ssh …`
   deploys fall through to the classifier. → WORKLOG 08-02.

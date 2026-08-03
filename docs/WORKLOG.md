@@ -853,3 +853,36 @@ payload under test, so a label-only sweep would have missed them. Backup at
 `/opt/merrolyn-api/data/app.db.bak-2026-08-02`; VACUUM took the file from 536 KB
 (the 500 KB oversized-note test) to 36 KB. A throwaway RSVP confirmed writes still
 work against the clean schema, then was deleted. Prod's DB untouched throughout.
+
+**API no longer runs as root (dev + prod).** The last open audit item. Both
+containers now run the Fastify service as an unprivileged `merrolyn` system
+account (uid 999) under a hardened unit, checked in at
+[`deploy/merrolyn-api.service`](../deploy/merrolyn-api.service). `data/` is
+`merrolyn:merrolyn` 0750 with `app.db` 0640, so the guest database stopped being
+world-readable inside the container.
+
+`.env` deliberately stays `root:root 0600`: systemd reads `EnvironmentFile` as
+root *before* dropping privileges, so the service still receives `ADMIN_TOKEN`
+while the service account cannot read the file at all. Same for the code — it is
+root-owned, so a compromised process cannot rewrite its own `server.js`. Both were
+verified by trying them as the service user; both are refused.
+
+**Gotcha (cost one failed start on dev):** the first unit carried the usual
+mount-namespace hardening (`ProtectSystem=strict`, `ProtectHome`, `PrivateTmp`,
+`PrivateDevices`, `ProtectKernelTunables`, `ProtectControlGroups`) and the service
+would not boot in these **unprivileged LXC** containers:
+`Failed to set up mount namespacing: /run/systemd/unit-root/proc: Permission
+denied`, `status=226/NAMESPACE`. Those directives need mount privileges the
+container does not have. The shipped unit keeps only capability- and seccomp-based
+options (`NoNewPrivileges`, empty `CapabilityBoundingSet`, `RestrictNamespaces`,
+`RestrictAddressFamilies`, `SystemCallArchitectures`, `LockPersonality`, `UMask`),
+which work fine unprivileged — and the unit's comment block records why, so nobody
+re-adds them. **Rule: don't put mount-based systemd hardening in an unprivileged
+LXC unit.**
+
+Verified after the change on both: process owner is `merrolyn` not root, `/health`
+reports the DB reachable, admin still 401s without a token and 200s with one, and a
+BEGIN/INSERT/ROLLBACK as the service user proved the DB is still writable without
+persisting anything. **Prod's real guest data is unchanged (1 RSVP, headcount 4)**
+and both units remain `enabled` for reboot. Rollback on each CT:
+`merrolyn-api.service.bak`, plus `data/app.db.bak-pre-systemd-2026-08-02` on prod.
