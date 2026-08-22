@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 title: RSVP
 permalink: /rsvp/
-description: "Reply to Carolyn and Merrick's wedding invitation, with meal choice, dietary needs, and a song to get you dancing."
+description: "Reply to Carolyn and Merrick's wedding invitation, with dietary needs, allergies, and a song to get you dancing."
 ---
 <section class="section section--olive">
   <div class="wrap center stack">
@@ -48,15 +48,7 @@ description: "Reply to Carolyn and Merrick's wedding invitation, with meal choic
             <div class="field">
               <label for="party">Number in your party</label>
               <input id="party" name="party" type="number" min="1" max="10" x-model="party">
-            </div>
-            <div class="field">
-              <label for="meal">Meal preference</label>
-              <select id="meal" name="meal">
-                <option value="">Select…</option>
-                <option>Catch of the day</option>
-                <option>Farm vegetable</option>
-                <option>Chicken</option>
-              </select>
+              <p class="note" style="margin:6px 0 0">We love all of your kids, but this will be an adults-only celebration!</p>
             </div>
             <div class="field">
               <label for="diet">Dietary needs / allergies</label>
@@ -66,6 +58,13 @@ description: "Reply to Carolyn and Merrick's wedding invitation, with meal choic
               <label for="song">A song to get you dancing</label>
               <input id="song" name="song" type="text" maxlength="200" placeholder="Optional">
             </div>
+            {#- SMS opt-ins (Carolyn, 2026-08-22). Two separate consents, stored on the
+                RSVP row; the checkbox wording doubles as the Twilio consent record. -#}
+            <fieldset class="field">
+              <legend>Text messages</legend>
+              <label class="choice" style="align-items:flex-start"><input type="checkbox" name="sms_excursions" value="yes" style="flex-shrink:0; margin-top:2px"> Do you want to opt in for text messages about possible excursions throughout the weekend? (Sailing, kayaking, etc.)</label>
+              <label class="choice" style="align-items:flex-start"><input type="checkbox" name="sms_updates" value="yes" style="flex-shrink:0; margin-top:2px"> Are you alright with receiving text messages for any wedding updates, room blocks, etc.? We promise not to spam you, only the important stuff!</label>
+            </fieldset>
           </div>
         </template>
 

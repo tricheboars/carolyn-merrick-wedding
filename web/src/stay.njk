@@ -19,6 +19,12 @@ description: "Where to stay near the wedding: waterfront motels and inns on Bail
 
 <section class="section section--cream">
   <div class="wrap">
+    {#- Shuttle note per Carolyn (2026-08-22): leads the page so guests read it
+        before picking a hotel. Same facts echoed on Travel + FAQ. -#}
+    <div class="card" style="max-width:720px; margin:0 auto 28px">
+      <h3>Shuttles &amp; parking</h3>
+      <p style="margin:0">{{ site.stayNote }}</p>
+    </div>
     <div class="grid grid--2">
       {% for s in site.stay %}
       <div class="card">

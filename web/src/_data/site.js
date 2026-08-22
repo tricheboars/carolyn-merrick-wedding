@@ -76,7 +76,7 @@ module.exports = {
     airport: { name: "Portland International Jetport (PWM)", note: "~45 minutes south. Easiest major airport." },
     alt: { name: "Boston Logan (BOS)", note: "~2.25 hours; more flights, longer drive." },
     drive: "From Portland, take I-295 N to Brunswick, then Rt 123 south down the Harpswell peninsula.",
-    parking: "Limited at the inn. If you're staying at the inn, parking details will be posted here shortly before the wedding.",
+    parking: "Limited at the venue. If you plan to drive to the wedding, the shuttle will pick you up and drop you off at the High Head Yacht Club.",
     // Airport-transfer instructions per Carolyn (2026-07-14): Uber works FROM the
     // Jetport; the ride back must be prebooked (Brunswick Taxi). Sources: docs/data-transport.md.
     transfers: {
@@ -85,7 +85,7 @@ module.exports = {
       taxiName: "Brunswick Taxi",
       taxiPhone: "(207) 729-3688"
     },
-    shuttle: "Still TBD. We're working out the details, and the schedule will appear right here as soon as it's set. We'll text you too."
+    shuttle: "Shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, and Spark by Hilton Brunswick. Driving? The shuttle will pick you up and drop you off at the High Head Yacht Club, since parking is limited at the venue. Exact schedule to come, and we'll text you too."
   },
 
   // Verified ground-transport guidance — sources + backups in docs/data-transport.md
@@ -110,6 +110,11 @@ module.exports = {
   // The Harpswell Inn itself REMOVED from this list 2026-08-02 (Carolyn): guests
   // staying at the inn will be told directly, so it stays off the public page. The
   // room-block card took its slot at the top of the grid.
+  // Shuttle note per Carolyn (2026-08-22), shown at the top of /stay/ and echoed on
+  // Travel + FAQ. Spark by Hilton Brunswick: 199 Pleasant St; High Head Yacht Club:
+  // 313 High Head Rd, Harpswell (both verified live 2026-08-22).
+  stayNote: "A note: we will have shuttles Friday and Saturday running between the venues, the Brunswick Hotel, and Spark by Hilton Brunswick. If you plan to drive to the wedding, the shuttle will pick you up and drop you off at the High Head Yacht Club, as parking is limited at the venue. Exact shuttle schedule to come.",
+
   stay: [
     { name: "Room block: coming soon", note: "We're working on reserving a block of rooms for wedding guests. Once it's set, the hotel and booking details will appear right here.", url: "#" },
     { name: "Bailey Island Motel", note: "A freshly remodeled motel at the water's edge just past the Cribstone Bridge, with a pool, breakfast, and loaner kayaks. About 25 minutes from the inn, and Cook's is a short walk for dinner.", url: "https://www.baileyislandmotel.com/" },
@@ -136,8 +141,8 @@ module.exports = {
     { q: "What should we wear?", a: "Dress code is being finalized. Expect semi-formal / garden party. Comfortable shoes are smart for grass and rocks." },
     { q: "Is the celebration indoors or outdoors?", a: "Most of the day is expected to be outdoors and tented on the point. We'll confirm closer to the date." },
     { q: "Can I bring a plus-one?", a: "Your invitation and RSVP will show who's included. Questions? Just ask." },
-    { q: "Parking / is there a shuttle?", a: "Parking at the inn is limited, and we'll share the parking plan shortly before the wedding. A shuttle is in the works, and the schedule will be posted on the <a href='/travel/'>Travel</a> page once it's set. We'll text you too." },
-    { q: "Are kids welcome?", a: "Your invitation will note who's included, and you're always welcome to ask us." },
+    { q: "Parking / is there a shuttle?", a: "Yes, shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, and Spark by Hilton Brunswick. If you plan to drive, the shuttle will pick you up and drop you off at the High Head Yacht Club, since parking is limited at the venue. The exact schedule will be posted on the <a href='/travel/'>Travel</a> page once it's set. We'll text you too." },
+    { q: "Are kids welcome?", a: "We love all of your kids, but this will be an adults-only celebration. Thank you for understanding!" },
     { q: "What should we do while we're in Maine?", a: "We made pages for that: things to do on the <a href='/travel/'>Travel</a> page and restaurants worth the trip on the <a href='/eat/'>Eat</a> page." },
     { q: "What about gifts?", a: "Your presence is the gift. If you'd like, there's a house fund on the <a href='/registry/'>Registry</a> page." },
     { q: "How do I RSVP?", a: "Right here on the site, on the <a href='/rsvp/'>RSVP</a> page. Once our number is live, you'll be able to RSVP by text too. Note any dietary needs when you reply." }
@@ -175,6 +180,7 @@ module.exports = {
           { name: "Dolphin Marina & Restaurant", where: "Basin Point, South Harpswell", url: "https://www.thedolphin.me/", note: "Family run since 1966 at the tip of Basin Point. Lobster stew, fish chowder, and the blueberry muffin that comes with dinner. Busy on August evenings." },
           { name: "Erica's Seafood", where: "Basin Point, next door to the Dolphin", url: "https://www.ericasseafood.com/", note: "A no-frills takeout shack on a working lobster wharf where the boats land the catch out front. Cash only, and there's an ATM on site." },
           { name: "Cook's Lobster & Ale House", where: "Bailey Island, by the Cribstone Bridge", url: "https://www.cookslobster.com/", note: "Shore dinners on Garrison Cove since 1955, right beside the famous bridge. Hours shift with the season, so check before you drive out." },
+          { name: "Sundrenched", where: "1945 Harpswell Islands Rd, Bailey Island", url: "https://www.thesundrenched.com/", note: "A modern, elevated take on the seafood shack: fish fresh from the Gulf of Maine, fish tacos, and cocktails to match. Closed Wednesdays and Thursdays." },
           { name: "Salt Cod Cafe", where: "Orr's Island", url: "https://saltcodcafe.com/", note: "Coffee, crab rolls, and homemade pie in an old general store overlooking the Cribstone Bridge. Daytime only, roughly 8 to 3." }
         ]
       },
@@ -188,7 +194,6 @@ module.exports = {
           { name: "The Great Impasta", where: "11 Pleasant St", url: "https://thegreatimpasta.net/", note: "A Brunswick institution since 1984. Comfortable Italian classics, easy with a group." },
           { name: "Brunswick Diner", where: "101 Pleasant St", url: "https://www.brunswickdiner.com/", note: "Breakfast in a real 1940s dining car, tabletop jukeboxes and all, since 1946." },
           { name: "Wild Oats Bakery & Cafe", where: "Brunswick Landing, 5 min from downtown", url: "https://wildoatsbakery.com/", note: "From-scratch bakery and cafe feeding Brunswick since 1991. Bread worth taking back to the inn." },
-          { name: "The Abbey", where: "87 Maine St", url: "https://www.theabbeymaine.com/", note: "Coffee by day, cocktails and small plates by night. A 2025 James Beard semifinalist, and Sunday jazz brunch is a treat." },
           { name: "Gelato Fiasco", where: "74 Maine St", url: "https://www.gelatofiasco.com/", note: "The flagship shop of Maine's own gelato makers, open until 11 every night." }
         ]
       },
