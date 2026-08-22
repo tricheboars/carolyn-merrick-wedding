@@ -937,8 +937,30 @@ HTTPS-verified on merrolyn.moorelab.cloud: all new copy present, Abbey gone,
 and an end-to-end RSVP POST with both opt-ins → row persisted 1/1 in the
 migrated dev DB (one obvious TEST row left in dev, id 1).
 
+**QA'd with Playwright (Patrick's ask, same session):** installed
+@playwright/test 1.62 in the session scratchpad (kept OUT of the public repo;
+system Chromium via executablePath, no browser download). 21 tests x desktop
+1280 + mobile 390: smoke on all 10 pages (200, one h1, no overflow, no console
+errors), stub redirects, branded 404, all round-3 content, and the RSVP form
+driven in a real browser: meal gone, branch show/hide, validation block,
+accept-with-opt-ins -> dev DB row 1/1, re-submit -> same row updated + consent
+withdrawn to 0/0, decline flow. **42/42 passed** (first run's 8 failures were
+all test-selector bugs, zero site defects). The 5 TEST rows were then deleted
+from the dev DB (as the merrolyn user, avoiding root-owned WAL files).
+
+**PROMOTED TO PROD (Patrick's go, same session):** prod build + tar .new/.old
+swap to CT 206 /var/www/merrolyn, api/server.js + schema.sql + restart. Prod DB
+counted before/after: the ALTER TABLE shim added sms_updates/sms_excursions in
+place, the 1 real RSVP (party of 4) intact at defaults 0/0. Verified on
+merrolyn.com: copy greps, canonical, OPTIONS /api/rsvp 204, admin fails closed
+401, then the Playwright suite read-only subset (write tests grep-inverted so
+no TEST rows touch the real guest list): **36/36 passed**. One environmental
+finding, not a defect: Cloudflare edge-injects static.cloudflareinsights.com
+(RUM beacon) on prod responses; the lab pi-holes block that host so it shows a
+console error on LAN, invisible to real guests — turn off CF Web Analytics on
+the zone if we'd rather not ship the extra JS. Rollback: /var/www/merrolyn.old
++ the pre-deploy server.js on CT 206 (and .old on CT 205 for dev).
+
 **Open:** Spark by Hilton is a shuttle stop but not a /stay/ listing — Patrick is
-asking Carolyn (it is NOT currently listed; The Brunswick Hotel is). **Prod
-promotion pending Patrick's phone review** — remember prod needs web AND
-api/server.js + schema.sql + restart (Carolyn is waiting on it to release the
-save-the-dates).
+asking Carolyn (it is NOT currently listed; The Brunswick Hotel is). Carolyn can
+release the save-the-dates: merrolyn.com is live with everything she asked for.

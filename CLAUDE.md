@@ -120,11 +120,15 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   first attempt was refused by Claude Code's auto-mode classifier, NOT by the box —
   `Bash(ssh *)` is a prefix allow, so read-only `ssh …` passes but `tar … | ssh …`
   deploys fall through to the classifier. → WORKLOG 08-02.
-- **DONE 2026-08-22 (Carolyn's notes, round 3) — LIVE ON DEV** (deployed to CT 205
-  web + API, HTTPS-verified incl. an end-to-end RSVP with both opt-ins persisted;
-  dev DB migrated in place. **Prod promotion awaits Patrick's phone review** and
-  needs BOTH the web build and `api/server.js` + `schema.sql` + service restart;
-  the startup shim migrates prod's real DB safely.) Carolyn (via text, relayed): this is the LAST edit round
+- **DONE 2026-08-22 (Carolyn's notes, round 3) — LIVE ON PROD** (dev first, then
+  promoted same session on Patrick's go: web + API on both CTs; prod's real DB
+  migrated in place with its 1 real RSVP intact, verified before/after). QA'd
+  with a **Playwright suite** (scratchpad-only, not in repo): 42/42 on dev incl.
+  browser-driven RSVP submit/update/consent-withdrawal against the dev DB, then
+  36/36 read-only on merrolyn.com (write tests excluded on prod on purpose; test
+  rows cleaned from dev). Note: Cloudflare injects its RUM beacon on prod pages
+  (blocked by the lab pi-holes → console noise on LAN only, harmless to guests;
+  optional CF zone tweak if unwanted). Carolyn (via text, relayed): this is the LAST edit round
   before mom mails the save-the-dates. **Eat:** The Abbey removed (don't re-add
   without asking her), **Sundrenched added** to Harpswell (verified live, closed
   Wed-Thu so open the wedding weekend). **RSVP:** meal preference removed (dietary
