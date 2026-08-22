@@ -964,3 +964,18 @@ the zone if we'd rather not ship the extra JS. Rollback: /var/www/merrolyn.old
 **Open:** Spark by Hilton is a shuttle stop but not a /stay/ listing — Patrick is
 asking Carolyn (it is NOT currently listed; The Brunswick Hotel is). Carolyn can
 release the save-the-dates: merrolyn.com is live with everything she asked for.
+
+## 2026-08-22 (later) — guest-DB backups doubled up
+
+Patrick asked whether the DB was backed up to both Proxmox nodes. It wasn't
+(nightly encrypted CT backups went to the single PBS box only, both wedding CTs
+included; no inter-node replication). Added two independent layers, both
+verified live (infra detail + hostnames in private memory, not here):
+1. A nightly file-level dump of the prod guest DB (consistent VACUUM INTO copy,
+   also captured inside the regular CT backup) shipped to the second Proxmox
+   node, 30-day retention, integrity-checked after the first run.
+2. A second PBS instance on the other node pulling a daily sync of the two
+   wedding CTs' backups (wedding-scoped by Patrick's choice, not the full 821G
+   datastore), with its own retention, weekly verify, and GC.
+Flagged to Patrick: the PBS backups are client-side encrypted and the key lives
+only in the cluster config — keep an offline copy of it.
