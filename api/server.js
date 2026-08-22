@@ -19,6 +19,13 @@ const dataDir = path.join(__dirname, "data");
 fs.mkdirSync(dataDir, { recursive: true });
 const db = new DatabaseSync(path.join(dataDir, "app.db"));
 db.exec(fs.readFileSync(path.join(__dirname, "schema.sql"), "utf8"));
+// SMS opt-ins added 2026-08-22: CREATE TABLE IF NOT EXISTS never touches an
+// existing table, so the deployed DBs (real guest rows on prod) get the new
+// columns here. ADD COLUMN with a DEFAULT is safe and instant in SQLite.
+for (const col of ["sms_updates", "sms_excursions"]) {
+  const have = db.prepare("SELECT 1 FROM pragma_table_info('rsvps') WHERE name = ?").get(col);
+  if (!have) db.exec(`ALTER TABLE rsvps ADD COLUMN ${col} INTEGER DEFAULT 0`);
+}
 
 // --- CORS (dev only; prod is same-origin behind HAProxy) -------------------
 const DEV_ORIGINS = new Set([
@@ -136,7 +143,9 @@ const rsvpSchema = {
       meal: { type: "string", maxLength: 100 },
       diet: { type: "string", maxLength: 500 },
       song: { type: "string", maxLength: 200 },
-      message: { type: "string", maxLength: 1000 }
+      message: { type: "string", maxLength: 1000 },
+      sms_updates: { type: "string", maxLength: 10 },
+      sms_excursions: { type: "string", maxLength: 10 }
     }
   }
 };
@@ -160,7 +169,10 @@ app.post("/api/rsvp", { schema: rsvpSchema }, async (req, reply) => {
   }
   const fields = {
     meal: clean(b.meal), diet: clean(b.diet, { multiline: true }),
-    song: clean(b.song), message: clean(b.message, { multiline: true })
+    song: clean(b.song), message: clean(b.message, { multiline: true }),
+    // Unchecked boxes never reach the payload, so absence = 0. A re-submit with a
+    // box now unchecked therefore correctly withdraws that consent on UPDATE.
+    smsUpdates: b.sms_updates ? 1 : 0, smsExcursions: b.sms_excursions ? 1 : 0
   };
 
   // Re-submitting is how the RSVP page tells guests to change their answer, so
@@ -183,9 +195,10 @@ app.post("/api/rsvp", { schema: rsvpSchema }, async (req, reply) => {
     if (prior && prior.rsvp_id) {
       db.prepare(
         `UPDATE rsvps SET attending=?, party_size=?, meal=?, dietary=?, song=?, message=?,
-                          responded_at=datetime('now')
+                          sms_updates=?, sms_excursions=?, responded_at=datetime('now')
           WHERE id=?`
-      ).run(b.attending, party, fields.meal, fields.diet, fields.song, fields.message, prior.rsvp_id);
+      ).run(b.attending, party, fields.meal, fields.diet, fields.song, fields.message,
+            fields.smsUpdates, fields.smsExcursions, prior.rsvp_id);
       rsvpId = prior.rsvp_id;
       updated = true;
     } else {
@@ -199,9 +212,11 @@ app.post("/api/rsvp", { schema: rsvpSchema }, async (req, reply) => {
         gid = Number(g.lastInsertRowid);
       }
       const r = db.prepare(
-        `INSERT INTO rsvps (guest_id, attending, party_size, meal, dietary, song, message)
-         VALUES (?,?,?,?,?,?,?)`
-      ).run(gid, b.attending, party, fields.meal, fields.diet, fields.song, fields.message);
+        `INSERT INTO rsvps (guest_id, attending, party_size, meal, dietary, song, message,
+                            sms_updates, sms_excursions)
+         VALUES (?,?,?,?,?,?,?,?,?)`
+      ).run(gid, b.attending, party, fields.meal, fields.diet, fields.song, fields.message,
+            fields.smsUpdates, fields.smsExcursions);
       rsvpId = Number(r.lastInsertRowid);
     }
     db.exec("COMMIT");
@@ -257,7 +272,8 @@ function toCSV(cols, rows) {
 
 const RSVP_SELECT =
   `SELECT r.id, g.full_name, g.email, g.phone, r.attending, r.party_size,
-          r.meal, r.dietary, r.song, r.message, r.responded_at
+          r.meal, r.dietary, r.song, r.message, r.sms_updates, r.sms_excursions,
+          r.responded_at
    FROM rsvps r JOIN guests g ON g.id = r.guest_id ORDER BY r.responded_at DESC`;
 
 app.get("/api/admin/rsvps", async (req, reply) => {
@@ -273,7 +289,7 @@ app.get("/api/admin/rsvps.csv", async (req, reply) => {
   const rows = db.prepare(RSVP_SELECT).all();
   reply.header("content-type", "text/csv; charset=utf-8")
        .header("content-disposition", 'attachment; filename="rsvps.csv"');
-  return toCSV(["full_name","email","phone","attending","party_size","meal","dietary","song","message","responded_at"], rows);
+  return toCSV(["full_name","email","phone","attending","party_size","meal","dietary","song","message","sms_updates","sms_excursions","responded_at"], rows);
 });
 
 // Registry acks were write-only until now: the page promises the couple will

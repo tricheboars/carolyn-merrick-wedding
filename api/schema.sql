@@ -27,6 +27,10 @@ CREATE TABLE IF NOT EXISTS rsvps (
   dietary       TEXT,
   song          TEXT,
   message       TEXT,
+  -- SMS opt-ins from the RSVP form (Carolyn, 2026-08-22): two separate consents.
+  -- Existing DBs get these via the ALTER TABLE shim in server.js.
+  sms_updates     INTEGER DEFAULT 0,   -- wedding updates, room blocks
+  sms_excursions  INTEGER DEFAULT 0,   -- weekend excursions (sailing, kayaking)
   responded_at  TEXT DEFAULT (datetime('now'))
 );
 
