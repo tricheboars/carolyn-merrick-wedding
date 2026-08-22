@@ -31,6 +31,12 @@ soon" card now leads the Stay grid in its place.
   stale (2015 copyright); weaker link than Your Island Connection.
 - **Room block:** still pending Patrick/couple. When secured, the Fairfield is the
   natural shuttle anchor (precedent from the previous venue wedding).
+- **Shuttle plan (Carolyn, 2026-08-22):** shuttles run Friday + Saturday between the
+  venues, **The Brunswick Hotel**, and **Spark by Hilton Brunswick** (199 Pleasant St,
+  207-729-1129, hilton.com pwmswpe — verified live 2026-08-22). Guests who drive park
+  at **High Head Yacht Club** (313 High Head Rd, Harpswell) and shuttle in; parking at
+  the venue is limited. Exact schedule TBD. Note: Spark is a shuttle stop but is NOT
+  on the /stay/ list (not asked for); flagged to Patrick 2026-08-22.
 
 ## Re-verification + additions, 2026-07-16 (Stay page republished)
 

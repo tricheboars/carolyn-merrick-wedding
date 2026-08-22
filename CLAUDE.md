@@ -9,7 +9,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ---
 
-## STATUS (2026-07-16) — single source of truth
+## STATUS (2026-08-22) — single source of truth
 
 - **Phase 2 — LIVE on the real domain.** Reception palette (plate wine + poppy on
   linen, quiet-chrome nav) live on BOTH dev and prod as of 2026-07-16; site +
@@ -120,6 +120,23 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   first attempt was refused by Claude Code's auto-mode classifier, NOT by the box —
   `Bash(ssh *)` is a prefix allow, so read-only `ssh …` passes but `tar … | ssh …`
   deploys fall through to the classifier. → WORKLOG 08-02.
+- **DONE 2026-08-22 (Carolyn's notes, round 3) — LIVE ON DEV** (deployed to CT 205
+  web + API, HTTPS-verified incl. an end-to-end RSVP with both opt-ins persisted;
+  dev DB migrated in place. **Prod promotion awaits Patrick's phone review** and
+  needs BOTH the web build and `api/server.js` + `schema.sql` + service restart;
+  the startup shim migrates prod's real DB safely.) Carolyn (via text, relayed): this is the LAST edit round
+  before mom mails the save-the-dates. **Eat:** The Abbey removed (don't re-add
+  without asking her), **Sundrenched added** to Harpswell (verified live, closed
+  Wed-Thu so open the wedding weekend). **RSVP:** meal preference removed (dietary
+  stays), adults-only note under party size, two SMS opt-in checkboxes (excursions
+  + wedding updates; wording = Twilio consent record) → new `rsvps.sms_updates` /
+  `sms_excursions` columns with a startup ALTER TABLE shim for the deployed DBs
+  (migration + update/withdrawal verified on a seeded old-schema copy; admin
+  JSON/CSV include both). **Stay:** "Shuttles & parking" card leads the page
+  (shuttles Fri+Sat between the venues, The Brunswick Hotel, Spark by Hilton
+  Brunswick; drivers park at High Head Yacht Club, venue parking limited, schedule
+  to come) — echoed on Travel + FAQ; FAQ kids answer aligned to adults-only.
+  Open: Spark is a shuttle stop but not a /stay/ listing (needs a call). → WORKLOG 08-22.
 - **NEXT:** (1) ~~registry handles~~ **DONE 2026-07-14** (see above); (2) ~~mobile site~~ **DONE 2026-07-02: all 34 audit fixes LIVE ON PROD**
   (dev-verified 43/43, prod-verified 27/27 read-only; punch list in
   [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md), verification in

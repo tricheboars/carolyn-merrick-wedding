@@ -12,6 +12,9 @@ pick" badge on the page. Until then the page frames these as local standbys, not
 ## Do NOT list (verified closed/moved during research)
 
 - Little Dog Coffee Shop, Brunswick: gone; The Abbey now occupies 87 Maine St.
+- **The Abbey** (87 Maine St, theabbeymaine.com): still open and good, but **removed
+  from the site 2026-08-22 per Carolyn** (her call, no reason given). Don't re-add
+  without asking her.
 - El Camino, Brunswick: closed (Yelp, May 2026).
 - Frontier at Fort Andross, Brunswick: cafe closed October 2022.
 - The Great Impasta moved 42 Maine St → **11 Pleasant St** (older guides are wrong).
@@ -28,7 +31,6 @@ pick" badge on the page. Until then the page frames these as local standbys, not
 | The Great Impasta | 11 Pleasant St | 207-406-2091 | https://thegreatimpasta.net/ | Institution since 1984; comfortable Italian, good with groups. |
 | Brunswick Diner | 101 Pleasant St | (207) 721-1134 | https://www.brunswickdiner.com/ | Breakfast in a real 1940s dining car since 1946. 7am-2pm. |
 | Wild Oats Bakery & Cafe | 166 Admiral Fitch Ave (Brunswick Landing, 5 min drive) | (207) 725-6287 | https://wildoatsbakery.com/ | From-scratch bakery/cafe since 1991. Daily 7:30-4:30. |
-| The Abbey | 87 Maine St | 207.406.2281 | https://www.theabbeymaine.com/ | Coffee by day, cocktails by night; 2025 James Beard semifinalist (Best New Bar); Sunday jazz brunch. |
 | Gelato Fiasco | 74 Maine St | (207) 607-4262 | https://www.gelatofiasco.com/ | Flagship scoop shop, open to 11pm nightly. |
 
 Copy note: most Brunswick dinner spots close Sun or Mon-Tue and seat until ~8:30-9pm.
@@ -50,7 +52,7 @@ Copy note: most Brunswick dinner spots close Sun or Mon-Tue and seat until ~8:30
 exactly two calendar months out → guests wanting a nice Portland dinner around
 Aug 14, 2027 should call in **mid-June 2027**. Everything else is walk-in.
 
-## Harpswell (near the venue) — verified 2026-07-02, all five on the site
+## Harpswell (near the venue) — verified 2026-07-02; Sundrenched added 2026-08-22
 
 | Name | Where | Phone | Site | Notes |
 |---|---|---|---|---|
@@ -59,7 +61,7 @@ Aug 14, 2027 should call in **mid-June 2027**. Everything else is walk-in.
 | Erica's Seafood | 6 Malcolm Dr, Basin Point | (207) 833-7354 | ericasseafood.com | **Cash only** (ATM on site); Mother's Day-mid Oct, closed Wed. Site content stale (2024); confirm hours by phone closer in. |
 | Cook's Lobster & Ale House | 68 Garrison Cove Rd, Bailey Island | (207) 833-2818 | cookslobster.com | Since 1955, by the Cribstone Bridge. Summer 2026: Wed-Sat 11:30-8, Sun to 4, closed Mon-Tue. |
 | Salt Cod Cafe | 1894 Harpswell Islands Rd, Orr's Island | 207-833-6210 | saltcodcafe.com | Daytime only (~8-3), May-Sept. Site carries stale dates; confirm by phone closer in. |
+| Sundrenched | 1945 Harpswell Islands Rd, Bailey Island | (207) 833-3183 | thesundrenched.com | **Added 2026-08-22 per Carolyn.** Modern/elevated seafood shack, Gulf of Maine sourcing, cocktails; in the old Cribstone Grill building. Seasonal; 2026 hours 11:30-8, closed Wed-Thu (open Fri-Sun, so open the wedding weekend). Verified via own site + Yelp 2026-08-22. |
 
 Copy note: everything here is seasonal + on the water and peaks in mid-August. Most
-close by 7-8pm → late-night food means Brunswick. Sundrenched (in the old Cribstone
-Grill building on Bailey Island) is also liked per the venue; not listed for now.
+close by 7-8pm → late-night food means Brunswick.

@@ -886,3 +886,59 @@ BEGIN/INSERT/ROLLBACK as the service user proved the DB is still writable withou
 persisting anything. **Prod's real guest data is unchanged (1 RSVP, headcount 4)**
 and both units remain `enabled` for reboot. Rollback on each CT:
 `merrolyn-api.service.bak`, plus `data/app.db.bak-pre-systemd-2026-08-02` on prod.
+
+---
+
+## 2026-08-22 — Carolyn's notes, round 3 (via text convo relayed by Patrick)
+
+Carolyn's list, verbatim intent (she says this is the LAST edit round before mom
+mails the save-the-dates, which carry merrolyn.com):
+
+**Did (site, `web/src/_data/site.js` + templates):**
+- **Eat:** The Abbey removed from Brunswick (her call; doc keeps it as
+  don't-re-add-without-asking). **Sundrenched added** to the Harpswell section
+  (1945 Harpswell Islands Rd, Bailey Island; thesundrenched.com verified live
+  2026-08-22, seasonal, closed Wed-Thu so open the wedding weekend).
+- **RSVP:** meal preference field REMOVED (dietary needs / allergies stays; page
+  meta description updated). Adults-only note added under "Number in your party":
+  "We love all of your kids, but this will be an adults-only celebration!" (her
+  copy, typo fixed). Two SMS opt-in checkboxes added (her copy, light cleanup) in
+  a "Text messages" fieldset: excursions (sailing, kayaking) + wedding
+  updates/room blocks. Checkbox wording doubles as the Twilio consent record.
+- **Stay:** "Shuttles & parking" card now leads the page: shuttles Fri + Sat
+  between the venues, The Brunswick Hotel, and Spark by Hilton Brunswick; drivers
+  park at High Head Yacht Club (313 High Head Rd, verified) because venue parking
+  is limited; exact schedule to come. Same facts echoed on **Travel** (Shuttle
+  schedule card replaced "Still TBD"; Drive card parking note updated) and the
+  **FAQ** parking/shuttle answer.
+- **FAQ kids answer** aligned with the new adults-only truth (was "your invitation
+  will note who's included") — inferred from her RSVP note, flagged to Patrick.
+
+**Did (API, `api/server.js` + `schema.sql`):**
+- `rsvps` gains `sms_updates` + `sms_excursions` (INTEGER 0/1). Existing DBs
+  (prod has real rows) migrate via a startup ALTER TABLE shim keyed on
+  `pragma_table_info` — verified against a seeded old-schema DB: columns added in
+  place, old row intact, defaults 0. Fresh DBs get them from schema.sql.
+- RSVP handler stores both; unchecked box = absent from payload = 0, so a
+  re-submit with a box cleared correctly withdraws that consent on the UPDATE
+  path (verified end-to-end: 1/1 → re-submit → 0/0, same row id).
+- Admin JSON + CSV now include both columns. Meal stays in the DB/admin output
+  (historical rows), but the form no longer sends it, so a guest's re-submit
+  nulls their old meal answer — fine, the field is retired.
+
+**Verified:** clean 11ty build; grep sweep of built HTML (Abbey 0 hits, all new
+copy present, no em dashes on touched pages); Chromium screenshots desktop +
+mobile (RSVP with yes-branch expanded, Stay, Travel); API tested live on a
+scratch copy (fresh DB, migration, UPDATE, withdrawal, admin CSV/JSON).
+
+**Deployed to DEV (Patrick's go, same session):** CT 205 web (SITE_DOMAIN dev
+build, tar .new/.old swap) + API (server.js + schema.sql, service restarted).
+HTTPS-verified on merrolyn.moorelab.cloud: all new copy present, Abbey gone,
+and an end-to-end RSVP POST with both opt-ins → row persisted 1/1 in the
+migrated dev DB (one obvious TEST row left in dev, id 1).
+
+**Open:** Spark by Hilton is a shuttle stop but not a /stay/ listing — Patrick is
+asking Carolyn (it is NOT currently listed; The Brunswick Hotel is). **Prod
+promotion pending Patrick's phone review** — remember prod needs web AND
+api/server.js + schema.sql + restart (Carolyn is waiting on it to release the
+save-the-dates).
