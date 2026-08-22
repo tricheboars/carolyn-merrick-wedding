@@ -140,7 +140,8 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   (shuttles Fri+Sat between the venues, The Brunswick Hotel, Spark by Hilton
   Brunswick; drivers park at High Head Yacht Club, venue parking limited, schedule
   to come) — echoed on Travel + FAQ; FAQ kids answer aligned to adults-only.
-  Open: Spark is a shuttle stop but not a /stay/ listing (needs a call). → WORKLOG 08-22.
+  Spark added to /stay/ later that evening (Carolyn's call): 8 lodgings + room-block
+  card, both shuttle hotels' cards note the stop, live on prod. → WORKLOG 08-22.
 - **NEXT:** (1) ~~registry handles~~ **DONE 2026-07-14** (see above); (2) ~~mobile site~~ **DONE 2026-07-02: all 34 audit fixes LIVE ON PROD**
   (dev-verified 43/43, prod-verified 27/27 read-only; punch list in
   [`docs/09-mobile-audit-2026-07.md`](docs/09-mobile-audit-2026-07.md), verification in

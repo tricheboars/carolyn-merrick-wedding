@@ -18,7 +18,8 @@ soon" card now leads the Stay grid in its place.
 | Name | Link | Notes |
 |---|---|---|
 | The Harpswell Inn (NOT listed publicly, see above) | theharpswellinn.com/rooms-suites | 8 rooms + 3 suites (2 carriage-house suites pet-friendly), continental breakfast. 207.815.0419, stay@theharpswellinn.com. Books via direct-book.com engine. |
-| The Brunswick Hotel | thebrunswickhotel.com | Boutique, 4 Noble St, 207-837-6565, edge of Bowdoin campus. |
+| The Brunswick Hotel | thebrunswickhotel.com | Boutique, 4 Noble St, 207-837-6565, edge of Bowdoin campus. Shuttle stop. |
+| Spark by Hilton Brunswick | hilton.com (pwmswpe) | 199 Pleasant St, 207-729-1129, 77 rooms, free breakfast + parking. Shuttle stop. **Added to /stay/ 2026-08-22 per Carolyn** (via Patrick, resolving the flag below). Verified live 2026-08-22. |
 | The Federal | thefederalmaine.com | Boutique hotel + restaurant (555 North) in the Captain Daniel Stone house, 10 Water St, (207) 481-4066. |
 | Fairfield Inn & Suites Brunswick Freeport | marriott.com (pwmbw) | Chain option, 36 Old Portland Rd, 207-721-0300. The previous venue couple's shuttle hotel. |
 | Your Island Connection (cottages) | mainerentals.com | Bailey Island agency since 1982, 60+ waterfront rentals across Bailey/Orr's/Great Island; (207) 833-7779. Geography note: Bailey Island is the next peninsula over via Rt 24 + Cribstone Bridge, ~25-30 min from the inn. |
@@ -35,8 +36,8 @@ soon" card now leads the Stay grid in its place.
   venues, **The Brunswick Hotel**, and **Spark by Hilton Brunswick** (199 Pleasant St,
   207-729-1129, hilton.com pwmswpe — verified live 2026-08-22). Guests who drive park
   at **High Head Yacht Club** (313 High Head Rd, Harpswell) and shuttle in; parking at
-  the venue is limited. Exact schedule TBD. Note: Spark is a shuttle stop but is NOT
-  on the /stay/ list (not asked for); flagged to Patrick 2026-08-22.
+  the venue is limited. Exact schedule TBD. (Spark was initially not listed on
+  /stay/; Carolyn approved adding it later the same day, see table above.)
 
 ## Re-verification + additions, 2026-07-16 (Stay page republished)
 

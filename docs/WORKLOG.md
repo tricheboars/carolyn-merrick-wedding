@@ -979,3 +979,13 @@ verified live (infra detail + hostnames in private memory, not here):
    datastore), with its own retention, weekly verify, and GC.
 Flagged to Patrick: the PBS backups are client-side encrypted and the key lives
 only in the cluster config — keep an offline copy of it.
+
+## 2026-08-22 (evening) — Spark by Hilton added to /stay/, LIVE ON PROD
+
+Carolyn's call (via Patrick after talking to her): Spark by Hilton Brunswick is
+now a lodging card on /stay/, placed right after The Brunswick Hotel. Both
+shuttle-stop hotels' cards now end with "and the wedding shuttle stops here" so
+neither reads as the only stop. Page is now 10 cards (note + room block + 8
+lodgings). Deployed dev then prod, verified on both (smoke + the Playwright
+stay tests re-run against merrolyn.com, 4/4 with the card count updated to 10).
+docs/data-lodging.md updated; the open Spark flag from earlier today resolved.
