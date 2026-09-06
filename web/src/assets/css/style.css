@@ -393,6 +393,25 @@ fieldset.field > legend{
   .gallery a:hover img{ transform:none; }
 }
 
+/* ---------- the couple's guest list (/admin/) ----------
+   Sign-in + live RSVP cards for Carolyn and Merrick. Same sweet-cream cards as the
+   rest of the site; stat tiles borrow the registry-tile hairline; the attending
+   chip is stem green with ink text (the one use the palette doc reserved for it). */
+.stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; }
+.stat{ background:var(--cream-2); border:1px solid rgba(var(--brick-rgb),.22); border-radius:12px; padding:16px 12px; text-align:center; }
+.stat b{ display:block; font-family:var(--font-serif); font-weight:600; font-size:2.3rem; line-height:1.1; color:var(--forest); }
+.stat span{ display:block; font-family:var(--font-sans); font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; color:var(--forest); margin-top:4px; }
+.admin h2{ margin:40px 0 6px; }
+.admin .btn-row{ margin:22px 0 12px; }
+.guest h3{ margin:0 0 8px; overflow-wrap:anywhere; }
+.guest--no{ opacity:.78; }
+.badge{ display:inline-block; font-family:var(--font-sans); font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:4px 11px; border-radius:999px; background:var(--stem); color:var(--ink); }
+.badge--no{ background:rgba(var(--ink-rgb),.10); }
+.guest__facts{ margin:12px 0 0; display:grid; grid-template-columns:auto 1fr; gap:6px 14px; font-size:.97rem; }
+.guest__facts div{ display:contents; }
+.guest__facts dt{ font-family:var(--font-sans); font-weight:600; font-size:.74rem; text-transform:uppercase; letter-spacing:.08em; color:var(--terracotta); padding-top:3px; }
+.guest__facts dd{ margin:0; overflow-wrap:anywhere; white-space:pre-line; }
+
 /* ---------- print ----------
    Browsers drop background images when printing, so cream text on a photo/olive band
    printed near-white on white and the headings vanished. Force ink on white, drop the
@@ -418,4 +437,11 @@ fieldset.field > legend{
   main a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:9pt; word-break:break-all; }
   main a[href^="tel:"]::after{ content:" (" attr(href) ")"; font-size:9pt; }
   .gallery{ columns:2 !important; }
+  /* the couple's guest list prints as a clean roster: no chrome, two cards across */
+  .admin__login,.admin__actions,.admin textarea{ display:none !important; }
+  .stats{ grid-template-columns:repeat(4,1fr) !important; }
+  .stat,.badge{ border:1px solid #999 !important; background:#fff !important; color:#000 !important; }
+  .guests{ grid-template-columns:1fr 1fr !important; }
+  .guest--no{ opacity:1 !important; }
+  .guest__facts a::after{ content:none !important; }   /* the number is already printed */
 }
