@@ -1,0 +1,183 @@
+---
+layout: layouts/base.njk
+title: Guest list
+permalink: /admin/
+description: "The couple's private view of who has replied."
+noindex: true
+eleventyExcludeFromCollections: true
+---
+{#- The couple's guest list (2026-09-06). Carolyn and Merrick sign in once with a
+    passphrase (30-day cookie, see api/server.js "the couple's sign-in") and read
+    every RSVP right here; the spreadsheet is a button, not a requirement. Not in
+    the nav or the sitemap, noindex. Patrick's token path is untouched. -#}
+<section class="section section--olive">
+  <div class="wrap center stack">
+    <span class="label eyebrow">For Carolyn &amp; Merrick</span>
+    <h1>Guest list</h1>
+    <p class="lead">Everyone who has replied so far, straight from the RSVP form.</p>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="wrap admin" x-data="cmAdmin()" x-init="init()">
+
+    <p x-show="state === 'checking'" class="note center">One moment&hellip;</p>
+
+    <form x-show="state === 'login'" x-cloak class="form admin__login" style="margin:0 auto" @submit.prevent="login()">
+      {#- A hidden username gives phone password managers something to file the
+          passphrase under, so it autofills next time instead of being retyped. -#}
+      <input class="sr-only" type="text" name="username" value="couple" autocomplete="username" tabindex="-1" aria-hidden="true" readonly>
+      <div class="field">
+        <label for="passphrase">Passphrase</label>
+        <input id="passphrase" name="passphrase" x-bind:type="show ? 'text' : 'password'" x-model="pass" maxlength="200" autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+        <label class="choice"><input type="checkbox" x-model="show"> Show what I typed</label>
+      </div>
+      <p x-show="error" x-cloak class="note" style="color:var(--brick)" role="alert" x-text="error"></p>
+      <button class="btn btn--ink" type="submit" x-bind:disabled="busy" x-text="busy ? 'Checking…' : 'Sign in'">Sign in</button>
+      <p class="note" style="margin-top:14px">This page is just for the two of you. Patrick has the passphrase if you need it again.</p>
+    </form>
+
+    <div x-show="state === 'in'" x-cloak>
+      <div class="stats" aria-label="Totals">
+        <div class="stat"><b x-text="summary.count"></b><span>replies</span></div>
+        <div class="stat"><b x-text="summary.headcount"></b><span>people coming</span></div>
+        <div class="stat"><b x-text="summary.declined"></b><span x-text="summary.declined === 1 ? 'can\'t make it' : 'can\'t make it'"></span></div>
+        <div class="stat"><b x-text="summary.texts"></b><span>want texts</span></div>
+      </div>
+
+      <div class="btn-row admin__actions">
+        <a class="btn btn--ink" x-bind:href="api + '/api/admin/export'">Download spreadsheet</a>
+        <button class="btn btn--ink" type="button" @click="copy()" x-text="copied ? 'Copied!' : 'Copy as text'">Copy as text</button>
+        <button class="btn btn--ink" type="button" @click="window.print()">Print or save PDF</button>
+        <button class="btn btn--ink" type="button" @click="logout()">Sign out</button>
+      </div>
+      <p class="note center" style="margin:0"><span x-text="'Updated ' + updatedAt + '.'"></span> Reload the page for the latest replies.</p>
+      <textarea x-show="fallback" x-cloak x-model="plain" readonly rows="8" style="width:100%; margin-top:14px; font-family:var(--font-sans); font-size:.9rem; padding:12px; border:1px solid rgba(var(--ink-rgb),.35); border-radius:var(--radius)" aria-label="Guest list as plain text"></textarea>
+
+      <h2>Replies</h2>
+      <p class="note" style="margin-top:0">Newest first. Tap an email or number to reach someone.</p>
+      <div class="grid grid--2 guests">
+        <template x-for="r in rsvps" x-bind:key="r.id">
+          <article class="card guest" x-bind:class="r.attending === 'yes' ? '' : 'guest--no'">
+            <h3 x-text="r.full_name"></h3>
+            <p style="margin:0"><span class="badge" x-bind:class="r.attending === 'yes' ? '' : 'badge--no'" x-text="label(r)"></span></p>
+            <dl class="guest__facts">
+              <template x-if="r.dietary"><div><dt>Dietary</dt><dd x-text="r.dietary"></dd></div></template>
+              <template x-if="r.song"><div><dt>Song</dt><dd x-text="r.song"></dd></div></template>
+              <template x-if="r.message"><div><dt>Note</dt><dd x-text="r.message"></dd></div></template>
+              <div><dt>Contact</dt><dd><a x-bind:href="contactHref(r)" x-text="r.email || r.phone || 'none given'"></a></dd></div>
+              <div><dt>Texts</dt><dd x-text="texts(r)"></dd></div>
+              <div><dt>Replied</dt><dd x-text="when(r.responded_at)"></dd></div>
+            </dl>
+          </article>
+        </template>
+      </div>
+      <p x-show="!rsvps.length" x-cloak class="note center">No replies yet.</p>
+
+      <h2>Gift notes</h2>
+      <p class="note" style="margin-top:0">Guests who told us they sent something to the house fund, for thank-you notes.</p>
+      <div class="grid grid--2">
+        <template x-for="a in acks" x-bind:key="a.id">
+          <article class="card">
+            <h3 x-text="a.name"></h3>
+            <p x-show="a.note" x-text="a.note" style="white-space:pre-line"></p>
+            <p class="note" style="margin:0" x-text="(a.method ? a.method + ' · ' : '') + when(a.acknowledged_at)"></p>
+          </article>
+        </template>
+      </div>
+      <p x-show="!acks.length" x-cloak class="note center">None yet.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+/* Defined before Alpine (deferred) evaluates x-data. Every fetch sends the cookie;
+   a 401 anywhere drops back to the sign-in form instead of showing an error. */
+window.cmAdmin = () => ({
+  api: window.CM_API || '',
+  state: 'checking', pass: '', show: false, busy: false, error: '',
+  rsvps: [], acks: [], summary: { count: 0, headcount: 0, declined: 0, texts: 0 },
+  updatedAt: '', copied: false, fallback: false, plain: '',
+
+  async init() {
+    const s = await this.get('/api/auth/session');
+    if (s && s.ok) await this.load(); else this.state = 'login';
+  },
+  async get(path) {
+    try {
+      const r = await fetch(this.api + path, { credentials: 'include' });
+      if (r.status === 401) return null;
+      if (!r.ok) throw new Error(String(r.status));
+      return await r.json();
+    } catch (_) { return null; }
+  },
+  async load() {
+    const [a, b] = await Promise.all([this.get('/api/admin/rsvps'), this.get('/api/admin/registry')]);
+    if (!a || !b) { this.state = 'login'; return; }
+    this.rsvps = a.rsvps; this.acks = b.contributions;
+    this.summary = {
+      count: a.count, headcount: a.headcount, declined: a.count - a.attending,
+      texts: a.rsvps.filter((x) => x.sms_updates || x.sms_excursions).length
+    };
+    this.updatedAt = this.when(new Date(), true);
+    this.state = 'in';
+  },
+  async login() {
+    if (this.busy) return;
+    this.busy = true; this.error = '';
+    try {
+      const r = await fetch(this.api + '/api/auth/login', {
+        method: 'POST', credentials: 'include',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ passphrase: this.pass })
+      });
+      if (r.ok) { this.pass = ''; await this.load(); }
+      else if (r.status === 401) this.error = 'That passphrase did not match. Check for a typo and try again.';
+      else if (r.status === 429) this.error = 'Too many tries just now. Wait 15 minutes and try again.';
+      else if (r.status === 503) this.error = 'Sign-in is not switched on yet. Text Patrick.';
+      else this.error = 'Something went wrong on our end. Try again in a minute.';
+    } catch (_) { this.error = 'Could not reach the site. Try again in a minute.'; }
+    finally { this.busy = false; }
+  },
+  async logout() {
+    try { await fetch(this.api + '/api/auth/logout', { method: 'POST', credentials: 'include' }); } catch (_) {}
+    this.rsvps = []; this.acks = []; this.fallback = false; this.state = 'login';
+  },
+  when(s, withTime) {
+    const d = s instanceof Date ? s : new Date(String(s).replace(' ', 'T') + 'Z');   // SQLite stores UTC
+    if (isNaN(d)) return String(s);
+    const o = { timeZone: 'America/New_York', month: 'short', day: 'numeric', year: 'numeric' };
+    if (withTime) { o.hour = 'numeric'; o.minute = '2-digit'; }
+    return d.toLocaleString('en-US', o);
+  },
+  label(r) {
+    if (r.attending !== 'yes') return 'Not coming';
+    return r.party_size > 1 ? 'Coming, party of ' + r.party_size : 'Coming';
+  },
+  texts(r) {
+    const t = [];
+    if (r.sms_updates) t.push('updates');
+    if (r.sms_excursions) t.push('excursions');
+    return t.length ? 'Yes, ' + t.join(' and ') : 'No';
+  },
+  contactHref(r) {
+    if (r.email) return 'mailto:' + r.email;
+    return r.phone ? 'tel:' + String(r.phone).replace(/[^\d+]/g, '') : null;
+  },
+  async copy() {
+    const lines = ['Carolyn + Merrick guest list, ' + this.when(new Date(), true),
+                   this.summary.count + ' replies, ' + this.summary.headcount + ' coming', ''];
+    for (const r of this.rsvps) {
+      let l = r.full_name + ' · ' + this.label(r).toLowerCase();
+      if (r.dietary) l += ' · dietary: ' + r.dietary;
+      lines.push(l);
+    }
+    this.plain = lines.join('\n');
+    try {
+      await navigator.clipboard.writeText(this.plain);
+      this.copied = true; this.fallback = false;
+      setTimeout(() => { this.copied = false; }, 2000);
+    } catch (_) { this.fallback = true; }   // no clipboard permission: show the text to select
+  }
+});
+</script>

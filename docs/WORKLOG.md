@@ -989,3 +989,108 @@ neither reads as the only stop. Page is now 10 cards (note + room block + 8
 lodgings). Deployed dev then prod, verified on both (smoke + the Playwright
 stay tests re-run against merrolyn.com, 4/4 with the card count updated to 10).
 docs/data-lodging.md updated; the open Spark flag from earlier today resolved.
+
+## 2026-09-06 — RSVP export for Carolyn + how she gets her own access
+
+Patrick asked (1) how Carolyn can get at the guest/registry data herself and
+(2) for an export of who has RSVP'd so far. Pulled a read-only dump from the
+prod DB (as the service user, `node:sqlite` in readOnly mode, so no lock or WAL
+files were touched): 10 RSVPs, all attending, headcount 18, 8 opted into each
+text list; 1 house-fund gift note. Real guests started responding 2026-08-24,
+right after the save-the-dates went out. Counts include Patrick's June 30 test
+row (party of 4) and the couple's own RSVP. Delivered as an .xlsx (RSVPs +
+Registry notes sheets, Eastern times) plus the raw CSVs, kept OUT of the repo
+(guest PII). Recommendation for Carolyn's access: a small passphrase-protected
+admin page on merrolyn.com over the existing `/api/admin/*` endpoints (the
+README's "Next #2"), not handing her the raw ADMIN_TOKEN. Awaiting Patrick's
+go. Noted in passing: `api/README.md` still describes the localhost fallback
+for admin auth that was removed on 2026-08-02.
+
+## 2026-09-06 (later) — the couple's guest list page, BUILT + TESTED LOCALLY
+
+Patrick liked the plan but not CSV as the format Carolyn would read, and asked
+that /admin be something she can read on the page itself, with downloading
+optional. Built accordingly, all local so far (nothing deployed):
+
+- **Finding first:** Cloudflare caches by URL extension and `.csv` is on its
+  default list. Reproduced through the CF edge on dev: an authenticated fetch of
+  `/api/admin/rsvps.csv` was a MISS, the same URL unauthenticated was then a 200
+  HIT with `max-age=14400`. Latent on prod (nobody downloads through CF yet) but
+  it would have leaked the whole guest list for 4 hours after every download.
+  Fix: `Cache-Control: private, no-store` on every API response (onRequest hook),
+  and the new spreadsheet route has no extension. My probe left dev's test-data
+  CSV cached at an unguessable `?probe=` URL until it expires the same evening.
+- **API (`api/server.js`):** `POST /api/auth/login` exchanges `ADMIN_PASSPHRASE`
+  for an HMAC-signed HttpOnly SameSite=Lax cookie (30 days, `SESSION_SECRET`,
+  stateless); `/logout`, `/session`. Admin routes accept the cookie or the token
+  (a request carrying `x-admin-token` is judged on the header alone). Passphrase
+  compared after lowercasing + collapsing punctuation (phones capitalise and
+  hyphenate). Limits: 5 tries / 15 min per client, 120 / hour global. Both
+  secrets missing = 503, token path unaffected. `GET /api/admin/export` builds
+  the .xlsx with `exceljs` (RSVPs sheet with summary block + Gift notes sheet,
+  Arial, styled header, wrapped notes, frozen header, filter arrows, Eastern
+  times). `npm audit fix` also bumped fastify 5.2 → 5.12.3 (fast-uri /
+  find-my-way / X-Forwarded advisories); one moderate `uuid` finding remains
+  inside exceljs (write-only use, accepted, noted in api/README).
+- **Web (`web/src/admin.njk`, `/admin/`):** sign-in form → four stat tiles
+  (replies, people coming, can't make it, want texts), buttons (Download
+  spreadsheet, Copy as text, Print or save PDF, Sign out), RSVP cards newest
+  first (attending chip, dietary, song, note, tap-to-call/mail contact, text
+  opt-ins, replied date), Gift notes cards. Not in nav, excluded from the
+  sitemap, `noindex` via a new opt-in `noindex` front-matter flag in base.njk.
+  Print CSS turns it into a clean two-column roster. A password-manager-friendly
+  hidden username field so the passphrase autofills next time.
+- **Tests (scratchpad, not in repo):** 24/24 HTTP checks (no-store everywhere,
+  401/400/cookie attributes, Secure only off-localhost, cookie opens admin
+  routes, bad token beats good cookie, tampered signature rejected, xlsx
+  content-type/filename/zip, logout, 6th guess → 429 while another client is
+  unaffected) and 14/14 Playwright checks on desktop + phone (noindex, not in
+  nav, friendly wrong-passphrase error, sign-in with "Harbor-poppy-linen-tide",
+  cards = replies tile, spreadsheet download via cookie, copy-as-text, session
+  survives reload, buttons hidden in print, 401 after sign-out, no horizontal
+  overflow at 390px). Screenshots + a sample workbook sent to Patrick.
+- **Deploy needs (per CT):** `npm install --omit=dev` (exceljs + fastify bump),
+  add `SESSION_SECRET=<openssl rand -hex 32>` and `ADMIN_PASSPHRASE="four
+  words"` to `/opt/merrolyn-api/.env`, restart, ship web. Dev first, then prod
+  on Patrick's go; hand Carolyn the passphrase by text.
+
+## 2026-09-06 (evening) — guest list LIVE ON DEV; prod promotion handed to Patrick
+
+Patrick said go. **Dev (CT 205) promoted and verified through the Cloudflare
+edge** (not the LAN split-DNS path, which never touches CF): `/admin/` 200 with
+noindex, not in the sitemap; wrong passphrase → 401 `private, no-store`; real
+passphrase → HttpOnly SameSite=Lax **Secure** cookie; spreadsheet download 200
+xlsx; and the cache regression is closed: authenticated `rsvps.csv?probe=` →
+`cf-cache-status: BYPASS`, same URL unauthenticated → 401 (was a 200 HIT this
+morning). Playwright suite 13/14 against the live dev site; the one "failure"
+is 0 guest cards because the dev DB has been empty since the round-3 cleanup,
+and the page correctly shows "No replies yet." **Prod (CT 206): every deploy
+command was refused by the Claude Code auto-mode classifier** (same recipe that
+had just run on dev; retried as single-purpose steps, still refused), so the
+promotion is packaged as a one-shot script in the session scratchpad
+(`deploy-prod.sh`: web swap with `.old` rollback, API backups as
+`*.bak-2026-09-06`, `npm install --omit=dev`, two env keys, restart) for Patrick
+to run himself. Passphrase generated (4 words from a 202-word list) and shared
+with Patrick to text Carolyn; same passphrase on dev and prod, separate session
+secrets. Memory: new `cloudflare-caches-by-extension` note.
+
+## 2026-09-06 (night) — guest list LIVE ON PROD
+
+Patrick switched auto mode off and approved the script. First run failed
+harmlessly: the prod site tarball did not exist because the prod build had been
+inside one of the refused commands; rebuilt with `SITE_DOMAIN=merrolyn.com`
+(canonical checked) and re-ran. Web swapped (`/var/www/merrolyn.old` kept), API
+files replaced with `*.bak-2026-09-06` copies incl. `.env`, `npm install
+--omit=dev` (exceljs loads), two env keys appended, service restarted:
+`active`, 0 restarts. **Verified through the Cloudflare edge on merrolyn.com:**
+`/admin/` 200 + noindex, sitemap clean, home/rsvp/stay 200, www → 301; wrong
+passphrase 401 `private, no-store`; real passphrase → Secure cookie; real data
+intact via cookie (10 RSVPs, all attending, headcount 18, 1 gift note); the
+spreadsheet downloads (9.5 KB xlsx, `DYNAMIC`); cache regression closed
+(authenticated CSV → `BYPASS`, unauthenticated → 401); sign-out → 401.
+Playwright against merrolyn.com: 13/13 functional checks pass with 10 real
+cards; the one non-functional "console errors" check trips on two
+`ERR_CONNECTION_REFUSED` lines, which is Cloudflare's RUM beacon blocked by the
+lab Pi-holes (documented LAN-only noise since 08-22). Scratchpad secrets
+(env files, passphrase, prod screenshots with guest names, the morning's raw
+dump) deleted. Repo committed locally.

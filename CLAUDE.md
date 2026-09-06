@@ -9,7 +9,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ---
 
-## STATUS (2026-08-22) — single source of truth
+## STATUS (2026-09-06) — single source of truth
 
 - **Phase 2 — LIVE on the real domain.** Reception palette (plate wine + poppy on
   linen, quiet-chrome nav) live on BOTH dev and prod as of 2026-07-16; site +
@@ -164,6 +164,22 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   dev/prod isolation real — open content gap is registry handles.
 - **Copy rule (Patrick, 2026-07-01):** site copy must read human — no AI-sounding
   filler and **no em dashes** in guest-facing text.
+- **DONE 2026-09-06 — the couple's guest list at `merrolyn.com/admin/`, LIVE ON
+  PROD** (dev first, then prod the same evening on Patrick's go). Patrick asked how
+  Carolyn can see RSVPs herself and read the list on the page rather than a CSV.
+  Built: passphrase sign-in → 30-day signed HttpOnly cookie (`SESSION_SECRET` +
+  `ADMIN_PASSPHRASE`, both new in each CT's `.env`, never in the repo), stat tiles +
+  RSVP cards + gift notes, buttons for a styled .xlsx (`exceljs`), copy-as-text,
+  print. Not in nav/sitemap, noindex. **Security fix bundled:** Cloudflare
+  edge-cached the authenticated admin CSV for 4 h (reproduced on dev) → every API
+  response is now `private, no-store` (verified BYPASS/401 through the CF edge on
+  both hosts). Verified: 24/24 HTTP + 14/14 Playwright locally, 13/13 functional
+  Playwright on merrolyn.com with the real data (10 RSVPs, headcount 18, 1 gift
+  note intact). **Deploy gotcha:** the auto-mode classifier refused every write to
+  CT 206 (identical recipe had just run on CT 205); Patrick turned auto mode off
+  and approved the one-shot script. Rollback: `/var/www/merrolyn.old` +
+  `/opt/merrolyn-api/*.bak-2026-09-06`. Passphrase texted to Carolyn by Patrick.
+  → WORKLOG 09-06.
 - **NEEDS PATRICK:** ~~promote the 08-02 audit fixes~~ **DONE 2026-08-02** (live on
   merrolyn.com); optionally clear the 24 audit test rows from the DEV DB (prod was
   never written to); **get from Carolyn:** the
