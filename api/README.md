@@ -29,7 +29,8 @@ Functional. Live endpoints:
 header alone (Patrick, scripts); any other request needs the sign-in cookie. There is
 no localhost fallback: with `ADMIN_TOKEN` unset the token path refuses everything, and
 with `SESSION_SECRET` / `ADMIN_PASSPHRASE` unset the sign-in answers 503. Sign-in is
-rate-limited 5 tries per 15 minutes per client, and the passphrase is compared after
+rate-limited 10 tries per 15 minutes per client address (a household behind
+Cloudflare shares one), and the passphrase is compared after
 lowercasing and collapsing punctuation, so a phone's autocapitalising does not lock
 the couple out.
 

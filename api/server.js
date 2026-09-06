@@ -196,10 +196,12 @@ const loginSchema = {
           properties: { passphrase: { type: "string", minLength: 1, maxLength: 200 } } }
 };
 app.post("/api/auth/login", { schema: loginSchema }, async (req, reply) => {
-  // Per client: a human with a typo never reaches 5 tries in 15 minutes. Global:
-  // turns a distributed guessing run into a logged, throttled non-event without
-  // ever locking the couple out for good.
-  if (limit(req, reply, "login", 5, 15 * 60 * 1000)) return;
+  // Per client: Cloudflare reports one public IP for a whole household, so the
+  // couple (plus Patrick testing) share a bucket. 10 in 15 minutes leaves room
+  // for typos on two phones; 5 locked Patrick out on launch night (2026-09-06).
+  // Global: turns a distributed guessing run into a logged, throttled non-event
+  // without ever locking the couple out for good.
+  if (limit(req, reply, "login", 10, 15 * 60 * 1000)) return;
   if (rateLimited("login:*", 120, 60 * 60 * 1000)) {
     req.log.warn({ ip: clientKey(req) }, "global sign-in throttle");
     return reply.code(429).send({ error: "too many sign-in attempts right now, please try again later" });
