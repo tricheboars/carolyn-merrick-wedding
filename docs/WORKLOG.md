@@ -1094,3 +1094,18 @@ cards; the one non-functional "console errors" check trips on two
 lab Pi-holes (documented LAN-only noise since 08-22). Scratchpad secrets
 (env files, passphrase, prod screenshots with guest names, the morning's raw
 dump) deleted. Repo committed locally.
+
+## 2026-09-06 (late) — launch-night lockout, sign-in limit 5 → 10
+
+Patrick's first try from his phone got "too many tries": Cloudflare reports one
+public IP for the whole house, and my two verification passes (curl via the CF
+edge + the Playwright run against merrolyn.com, which has no LAN split DNS) had
+already spent all 5 tries from that address; his attempt was the sixth, and the
+refused attempt itself counts toward the window. Cleared with a service restart
+(the limiter is in-memory), he signed in, passphrase confirmed working. Then
+raised the per-address sign-in limit to 10 per 15 minutes (a four-word
+passphrase from a 202-word list is ~31 bits; 10 per 15 min per address plus the
+120/hour global cap keeps guessing infeasible while a couple on one Wi-Fi can
+fumble a few times). Rule for me: never run sign-in tests against prod from the
+house, or restart the API afterwards. Deployed to both CTs; repo pushed via a
+PR and merged into main on GitHub (Patrick's ask).
