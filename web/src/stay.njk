@@ -25,8 +25,9 @@ description: "Where to stay for the wedding: our room blocks at three Brunswick 
     <div class="center" style="max-width:720px; margin:0 auto 28px">
       <h2>Our room blocks</h2>
       <p>{{ site.roomBlocks.intro }}</p>
-      <p>{{ site.roomBlocks.overflow }}</p>
-      <p style="margin:0">Shuttle times and where to park are on the <a href="/travel/#shuttle">Travel</a> page.</p>
+      <p class="callout">{{ site.roomBlocks.shuttle }} <a href="/travel/#shuttle">Shuttle stops and parking</a></p>
+      <p>{{ site.roomBlocks.tax }}</p>
+      <p style="margin:0">{{ site.roomBlocks.overflow }}</p>
     </div>
     <div class="grid grid--3">
       {% for h in site.roomBlocks.hotels %}

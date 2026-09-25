@@ -234,8 +234,6 @@ p{ margin:0 0 1rem; }
 .grid{ display:grid; gap:20px; }
 .grid--2{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
 .grid--3{ grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
-/* four-card rows: 2x2 on desktop instead of 3 + a stranded 1, one column on phones */
-.grid--pairs{ grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr)); }
 .card{
   /* Sweet Cream surfaces (the one board swatch the site never showed): cards sit
      on the cream page as warm linen, edged in an oxblood-tinted hairline */
@@ -275,6 +273,15 @@ p{ margin:0 0 1rem; }
 .facts dt{ font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.14em; color:var(--brick); }
 .facts dd{ margin:0; font-weight:600; line-height:1.45; }
 .block-book{ margin-top:auto; padding-top:6px; }
+/* one fact that must not get lost in an intro (Stay: the blocks come with the
+   shuttle): a sweet-cream panel on the linen ground, same hairline as the cards */
+.callout{
+  display:inline-block; background:var(--cream-2); border:1px solid rgba(var(--brick-rgb),.35);
+  border-radius:12px; padding:12px 20px; font-weight:600; color:var(--forest);
+}
+/* :not([class]) matches the .section--cream link rule's weight so oxblood wins by
+   source order: terracotta on sweet cream is 4.2:1 (fails AA), oxblood 6.6:1 */
+.callout a:not([class]){ font-weight:400; color:var(--brick); white-space:nowrap; }
 /* Apple Maps / Google Maps pin buttons for the guest parking lot (Travel + Stay) */
 .map-pins{ display:flex; flex-wrap:wrap; gap:10px; margin:0; }
 /* shuttle stops (Travel): same hairline rows as .facts, the tag in quieter caps */

@@ -197,6 +197,12 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   Travel has a "The wedding shuttle" section (`#shuttle`: stops, schedule, parking
   pins); Stay lost its shuttle card, and each block hotel card says the shuttle
   stops there + links to Travel. → WORKLOG 09-24 (late).
+- **DONE 2026-09-24 (night) — TRAVEL IN JOURNEY ORDER + STAY CALLOUTS, LIVE ON
+  PROD:** Travel = Fly·Train·Drive → Airport rides & getting around → Getting to
+  the wedding (`#shuttle`: venue, stops, Grange pins) → Things to do. Stay gets a
+  "all three hotels have wedding shuttle service" callout + a note on why rates
+  include Maine's 9% lodging tax (rate checked with Maine Revenue Services).
+  → WORKLOG 09-24 (night).
 - **NEEDS PATRICK:** ~~promote the 08-02 audit fixes~~ **DONE 2026-08-02** (live on
   merrolyn.com); optionally clear the 24 audit test rows from the DEV DB (prod was
   never written to); **get from Carolyn:** the

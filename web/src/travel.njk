@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 title: Travel
 permalink: /travel/
-description: "How to get to Harpswell, Maine: flying into Portland, driving down the peninsula, the wedding shuttle and where to park, airport rides, and getting around once you're here."
+description: "How to get to Harpswell, Maine: flying, the train from Boston, or driving in; airport rides and getting around; and the wedding shuttle and where to park."
 ---
 <section class="section section--scene" style="--scene:var(--scene-harbor)">
   <div class="wrap center stack">
@@ -14,21 +14,19 @@ description: "How to get to Harpswell, Maine: flying into Portland, driving down
 
 <section class="section section--cream">
   <div class="wrap">
-    {#- Four cards, so the pairs grid (2x2 on desktop): at three columns the fourth
-        card sat stranded beside two empty columns. -#}
-    <div class="grid grid--pairs">
+    {#- Journey order (Patrick, 2026-09-24: "kinda seems out of order"): how you
+        arrive -> rides from the airport and around town -> getting to the wedding
+        itself -> things to do. Three rows of three. -#}
+    <div class="grid grid--3">
       <div class="card">
         <h3>Fly</h3>
         <p><strong>{{ site.travel.airport.name }}</strong>: {{ site.travel.airport.note }}</p>
         <p class="note">Alternate: {{ site.travel.alt.name }}, {{ site.travel.alt.note }}</p>
       </div>
       <div class="card">
-        <h3>To &amp; from the airport</h3>
-        <p>{{ site.travel.transfers.toInn }}</p>
-        <p>{{ site.travel.transfers.toAirport }}</p>
-        {#- nowrap on the number so a narrow screen breaks between the name and the
-            number instead of mid-number ("… (207)" / "729-3688") -#}
-        <p style="margin:0"><a class="btn btn--ink" href="tel:{{ site.travel.transfers.taxiPhone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">Call {{ site.travel.transfers.taxiName }} <span style="white-space:nowrap">{{ site.travel.transfers.taxiPhone }}</span></a></p>
+        <h3>Train</h3>
+        <p><strong>{{ site.travel.train.name }}</strong>: {{ site.travel.train.note }}</p>
+        <p style="margin:0"><a href="{{ site.travel.train.url }}">More info &rarr;</a></p>
       </div>
       <div class="card">
         <h3>Drive</h3>
@@ -37,50 +35,21 @@ description: "How to get to Harpswell, Maine: flying into Portland, driving down
             baseline would otherwise float this note to the bottom of the card -#}
         <p class="note" style="margin-top:0; padding-top:0">Parking: {{ site.travel.parking }} <a href="#parking">See where to park</a>.</p>
       </div>
-      <div class="card">
-        <h3>The venue</h3>
-        <p>{{ site.venue.name }}<br>{{ site.venue.address }}</p>
-        <p><a class="btn btn--ink" href="https://www.google.com/maps/search/?api=1&query={{ site.venue.mapsQuery }}">Open in Maps →</a></p>
-      </div>
-    </div>
-
-    {#- The wedding shuttle's home (Patrick, 2026-09-24): stops, schedule, and the
-        parking pins. Stay only notes that the block hotels are stops and links to
-        #shuttle; the FAQ links here too. -#}
-    <div class="divider" style="margin-top:34px"><img src="/assets/svg/poppy-divider.svg" alt="" width="110" height="59"></div>
-
-    <div class="center stack" id="shuttle" style="margin-bottom:8px">
-      <h2>The wedding shuttle</h2>
-      <p class="lead" style="max-width:720px; margin-left:auto; margin-right:auto">{{ site.travel.shuttle.lead }}</p>
-    </div>
-    <div class="grid grid--3">
-      <div class="card">
-        <h3>Where it stops</h3>
-        <ul class="stops">
-          {% for st in site.travel.shuttle.stops %}<li>{{ st.name }}{% if st.tag %} <span>{{ st.tag }}</span>{% endif %}</li>
-          {% endfor %}
-        </ul>
-        <p style="margin:0"><a href="/stay/">Our room blocks &rarr;</a></p>
-      </div>
-      <div class="card">
-        <h3>Schedule</h3>
-        <p style="margin:0">{{ site.travel.shuttle.schedule }}</p>
-      </div>
-      <div class="card" id="parking">
-        <h3>Driving? Park at the Grange</h3>
-        <p><strong>{{ site.parkingLot.name }}</strong><br>{{ site.parkingLot.address }}</p>
-        <p>{{ site.parkingLot.directions }}</p>
-        {% include "partials/parking-pins.njk" %}
-      </div>
     </div>
 
     <div class="divider" style="margin-top:34px"><img src="/assets/svg/poppy-divider.svg" alt="" width="110" height="59"></div>
 
     <div class="center stack" style="margin-bottom:8px">
-      <h2>Getting around</h2>
+      <h2>Airport rides &amp; getting around</h2>
       <p class="lead" style="max-width:720px; margin-left:auto; margin-right:auto">{{ site.gettingAround.intro }}</p>
     </div>
     <div class="grid grid--3">
+      {#- No call button here: the Brunswick Taxi card right beside it has one. -#}
+      <div class="card">
+        <h3>To &amp; from the airport</h3>
+        <p>{{ site.travel.transfers.toInn }}</p>
+        <p style="margin:0">{{ site.travel.transfers.toAirport }}</p>
+      </div>
       {% for o in site.gettingAround.options %}
       <div class="card">
         <h3>{{ o.name }}</h3>
@@ -89,6 +58,37 @@ description: "How to get to Harpswell, Maine: flying into Portland, driving down
         <p style="margin:0"><a href="{{ o.url }}">More info &rarr;</a></p>
       </div>
       {% endfor %}
+    </div>
+
+    {#- The wedding shuttle's home (Patrick, 2026-09-24): venue, stops, and the
+        parking pins; the schedule line rides in the lead. Stay and the FAQ link to
+        #shuttle. -#}
+    <div class="divider" style="margin-top:34px"><img src="/assets/svg/poppy-divider.svg" alt="" width="110" height="59"></div>
+
+    <div class="center stack" id="shuttle" style="margin-bottom:8px">
+      <h2>Getting to the wedding</h2>
+      <p class="lead" style="max-width:720px; margin-left:auto; margin-right:auto">{{ site.travel.shuttle.lead }} {{ site.travel.shuttle.schedule }}</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card">
+        <h3>The venue</h3>
+        <p>{{ site.venue.name }}<br>{{ site.venue.address }}</p>
+        <p><a class="btn btn--ink" href="https://www.google.com/maps/search/?api=1&query={{ site.venue.mapsQuery }}">Open in Maps →</a></p>
+      </div>
+      <div class="card">
+        <h3>Where the shuttle stops</h3>
+        <ul class="stops">
+          {% for st in site.travel.shuttle.stops %}<li>{{ st.name }}{% if st.tag %} <span>{{ st.tag }}</span>{% endif %}</li>
+          {% endfor %}
+        </ul>
+        <p style="margin:0"><a href="/stay/">Our room blocks &rarr;</a></p>
+      </div>
+      <div class="card" id="parking">
+        <h3>Driving? Park at the Grange</h3>
+        <p><strong>{{ site.parkingLot.name }}</strong><br>{{ site.parkingLot.address }}</p>
+        <p>{{ site.parkingLot.directions }}</p>
+        {% include "partials/parking-pins.njk" %}
+      </div>
     </div>
   </div>
 </section>

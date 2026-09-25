@@ -1204,3 +1204,30 @@ Stay card: 11/11 pages 200, shuttle section + pins on Travel, old card gone and 
 shuttle rows on Stay, HTML `DYNAMIC` at Cloudflare (no purge needed), API untouched
 (`OPTIONS /api/rsvp` → 204); prod's only console errors are the Pi-hole-blocked
 Cloudflare beacon (the only failed host).
+
+## 2026-09-24 (night) — Travel in journey order; Stay shuttle callout + tax note, LIVE ON PROD
+
+Patrick: the Travel page "kinda seems out of order". It was: the Amtrak train
+(a way to arrive) sat under Getting around, airport rides were split between a
+top card and the bottom section (Brunswick Taxi twice), and the venue card sat
+with the arrival cards, apart from the shuttle. Now in journey order, three rows
+of three: **Fly · Train · Drive** (Amtrak moved to `travel.train`) → **Airport
+rides & getting around** (ride-app intro; To & from the airport, without its own
+taxi button since the Brunswick Taxi card sits beside it; Brunswick Taxi; Maine
+Limousine) → **Getting to the wedding** (`#shuttle`; the schedule line joined the
+lead; The venue · Where the shuttle stops · Driving? Park at the Grange) → Things
+to do. `.grid--pairs` removed (unused). Patrick OK'd the order.
+
+Stay, per Patrick: (1) a **callout** under the room-block intro, "All three hotels
+have wedding shuttle service, Friday and Saturday, to and from the venues", with a
+link to /travel/#shuttle (`roomBlocks.shuttle`, `.callout`; the link is oxblood,
+since the cream-section terracotta link rule would fail AA on sweet cream);
+(2) a **tax note** saying why we mention it: the rates include Maine's 9% lodging
+tax, which hotel sites usually leave out of their prices, so ours may look higher
+but no tax is added on top (`roomBlocks.tax`). Checked the rate first: Maine
+Revenue Services' rates page lists lodging at 9% (since 2016, still 9% in 2026;
+the 2025 bill for 12% didn't pass).
+
+Verified local → dev → prod at 1280 and 390 wide: no overflow, no console errors
+(prod: only the Pi-hole-blocked CF beacon), Stay → /travel/#shuttle lands under the
+nav, 11/11 prod pages 200, API untouched.

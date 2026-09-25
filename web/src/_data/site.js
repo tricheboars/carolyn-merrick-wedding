@@ -76,6 +76,10 @@ module.exports = {
     airport: { name: "Portland International Jetport (PWM)", note: "~45 minutes south. Easiest major airport." },
     alt: { name: "Boston Logan (BOS)", note: "~2.25 hours; more flights, longer drive." },
     drive: "From Portland, take I-295 N to Brunswick, then Rt 123 south down the Harpswell peninsula.",
+    // Moved up from gettingAround 2026-09-24 (Patrick: the page read out of order):
+    // the train is a way to ARRIVE, so it sits with Fly + Drive.
+    train: { name: "Amtrak Downeaster", url: "https://amtrakdowneaster.com/stations/brunswick/",
+      note: "Coming from Boston? Five trains a day run from North Station straight into downtown Brunswick, and it's a 20 minute cab ride from the station to the inn." },
     parking: "Limited at the venue, so if you're driving to the wedding, park at the Merriconeag Grange on Route 123 and ride the shuttle in.",
     // Airport-transfer instructions per Carolyn (2026-07-14): Uber works FROM the
     // Jetport; the ride back must be prebooked (Brunswick Taxi). Sources: docs/data-transport.md.
@@ -124,9 +128,7 @@ module.exports = {
       { name: "Brunswick Taxi", phone: "(207) 729-3688", url: "https://www.yelp.com/biz/brunswick-taxi-brunswick",
         note: "The local go-to, family run since 1990 and about 15 minutes from the inn. They cover Harpswell and run to the Jetport around the clock. Book a day or two ahead; they drive until 1am most nights and 2am on Saturdays." },
       { name: "Maine Limousine Service", phone: "1-800-646-0068", url: "https://www.mainelimo.com/",
-        note: "A prebooked private car or SUV waiting for you at the airport. The comfortable option if you would rather not watch an app spin." },
-      { name: "Amtrak Downeaster", phone: "", url: "https://amtrakdowneaster.com/stations/brunswick/",
-        note: "Coming from Boston? Five trains a day run from North Station straight into downtown Brunswick, and it's a 20 minute cab ride from the station to the inn." }
+        note: "A prebooked private car or SUV waiting for you at the airport. The comfortable option if you would rather not watch an app spin." }
     ]
   },
 
@@ -148,7 +150,13 @@ module.exports = {
   // Phones match docs/data-lodging.md. Only the Brunswick Hotel gave a book-by date.
   // These three hotels moved here out of `stay` below so none is listed twice.
   roomBlocks: {
-    intro: "We've set aside rooms for our guests at three hotels in Brunswick, and the wedding shuttle stops at all three. To book one, call the hotel and ask to be added to the Harris/Moore Wedding room block. The rates below already include the 9% tax.",
+    intro: "We've set aside rooms for our guests at three hotels in Brunswick. To book one, call the hotel and ask to be added to the Harris/Moore Wedding room block.",
+    // Callout under the intro (Patrick, 2026-09-24: say the blocks all have shuttle service).
+    shuttle: "All three hotels have wedding shuttle service, Friday and Saturday, to and from the venues.",
+    // Why we mention the tax (Patrick, 2026-09-24). Maine's lodging rate is 9%, per
+    // Maine Revenue Services' rates page (unchanged since 2016, still 9% in 2026; the
+    // 2025 bill for 12% did not pass). Carolyn's doc: all block rates include it.
+    tax: "The rates below already include Maine's 9% lodging tax, which the state charges on every hotel stay. Hotel websites usually show prices before tax, so ours may look a little higher, but you won't owe any tax on top.",
     overflow: "Each block holds 10 rooms. If they're taken, you can still reserve a room as long as you call the hotel at least 30 to 45 days ahead.",
     hotels: [
       { name: "The Brunswick Hotel", where: "Downtown Brunswick, about 8 miles from the venue",
