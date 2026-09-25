@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 title: Travel
 permalink: /travel/
-description: "How to get to Harpswell, Maine: flying into Portland, driving down the peninsula, airport rides, parking, and getting around once you're here."
+description: "How to get to Harpswell, Maine: flying into Portland, driving down the peninsula, the wedding shuttle and where to park, airport rides, and getting around once you're here."
 ---
 <section class="section section--scene" style="--scene:var(--scene-harbor)">
   <div class="wrap center stack">
@@ -14,7 +14,9 @@ description: "How to get to Harpswell, Maine: flying into Portland, driving down
 
 <section class="section section--cream">
   <div class="wrap">
-    <div class="grid grid--2">
+    {#- Four cards, so the pairs grid (2x2 on desktop): at three columns the fourth
+        card sat stranded beside two empty columns. -#}
+    <div class="grid grid--pairs">
       <div class="card">
         <h3>Fly</h3>
         <p><strong>{{ site.travel.airport.name }}</strong>: {{ site.travel.airport.note }}</p>
@@ -40,15 +42,32 @@ description: "How to get to Harpswell, Maine: flying into Portland, driving down
         <p>{{ site.venue.name }}<br>{{ site.venue.address }}</p>
         <p><a class="btn btn--ink" href="https://www.google.com/maps/search/?api=1&query={{ site.venue.mapsQuery }}">Open in Maps →</a></p>
       </div>
-      {#- Shuttle sits inside the grid, not as a full-width card below it: the row is
-          three columns wide, so four cards left "The venue" stranded beside two empty
-          columns. Where to park (2026-09-24) makes six: two full rows. -#}
+    </div>
+
+    {#- The wedding shuttle's home (Patrick, 2026-09-24): stops, schedule, and the
+        parking pins. Stay only notes that the block hotels are stops and links to
+        #shuttle; the FAQ links here too. -#}
+    <div class="divider" style="margin-top:34px"><img src="/assets/svg/poppy-divider.svg" alt="" width="110" height="59"></div>
+
+    <div class="center stack" id="shuttle" style="margin-bottom:8px">
+      <h2>The wedding shuttle</h2>
+      <p class="lead" style="max-width:720px; margin-left:auto; margin-right:auto">{{ site.travel.shuttle.lead }}</p>
+    </div>
+    <div class="grid grid--3">
       <div class="card">
-        <h3>Shuttle schedule</h3>
-        <p style="margin:0">{{ site.travel.shuttle }}</p>
+        <h3>Where it stops</h3>
+        <ul class="stops">
+          {% for st in site.travel.shuttle.stops %}<li>{{ st.name }}{% if st.tag %} <span>{{ st.tag }}</span>{% endif %}</li>
+          {% endfor %}
+        </ul>
+        <p style="margin:0"><a href="/stay/">Our room blocks &rarr;</a></p>
+      </div>
+      <div class="card">
+        <h3>Schedule</h3>
+        <p style="margin:0">{{ site.travel.shuttle.schedule }}</p>
       </div>
       <div class="card" id="parking">
-        <h3>Where to park</h3>
+        <h3>Driving? Park at the Grange</h3>
         <p><strong>{{ site.parkingLot.name }}</strong><br>{{ site.parkingLot.address }}</p>
         <p>{{ site.parkingLot.directions }}</p>
         {% include "partials/parking-pins.njk" %}

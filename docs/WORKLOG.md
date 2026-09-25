@@ -1176,3 +1176,26 @@ Grange/Fairfield/pins on Travel, Stay and FAQ, no High Head, API untouched
 (`OPTIONS /api/rsvp` → 204). The only console errors on prod are Cloudflare's RUM
 beacon blocked by the lab Pi-holes (checked: the only failed host is
 static.cloudflareinsights.com).
+
+## 2026-09-24 (late) — shuttle info moves to Travel, LIVE ON DEV
+
+Patrick checked the pin (the building is the Grange, confirmed: OSM, the Census
+geocoder for 529 Harpswell Neck Rd, and a reverse lookup all agree; the Town Hall is
+263 Mountain Rd and the Old Town Hall + 1757 Meetinghouse are at 926 Harpswell Neck
+Rd, both km away). Then asked for the shuttle to live on Travel, with the room
+blocks still mentioning it.
+
+Travel: the four basics cards now sit 2x2 (new `.grid--pairs`), then a new **The
+wedding shuttle** section (`#shuttle`): lead, "Where it stops" (venues, the three
+block hotels tagged "room block", the Grange tagged "guest parking", link to /stay/),
+"Schedule" (times still being set, we'll text you), and "Driving? Park at the Grange"
+(`#parking`, address, directions, Apple/Google pins). Data: `travel.shuttle` is now
+an object (lead, stops, schedule).
+Stay: the "Shuttles & parking" card is gone (`stayNote` deleted); the room-block
+intro says the shuttle stops at all three and links to /travel/#shuttle; each block
+card has a "Wedding shuttle: Stops here Friday and Saturday" row
+(`shuttleStop: true`), and the notes no longer repeat it. FAQ link → /travel/#shuttle.
+`[id]` scroll-margin clears the sticky nav for both anchors.
+
+Verified on local + dev at 1280 and 390 wide: no overflow, no console errors,
+Stay → /travel/#shuttle lands at 88 px under the 57 px nav. Prod awaits Patrick's go.

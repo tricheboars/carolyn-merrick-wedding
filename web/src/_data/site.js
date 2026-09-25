@@ -85,7 +85,20 @@ module.exports = {
       taxiName: "Brunswick Taxi",
       taxiPhone: "(207) 729-3688"
     },
-    shuttle: "Shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, the Fairfield Inn, and Spark by Hilton Brunswick. Driving? Park at the Merriconeag Grange on Route 123 and the shuttle will pick you up and drop you off there, since parking is limited at the venue. Exact schedule to come, and we'll text you too."
+    // The shuttle's home is Travel (Patrick, 2026-09-24): its own section there with
+    // the stops, the schedule, and the parking pins. Stay only notes that each
+    // room-block hotel is a stop (roomBlocks.hotels[].shuttleStop) and links here.
+    shuttle: {
+      lead: "Shuttles will run Friday and Saturday between the venues, our three room-block hotels, and the guest parking lot at the Grange.",
+      stops: [
+        { name: "The venues" },
+        { name: "The Brunswick Hotel", tag: "room block" },
+        { name: "Fairfield Inn & Suites Brunswick", tag: "room block" },
+        { name: "Spark by Hilton Brunswick", tag: "room block" },
+        { name: "Merriconeag Grange", tag: "guest parking" }
+      ],
+      schedule: "Exact times are still being set. We'll post them here once they're final, and we'll text you too."
+    }
   },
 
   // Guest parking MOVED 2026-09-24 (Mary Moore, family chat, relayed by Patrick):
@@ -126,33 +139,30 @@ module.exports = {
   // staying at the inn will be told directly, so it stays off the public page. The
   // "room block: coming soon" card that took its slot was retired 2026-09-24 when the
   // real blocks landed (roomBlocks below).
-  // Shuttle note per Carolyn (2026-08-22), shown at the top of /stay/ and echoed on
-  // Travel + FAQ. Spark by Hilton Brunswick: 199 Pleasant St (verified live
-  // 2026-08-22). 2026-09-24 (Mary Moore): the Fairfield joins the route, so all three
-  // room-block hotels are stops, and drivers park at the Grange (parkingLot above),
-  // no longer High Head Yacht Club.
-  stayNote: "A note: we will have shuttles Friday and Saturday running between the venues and all three of our room-block hotels: the Brunswick Hotel, the Fairfield Inn, and Spark by Hilton Brunswick. If you plan to drive to the wedding, park at the Merriconeag Grange on Route 123 and the shuttle will pick you up and drop you off there, as parking is limited at the venue. Exact shuttle schedule to come.",
-
+  // Shuttle plan per Carolyn (2026-08-22); 2026-09-24 (Mary Moore): the Fairfield
+  // joins the route, so all three room-block hotels are stops, and drivers park at the
+  // Grange (parkingLot above), no longer High Head Yacht Club. The shuttle card that
+  // led /stay/ (stayNote) was retired the same day: the shuttle lives on Travel now.
   // Room blocks per Carolyn's "Hotel blocks for wedding" doc (2026-09-24), in her
   // order. Rates are hers and already include the 9% tax; distances are hers too.
   // Phones match docs/data-lodging.md. Only the Brunswick Hotel gave a book-by date.
   // These three hotels moved here out of `stay` below so none is listed twice.
   roomBlocks: {
-    intro: "We've set aside rooms for our guests at three hotels in Brunswick. To book one, call the hotel and ask to be added to the Harris/Moore Wedding room block. The rates below already include the 9% tax.",
+    intro: "We've set aside rooms for our guests at three hotels in Brunswick, and the wedding shuttle stops at all three. To book one, call the hotel and ask to be added to the Harris/Moore Wedding room block. The rates below already include the 9% tax.",
     overflow: "Each block holds 10 rooms. If they're taken, you can still reserve a room as long as you call the hotel at least 30 to 45 days ahead.",
     hotels: [
       { name: "The Brunswick Hotel", where: "Downtown Brunswick, about 8 miles from the venue",
         rate: "$392 a night", minStay: "2 nights", cancel: "At least 30 days ahead to avoid a charge", bookBy: "Call by July 14, 2027",
-        note: "A boutique hotel at the edge of the Bowdoin campus, steps from Maine Street's restaurants, and the wedding shuttle stops here. They have room beyond our block, but August is their busiest month, so book early if you want to stay here.",
-        phone: "(207) 837-6565", url: "https://thebrunswickhotel.com/" },
+        note: "A boutique hotel at the edge of the Bowdoin campus, steps from Maine Street's restaurants. They have room beyond our block, but August is their busiest month, so book early if you want to stay here.",
+        shuttleStop: true, phone: "(207) 837-6565", url: "https://thebrunswickhotel.com/" },
       { name: "Fairfield Inn & Suites Brunswick", where: "A mile and a half from downtown Brunswick, about 10 miles from the venue",
         rate: "$332 a night", minStay: "1 night (the block holds both nights at the same rate)", cancel: "At least 45 days ahead to avoid a charge",
-        note: "The reliable Marriott option: free breakfast, a pool, and easy parking, and the wedding shuttle stops here.",
-        phone: "(207) 721-0300", url: "https://www.marriott.com/en-us/hotels/pwmbw-fairfield-inn-and-suites-brunswick-freeport/overview/" },
+        note: "The reliable Marriott option: free breakfast, a pool, and easy parking.",
+        shuttleStop: true, phone: "(207) 721-0300", url: "https://www.marriott.com/en-us/hotels/pwmbw-fairfield-inn-and-suites-brunswick-freeport/overview/" },
       { name: "Spark by Hilton Brunswick", where: "A mile and a half from downtown Brunswick, about 10 miles from the venue",
         rate: "$239 a night for a king, $250 for two queens", minStay: "2 nights", cancel: "At least 30 days ahead to avoid a charge",
-        note: "A simple, freshly done hotel on Pleasant Street with free breakfast and free parking, and the wedding shuttle stops here.",
-        phone: "(207) 729-1129", url: "https://www.hilton.com/en/hotels/pwmswpe-spark-brunswick/" }
+        note: "A simple, freshly done hotel on Pleasant Street with free breakfast and free parking.",
+        shuttleStop: true, phone: "(207) 729-1129", url: "https://www.hilton.com/en/hotels/pwmswpe-spark-brunswick/" }
     ]
   },
 
@@ -179,7 +189,7 @@ module.exports = {
     { q: "What should we wear?", a: "Dress code is being finalized. Expect semi-formal / garden party. Comfortable shoes are smart for grass and rocks." },
     { q: "Is the celebration indoors or outdoors?", a: "Most of the day is expected to be outdoors and tented on the point. We'll confirm closer to the date." },
     { q: "Can I bring a plus-one?", a: "Your invitation and RSVP will show who's included. Questions? Just ask." },
-    { q: "Parking / is there a shuttle?", a: "Yes, shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, the Fairfield Inn, and Spark by Hilton Brunswick. If you plan to drive, park at the Merriconeag Grange on Route 123 and the shuttle will pick you up and drop you off there, since parking is limited at the venue. Map pins for the lot are on the <a href='/travel/'>Travel</a> page, and the exact shuttle schedule will be posted there once it's set. We'll text you too." },
+    { q: "Parking / is there a shuttle?", a: "Yes, shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, the Fairfield Inn, and Spark by Hilton Brunswick. If you plan to drive, park at the Merriconeag Grange on Route 123 and the shuttle will pick you up and drop you off there, since parking is limited at the venue. Map pins for the lot are on the <a href='/travel/#shuttle'>Travel</a> page, and the exact shuttle schedule will be posted there once it's set. We'll text you too." },
     { q: "Where should we stay?", a: "We have room blocks at three hotels in Brunswick. Rates, minimum stays, and how to book are on the <a href='/stay/'>Stay</a> page, along with a few more places nearby." },
     { q: "Are kids welcome?", a: "We love all of your kids, but this will be an adults-only celebration. Thank you for understanding!" },
     { q: "What should we do while we're in Maine?", a: "We made pages for that: things to do on the <a href='/travel/'>Travel</a> page and restaurants worth the trip on the <a href='/eat/'>Eat</a> page." },

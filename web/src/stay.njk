@@ -7,8 +7,10 @@ description: "Where to stay for the wedding: our room blocks at three Brunswick 
 {#- Republished 2026-07-16 (Patrick): general lodging info for now — verified hotels
     around Harpswell and Brunswick. The Harpswell Inn itself is deliberately NOT
     listed (Carolyn, 2026-08-02: guests staying there will be told directly).
-    Room blocks (Carolyn, 2026-09-24) lead the page right after the shuttle note;
-    the per-guest room-block view (sign-in) can still layer on later. Source data:
+    Room blocks (Carolyn, 2026-09-24) lead the page. The shuttle card that used to
+    sit above them moved to Travel (Patrick, 2026-09-24); here each block hotel just
+    notes it's a stop and the intro links to /travel/#shuttle. The per-guest
+    room-block view (sign-in) can still layer on later. Source data:
     docs/data-lodging.md. -#}
 <section class="section section--scene" style="--scene:var(--scene-lookout)">
   <div class="wrap center stack">
@@ -20,19 +22,11 @@ description: "Where to stay for the wedding: our room blocks at three Brunswick 
 
 <section class="section section--cream">
   <div class="wrap">
-    {#- Shuttle note per Carolyn (2026-08-22): leads the page so guests read it
-        before picking a hotel. Same facts echoed on Travel + FAQ. -#}
-    <div class="card" style="max-width:720px; margin:0 auto 28px">
-      <h3>Shuttles &amp; parking</h3>
-      <p>{{ site.stayNote }}</p>
-      <p><strong>{{ site.parkingLot.name }}</strong>, {{ site.parkingLot.address }}. {{ site.parkingLot.directions }}</p>
-      {% include "partials/parking-pins.njk" %}
-    </div>
-
-    <div class="center" style="max-width:720px; margin:56px auto 28px">
+    <div class="center" style="max-width:720px; margin:0 auto 28px">
       <h2>Our room blocks</h2>
       <p>{{ site.roomBlocks.intro }}</p>
-      <p style="margin:0">{{ site.roomBlocks.overflow }}</p>
+      <p>{{ site.roomBlocks.overflow }}</p>
+      <p style="margin:0">Shuttle times and where to park are on the <a href="/travel/#shuttle">Travel</a> page.</p>
     </div>
     <div class="grid grid--3">
       {% for h in site.roomBlocks.hotels %}
@@ -41,6 +35,7 @@ description: "Where to stay for the wedding: our room blocks at three Brunswick 
         <p class="block-where">{{ h.where }}</p>
         <dl class="facts">
           <div><dt>Block rate, tax included</dt><dd>{{ h.rate }}</dd></div>
+          {% if h.shuttleStop %}<div><dt>Wedding shuttle</dt><dd>Stops here Friday and Saturday</dd></div>{% endif %}
           <div><dt>Minimum stay</dt><dd>{{ h.minStay }}</dd></div>
           <div><dt>To cancel</dt><dd>{{ h.cancel }}</dd></div>
           {% if h.bookBy %}<div><dt>Deadline</dt><dd>{{ h.bookBy }}</dd></div>{% endif %}

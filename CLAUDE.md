@@ -191,7 +191,12 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   drivers park at **Merriconeag Grange, 529 Harpswell Neck Rd (Rt 123)**, replacing
   High Head Yacht Club. Apple + Google Maps pins (`site.parkingLot`, lot center
   43.82181,-69.96522) on Travel's new "Where to park" card + Stay's shuttle card.
-  → [`docs/data-transport.md`](docs/data-transport.md), WORKLOG 09-24.
+  → [`docs/data-transport.md`](docs/data-transport.md), WORKLOG 09-24. Pin
+  confirmed by Patrick (it IS the Grange, not the town hall).
+- **2026-09-24 (late) — SHUTTLE MOVED TO TRAVEL, LIVE ON DEV** (prod awaits go):
+  Travel has a "The wedding shuttle" section (`#shuttle`: stops, schedule, parking
+  pins); Stay lost its shuttle card, and each block hotel card says the shuttle
+  stops there + links to Travel. → WORKLOG 09-24 (late).
 - **NEEDS PATRICK:** ~~promote the 08-02 audit fixes~~ **DONE 2026-08-02** (live on
   merrolyn.com); optionally clear the 24 audit test rows from the DEV DB (prod was
   never written to); **get from Carolyn:** the

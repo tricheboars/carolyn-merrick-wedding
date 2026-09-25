@@ -46,7 +46,9 @@ soon" card that took its place was retired 2026-09-24 when the real blocks lande
   August, so book far ahead. All three phones match the numbers verified above.
   ~~Open question: the Fairfield is a block hotel but not on the shuttle route.~~
   **Resolved 2026-09-24 (Mary Moore):** the shuttle now stops at all three block
-  hotels (Fairfield, Spark, Brunswick Hotel).
+  hotels (Fairfield, Spark, Brunswick Hotel). Shuttle details live on Travel
+  (`#shuttle`) since 2026-09-24; /stay/ shows a "Wedding shuttle: Stops here" row on
+  each block card instead of the old shuttle card.
 - **Shuttle plan (Carolyn, 2026-08-22):** shuttles run Friday + Saturday between the
   venues, **The Brunswick Hotel**, and **Spark by Hilton Brunswick** (199 Pleasant St,
   207-729-1129, hilton.com pwmswpe — verified live 2026-08-22). Guests who drive park

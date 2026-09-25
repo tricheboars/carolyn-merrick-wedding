@@ -234,6 +234,8 @@ p{ margin:0 0 1rem; }
 .grid{ display:grid; gap:20px; }
 .grid--2{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
 .grid--3{ grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+/* four-card rows: 2x2 on desktop instead of 3 + a stranded 1, one column on phones */
+.grid--pairs{ grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr)); }
 .card{
   /* Sweet Cream surfaces (the one board swatch the site never showed): cards sit
      on the cream page as warm linen, edged in an oxblood-tinted hairline */
@@ -275,8 +277,14 @@ p{ margin:0 0 1rem; }
 .block-book{ margin-top:auto; padding-top:6px; }
 /* Apple Maps / Google Maps pin buttons for the guest parking lot (Travel + Stay) */
 .map-pins{ display:flex; flex-wrap:wrap; gap:10px; margin:0; }
-/* in-page jumps (Travel's "See where to park") land below the sticky nav */
-.card[id]{ scroll-margin-top:88px; }
+/* shuttle stops (Travel): same hairline rows as .facts, the tag in quieter caps */
+.stops{ list-style:none; margin:0 0 1rem; padding:0; }
+.stops li{ padding:7px 0; border-top:1px solid rgba(var(--brick-rgb),.22); font-weight:600; line-height:1.45; }
+.stops li:last-child{ border-bottom:1px solid rgba(var(--brick-rgb),.22); }
+/* tag on its own line: inline, a wrapped tag kept its leading gap on phones */
+.stops span{ display:block; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.14em; color:var(--brick); }
+/* in-page jumps (#shuttle, #parking) land below the sticky nav */
+[id]{ scroll-margin-top:88px; }
 
 /* ---------- schedule timeline ---------- */
 .timeline{ list-style:none; margin:0; padding:0; max-width:680px; }
