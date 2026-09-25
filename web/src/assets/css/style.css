@@ -273,6 +273,10 @@ p{ margin:0 0 1rem; }
 .facts dt{ font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.14em; color:var(--brick); }
 .facts dd{ margin:0; font-weight:600; line-height:1.45; }
 .block-book{ margin-top:auto; padding-top:6px; }
+/* Apple Maps / Google Maps pin buttons for the guest parking lot (Travel + Stay) */
+.map-pins{ display:flex; flex-wrap:wrap; gap:10px; margin:0; }
+/* in-page jumps (Travel's "See where to park") land below the sticky nav */
+.card[id]{ scroll-margin-top:88px; }
 
 /* ---------- schedule timeline ---------- */
 .timeline{ list-style:none; margin:0; padding:0; max-width:680px; }

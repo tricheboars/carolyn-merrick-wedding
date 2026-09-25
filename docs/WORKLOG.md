@@ -1144,3 +1144,35 @@ present, no noindex on prod, API untouched (`OPTIONS /api/rsvp` → 204).
 Open for Carolyn: the Fairfield is a block hotel but not a shuttle stop (the
 shuttle plan names only the Brunswick Hotel and Spark), so its card says nothing
 about the shuttle. Patrick has asked Carolyn (answer pending).
+
+## 2026-09-24 (evening) — shuttle adds the Fairfield, parking moves to the Grange, LIVE ON PROD
+
+Mary Moore (family chat, screenshot via Patrick) answered the Fairfield question
+and changed the parking: the shuttle stops at **all three block hotels**, and
+drivers now park at **the Grange lot on Route 123**, "right past the corner market,
+past Mountain Road, on the left". Patrick had promised a pin for Apple Maps and
+Google Maps on the site.
+
+Identified the lot as **Merriconeag Grange #425, 529 Harpswell Neck Rd** and checked
+Mary's directions against OSM geometry: the Vegetable Corner grocery at 123 +
+Mountain Rd, then the Grange ~150 m south on the east side (the left, heading
+south). Put the pin in the middle of the gravel lot using satellite imagery
+(43.82181, -69.96522); the OSM point sits on the roof. Details in
+`docs/data-transport.md`.
+
+Site: new `site.parkingLot` (name, address, directions, Apple + Google links);
+`partials/parking-pins.njk` renders the two buttons. Travel gains a **Where to
+park** card (sixth card, so the grid is two full rows) and the Drive card's
+parking note links to it (`#parking`, scroll-margin clears the sticky nav). The Stay
+shuttle card carries the address, directions and pins. Shuttle copy on Stay, Travel
+and FAQ now names the Fairfield, the FAQ points to the pins, and the Fairfield
+block card says the shuttle stops there. High Head Yacht Club is gone from the build.
+
+Verified: clean builds; Playwright at 1280 and 390 wide on local, dev, then prod
+(no overflow, the anchor lands at 88 px under a 57 px nav); both map URLs respond
+(Apple 301 → its `/place` form with pin + label, Google 200). Dev (CT 205) then
+prod (CT 206) via the tar-swap, `.old` = rollback on each. Prod: 11/11 pages 200,
+Grange/Fairfield/pins on Travel, Stay and FAQ, no High Head, API untouched
+(`OPTIONS /api/rsvp` → 204). The only console errors on prod are Cloudflare's RUM
+beacon blocked by the lab Pi-holes (checked: the only failed host is
+static.cloudflareinsights.com).

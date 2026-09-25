@@ -76,7 +76,7 @@ module.exports = {
     airport: { name: "Portland International Jetport (PWM)", note: "~45 minutes south. Easiest major airport." },
     alt: { name: "Boston Logan (BOS)", note: "~2.25 hours; more flights, longer drive." },
     drive: "From Portland, take I-295 N to Brunswick, then Rt 123 south down the Harpswell peninsula.",
-    parking: "Limited at the venue. If you plan to drive to the wedding, the shuttle will pick you up and drop you off at the High Head Yacht Club.",
+    parking: "Limited at the venue, so if you're driving to the wedding, park at the Merriconeag Grange on Route 123 and ride the shuttle in.",
     // Airport-transfer instructions per Carolyn (2026-07-14): Uber works FROM the
     // Jetport; the ride back must be prebooked (Brunswick Taxi). Sources: docs/data-transport.md.
     transfers: {
@@ -85,7 +85,22 @@ module.exports = {
       taxiName: "Brunswick Taxi",
       taxiPhone: "(207) 729-3688"
     },
-    shuttle: "Shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, and Spark by Hilton Brunswick. Driving? The shuttle will pick you up and drop you off at the High Head Yacht Club, since parking is limited at the venue. Exact schedule to come, and we'll text you too."
+    shuttle: "Shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, the Fairfield Inn, and Spark by Hilton Brunswick. Driving? Park at the Merriconeag Grange on Route 123 and the shuttle will pick you up and drop you off there, since parking is limited at the venue. Exact schedule to come, and we'll text you too."
+  },
+
+  // Guest parking MOVED 2026-09-24 (Mary Moore, family chat, relayed by Patrick):
+  // from High Head Yacht Club to the Grange lot on 123 "right past the corner market,
+  // past Mountain Road, on the left". Identified as Merriconeag Grange #425, 529
+  // Harpswell Neck Rd (OSM way 1100682509; NRHP-listed 1918 hall); the corner market
+  // is Vegetable Corner at 123 + Mountain Rd. Pin = the middle of the gravel lot
+  // between the hall and 123, placed on Esri satellite imagery (the OSM point sits on
+  // the building). Details → docs/data-transport.md.
+  parkingLot: {
+    name: "Merriconeag Grange",
+    address: "529 Harpswell Neck Rd (Route 123), Harpswell",
+    directions: "Heading south on Route 123 from Brunswick, it's on your left just past the corner market at Mountain Road. Park in the gravel lot beside the Grange hall and the shuttle will take you from there.",
+    appleMaps: "https://maps.apple.com/?ll=43.82181,-69.96522&q=Wedding%20parking%20(Merriconeag%20Grange)",
+    googleMaps: "https://www.google.com/maps/search/?api=1&query=43.82181%2C-69.96522"
   },
 
   // Verified ground-transport guidance — sources + backups in docs/data-transport.md
@@ -112,9 +127,11 @@ module.exports = {
   // "room block: coming soon" card that took its slot was retired 2026-09-24 when the
   // real blocks landed (roomBlocks below).
   // Shuttle note per Carolyn (2026-08-22), shown at the top of /stay/ and echoed on
-  // Travel + FAQ. Spark by Hilton Brunswick: 199 Pleasant St; High Head Yacht Club:
-  // 313 High Head Rd, Harpswell (both verified live 2026-08-22).
-  stayNote: "A note: we will have shuttles Friday and Saturday running between the venues, the Brunswick Hotel, and Spark by Hilton Brunswick. If you plan to drive to the wedding, the shuttle will pick you up and drop you off at the High Head Yacht Club, as parking is limited at the venue. Exact shuttle schedule to come.",
+  // Travel + FAQ. Spark by Hilton Brunswick: 199 Pleasant St (verified live
+  // 2026-08-22). 2026-09-24 (Mary Moore): the Fairfield joins the route, so all three
+  // room-block hotels are stops, and drivers park at the Grange (parkingLot above),
+  // no longer High Head Yacht Club.
+  stayNote: "A note: we will have shuttles Friday and Saturday running between the venues and all three of our room-block hotels: the Brunswick Hotel, the Fairfield Inn, and Spark by Hilton Brunswick. If you plan to drive to the wedding, park at the Merriconeag Grange on Route 123 and the shuttle will pick you up and drop you off there, as parking is limited at the venue. Exact shuttle schedule to come.",
 
   // Room blocks per Carolyn's "Hotel blocks for wedding" doc (2026-09-24), in her
   // order. Rates are hers and already include the 9% tax; distances are hers too.
@@ -130,7 +147,7 @@ module.exports = {
         phone: "(207) 837-6565", url: "https://thebrunswickhotel.com/" },
       { name: "Fairfield Inn & Suites Brunswick", where: "A mile and a half from downtown Brunswick, about 10 miles from the venue",
         rate: "$332 a night", minStay: "1 night (the block holds both nights at the same rate)", cancel: "At least 45 days ahead to avoid a charge",
-        note: "The reliable Marriott option: free breakfast, a pool, and easy parking.",
+        note: "The reliable Marriott option: free breakfast, a pool, and easy parking, and the wedding shuttle stops here.",
         phone: "(207) 721-0300", url: "https://www.marriott.com/en-us/hotels/pwmbw-fairfield-inn-and-suites-brunswick-freeport/overview/" },
       { name: "Spark by Hilton Brunswick", where: "A mile and a half from downtown Brunswick, about 10 miles from the venue",
         rate: "$239 a night for a king, $250 for two queens", minStay: "2 nights", cancel: "At least 30 days ahead to avoid a charge",
@@ -162,7 +179,7 @@ module.exports = {
     { q: "What should we wear?", a: "Dress code is being finalized. Expect semi-formal / garden party. Comfortable shoes are smart for grass and rocks." },
     { q: "Is the celebration indoors or outdoors?", a: "Most of the day is expected to be outdoors and tented on the point. We'll confirm closer to the date." },
     { q: "Can I bring a plus-one?", a: "Your invitation and RSVP will show who's included. Questions? Just ask." },
-    { q: "Parking / is there a shuttle?", a: "Yes, shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, and Spark by Hilton Brunswick. If you plan to drive, the shuttle will pick you up and drop you off at the High Head Yacht Club, since parking is limited at the venue. The exact schedule will be posted on the <a href='/travel/'>Travel</a> page once it's set. We'll text you too." },
+    { q: "Parking / is there a shuttle?", a: "Yes, shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, the Fairfield Inn, and Spark by Hilton Brunswick. If you plan to drive, park at the Merriconeag Grange on Route 123 and the shuttle will pick you up and drop you off there, since parking is limited at the venue. Map pins for the lot are on the <a href='/travel/'>Travel</a> page, and the exact shuttle schedule will be posted there once it's set. We'll text you too." },
     { q: "Where should we stay?", a: "We have room blocks at three hotels in Brunswick. Rates, minimum stays, and how to book are on the <a href='/stay/'>Stay</a> page, along with a few more places nearby." },
     { q: "Are kids welcome?", a: "We love all of your kids, but this will be an adults-only celebration. Thank you for understanding!" },
     { q: "What should we do while we're in Maine?", a: "We made pages for that: things to do on the <a href='/travel/'>Travel</a> page and restaurants worth the trip on the <a href='/eat/'>Eat</a> page." },

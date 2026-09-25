@@ -12,8 +12,8 @@ venue site is **theharpswellinn.com**.
 
 **The Harpswell Inn is intentionally NOT on the Stay page** (Carolyn, 2026-08-02):
 guests staying at the inn will be told directly, so it stays off the public list.
-Its verified data is kept below for that direct outreach; the "room block: coming
-soon" card now leads the Stay grid in its place.
+Its verified data is kept below for that direct outreach. (The "room block: coming
+soon" card that took its place was retired 2026-09-24 when the real blocks landed.)
 
 | Name | Link | Notes |
 |---|---|---|
@@ -21,7 +21,7 @@ soon" card now leads the Stay grid in its place.
 | The Brunswick Hotel | thebrunswickhotel.com | Boutique, 4 Noble St, 207-837-6565, edge of Bowdoin campus. Shuttle stop. |
 | Spark by Hilton Brunswick | hilton.com (pwmswpe) | 199 Pleasant St, 207-729-1129, 77 rooms, free breakfast + parking. Shuttle stop. **Added to /stay/ 2026-08-22 per Carolyn** (via Patrick, resolving the flag below). Verified live 2026-08-22. |
 | The Federal | thefederalmaine.com | Boutique hotel + restaurant (555 North) in the Captain Daniel Stone house, 10 Water St, (207) 481-4066. |
-| Fairfield Inn & Suites Brunswick Freeport | marriott.com (pwmbw) | Chain option, 36 Old Portland Rd, 207-721-0300. The previous venue couple's shuttle hotel. |
+| Fairfield Inn & Suites Brunswick Freeport | marriott.com (pwmbw) | Chain option, 36 Old Portland Rd, 207-721-0300. The previous venue couple's shuttle hotel. Room block + shuttle stop as of 2026-09-24. |
 | Your Island Connection (cottages) | mainerentals.com | Bailey Island agency since 1982, 60+ waterfront rentals across Bailey/Orr's/Great Island; (207) 833-7779. Geography note: Bailey Island is the next peninsula over via Rt 24 + Cribstone Bridge, ~25-30 min from the inn. |
 
 ## Not used / caveats
@@ -44,14 +44,17 @@ soon" card now leads the Stay grid in its place.
 
   Brunswick Hotel also: "they have room" beyond the block, but it's very popular in
   August, so book far ahead. All three phones match the numbers verified above.
-  Open question for Carolyn: the Fairfield is a block hotel but NOT on the shuttle
-  route (shuttles = venues + Brunswick Hotel + Spark).
+  ~~Open question: the Fairfield is a block hotel but not on the shuttle route.~~
+  **Resolved 2026-09-24 (Mary Moore):** the shuttle now stops at all three block
+  hotels (Fairfield, Spark, Brunswick Hotel).
 - **Shuttle plan (Carolyn, 2026-08-22):** shuttles run Friday + Saturday between the
   venues, **The Brunswick Hotel**, and **Spark by Hilton Brunswick** (199 Pleasant St,
   207-729-1129, hilton.com pwmswpe — verified live 2026-08-22). Guests who drive park
-  at **High Head Yacht Club** (313 High Head Rd, Harpswell) and shuttle in; parking at
-  the venue is limited. Exact schedule TBD. (Spark was initially not listed on
-  /stay/; Carolyn approved adding it later the same day, see table above.)
+  ~~at High Head Yacht Club (313 High Head Rd)~~ **at the Merriconeag Grange lot on
+  Route 123 as of 2026-09-24** (see `data-transport.md`) and shuttle in; parking at
+  the venue is limited. **Fairfield added as a stop 2026-09-24.** Exact schedule TBD.
+  (Spark was initially not listed on /stay/; Carolyn approved adding it later the
+  same day, see table above.)
 
 ## Re-verification + additions, 2026-07-16 (Stay page republished)
 

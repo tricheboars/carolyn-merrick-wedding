@@ -31,7 +31,9 @@ description: "How to get to Harpswell, Maine: flying into Portland, driving down
       <div class="card">
         <h3>Drive</h3>
         <p>{{ site.travel.drive }}</p>
-        <p class="note">Parking: {{ site.travel.parking }}</p>
+        {#- inline margin/padding: the card rule that pins a trailing link row to the
+            baseline would otherwise float this note to the bottom of the card -#}
+        <p class="note" style="margin-top:0; padding-top:0">Parking: {{ site.travel.parking }} <a href="#parking">See where to park</a>.</p>
       </div>
       <div class="card">
         <h3>The venue</h3>
@@ -40,10 +42,16 @@ description: "How to get to Harpswell, Maine: flying into Portland, driving down
       </div>
       {#- Shuttle sits inside the grid, not as a full-width card below it: the row is
           three columns wide, so four cards left "The venue" stranded beside two empty
-          columns. Five fills the second row. -#}
+          columns. Where to park (2026-09-24) makes six: two full rows. -#}
       <div class="card">
         <h3>Shuttle schedule</h3>
         <p style="margin:0">{{ site.travel.shuttle }}</p>
+      </div>
+      <div class="card" id="parking">
+        <h3>Where to park</h3>
+        <p><strong>{{ site.parkingLot.name }}</strong><br>{{ site.parkingLot.address }}</p>
+        <p>{{ site.parkingLot.directions }}</p>
+        {% include "partials/parking-pins.njk" %}
       </div>
     </div>
 

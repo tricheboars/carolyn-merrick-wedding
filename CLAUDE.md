@@ -138,7 +138,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   (migration + update/withdrawal verified on a seeded old-schema copy; admin
   JSON/CSV include both). **Stay:** "Shuttles & parking" card leads the page
   (shuttles Fri+Sat between the venues, The Brunswick Hotel, Spark by Hilton
-  Brunswick; drivers park at High Head Yacht Club, venue parking limited, schedule
+  Brunswick; drivers park at High Head Yacht Club (moved to the Grange 09-24), venue parking limited, schedule
   to come) — echoed on Travel + FAQ; FAQ kids answer aligned to adults-only.
   Spark added to /stay/ later that evening (Carolyn's call): 8 lodgings + room-block
   card, both shuttle hotels' cards note the stop, live on prod. → WORKLOG 08-22.
@@ -185,8 +185,13 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   7/14/2027), Fairfield Inn ($332), Spark by Hilton ($239/$250), all tax-included,
   booked by phone under "Harris/Moore Wedding". New `site.roomBlocks` section leads
   /stay/ after the shuttle note; those 3 hotels left the general list; FAQ points
-  to it. Data → [`docs/data-lodging.md`](docs/data-lodging.md). Open: Fairfield
-  isn't a shuttle stop (Patrick asked Carolyn; awaiting her answer). → WORKLOG 09-24.
+  to it. Data → [`docs/data-lodging.md`](docs/data-lodging.md). → WORKLOG 09-24.
+- **DONE 2026-09-24 (evening) — SHUTTLE + PARKING UPDATE, LIVE ON PROD** (Mary
+  Moore via Patrick): the shuttle stops at all 3 block hotels (Fairfield added);
+  drivers park at **Merriconeag Grange, 529 Harpswell Neck Rd (Rt 123)**, replacing
+  High Head Yacht Club. Apple + Google Maps pins (`site.parkingLot`, lot center
+  43.82181,-69.96522) on Travel's new "Where to park" card + Stay's shuttle card.
+  → [`docs/data-transport.md`](docs/data-transport.md), WORKLOG 09-24.
 - **NEEDS PATRICK:** ~~promote the 08-02 audit fixes~~ **DONE 2026-08-02** (live on
   merrolyn.com); optionally clear the 24 audit test rows from the DEV DB (prod was
   never written to); **get from Carolyn:** the

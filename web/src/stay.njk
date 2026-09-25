@@ -24,7 +24,9 @@ description: "Where to stay for the wedding: our room blocks at three Brunswick 
         before picking a hotel. Same facts echoed on Travel + FAQ. -#}
     <div class="card" style="max-width:720px; margin:0 auto 28px">
       <h3>Shuttles &amp; parking</h3>
-      <p style="margin:0">{{ site.stayNote }}</p>
+      <p>{{ site.stayNote }}</p>
+      <p><strong>{{ site.parkingLot.name }}</strong>, {{ site.parkingLot.address }}. {{ site.parkingLot.directions }}</p>
+      {% include "partials/parking-pins.njk" %}
     </div>
 
     <div class="center" style="max-width:720px; margin:56px auto 28px">

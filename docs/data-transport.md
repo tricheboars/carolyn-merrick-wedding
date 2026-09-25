@@ -54,3 +54,27 @@ Strongly consider a **chartered guest shuttle** for the reception end-of-night
 (Brunswick hotel block ↔ the inn). Precedent: the last couple married at this venue
 ran one (Fairfield ↔ venue). Maine Limousine Service does group charters. This
 removes the whole no-ride-home problem in one stroke.
+
+
+## Guest parking + shuttle stops (updated 2026-09-24)
+
+Source: Mary Moore in the family chat, relayed by Patrick: "the shuttle will stop at
+the Fairfield and the Hilton Spark and the Brunswick Hotel. Also, the new parking
+site area will be at the Grange parking lot on 123, right past the corner market on
+123 ... past Mountain Road ... but on the left." Replaces High Head Yacht Club.
+
+- **Lot = Merriconeag Grange #425, 529 Harpswell Neck Rd (Route 123), North
+  Harpswell.** 1918 hall, on the National Register since 2018 (Maine Historic
+  Preservation Commission listing; Press Herald 2019-12-27). OSM way 1100682509.
+- **Directions check (OSM geometry):** Route 123 runs NE→SW here. Mountain Road
+  leaves 123 eastward at ~43.8233,-69.9639; the "corner market" at that corner is the
+  **Vegetable Corner** grocery (OSM node 4962254721). The Grange sits ~150 m further
+  south on the EAST side of 123, i.e. on the LEFT heading south from Brunswick. The
+  venue turnoff (Lookout Point Rd) is ~2.5 mi further south.
+- **Pin = 43.82181, -69.96522**, the middle of the gravel lot between the hall and
+  123, placed by eye on Esri World Imagery (z19). The OSM building point
+  (43.82200,-69.96492) lands on the hall's roof, so it's not used.
+- **Links (site.parkingLot):** Apple `maps.apple.com/?ll=…&q=Wedding parking
+  (Merriconeag Grange)` (Apple 301s it to `/place?coordinate=…&name=…` with the pin
+  and label kept; the old form is kept because older iPhones open it natively);
+  Google `google.com/maps/search/?api=1&query=lat,lon` (200).
