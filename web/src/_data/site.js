@@ -109,21 +109,41 @@ module.exports = {
   // that can still layer on once accounts exist.
   // The Harpswell Inn itself REMOVED from this list 2026-08-02 (Carolyn): guests
   // staying at the inn will be told directly, so it stays off the public page. The
-  // room-block card took its slot at the top of the grid.
+  // "room block: coming soon" card that took its slot was retired 2026-09-24 when the
+  // real blocks landed (roomBlocks below).
   // Shuttle note per Carolyn (2026-08-22), shown at the top of /stay/ and echoed on
   // Travel + FAQ. Spark by Hilton Brunswick: 199 Pleasant St; High Head Yacht Club:
   // 313 High Head Rd, Harpswell (both verified live 2026-08-22).
   stayNote: "A note: we will have shuttles Friday and Saturday running between the venues, the Brunswick Hotel, and Spark by Hilton Brunswick. If you plan to drive to the wedding, the shuttle will pick you up and drop you off at the High Head Yacht Club, as parking is limited at the venue. Exact shuttle schedule to come.",
 
+  // Room blocks per Carolyn's "Hotel blocks for wedding" doc (2026-09-24), in her
+  // order. Rates are hers and already include the 9% tax; distances are hers too.
+  // Phones match docs/data-lodging.md. Only the Brunswick Hotel gave a book-by date.
+  // These three hotels moved here out of `stay` below so none is listed twice.
+  roomBlocks: {
+    intro: "We've set aside rooms for our guests at three hotels in Brunswick. To book one, call the hotel and ask to be added to the Harris/Moore Wedding room block. The rates below already include the 9% tax.",
+    overflow: "Each block holds 10 rooms. If they're taken, you can still reserve a room as long as you call the hotel at least 30 to 45 days ahead.",
+    hotels: [
+      { name: "The Brunswick Hotel", where: "Downtown Brunswick, about 8 miles from the venue",
+        rate: "$392 a night", minStay: "2 nights", cancel: "At least 30 days ahead to avoid a charge", bookBy: "Call by July 14, 2027",
+        note: "A boutique hotel at the edge of the Bowdoin campus, steps from Maine Street's restaurants, and the wedding shuttle stops here. They have room beyond our block, but August is their busiest month, so book early if you want to stay here.",
+        phone: "(207) 837-6565", url: "https://thebrunswickhotel.com/" },
+      { name: "Fairfield Inn & Suites Brunswick", where: "A mile and a half from downtown Brunswick, about 10 miles from the venue",
+        rate: "$332 a night", minStay: "1 night (the block holds both nights at the same rate)", cancel: "At least 45 days ahead to avoid a charge",
+        note: "The reliable Marriott option: free breakfast, a pool, and easy parking.",
+        phone: "(207) 721-0300", url: "https://www.marriott.com/en-us/hotels/pwmbw-fairfield-inn-and-suites-brunswick-freeport/overview/" },
+      { name: "Spark by Hilton Brunswick", where: "A mile and a half from downtown Brunswick, about 10 miles from the venue",
+        rate: "$239 a night for a king, $250 for two queens", minStay: "2 nights", cancel: "At least 30 days ahead to avoid a charge",
+        note: "A simple, freshly done hotel on Pleasant Street with free breakfast and free parking, and the wedding shuttle stops here.",
+        phone: "(207) 729-1129", url: "https://www.hilton.com/en/hotels/pwmswpe-spark-brunswick/" }
+    ]
+  },
+
   stay: [
-    { name: "Room block: coming soon", note: "We're working on reserving a block of rooms for wedding guests. Once it's set, the hotel and booking details will appear right here.", url: "#" },
     { name: "Bailey Island Motel", note: "A freshly remodeled motel at the water's edge just past the Cribstone Bridge, with a pool, breakfast, and loaner kayaks. About 25 minutes from the inn, and Cook's is a short walk for dinner.", url: "https://www.baileyislandmotel.com/" },
     { name: "Log Cabin, An Island Inn", note: "Nine rooms on Bailey Island, every one facing the sunset over Casco Bay, some with decks and hot tubs. Breakfast included, and they book by phone.", phone: "(207) 833-5546", url: "https://www.logcabin-maine.com/" },
     { name: "OneSixtyFive, the Inn on Park Row", note: "An 1848 inn on Brunswick's town green, steps from Bowdoin and Maine Street, with sixteen rooms and its own bistro. This is the inn longtime visitors knew as The Brunswick Inn. About 20 minutes from the venue.", url: "https://www.onesixtyfivemaine.com/" },
-    { name: "The Brunswick Hotel", note: "A boutique hotel at the edge of the Bowdoin campus, steps from Maine Street's restaurants. About 20 minutes from the inn, and the wedding shuttle stops here.", url: "https://thebrunswickhotel.com/" },
-    { name: "Spark by Hilton Brunswick", note: "A simple, freshly done hotel on Pleasant Street with free breakfast and free parking, a short hop from Maine Street. About 20 minutes from the inn, and the wedding shuttle stops here.", url: "https://www.hilton.com/en/hotels/pwmswpe-spark-brunswick/" },
     { name: "The Federal", note: "A small boutique hotel and restaurant in the historic Captain Daniel Stone house, near downtown Brunswick.", url: "https://www.thefederalmaine.com/" },
-    { name: "Fairfield Inn & Suites Brunswick", note: "The reliable chain option: free breakfast, a pool, and easy parking, about 20 minutes away.", url: "https://www.marriott.com/en-us/hotels/pwmbw-fairfield-inn-and-suites-brunswick-freeport/overview/" },
     { name: "Cottages on Bailey & Orr's Island", note: "On the water about half an hour from the inn, across the famous Cribstone Bridge. Your Island Connection has handled rentals out here since 1982, and Vrbo and Airbnb have plenty too. Book many months ahead for a summer Saturday.", url: "https://www.mainerentals.com/" }
   ],
 
@@ -143,6 +163,7 @@ module.exports = {
     { q: "Is the celebration indoors or outdoors?", a: "Most of the day is expected to be outdoors and tented on the point. We'll confirm closer to the date." },
     { q: "Can I bring a plus-one?", a: "Your invitation and RSVP will show who's included. Questions? Just ask." },
     { q: "Parking / is there a shuttle?", a: "Yes, shuttles will run Friday and Saturday between the venues, the Brunswick Hotel, and Spark by Hilton Brunswick. If you plan to drive, the shuttle will pick you up and drop you off at the High Head Yacht Club, since parking is limited at the venue. The exact schedule will be posted on the <a href='/travel/'>Travel</a> page once it's set. We'll text you too." },
+    { q: "Where should we stay?", a: "We have room blocks at three hotels in Brunswick. Rates, minimum stays, and how to book are on the <a href='/stay/'>Stay</a> page, along with a few more places nearby." },
     { q: "Are kids welcome?", a: "We love all of your kids, but this will be an adults-only celebration. Thank you for understanding!" },
     { q: "What should we do while we're in Maine?", a: "We made pages for that: things to do on the <a href='/travel/'>Travel</a> page and restaurants worth the trip on the <a href='/eat/'>Eat</a> page." },
     { q: "What about gifts?", a: "Your presence is the gift. If you'd like, there's a house fund on the <a href='/registry/'>Registry</a> page." },

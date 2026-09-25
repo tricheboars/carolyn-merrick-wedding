@@ -30,8 +30,22 @@ soon" card now leads the Stay grid in its place.
 - Budget chains if ever needed: Comfort Inn, Best Western Plus (per Bowdoin's page).
 - Sea Escape Cottages ((207) 833-5531) also rents on Bailey Island but its site is
   stale (2015 copyright); weaker link than Your Island Connection.
-- **Room block:** still pending Patrick/couple. When secured, the Fairfield is the
-  natural shuttle anchor (precedent from the previous venue wedding).
+- **Room blocks: SECURED (Carolyn's "Hotel blocks for wedding" doc, 2026-09-24).**
+  Live on /stay/ as their own section (`site.roomBlocks`); the three hotels left the
+  general `stay` list so none shows twice. All rates include 9% tax. 10 rooms each,
+  book by phone "under Harris/Moore Wedding". Per Carolyn: rooms can still be had
+  after a block's 10 are taken if the hotel is called 30-45 days ahead.
+
+  | Hotel | Phone | Rate (tax incl.) | Min stay | Cancel | Book by | Distance (Carolyn's) |
+  |---|---|---|---|---|---|---|
+  | The Brunswick Hotel | 207-837-6565 | $392/night | 2 nights | 30 days ahead | **7/14/2027** | downtown, ~8 mi to venue |
+  | Fairfield Inn (Marriott) | 207-721-0300 | $332/night | 1 night (block held 2 nights at same rate) | 45 days ahead | not given | 1.5 mi to downtown, 10+ mi to venue |
+  | Spark by Hilton | 207-729-1129 | $239 king / $250 two queens | 2 nights | 30 days ahead | not given | 1.5 mi to downtown, 10+ mi to venue |
+
+  Brunswick Hotel also: "they have room" beyond the block, but it's very popular in
+  August, so book far ahead. All three phones match the numbers verified above.
+  Open question for Carolyn: the Fairfield is a block hotel but NOT on the shuttle
+  route (shuttles = venues + Brunswick Hotel + Spark).
 - **Shuttle plan (Carolyn, 2026-08-22):** shuttles run Friday + Saturday between the
   venues, **The Brunswick Hotel**, and **Spark by Hilton Brunswick** (199 Pleasant St,
   207-729-1129, hilton.com pwmswpe — verified live 2026-08-22). Guests who drive park

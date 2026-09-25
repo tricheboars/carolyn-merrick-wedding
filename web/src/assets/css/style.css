@@ -262,6 +262,18 @@ p{ margin:0 0 1rem; }
 .card--olive{ background:var(--olive-deep); color:var(--cream); border-color:rgba(255,255,255,.14); }
 .card--olive h3{ color:var(--cream); }
 
+/* ---------- room-block cards (/stay/) ----------
+   The numbers a guest scans for (rate, minimum, cancel window) as label/value rows
+   on the card's own hairline; the booking ask + call button sit on the baseline so
+   the three cards line up across the row. */
+.block-where{ font-size:.95rem; color:var(--forest); margin-bottom:12px; }
+.facts{ margin:0 0 1rem; }
+.facts > div{ padding:8px 0; border-top:1px solid rgba(var(--brick-rgb),.22); }
+.facts > div:last-child{ border-bottom:1px solid rgba(var(--brick-rgb),.22); }
+.facts dt{ font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.14em; color:var(--brick); }
+.facts dd{ margin:0; font-weight:600; line-height:1.45; }
+.block-book{ margin-top:auto; padding-top:6px; }
+
 /* ---------- schedule timeline ---------- */
 .timeline{ list-style:none; margin:0; padding:0; max-width:680px; }
 .timeline li{ display:grid; grid-template-columns:120px 1fr; gap:18px; padding:18px 0; border-bottom:1px solid rgba(255,255,255,.22); }

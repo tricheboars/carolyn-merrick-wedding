@@ -2,18 +2,19 @@
 layout: layouts/base.njk
 title: Stay
 permalink: /stay/
-description: "Where to stay near the wedding: waterfront motels and inns on Bailey Island, hotels in Brunswick, and cottage rentals around Harpswell."
+description: "Where to stay for the wedding: our room blocks at three Brunswick hotels, plus waterfront motels and inns on Bailey Island and cottage rentals around Harpswell."
 ---
 {#- Republished 2026-07-16 (Patrick): general lodging info for now — verified hotels
     around Harpswell and Brunswick. The Harpswell Inn itself is deliberately NOT
-    listed (Carolyn, 2026-08-02: guests staying there will be told directly); the
-    room-block card leads the grid instead. The per-guest room-block view (sign-in)
-    can layer on later; see docs/data-lodging.md for the verified source data. -#}
+    listed (Carolyn, 2026-08-02: guests staying there will be told directly).
+    Room blocks (Carolyn, 2026-09-24) lead the page right after the shuttle note;
+    the per-guest room-block view (sign-in) can still layer on later. Source data:
+    docs/data-lodging.md. -#}
 <section class="section section--scene" style="--scene:var(--scene-lookout)">
   <div class="wrap center stack">
     <span class="label eyebrow">Where to stay</span>
     <h1>A place to rest your head</h1>
-    <p class="lead">A few options near the inn, from the water's edge to nearby Brunswick.</p>
+    <p class="lead">Our room blocks at three hotels in Brunswick, plus a few more options from the water's edge to town.</p>
   </div>
 </section>
 
@@ -25,6 +26,36 @@ description: "Where to stay near the wedding: waterfront motels and inns on Bail
       <h3>Shuttles &amp; parking</h3>
       <p style="margin:0">{{ site.stayNote }}</p>
     </div>
+
+    <div class="center" style="max-width:720px; margin:56px auto 28px">
+      <h2>Our room blocks</h2>
+      <p>{{ site.roomBlocks.intro }}</p>
+      <p style="margin:0">{{ site.roomBlocks.overflow }}</p>
+    </div>
+    <div class="grid grid--3">
+      {% for h in site.roomBlocks.hotels %}
+      <div class="card">
+        <h3>{{ h.name }}</h3>
+        <p class="block-where">{{ h.where }}</p>
+        <dl class="facts">
+          <div><dt>Block rate, tax included</dt><dd>{{ h.rate }}</dd></div>
+          <div><dt>Minimum stay</dt><dd>{{ h.minStay }}</dd></div>
+          <div><dt>To cancel</dt><dd>{{ h.cancel }}</dd></div>
+          {% if h.bookBy %}<div><dt>Deadline</dt><dd>{{ h.bookBy }}</dd></div>{% endif %}
+        </dl>
+        <p>{{ h.note }}</p>
+        <div class="block-book">
+          <p style="margin:0 0 10px">Call and ask for the <strong>Harris/Moore Wedding</strong> block.</p>
+          <p style="margin:0 0 10px"><a class="btn btn--ink" href="tel:{{ h.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">Call {{ h.phone }}</a></p>
+          <p style="margin:0"><a href="{{ h.url }}" rel="noopener">Their site &rarr;</a></p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="center" style="margin:64px 0 28px">
+      <h2>More places to stay</h2>
+    </div>
     <div class="grid grid--2">
       {% for s in site.stay %}
       <div class="card">
@@ -35,6 +66,6 @@ description: "Where to stay near the wedding: waterfront motels and inns on Bail
       </div>
       {% endfor %}
     </div>
-    <p class="note center" style="margin-top:28px">Booking details and any room block will be confirmed here. August books up early out here, so grab a room once you know you're coming.</p>
+    <p class="note center" style="margin-top:28px">August books up early out here, so grab a room once you know you're coming.</p>
   </div>
 </section>

@@ -1109,3 +1109,34 @@ passphrase from a 202-word list is ~31 bits; 10 per 15 min per address plus the
 fumble a few times). Rule for me: never run sign-in tests against prod from the
 house, or restart the API afterwards. Deployed to both CTs; repo pushed via a
 PR and merged into main on GitHub (Patrick's ask).
+
+## 2026-09-24 — room blocks on /stay/, LIVE ON DEV
+
+Patrick passed along Carolyn's "Hotel blocks for wedding" doc (screenshot).
+Three blocks of 10 rooms each, booked by phone under "Harris/Moore Wedding",
+rates include the 9% tax: **The Brunswick Hotel** $392/night, 2-night min, cancel
+30 days ahead, call by 7/14/2027; **Fairfield Inn** $332/night, 1-night min (block
+holds 2 nights at the same rate), cancel 45 days ahead; **Spark by Hilton**
+$239 king / $250 two queens, 2-night min, cancel 30 days ahead. Full table +
+source notes → `docs/data-lodging.md`. All three phones match the ones verified
+in July/August.
+
+Built: new `site.roomBlocks` (intro, overflow note, 3 hotels in Carolyn's order);
+/stay/ now runs shuttle note → "Our room blocks" (3 cards: where, rate/min
+stay/cancel/deadline rows, the hotel blurb, "ask for the Harris/Moore Wedding
+block", tap-to-call, site link) → "More places to stay" (the other 5). The three
+block hotels left the general list so nothing repeats; the "Room block: coming
+soon" card is retired. Lead + meta description mention the blocks; FAQ gained
+"Where should we stay?" pointing at /stay/. New `.facts` / `.block-where` /
+`.block-book` styles (oxblood labels on sweet cream, same hairline as the cards,
+solid colors only). No em dashes.
+
+Verified: clean build; Playwright on the local build at 1280 and 390 wide, no
+overflow, no console errors, 4 correct `tel:` links; deployed to CT 205 with the
+tar-swap (`merrolyn-dev.old` = rollback) and re-checked over HTTPS (5 pages 200,
+blocks + FAQ entry present, placeholder gone, `x-robots-tag: noindex` intact).
+Prod not touched yet; awaiting Patrick's go.
+
+Open for Carolyn: the Fairfield is a block hotel but not a shuttle stop (the
+shuttle plan names only the Brunswick Hotel and Spark), so its card says nothing
+about the shuttle. Worth confirming whether that's intended.

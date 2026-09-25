@@ -9,7 +9,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
 
 ---
 
-## STATUS (2026-09-06) — single source of truth
+## STATUS (2026-09-24) — single source of truth
 
 - **Phase 2 — LIVE on the real domain.** Reception palette (plate wine + poppy on
   linen, quiet-chrome nav) live on BOTH dev and prod as of 2026-07-16; site +
@@ -180,6 +180,13 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   and approved the one-shot script. Rollback: `/var/www/merrolyn.old` +
   `/opt/merrolyn-api/*.bak-2026-09-06`. Passphrase texted to Carolyn by Patrick.
   → WORKLOG 09-06.
+- **DONE 2026-09-24 — ROOM BLOCKS on /stay/, LIVE ON DEV** (prod awaits Patrick's
+  go). Carolyn's doc: 10-room blocks at The Brunswick Hotel ($392, call by
+  7/14/2027), Fairfield Inn ($332), Spark by Hilton ($239/$250), all tax-included,
+  booked by phone under "Harris/Moore Wedding". New `site.roomBlocks` section leads
+  /stay/ after the shuttle note; those 3 hotels left the general list; FAQ points
+  to it. Data → [`docs/data-lodging.md`](docs/data-lodging.md). Open: Fairfield
+  isn't a shuttle stop. → WORKLOG 09-24.
 - **NEEDS PATRICK:** ~~promote the 08-02 audit fixes~~ **DONE 2026-08-02** (live on
   merrolyn.com); optionally clear the 24 audit test rows from the DEV DB (prod was
   never written to); **get from Carolyn:** the
@@ -200,8 +207,7 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   and Claude drives the dashboard; guest count; Twilio go-ahead; real schedule
   times. **For the couple (from research, see WORKLOG 07-02):** chartered-shuttle
   decision (prior wedding at this venue ran one; the ride home is what fails on the
-  peninsula — the site now promises a shuttle schedule), room block (Fairfield =
-  natural shuttle anchor), their restaurant picks for "couple's pick" badges. Printed
+  peninsula — the site now promises a shuttle schedule), ~~room block~~ **DONE 09-24**, their restaurant picks for "couple's pick" badges. Printed
   Save-the-Dates can carry **merrolyn.com**.
 
 ## Aesthetic direction (the north star)
