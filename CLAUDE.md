@@ -180,13 +180,13 @@ This file auto-loads — kept lean. Detail lives in [`docs/`](docs/) (read on de
   and approved the one-shot script. Rollback: `/var/www/merrolyn.old` +
   `/opt/merrolyn-api/*.bak-2026-09-06`. Passphrase texted to Carolyn by Patrick.
   → WORKLOG 09-06.
-- **DONE 2026-09-24 — ROOM BLOCKS on /stay/, LIVE ON DEV** (prod awaits Patrick's
-  go). Carolyn's doc: 10-room blocks at The Brunswick Hotel ($392, call by
+- **DONE 2026-09-24 — ROOM BLOCKS on /stay/, LIVE ON PROD** (dev first, promoted
+  same day on Patrick's go; 11/11 prod pages verified). Carolyn's doc: 10-room blocks at The Brunswick Hotel ($392, call by
   7/14/2027), Fairfield Inn ($332), Spark by Hilton ($239/$250), all tax-included,
   booked by phone under "Harris/Moore Wedding". New `site.roomBlocks` section leads
   /stay/ after the shuttle note; those 3 hotels left the general list; FAQ points
   to it. Data → [`docs/data-lodging.md`](docs/data-lodging.md). Open: Fairfield
-  isn't a shuttle stop. → WORKLOG 09-24.
+  isn't a shuttle stop (Patrick asked Carolyn; awaiting her answer). → WORKLOG 09-24.
 - **NEEDS PATRICK:** ~~promote the 08-02 audit fixes~~ **DONE 2026-08-02** (live on
   merrolyn.com); optionally clear the 24 audit test rows from the DEV DB (prod was
   never written to); **get from Carolyn:** the

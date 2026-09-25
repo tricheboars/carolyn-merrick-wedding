@@ -1135,8 +1135,12 @@ Verified: clean build; Playwright on the local build at 1280 and 390 wide, no
 overflow, no console errors, 4 correct `tel:` links; deployed to CT 205 with the
 tar-swap (`merrolyn-dev.old` = rollback) and re-checked over HTTPS (5 pages 200,
 blocks + FAQ entry present, placeholder gone, `x-robots-tag: noindex` intact).
-Prod not touched yet; awaiting Patrick's go.
+**PROMOTED TO PROD the same day on Patrick's go:** clean build for merrolyn.com,
+same tar-swap on CT 206 (`/var/www/merrolyn.old` = rollback; the auto-mode
+classifier let the prod write through this time). Verified on merrolyn.com: 11/11
+pages 200, all four rates + four `tel:` links on /stay/, placeholder gone, FAQ entry
+present, no noindex on prod, API untouched (`OPTIONS /api/rsvp` → 204).
 
 Open for Carolyn: the Fairfield is a block hotel but not a shuttle stop (the
 shuttle plan names only the Brunswick Hotel and Spark), so its card says nothing
-about the shuttle. Worth confirming whether that's intended.
+about the shuttle. Patrick has asked Carolyn (answer pending).
