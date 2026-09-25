@@ -1177,7 +1177,7 @@ Grange/Fairfield/pins on Travel, Stay and FAQ, no High Head, API untouched
 beacon blocked by the lab Pi-holes (checked: the only failed host is
 static.cloudflareinsights.com).
 
-## 2026-09-24 (late) — shuttle info moves to Travel, LIVE ON DEV
+## 2026-09-24 (late) — shuttle info moves to Travel, LIVE ON PROD
 
 Patrick checked the pin (the building is the Grange, confirmed: OSM, the Census
 geocoder for 529 Harpswell Neck Rd, and a reverse lookup all agree; the Town Hall is
@@ -1198,4 +1198,9 @@ card has a "Wedding shuttle: Stops here Friday and Saturday" row
 `[id]` scroll-margin clears the sticky nav for both anchors.
 
 Verified on local + dev at 1280 and 390 wide: no overflow, no console errors,
-Stay → /travel/#shuttle lands at 88 px under the 57 px nav. Prod awaits Patrick's go.
+Stay → /travel/#shuttle lands at 88 px under the 57 px nav. Promoted to prod
+(CT 206 tar-swap, `.old` = rollback) once Patrick spotted prod still had the old
+Stay card: 11/11 pages 200, shuttle section + pins on Travel, old card gone and 3
+shuttle rows on Stay, HTML `DYNAMIC` at Cloudflare (no purge needed), API untouched
+(`OPTIONS /api/rsvp` → 204); prod's only console errors are the Pi-hole-blocked
+Cloudflare beacon (the only failed host).
